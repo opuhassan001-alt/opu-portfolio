@@ -16,6 +16,8 @@ _(no active claims)_
 
 ## Done
 
+- `#34` Fix challenge repetition flaw with persistent 30-item deduplication buffer in chrome.storage and dramatically upgrade cognitive puzzle standard to Dhaka University IBA, BCS Mental Ability, and Cognitive Reflection (CRT-3) tests (2026-10-15)
+- `#33` Implement dynamic anger mood progression emojis (1st reel chill/funny -> progressive rage -> 10th reel explosion), time escalation, and live floating status icon bar with collapsible mini-badge (2026-10-15)
 - `#31` Comprehensive Launch & Legal Compliance Suite: In-app LegalModal (Terms of Use & Privacy Policy), standalone public web documents (privacy-policy.html & terms-of-service.html), Content Security Policy (CSP), Trademark & App Name clearance audit, and Zero-leak Data Security protocol (v1.3.1) (2026-10-15)
 - `#32` Mute MindShield warning chime sound and prevent repetitive overlay re-rendering loop during reel lock (2026-10-15)
 - `#30` Aesthetic Islamic luxury UI overhaul with ambient nocturnal background, literary typography (Amiri & Noto Serif Bengali), Bangladesh 64-district solar prayer times engine with live countdown, and innovative Spiritual Mood Recommender (v1.3.0) (2026-10-15)
