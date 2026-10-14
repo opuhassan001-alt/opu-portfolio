@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Download,
   ArrowRight,
@@ -37,7 +39,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Navbar />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1 focus:outline-none" tabIndex={-1}>
         {/* HERO SECTION */}
         <section
           id="about"
@@ -146,12 +148,15 @@ export default function HomePage() {
 
                   <div className="relative rounded-3xl bg-white p-3 shadow-2xl border border-slate-200/90">
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-200">
-                      <img
+                      <Image
                         src={portfolioData.personal.avatarUrl}
                         alt={portfolioData.personal.name}
-                        className="w-full h-full object-cover object-top"
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                        className="object-cover object-top"
                       />
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 via-navy-950/40 to-transparent p-5 text-white">
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 via-navy-950/40 to-transparent p-5 text-white z-10">
                         <div className="font-display font-bold text-lg leading-snug">
                           {portfolioData.personal.name}
                         </div>
@@ -475,21 +480,94 @@ export default function HomePage() {
         <ContactSection />
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-950 text-slate-400 py-8 border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
-          <div className="flex items-center gap-2.5">
-            <span className="w-7 h-7 rounded-lg bg-blue-600 text-white font-display font-bold text-xs flex items-center justify-center">
-              EH
-            </span>
-            <span className="text-slate-200 font-semibold">
-              {portfolioData.personal.name}
-            </span>
-            <span>— BBA Graduate (Marketing)</span>
+      {/* COMPLIANT & ACCESSIBLE FOOTER */}
+      <footer className="bg-slate-950 text-slate-300 py-12 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            {/* Identity & Business Details */}
+            <div className="md:col-span-5 space-y-3">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2.5 group hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+                aria-label="Back to Top"
+              >
+                <span className="w-8 h-8 rounded-lg bg-blue-600 group-hover:bg-blue-500 text-white font-display font-bold text-xs flex items-center justify-center shadow-sm transition-colors">
+                  EH
+                </span>
+                <span className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors">
+                  {portfolioData.personal.name}
+                </span>
+              </Link>
+              <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
+                Executive portfolio of Estakball Hossain (Opu), BBA Graduate in Marketing. Open for corporate management trainee, brand strategy, and supply chain analyst opportunities.
+              </p>
+              <div className="text-xs text-slate-300 space-y-0.5 pt-1">
+                <p><strong className="text-white">Business Location:</strong> Dhaka - 1205, Bangladesh</p>
+                <p><strong className="text-white">Email:</strong> estakballopu@gmail.com</p>
+                <p><strong className="text-white">Phone / WhatsApp:</strong> +880 1742-126284</p>
+              </div>
+            </div>
+
+            {/* Legal & Compliance Links */}
+            <div className="md:col-span-4 space-y-2.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+                Legal & Privacy Policies
+              </h4>
+              <ul className="space-y-1.5 text-xs text-slate-300">
+                <li>
+                  <Link href="/privacy-policy" className="hover:text-emerald-400 transition underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded">
+                    Privacy Policy & Data Deletion
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-of-service" className="hover:text-emerald-400 transition underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded">
+                    Terms of Service & Fee Transparency
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/refund-policy" className="hover:text-emerald-400 transition underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded">
+                    Refund & Cancellation Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookie-policy" className="hover:text-emerald-400 transition underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded">
+                    Cookie Policy & Storage Disclosure
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/licenses" className="hover:text-emerald-400 transition underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded">
+                    Open Source Font & Asset Licenses
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Standards & Trust Badges */}
+            <div className="md:col-span-3 space-y-2.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+                Standards & Compliance
+              </h4>
+              <div className="space-y-2 text-xs text-slate-300">
+                <div className="p-2.5 rounded-lg bg-navy-900 border border-navy-800">
+                  <span className="font-bold text-emerald-400 block mb-0.5">WCAG 2.1 AA Compliant</span>
+                  <span className="text-[11px] text-slate-300">High color contrast, keyboard navigable, and screen-reader accessible.</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-navy-900 border border-navy-800">
+                  <span className="font-bold text-emerald-400 block mb-0.5">Zero Dark Patterns</span>
+                  <span className="text-[11px] text-slate-300">No hidden fees, no fake reviews, and verified academic casework.</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            © {new Date().getFullYear()} {portfolioData.personal.name}. Built
-            with Next.js & Tailwind CSS.
+
+          {/* Bottom Line */}
+          <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+            <div>
+              © {new Date().getFullYear()} Estakball Hossain (Opu). All rights reserved.
+            </div>
+            <div className="text-slate-400 text-center sm:text-right">
+              Built with Next.js, TypeScript, & Tailwind CSS • GDPR & CCPA Compliant
+            </div>
           </div>
         </div>
       </footer>

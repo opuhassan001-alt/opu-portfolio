@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FileSpreadsheet,
   TrendingUp,
@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { portfolioData, CaseStudy } from "@/data/portfolio";
+import { soundFx } from "@/utils/sound";
 
 const categories = [
   "All",
@@ -26,6 +27,24 @@ const categories = [
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedStudy(null);
+      }
+    };
+    if (selectedStudy) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedStudy]);
 
   const filteredProjects =
     activeCategory === "All"
@@ -86,7 +105,10 @@ export default function ProjectsSection() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => {
+                  soundFx.playClick();
+                  setActiveCategory(cat);
+                }}
                 className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                   activeCategory === cat
                     ? "bg-navy-900 text-white shadow-sm"
@@ -104,8 +126,11 @@ export default function ProjectsSection() {
           {filteredProjects.map((study) => (
             <div
               key={study.id}
-              onClick={() => setSelectedStudy(study)}
-              className="group cursor-pointer rounded-2xl bg-slate-50/70 hover:bg-white border border-slate-200/90 hover:border-blue-600/40 p-6 sm:p-7 transition-all duration-200 hover:shadow-xl hover:shadow-slate-900/5 flex flex-col justify-between"
+              onClick={() => {
+                soundFx.playClick();
+                setSelectedStudy(study);
+              }}
+              className="group cursor-pointer rounded-2xl bg-slate-50/70 hover:bg-white border border-slate-200/90 hover:border-blue-600/40 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5 flex flex-col justify-between"
             >
               <div>
                 {/* Top metadata */}
@@ -137,7 +162,7 @@ export default function ProjectsSection() {
                 </p>
 
                 {/* Key Metrics Strip */}
-                <div className="mt-5 grid grid-cols-3 gap-2.5 pt-4 border-t border-slate-200/70">
+                <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4 border-t border-slate-200/70">
                   {study.metrics.map((metric) => (
                     <div
                       key={metric.label}
@@ -238,7 +263,7 @@ export default function ProjectsSection() {
 
             <div className="space-y-6 mt-6">
               {/* Metrics */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {selectedStudy.metrics.map((m) => (
                   <div
                     key={m.label}
@@ -303,8 +328,8 @@ export default function ProjectsSection() {
                 </ul>
               </div>
 
-              {/* Tools */}
-              <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              {/* Tools & Modal Action Buttons */}
+              <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-1.5">
                   {selectedStudy.tools.map((tool) => (
                     <span
@@ -315,13 +340,22 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedStudy(null)}
-                  className="px-4 py-2 rounded-lg bg-navy-900 text-white text-xs font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Close Overview
-                </button>
+                <div className="flex items-center gap-2.5">
+                  <a
+                    href="#contact"
+                    onClick={() => setSelectedStudy(null)}
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
+                  >
+                    Inquire on this Study →
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedStudy(null)}
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -40,9 +40,9 @@ export const portfolioData = {
     avatarUrl: "/profile.jpg",
     availability: "Open to Entry-Level Roles, Management Trainee & Internships",
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/estakball-hossain-opu",
       whatsapp: "https://wa.me/8801633375854",
-      facebook: "https://www.facebook.com",
+      facebook: "https://www.facebook.com/opuhassan001",
     },
   },
 

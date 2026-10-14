@@ -5,10 +5,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-slate-50 text-slate-900 antialiased selection:bg-blue-700 selection:text-white;
+    overflow-x: hidden;
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -18,4 +22,3 @@
     linear-gradient(to right, rgba(15, 35, 71, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 35, 71, 0.04) 1px, transparent 1px);
 }
-

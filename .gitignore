@@ -31,3 +31,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# sub-projects (independently tracked in their own git repositories)
+/islamic-reminder-app/
+/mindshield-extension/
+*.zip
+
+# MCP and local tool config (contains personal access tokens)
+.mcp.json
