@@ -12,10 +12,11 @@ _(no pending items)_
 
 ## In Progress
 
-_(no active claims)_
+- CLAIM #35 session a22d2b23-ae7e-4769-8856-6555dbfe9169 2026-10-15T12:10:00+06:00 "Regular Content & Feature Expansion: Daily Hadith of the Day inspirator, Quranic 40 Rabbana Duas library, and Sunnah Fasting calendar tracker"
 
 ## Done
 
+- `#36` Implement MindShield continuous update infrastructure (GitHub Actions CI/CD automated release pipeline and in-app update checker) and expansion roadmap (2026-10-15)
 - `#34` Fix challenge repetition flaw with persistent 30-item deduplication buffer in chrome.storage and dramatically upgrade cognitive puzzle standard to Dhaka University IBA, BCS Mental Ability, and Cognitive Reflection (CRT-3) tests (2026-10-15)
 - `#33` Implement dynamic anger mood progression emojis (1st reel chill/funny -> progressive rage -> 10th reel explosion), time escalation, and live floating status icon bar with collapsible mini-badge (2026-10-15)
 - `#31` Comprehensive Launch & Legal Compliance Suite: In-app LegalModal (Terms of Use & Privacy Policy), standalone public web documents (privacy-policy.html & terms-of-service.html), Content Security Policy (CSP), Trademark & App Name clearance audit, and Zero-leak Data Security protocol (v1.3.1) (2026-10-15)
