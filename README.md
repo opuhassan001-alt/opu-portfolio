@@ -20,10 +20,10 @@ A high-performance, broadcast-grade 3D and 2D football analytics platform built 
 ### 2. 2D Tactical Pitch & Target Analysis
 - **Standardized 105m × 68m Tactical Field**: SVG pitch renderer normalized in metric coordinates ($x \in [-52.5, 52.5]$, $y \in [-34.0, 34.0]$).
 - **5-Color Pass Classification Palette**:
-  - 🔵 **Normal Pass** (`#60a5fa`): Standard circulation and build-up play.
-  - 🟡 **Key Pass** (`#fbbf24`): Pass directly leading to an attempt on goal.
-  - 🟢 **Assist** (`#34d399`): Pass resulting directly in a converted goal.
-  - 🔴 **Direct Free-Kick Goal** (`#f87171`): Dead-ball free-kick curling into the net.
+  - 🔵 **Normal Pass** (`#38bdf8`): Standard circulation and build-up play.
+  - 🟡 **Key Pass** (`#eab308`): Pass directly leading to an attempt on goal.
+  - 🟢 **Assist** (`#22c55e`): Pass resulting directly in a converted goal.
+  - 🔴 **Direct Free-Kick Goal** (`#ef4444`): Dead-ball free-kick curling into the net.
   - 🟣 **Aerial Cross** (`#c084fc`): Long-range diagonal or box crossing flight.
 - **9-Quadrant Goalmouth Target Analysis**: Spatial placement analysis categorizing shots into top-left stanchion, bottom corners, upper 90s, and central sectors.
 
