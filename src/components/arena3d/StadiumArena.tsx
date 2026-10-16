@@ -95,6 +95,23 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     wallMeshGroup: THREE.Group | null;
   } | null>(null);
 
+  // Synchronized refs for render loop consumption without scene recreation
+  const isPlayingRef = useRef<boolean>(isPlaying);
+  const activeSpeedRef = useRef<number>(activeSpeed);
+  const currentPassRef = useRef<PassEvent>(currentPass);
+
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
+
+  useEffect(() => {
+    activeSpeedRef.current = activeSpeed;
+  }, [activeSpeed]);
+
+  useEffect(() => {
+    currentPassRef.current = currentPass;
+  }, [currentPass]);
+
   // References for Three.js instance objects across lifecycle
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
@@ -116,7 +133,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     desiredCamTarget: new THREE.Vector3()
   });
 
-  // Calculate trajectory and update 3D curve whenever active pass changes
+  // Calculate trajectory and update 3D curve whenever active pass changes (WITHOUT remounting WebGL)
   useEffect(() => {
     const startCoord: Coordinate3D = {
       x: currentPass.start.x,
@@ -150,7 +167,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
       category: currentPass.category
     });
 
-    // Update trajectory 3D line
+    // Update trajectory 3D line in existing scene
     if (sceneRef.current) {
       if (pathLineRef.current) {
         sceneRef.current.remove(pathLineRef.current);
@@ -173,9 +190,14 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
       sceneRef.current.add(newLine);
       pathLineRef.current = newLine;
 
-      // Update Defensive Wall
+      // Update Defensive Wall in existing scene
       if (wallGroupRef.current) {
         sceneRef.current.remove(wallGroupRef.current);
+        wallGroupRef.current.traverse(obj => {
+          const anyObj = obj as any;
+          anyObj.geometry?.dispose?.();
+          anyObj.material?.dispose?.();
+        });
         wallGroupRef.current = null;
       }
 
@@ -217,6 +239,11 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
         sceneRef.current.add(wallGroup);
         wallGroupRef.current = wallGroup;
       }
+
+      // Reposition ball at start
+      if (ballMeshRef.current) {
+        ballMeshRef.current.position.set(currentPass.start.x, currentPass.start.y, 0.15);
+      }
     }
 
     if (cometTrailRef.current) {
@@ -238,7 +265,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     };
   }, [currentPass]);
 
-  // Update desired camera transform when preset changes
+  // Update desired camera transform when preset or pass changes (smooth lerp in animation loop)
   useEffect(() => {
     const fkStart: Coordinate3D = {
       x: currentPass.start.x,
@@ -250,7 +277,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     playbackRef.current.desiredCamTarget.set(transform.target.x, transform.target.y, transform.target.z);
   }, [activePreset, currentPass]);
 
-  // Initialize Three.js WebGL Scene
+  // Mount Three.js WebGL Scene ONCE on container mounting
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -299,8 +326,8 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
 
     // Initial camera placement from TV preset
     const initTransform = getCameraPresetVector(activePreset, {
-      x: currentPass.start.x,
-      y: currentPass.start.y,
+      x: currentPassRef.current.start.x,
+      y: currentPassRef.current.start.y,
       z: 0.15
     });
     camera.position.set(initTransform.position.x, initTransform.position.y, initTransform.position.z);
@@ -348,7 +375,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     const ballMesh = new THREE.Mesh(ballGeo, ballMat);
     ballMesh.name = 'football';
     ballMesh.castShadow = true;
-    ballMesh.position.set(currentPass.start.x, currentPass.start.y, 0.15);
+    ballMesh.position.set(currentPassRef.current.start.x, currentPassRef.current.start.y, 0.15);
     scene.add(ballMesh);
     ballMeshRef.current = ballMesh;
 
@@ -356,7 +383,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     const cometTrail = new CometTrail({
       maxPoints: 36,
       ribbonWidth: 0.2,
-      category: currentPass.category
+      category: currentPassRef.current.category
     });
     scene.add(cometTrail.object);
     cometTrailRef.current = cometTrail;
@@ -394,11 +421,16 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
       controls.target.lerp(playbackRef.current.desiredCamTarget, camLerpAlpha);
       controls.update();
 
+      // Read current state from refs without rebuilding scene
+      const speed = activeSpeedRef.current;
+      const playing = isPlayingRef.current;
+      const pass = currentPassRef.current;
+
       // Ball Trajectory Flight & Net Flex Animation
       const traj = trajectoryDataRef.current?.trajectory;
-      if (traj && traj.points.length > 1 && isPlaying) {
+      if (traj && traj.points.length > 1 && playing) {
         const totalDuration = traj.flightTime || 1.2;
-        const progressIncrement = (delta * activeSpeed) / totalDuration;
+        const progressIncrement = (delta * speed) / totalDuration;
 
         if (playbackRef.current.progress < 1.0) {
           playbackRef.current.progress = Math.min(1.0, playbackRef.current.progress + progressIncrement);
@@ -418,20 +450,20 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
           ballMesh.position.set(ballX, ballY, ballZ);
 
           // Magnus spin rotation
-          ballMesh.rotation.x += delta * 18.0 * activeSpeed;
-          ballMesh.rotation.z += delta * 14.0 * activeSpeed;
+          ballMesh.rotation.x += delta * 18.0 * speed;
+          ballMesh.rotation.z += delta * 14.0 * speed;
 
           // Append point to comet trail
           cometTrail.addPoint({ x: ballX, y: ballY, z: ballZ });
 
           // Check if ball reached goalmouth
-          if (playbackRef.current.progress >= 0.98 && currentPass.category === 'freekick') {
+          if (playbackRef.current.progress >= 0.98 && pass.category === 'freekick') {
             playbackRef.current.isNetFlexing = true;
           }
         } else {
           // Ball in net or at target: perform harmonic net flexing
           if (playbackRef.current.isNetFlexing && attackingNetRef.current) {
-            playbackRef.current.impactTime += delta * activeSpeed;
+            playbackRef.current.impactTime += delta * speed;
             attackingNetRef.current.deformNet(
               traj.netLandingPoint,
               traj.initialVelocity || DEFAULT_FREEKICK_VELOCITY,
@@ -463,14 +495,17 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
 
       controls.dispose();
 
-      // Dispose all scene geometries and materials
+      // Dispose all scene geometries, materials, and textures on all 3D objects
       scene.traverse(obj => {
-        if (obj instanceof THREE.Mesh) {
-          obj.geometry?.dispose();
-          if (Array.isArray(obj.material)) {
-            obj.material.forEach(mat => mat.dispose());
+        const anyObj = obj as any;
+        if (anyObj.geometry) {
+          anyObj.geometry.dispose?.();
+        }
+        if (anyObj.material) {
+          if (Array.isArray(anyObj.material)) {
+            anyObj.material.forEach((mat: any) => mat.dispose?.());
           } else {
-            obj.material?.dispose();
+            anyObj.material.dispose?.();
           }
         }
       });
@@ -480,8 +515,19 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
+
+      sceneRef.current = null;
+      cameraRef.current = null;
+      rendererRef.current = null;
+      controlsRef.current = null;
+      ballMeshRef.current = null;
+      cometTrailRef.current = null;
+      attackingNetRef.current = null;
+      defendingNetRef.current = null;
+      pathLineRef.current = null;
+      wallGroupRef.current = null;
     };
-  }, [activePreset, activeSpeed, currentPass, isPlaying]);
+  }, []); // Mounted strictly once on container
 
   const handlePresetClick = useCallback((preset: CameraPreset) => {
     setActivePreset(preset);

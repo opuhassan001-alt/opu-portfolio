@@ -132,17 +132,18 @@ export class FlexibleNet {
     const halfW = this.width / 2;
     const backX = this.goalX + this.direction * this.depth;
 
-    // Back net grid (24 segments wide x 16 segments high)
+    // Back net grid (local X = height, local Y = width so that after rotateY, Y is width and Z is height)
     const segsY = 24;
     const segsZ = 16;
-    const backGeo = new THREE.PlaneGeometry(this.width, this.height, segsY, segsZ);
+    const backGeo = new THREE.PlaneGeometry(this.height, this.width, segsZ, segsY);
 
     // PlaneGeometry default is centered at (0, 0, 0) on XY plane.
-    // Transform coordinates so that plane is along Y and Z at x = backX:
-    // (x', y', z') -> x' = 0, y' = u in [-width/2, width/2], z' = v in [-height/2, height/2]
-    // Rotate to face X axis and elevate Z so bottom is at z = 0
-    backGeo.rotateY(Math.PI / 2); // now facing X
+    // Rotate around Y: local X (height 2.44m) rotates to Z in [-1.22, 1.22],
+    // while local Y (width 7.32m) remains along Y in [-3.66, 3.66].
+    backGeo.rotateY(Math.PI / 2);
+    // Translate to back of goal frame at backX, and elevate by height/2 so Z spans [0, 2.44]
     backGeo.translate(backX, 0, this.height / 2);
+    backGeo.computeBoundingBox();
 
     this.backNetMesh = new THREE.Mesh(backGeo, netMat);
     this.backNetMesh.name = 'back-net-mesh';
@@ -247,5 +248,12 @@ export class FlexibleNet {
    */
   public getMaxDisplacement(): number {
     return this.currentDisplacement;
+  }
+
+  /**
+   * Returns the back net mesh instance for bounding box inspection.
+   */
+  public getBackNetMesh(): THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial> {
+    return this.backNetMesh;
   }
 }

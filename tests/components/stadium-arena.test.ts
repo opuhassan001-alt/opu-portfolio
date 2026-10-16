@@ -72,12 +72,25 @@ describe('Pitch & Stadium 3D Architecture', () => {
 });
 
 describe('Flexible Goal Net & Vertex Deformation Physics', () => {
-  it('creates physical FIFA regulation 7.32m x 2.44m goal frame with 2m depth', () => {
+  it('creates physical FIFA regulation 7.32m x 2.44m goal frame with 2m depth and accurately bounded back net', () => {
     const goalNet = new FlexibleNet({ goalX: 52.5, width: 7.32, height: 2.44, depth: 2.0 });
     expect(goalNet.group).toBeInstanceOf(THREE.Group);
     expect(goalNet.width).toBeCloseTo(7.32, 2);
     expect(goalNet.height).toBeCloseTo(2.44, 2);
     expect(goalNet.depth).toBeCloseTo(2.0, 2);
+
+    // Verify back net bounding box matches 7.32m width (Y in [-3.66, 3.66]) and 2.44m height (Z in [0, 2.44])
+    const backMesh = goalNet.getBackNetMesh();
+    expect(backMesh).toBeDefined();
+    backMesh.geometry.computeBoundingBox();
+    const bbox = backMesh.geometry.boundingBox!;
+
+    expect(bbox.min.y).toBeCloseTo(-3.66, 2);
+    expect(bbox.max.y).toBeCloseTo(3.66, 2);
+    expect(bbox.min.z).toBeCloseTo(0.0, 2);
+    expect(bbox.max.z).toBeCloseTo(2.44, 2);
+    expect(bbox.min.x).toBeCloseTo(54.5, 2);
+    expect(bbox.max.x).toBeCloseTo(54.5, 2);
   });
 
   it('deforms netting backward on ball impact with damped harmonic oscillation', () => {
@@ -157,6 +170,34 @@ describe('StadiumArena React WebGL Component', () => {
 
     // Verify unmount cleans up without throwing
     expect(() => unmount()).not.toThrow();
+  });
+
+  it('updates camera preset and playback speed without error', async () => {
+    const React = await import('react');
+    const { render, screen, fireEvent } = await import('@testing-library/react');
+    const { StadiumArena } = await import('../../src/components/arena3d/StadiumArena');
+    const { VERIFIED_PLAYERS } = await import('../../src/data/players');
+
+    const player = VERIFIED_PLAYERS['arda-guler'];
+    const freekickPass = player.passes.find(p => p.category === 'freekick');
+
+    render(
+      React.createElement(StadiumArena, {
+        selectedPlayer: player,
+        selectedPass: freekickPass,
+        cameraPreset: 'tv',
+        replaySpeed: 1.0
+      })
+    );
+
+    const droneBtn = screen.getByText(/Sky Drone/i);
+    fireEvent.click(droneBtn);
+
+    const speedBtn = screen.getByText('0.25x');
+    fireEvent.click(speedBtn);
+
+    const pauseBtn = screen.getByTitle(/Pause/i);
+    fireEvent.click(pauseBtn);
   });
 });
 
