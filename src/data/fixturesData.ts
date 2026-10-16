@@ -426,7 +426,7 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
         getP('rodrygo', 'Rodrygo', 'Real Madrid', 'Forward', 11),
         getP('modric', 'Luka Modrić', 'Real Madrid', 'Midfielder', 10),
         getP('endrick', 'Endrick', 'Real Madrid', 'Forward', 16),
-        getP('diaz', 'Brahim Díaz', 'Real Madrid', 'Forward', 21),
+        getP('brahim-diaz', 'Brahim Díaz', 'Real Madrid', 'Forward', 21),
         getP('vazquez', 'Lucas Vázquez', 'Real Madrid', 'Defender', 17)
       ]
     },
@@ -528,7 +528,7 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Mikel Arteta',
       startingXI: [
         getP('raya', 'David Raya', 'Arsenal', 'Goalkeeper', 22),
-        getP('timber', 'Jurriën Timber', 'Arsenal', 'Defender', 12),
+        getP('jurrien-timber', 'Jurriën Timber', 'Arsenal', 'Defender', 12),
         getP('gabriel', 'Gabriel Magalhães', 'Arsenal', 'Defender', 6),
         getP('saliba', 'William Saliba', 'Arsenal', 'Defender', 2),
         getP('white', 'Ben White', 'Arsenal', 'Defender', 4),
@@ -654,7 +654,7 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       startingXI: [
         getP('pena', 'Iñaki Peña', 'Barcelona', 'Goalkeeper', 13),
         getP('balde', 'Alejandro Balde', 'Barcelona', 'Defender', 3),
-        getP('martinez', 'Iñigo Martínez', 'Barcelona', 'Defender', 5),
+        getP('inigo-martinez', 'Iñigo Martínez', 'Barcelona', 'Defender', 5),
         getP('cubarsi', 'Pau Cubarsí', 'Barcelona', 'Defender', 2),
         getP('kounde', 'Jules Koundé', 'Barcelona', 'Defender', 23),
         getP('casado', 'Marc Casadó', 'Barcelona', 'Midfielder', 17),
