@@ -315,6 +315,9 @@ export function computeMagnusTrajectory(
     area,
   };
 
+  const startZ = typeof start.z === 'number' ? start.z : 0.15;
+  const endZ = typeof end.z === 'number' ? end.z : 0.15;
+
   const dx = end.x - start.x;
   const dy = end.y - start.y;
   const distHoriz = Math.hypot(dx, dy);
@@ -325,7 +328,7 @@ export function computeMagnusTrajectory(
   // Check if ground pass: ground passes roll on turf at z ~ 0.05m - 0.08m
   const isGround = Boolean(
     params?.isGroundPass ||
-      (start.z <= 0.15 && (end.z ?? 0) <= 0.15 && !wallPos && (params?.sampleSteps === undefined || params?.isGroundPass === true))
+      (startZ <= 0.15 && endZ <= 0.15 && !wallPos && (params?.sampleSteps === undefined || params?.isGroundPass === true))
   );
 
   if (isGround) {
@@ -445,7 +448,7 @@ export function computeMagnusTrajectory(
     let state: RK4State = {
       x: start.x,
       y: start.y,
-      z: start.z,
+      z: startZ,
       vx: vHoriz * dirX,
       vy: vHoriz * dirY,
       vz: vz0,

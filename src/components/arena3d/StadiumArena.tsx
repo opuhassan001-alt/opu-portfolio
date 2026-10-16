@@ -124,13 +124,18 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
   const pathLineRef = useRef<THREE.Line | null>(null);
   const wallGroupRef = useRef<THREE.Group | null>(null);
 
-  // Playback animation variables
+  // Playback animation variables with authentic initial camera preset
+  const initialCam = getCameraPresetVector(propPreset, {
+    x: currentPass.start.x,
+    y: currentPass.start.y,
+    z: 0.15
+  });
   const playbackRef = useRef({
     progress: 0.0,
     impactTime: 0.0,
     isNetFlexing: false,
-    desiredCamPos: new THREE.Vector3(),
-    desiredCamTarget: new THREE.Vector3()
+    desiredCamPos: new THREE.Vector3(initialCam.position.x, initialCam.position.y, initialCam.position.z),
+    desiredCamTarget: new THREE.Vector3(initialCam.target.x, initialCam.target.y, initialCam.target.z)
   });
 
   // Calculate trajectory and update 3D curve whenever active pass changes (WITHOUT remounting WebGL)
@@ -302,7 +307,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(container.clientWidth || 800, container.clientHeight || 500);
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.1;
 
@@ -412,7 +417,8 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     const animate = (currentTime: number) => {
       animId = requestAnimationFrame(animate);
 
-      const delta = Math.min((currentTime - lastTime) / 1000, 0.1);
+      // Defensively ensure delta is strictly non-negative and bounded (100ms max)
+      const delta = Math.max(0, Math.min((currentTime - lastTime) / 1000, 0.1));
       lastTime = currentTime;
 
       // Smooth camera transition toward preset target
@@ -433,19 +439,22 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
         const progressIncrement = (delta * speed) / totalDuration;
 
         if (playbackRef.current.progress < 1.0) {
-          playbackRef.current.progress = Math.min(1.0, playbackRef.current.progress + progressIncrement);
+          playbackRef.current.progress = Math.max(0, Math.min(1.0, playbackRef.current.progress + progressIncrement));
 
           const sampleIdxExact = playbackRef.current.progress * (traj.points.length - 1);
-          const idx0 = Math.floor(sampleIdxExact);
-          const idx1 = Math.min(traj.points.length - 1, idx0 + 1);
-          const frac = sampleIdxExact - idx0;
+          const idx0 = Math.max(0, Math.min(traj.points.length - 1, Math.floor(sampleIdxExact)));
+          const idx1 = Math.max(0, Math.min(traj.points.length - 1, idx0 + 1));
+          const frac = Math.max(0, Math.min(1.0, sampleIdxExact - idx0));
 
-          const p0 = traj.points[idx0];
-          const p1 = traj.points[idx1];
+          const p0 = traj.points[idx0] || traj.points[0];
+          const p1 = traj.points[idx1] || p0;
+
+          const p0z = typeof p0.z === 'number' ? p0.z : 0.15;
+          const p1z = typeof p1.z === 'number' ? p1.z : 0.15;
 
           const ballX = p0.x + (p1.x - p0.x) * frac;
           const ballY = p0.y + (p1.y - p0.y) * frac;
-          const ballZ = Math.max(0.11, p0.z + (p1.z - p0.z) * frac);
+          const ballZ = Math.max(0.11, p0z + (p1z - p0z) * frac);
 
           ballMesh.position.set(ballX, ballY, ballZ);
 
