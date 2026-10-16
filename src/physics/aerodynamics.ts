@@ -52,6 +52,8 @@ export interface AerodynamicPhysicsParams {
   spinDirection?: 'left' | 'right' | 'straight';
   spinVector?: Coordinate3D; // explicit [wx, wy, wz]
   isGroundPass?: boolean;
+  actionType?: 'pass' | 'through_ball' | 'cross' | 'shot' | 'free_kick' | 'tackle' | 'aerial';
+  targetApex?: number; // Desired apex height in meters (e.g. 5.5m for crosses)
 }
 
 export const DEFAULT_GRAVITY = 9.81;
@@ -325,10 +327,93 @@ export function computeMagnusTrajectory(
   const ux = dx / (distHoriz || 1);
   const uy = dy / (distHoriz || 1);
 
+  const isCross = Boolean(
+    params?.actionType === 'cross' ||
+    params?.actionType === 'aerial' ||
+    (params?.targetApex !== undefined && params.targetApex >= 2.5)
+  );
+
+  const isThroughBall = Boolean(params?.actionType === 'through_ball');
+  const isShot = Boolean(params?.actionType === 'shot');
+
+  // Aerial Cross / Long Switch branch: High parabolic arc
+  if (isCross) {
+    const N = params?.sampleSteps || 64;
+    const apex = params?.targetApex || Math.min(8.0, Math.max(4.5, distHoriz * 0.14));
+    const flightTime = Math.sqrt((8 * apex) / phys.gravity) + distHoriz / (initialVelocity * 0.75 || 1);
+    const points: Coordinate3D[] = [];
+
+    for (let i = 0; i <= N; i++) {
+      const s = i / N;
+      const zHeight = Math.max(0.12, 4 * apex * s * (1 - s) + (1 - s) * startZ + s * endZ);
+      const curlOffset = Math.sin(s * Math.PI) * 1.2;
+      points.push({
+        x: start.x + s * dx - uy * curlOffset,
+        y: start.y + s * dy + ux * curlOffset,
+        z: zHeight,
+      });
+    }
+
+    const netLandingPoint: Coordinate3D = { x: end.x, y: end.y, z: endZ };
+    const controlPoints: [Coordinate3D, Coordinate3D] = [
+      { x: start.x + dx / 3, y: start.y + dy / 3, z: apex * 1.1 },
+      { x: start.x + (2 * dx) / 3, y: start.y + (2 * dy) / 3, z: apex * 1.1 },
+    ];
+
+    return {
+      points,
+      controlPoints,
+      wallClearanceHeight: apex * 0.85,
+      apexHeight: apex,
+      netLandingPoint,
+      flightTime,
+      distance: distHoriz,
+      initialVelocity,
+      spin: { topSpin: -12, sideSpin: 8 },
+    };
+  }
+
+  // Low cutting through-ball branch
+  if (isThroughBall) {
+    const N = params?.sampleSteps || 64;
+    const apex = 0.14;
+    const flightTime = distHoriz / (initialVelocity * 0.92 || 1);
+    const points: Coordinate3D[] = [];
+
+    for (let i = 0; i <= N; i++) {
+      const s = i / N;
+      const zHeight = Math.max(0.06, 4 * apex * s * (1 - s) + (1 - s) * startZ + s * endZ);
+      points.push({
+        x: start.x + s * dx,
+        y: start.y + s * dy,
+        z: zHeight,
+      });
+    }
+
+    const netLandingPoint: Coordinate3D = { x: end.x, y: end.y, z: endZ };
+    const controlPoints: [Coordinate3D, Coordinate3D] = [
+      { x: start.x + dx / 3, y: start.y + dy / 3, z: apex },
+      { x: start.x + (2 * dx) / 3, y: start.y + (2 * dy) / 3, z: apex },
+    ];
+
+    return {
+      points,
+      controlPoints,
+      wallClearanceHeight: apex,
+      apexHeight: apex,
+      netLandingPoint,
+      flightTime,
+      distance: distHoriz,
+      initialVelocity,
+      spin: { topSpin: 4, sideSpin: 2 },
+    };
+  }
+
   // Check if ground pass: ground passes roll on turf at z ~ 0.05m - 0.08m
   const isGround = Boolean(
-    params?.isGroundPass ||
-      (startZ <= 0.15 && endZ <= 0.15 && !wallPos && (params?.sampleSteps === undefined || params?.isGroundPass === true))
+    !isShot &&
+    (params?.isGroundPass ||
+      (startZ <= 0.15 && endZ <= 0.15 && !wallPos && (params?.sampleSteps === undefined || params?.isGroundPass === true)))
   );
 
   if (isGround) {

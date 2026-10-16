@@ -25,12 +25,20 @@ import { getCameraPresetVector, CameraPreset } from './CameraController';
 
 export interface StadiumArenaProps {
   selectedPlayer?: Player;
-  selectedPass?: PassEvent;
-  passes?: PassEvent[];
+  selectedPass?: PassEvent | MatchAction | null;
+  passes?: (PassEvent | MatchAction)[];
   cameraPreset?: CameraPreset;
   replaySpeed?: number; // 0.25, 0.5, 1.0
   isPlaying?: boolean;
-  onPassSelect?: (pass: PassEvent) => void;
+  onPassSelect?: (pass: PassEvent | MatchAction) => void;
+  onPrevAction?: () => void;
+  onNextAction?: () => void;
+  actionIndex?: number;
+  totalActions?: number;
+  selectedTeamFilter?: 'all' | 'home' | 'away';
+  onTeamFilterChange?: (filter: 'all' | 'home' | 'away') => void;
+  homeTeamName?: string;
+  awayTeamName?: string;
   className?: string;
 }
 
@@ -42,6 +50,14 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
   replaySpeed: propSpeed = 1.0,
   isPlaying: propIsPlaying = true,
   onPassSelect,
+  onPrevAction,
+  onNextAction,
+  actionIndex,
+  totalActions,
+  selectedTeamFilter = 'all',
+  onTeamFilterChange,
+  homeTeamName,
+  awayTeamName,
   className = ''
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -147,10 +163,14 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
     };
 
     const isFreekick = currentPass.category === 'freekick';
+    const isShot = currentPass.category === 'shot' || (currentPass as any).actionType === 'shot';
+    const isCross = currentPass.category === 'aerial' || (currentPass as any).actionType === 'cross';
+    const isThrough = currentPass.category === 'key' || (currentPass as any).actionType === 'through_ball';
+
     const endCoord: Coordinate3D = {
       x: currentPass.end.x,
       y: currentPass.end.y,
-      z: isFreekick ? 2.15 : 0.15
+      z: (isFreekick || isShot) ? 1.85 : 0.15
     };
 
     let wallCenter: { x: number; y: number } | undefined;
@@ -160,7 +180,9 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
 
     const initialVelocityMs = (currentPass.velocityKmH || 100.0) / 3.6;
     const traj = computeMagnusTrajectory(startCoord, endCoord, wallCenter, initialVelocityMs, {
-      isGroundPass: currentPass.category === 'normal' && currentPass.apexHeight <= 0.3
+      isGroundPass: currentPass.category === 'normal' && (currentPass.apexHeight || 0) <= 0.3,
+      actionType: isCross ? 'cross' : isThrough ? 'through_ball' : isShot ? 'shot' : isFreekick ? 'free_kick' : 'pass',
+      targetApex: isCross ? (currentPass.apexHeight || 5.8) : undefined
     });
 
     setTelemetry({
@@ -639,6 +661,54 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
             </button>
           ))}
         </div>
+
+        {/* Dual-Team Filter & Action Stepper (When provided) */}
+        {(onPrevAction || onNextAction || (homeTeamName && awayTeamName)) && (
+          <div className="flex items-center gap-2 p-1 bg-slate-900/85 backdrop-blur-md rounded-lg border border-slate-700/60 shadow-lg pointer-events-auto">
+            {homeTeamName && awayTeamName && onTeamFilterChange && (
+              <div className="flex items-center gap-1">
+                {(['all', 'home', 'away'] as const).map(f => (
+                  <button
+                    key={f}
+                    onClick={() => onTeamFilterChange(f)}
+                    className={`px-2.5 py-1 text-xs font-semibold rounded transition ${
+                      selectedTeamFilter === f
+                        ? 'bg-sky-500 text-white shadow'
+                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    {f === 'all' ? 'All Teams' : f === 'home' ? homeTeamName : awayTeamName}
+                  </button>
+                ))}
+                <div className="h-4 w-px bg-slate-700 mx-1" />
+              </div>
+            )}
+
+            {onPrevAction && onNextAction && (
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={onPrevAction}
+                  className="px-2 py-1 text-xs text-slate-300 hover:text-white hover:bg-slate-800 rounded transition"
+                  title="Previous Action"
+                >
+                  ◀
+                </button>
+                <span className="text-xs font-mono text-slate-300 px-1">
+                  {actionIndex !== undefined && totalActions !== undefined
+                    ? `${actionIndex + 1} / ${totalActions}`
+                    : 'Actions'}
+                </span>
+                <button
+                  onClick={onNextAction}
+                  className="px-2 py-1 text-xs text-slate-300 hover:text-white hover:bg-slate-800 rounded transition"
+                  title="Next Action"
+                >
+                  ▶
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Bottom Telemetry HUD */}
