@@ -98,12 +98,12 @@ describe('Dual-Team Match Center & Fixtures Data', () => {
   it('contains rich dual-team fixtures with Home and Away squads', () => {
     expect(DUAL_TEAM_FIXTURES.length).toBeGreaterThanOrEqual(4);
 
-    const uclFixture = getFixtureById('ucl-rma-rom');
+    const uclFixture = getFixtureById('ucl-psg-mci');
     expect(uclFixture).toBeDefined();
-    expect(uclFixture?.homeTeam.name).toBe('Real Madrid');
-    expect(uclFixture?.awayTeam.name).toBe('AS Roma');
+    expect(uclFixture?.homeTeam.name).toBe('Paris Saint-Germain');
+    expect(uclFixture?.awayTeam.name).toBe('Manchester City');
     expect(uclFixture?.homeScore).toBe(4);
-    expect(uclFixture?.awayScore).toBe(3);
+    expect(uclFixture?.awayScore).toBe(2);
 
     // Lineups for both teams
     expect(uclFixture?.homeLineup.startingXI.length).toBe(11);

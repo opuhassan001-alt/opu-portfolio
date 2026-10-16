@@ -31,12 +31,12 @@ describe('App Shell Integration', () => {
 
   it('selects another player from the carousel and updates active player state', () => {
     render(<App />);
-    const kdbBtn = screen.getByText('Kevin De Bruyne').closest('button');
+    const kdbBtn = screen.getAllByText('Kevin De Bruyne')[0].closest('button');
     expect(kdbBtn).not.toBeNull();
     fireEvent.click(kdbBtn!);
 
     // Manchester City should be active and Kevin De Bruyne selected
-    expect(screen.getByText('Manchester City')).toBeDefined();
+    expect(screen.getAllByText('Manchester City').length).toBeGreaterThan(0);
   });
 
   it('opens and closes player dossier drawer with verified career stats', () => {

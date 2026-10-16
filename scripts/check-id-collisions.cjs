@@ -42,3 +42,4 @@ console.log(`Found ${mismatches.length} registry ID collisions!`);
 if (mismatches.length > 0) {
   console.table(mismatches);
 }
+

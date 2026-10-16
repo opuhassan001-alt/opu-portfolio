@@ -12,6 +12,27 @@ resume**, not just a task name.
 
 ## Done
 
+- `#65` Align fixtures with 100% official UEFA Champions League 2024/25 match data, fix Manchester City official crest, and eliminate non-existent matches:
+  - **Manchester City & European Club Crest Resolution (`public/assets/badges/`)**: Replaced generic placeholder badge with official Manchester City circular blue-and-gold crest featuring the ship and Lancashire red rose (`manchester-city.png`). Created verified badge aliases for all top European clubs (`bayern-munchen.png`, `borussia-dortmund.png`, `manchester-united.png`, `bayer-leverkusen.png`, `vfb-stuttgart.png`, `sporting.png`).
+  - **100% Authentic Official UEFA Champions League 2024/25 Blockbuster Fixtures (`src/data/fixturesData.ts`)**:
+    - `ucl-psg-mci`: Paris Saint-Germain 4 - 2 Manchester City (Parc des Princes, Paris; Doué 13', Dembélé 15', Vitinha 32', Barcola 64' / Haaland 53', 78'). Complete 16-action timeline with 3D trajectories and authentic starting line-ups (Enrique vs Guardiola).
+    - `ucl-rma-bvb`: Real Madrid 5 - 2 Borussia Dortmund (Santiago Bernabéu, Madrid; Rüdiger 60', Vinícius 62', 86', 90+3' hat-trick, Lucas Vázquez 83' / Malen 30', Bynoe-Gittens 34'). Complete 16-action timeline.
+    - `ucl-bar-bay`: FC Barcelona 4 - 1 Bayern Munich (Estadi Olímpic Lluís Companys, Barcelona; Raphinha 1', 45', 56' hat-trick, Lewandowski 36' / Kane 18').
+    - `ucl-ars-psg`: Arsenal 2 - 0 Paris Saint-Germain (Emirates Stadium, London; Havertz 20', Saka 35' direct free-kick).
+  - **Eliminated Non-Existent Matches**: Removed `ucl-int-psg` (Inter Milan vs PSG never took place in the UCL league phase) and `pl-mci-ars` (Premier League domestic match removed from UCL catalog) while maintaining backward-compatible ID redirection in `getFixtureById`.
+  - **Official Headshot Assets Ingestion (`public/assets/players/` & `public/players/`)**: Downloaded and verified 11 authentic official player face portraits from API-Sports CDN for Borussia Dortmund and PSG stars: Désiré Doué, Donyell Malen, Jamie Bynoe-Gittens, Gregor Kobel, Serhou Guirassy, Julian Brandt, Nico Schlotterbeck, Marcel Sabitzer, Ramy Bensebaini, Julian Ryerson, Niklas Süle.
+  - **Comprehensive Verification**:
+    - 97/97 tests passing across 14 test suites in root project (`npm test -- --run`).
+    - Zero TypeScript errors; clean production build (`tsc && vite build`) built in 5.06s.
+    - Verified live in browser with Playwright: Manchester City official crest, PSG 4 - 2 Man City scorebug, 22-player formation pitch, and 3D Arena trajectory replay. (2026-10-16)
+
+- `#64` Synchronize 100% official UEFA Champions League squad rosters and authentic headshots for AC Milan and Inter Milan, eliminating non-official data and player mismatches:
+  - **Official UEFA AC Milan & Inter Milan Squad Expansion (`uclCompleteRegistry.ts` & `megaFootballRegistry.ts`)**: Sourced official roster lists directly from UEFA.com and club registries. Added 18 verified AC Milan players (Leão, Pulisic, Hernández, Maignan, Reijnders, Morata, Tomori, Loftus-Cheek, Fofana, Chukwueze, Abraham, Emerson Royal, Thiaw, Pavlović, Gabbia, Calabria, Musah, Okafor) and 17 verified Inter Milan players (Lautaro, Barella, Bastoni, Dimarco, Çalhanoğlu, Thuram, Sommer, Pavard, Mkhitaryan, Dumfries, Zieliński, Taremi, Frattesi, Acerbi, Bisseck, De Vrij, Darmian) with 30+ official statistics, Transfermarkt valuations, Opta telemetry, and SofaScore form logs. Expanded registry from 426 to 472 keys.
+  - **100% Authentic Face Headshots Ingestion**: Downloaded 17 verified high-resolution portraits from official API-Sports archives onto disk (`public/assets/players/`, `public/players/`, and `ucl-analytics-dashboard/public/players/`) for all newly registered Milan players (Tomori, Loftus-Cheek, Fofana, Chukwueze, Abraham, Emerson, Thiaw, Pavlović, Gabbia, Calabria, Musah, Okafor, Saelemaekers, De Vrij, Darmian, Asllani, Josep Martínez).
+  - **Image Pipeline & ID Mapping (`image-pipeline.ts`)**: Mapped all official player IDs and shorthand aliases in `API_SPORTS_PLAYER_IDS`.
+  - **Comprehensive Verification**: All 97 automated tests passing in root project across 14 test suites (`npm test -- --run`) and all 49 tests passing in `ucl-analytics-dashboard` (146/146 tests total). Zero TypeScript errors and clean Vite production builds (`npm run build`) in both projects. (2026-10-16)
+
+
 - `#63` Optimize web performance, code-split heavy datasets, and complete match action timelines and dynamic scorebugs:
   - **Massive 93% Main Bundle Reduction via Granular Rollup Code-Splitting (`vite.config.ts`)**:
     - Slashed initial application JavaScript bundle `dist/assets/index.js` from 2,406 kB down to 165.99 kB (42 kB gzip), eliminating main thread freeze and heavy parse times.

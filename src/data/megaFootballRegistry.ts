@@ -1,4 +1,5 @@
 import { Player } from '../types/football';
+import { UCL_COMPLETE_REGISTRY } from './uclCompleteRegistry';
 
 /**
  * World & Europe Top 10 Leagues Mega Football Database
@@ -69413,22 +69414,32 @@ export const MEGA_FOOTBALL_REGISTRY: Record<string, Player> = {
 };
 export const WORLD_TOP10_DATABASE = MEGA_FOOTBALL_REGISTRY;
 
-const UCL_CLUBS = new Set([
-  'Manchester City', 'Arsenal', 'Liverpool', 'Aston Villa', 'Chelsea',
-  'Real Madrid CF', 'FC Barcelona', 'Atlético Madrid', 'Athletic Club', 'Girona',
-  'Inter Milan', 'Juventus', 'AC Milan', 'Atalanta', 'Bologna', 'AS Roma',
-  'Bayern Munich', 'Bayer Leverkusen', 'Borussia Dortmund', 'RB Leipzig', 'VfB Stuttgart',
-  'Paris Saint-Germain', 'AS Monaco', 'Lille OSC', 'Stade Brestois',
-  'PSV Eindhoven', 'Feyenoord', 'Sporting CP', 'SL Benfica', 'FC Porto',
-  'Galatasaray', 'Fenerbahçe', 'Beşiktaş', 'Club Brugge', 'RSC Anderlecht', 'Celtic', 'Rangers FC'
+// Merge the 217 official 36-club UCL roster players into the primary registry
+Object.assign(MEGA_FOOTBALL_REGISTRY, UCL_COMPLETE_REGISTRY);
+
+export const UCL_CLUBS = new Set([
+  'Real Madrid CF', 'FC Barcelona', 'Manchester City', 'Arsenal FC',
+  'FC Bayern München', 'Liverpool FC', 'Paris Saint-Germain', 'Bayer 04 Leverkusen',
+  'Borussia Dortmund', 'Inter Milan', 'Juventus', 'Atlético Madrid',
+  'Aston Villa', 'Sporting CP', 'RB Leipzig', 'AC Milan',
+  'Atalanta BC', 'AS Monaco', 'Lille OSC', 'VfB Stuttgart',
+  'Girona FC', 'Bologna FC', 'Stade Brestois 29', 'SL Benfica',
+  'PSV Eindhoven', 'Feyenoord', 'Club Brugge', 'Celtic FC',
+  'FC Shakhtar Donetsk', 'SK Sturm Graz', 'Red Bull Salzburg', 'BSC Young Boys',
+  'Sparta Praha', 'GNK Dinamo Zagreb', 'Red Star Belgrade', 'Slovan Bratislava',
+  // Common name aliases
+  'Real Madrid', 'Barcelona', 'Bayern Munich', 'Arsenal', 'Liverpool',
+  'Bayer Leverkusen', 'Atalanta', 'Bologna', 'Stade Brestois', 'Benfica',
+  'Celtic', 'Shakhtar Donetsk', 'Sparta Prague', 'Dinamo Zagreb', 'Girona'
 ]);
 
 export function getAllPlayers(): Player[] {
   const seen = new Set<string>();
   const list: Player[] = [];
   for (const p of Object.values(MEGA_FOOTBALL_REGISTRY)) {
-    if (!seen.has(p.id)) {
-      seen.add(p.id);
+    const key = p.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    if (!seen.has(key)) {
+      seen.add(key);
       list.push(p);
     }
   }

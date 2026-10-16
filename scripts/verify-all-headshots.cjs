@@ -41,3 +41,4 @@ if (failed === 0) {
   console.error(`\nFAILED: ${failed} players have invalid headshots!`);
   process.exit(1);
 }
+

@@ -21,8 +21,8 @@ describe('Master Application Shell Integration', () => {
 
     // Expect Match Center viewport
     expect(screen.getByTestId('dual-team-match-center')).toBeDefined();
-    expect(screen.getAllByText('Real Madrid').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('AS Roma').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Paris Saint-Germain').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Manchester City').length).toBeGreaterThan(0);
   });
 
   it('allows universal search filtering across 90+ players and clubs', () => {
@@ -63,17 +63,16 @@ describe('Master Application Shell Integration', () => {
   it('updates TV scorebug venue and competition dynamically when switching fixtures', () => {
     render(<App />);
 
-    // Default fixture: RMA vs ROM at Santiago Bernabéu
-    expect(screen.getAllByText(/Santiago Bernabéu/i).length).toBeGreaterThan(0);
+    // Default fixture: PSG vs MCI at Parc des Princes
+    expect(screen.getAllByText(/Parc des Princes/i).length).toBeGreaterThan(0);
 
-    // Click on MCI vs ARS fixture button in match center fixture strip
-    const mciBtn = screen.getByText(/MCI 2 - 2 ARS/i).closest('button');
-    expect(mciBtn).not.toBeNull();
-    fireEvent.click(mciBtn!);
+    // Click on BAR vs BAY fixture button in match center fixture strip
+    const barBtn = screen.getByText(/BAR 4 - 1 BAY/i).closest('button');
+    expect(barBtn).not.toBeNull();
+    fireEvent.click(barBtn!);
 
-    // Scorebug header should now reflect Etihad Stadium and Premier League
-    expect(screen.getAllByText(/Etihad Stadium/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/53,400/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Premier League/i).length).toBeGreaterThan(0);
+    // Scorebug header should now reflect Estadi Olímpic
+    expect(screen.getAllByText(/Estadi Olímpic/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/50,312/i).length).toBeGreaterThan(0);
   });
 });

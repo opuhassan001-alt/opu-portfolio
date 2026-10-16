@@ -86,14 +86,15 @@ export interface MatchLogEntry {
   matchId: string;
   date: string;
   opponent: string;
-  competition: string;
+  competition?: string;
   rating: number; // e.g. 8.7
   minutesPlayed: number;
   goals: number;
   assists: number;
-  touches: number;
-  accuratePassesPct: number;
+  touches?: number;
+  accuratePassesPct?: number;
   keyPasses: number;
+  shots?: number;
 }
 
 export interface SofaScoreData {

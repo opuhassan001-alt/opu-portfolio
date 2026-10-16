@@ -6,7 +6,7 @@ import DualTeamMatchCenter from '../../src/components/match/DualTeamMatchCenter'
 import { getFixtureById } from '../../src/data/fixturesData';
 
 describe('Dual-Team Match Center & Tactical Lineups', () => {
-  const fixture = getFixtureById('ucl-rma-rom')!;
+  const fixture = getFixtureById('ucl-psg-mci')!;
 
   it('renders both home and away teams with scores and venue', () => {
     render(
@@ -17,11 +17,11 @@ describe('Dual-Team Match Center & Tactical Lineups', () => {
       />
     );
 
-    expect(screen.getAllByText('Real Madrid').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('AS Roma').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Paris Saint-Germain').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Manchester City').length).toBeGreaterThan(0);
     expect(screen.getByText('4')).toBeDefined();
-    expect(screen.getByText('3')).toBeDefined();
-    expect(screen.getByText(/Santiago Bernabéu/i)).toBeDefined();
+    expect(screen.getByText('2')).toBeDefined();
+    expect(screen.getByText(/Parc des Princes/i)).toBeDefined();
   });
 
   it('renders tactical starting lineups for both clubs', () => {
@@ -34,10 +34,9 @@ describe('Dual-Team Match Center & Tactical Lineups', () => {
     );
 
     // Starting XI players
-    expect(screen.getByText('Kylian Mbappé')).toBeDefined();
-    expect(screen.getByText('Paulo Dybala')).toBeDefined();
+    expect(screen.getByText('Ousmane Dembélé')).toBeDefined();
+    expect(screen.getByText('Erling Haaland')).toBeDefined();
     expect(screen.getAllByText(/4-3-3/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/3-4-2-1/i).length).toBeGreaterThan(0);
   });
 
   it('renders minute-by-minute match action events and handles selection', () => {
@@ -54,12 +53,12 @@ describe('Dual-Team Match Center & Tactical Lineups', () => {
     const timelineTab = screen.getByText(/Action Timeline/i);
     fireEvent.click(timelineTab);
 
-    // Timeline should have Mbappé goal event
-    const eventEl = screen.getByText(/GOAL! Mbappé clinical right-footed strike/i);
+    // Timeline should have Dembélé goal event
+    const eventEl = screen.getByText(/GOAL! Dembélé cuts inside Gvardiol/i);
     expect(eventEl).toBeDefined();
 
     fireEvent.click(eventEl);
-    expect(handleSelectAction).toHaveBeenCalledWith(expect.objectContaining({ playerId: 'mbappe' }));
+    expect(handleSelectAction).toHaveBeenCalledWith(expect.objectContaining({ playerId: 'dembele' }));
   });
 
   it('switches to 22-player formation pitch tab and displays both squads on turf', () => {
