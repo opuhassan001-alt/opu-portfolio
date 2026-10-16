@@ -17,6 +17,14 @@ export interface Coordinate3D extends Coordinate2D {
 
 export type PassCategory = 'normal' | 'key' | 'assist' | 'freekick' | 'aerial';
 
+export const PASS_CATEGORY_COLORS: Record<PassCategory, string> = {
+  normal: '#38bdf8',
+  key: '#eab308',
+  assist: '#22c55e',
+  freekick: '#ef4444',
+  aerial: '#c084fc'
+} as const;
+
 export interface PassEvent {
   id: string;
   playerId: string;

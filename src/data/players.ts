@@ -154,7 +154,7 @@ const KDB_PASSES: PassEvent[] = [
     category: 'aerial',
     velocityKmH: 76.4,
     distanceM: 54.0,
-    description: 'Pinpoint 54m cross-field diagonal diagonal aerial long pass',
+    description: 'Pinpoint 54m cross-field diagonal aerial long pass',
   },
   {
     id: 'kdb-nrm-1',
