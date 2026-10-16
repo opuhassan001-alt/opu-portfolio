@@ -193,7 +193,7 @@ export const GoalmouthPopup: React.FC<GoalmouthPopupProps> = ({
               <span>xGOT</span>
             </div>
             <div data-testid="xgot-stat" className="mt-1 font-mono text-lg font-bold text-white">
-              {pass.xGOT !== undefined ? pass.xGOT.toFixed(2) : '0.90'}
+              {pass.xGOT !== undefined ? pass.xGOT.toFixed(2) : '—'}
             </div>
           </div>
         </div>
