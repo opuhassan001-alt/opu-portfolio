@@ -28,6 +28,38 @@ function getRatingBadgeColor(rating?: number): { bg: string; text: string; borde
   return { bg: 'bg-orange-600', text: 'text-white font-bold', border: 'border-orange-400' };
 }
 
+function getLineXCoordinates(count: number, lineIdx: number, numLines: number): number[] {
+  if (count === 1) return [50];
+  if (count === 2) return [34, 66];
+  if (count === 3) {
+    if (lineIdx === 1) return [26, 50, 74]; // 3 Center Backs
+    if (lineIdx === numLines - 1) return [16, 50, 84]; // 3 Forwards (LW, ST, RW)
+    return [28, 50, 72]; // Midfield 3
+  }
+  if (count === 4) return [14, 38, 62, 86];
+  if (count === 5) return [12, 31, 50, 69, 88];
+  return Array.from({ length: count }, (_, i) => 15 + (i / Math.max(1, count - 1)) * 70);
+}
+
+function getLineYCoordinate(lineIdx: number, numLines: number): number {
+  if (lineIdx === 0) return 9; // GK near goal line
+  if (lineIdx === 1) return 24; // Defensive line
+  if (numLines === 4) {
+    if (lineIdx === 2) return 52; // Midfield
+    if (lineIdx === 3) return 82; // Forwards
+  }
+  if (numLines === 5) {
+    if (lineIdx === 2) return 42; // Deep Midfield / Wingbacks
+    if (lineIdx === 3) return 65; // Attacking Midfield
+    if (lineIdx === 4) return 84; // Striker
+  }
+  if (numLines === 3) {
+    if (lineIdx === 1) return 35;
+    if (lineIdx === 2) return 75;
+  }
+  return 12 + (lineIdx / Math.max(1, numLines - 1)) * 72;
+}
+
 export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
   homeTeam,
   awayTeam,
@@ -128,130 +160,116 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
         {/* Away Team Players (Top Half, attacking downward) */}
         <div className="absolute inset-x-0 top-0 h-[48%] pointer-events-auto">
           {awayPlayerLines.map((line, lineIdx) => {
-            const numLines = awayPlayerLines.length;
-            // Distribute lines from y=9% (GK) to y=88% (Forwards)
-            const topPct = 10 + (lineIdx / Math.max(1, numLines - 1)) * 74;
+            const xCoords = getLineXCoordinates(line.length, lineIdx, awayPlayerLines.length);
+            const yPct = getLineYCoordinate(lineIdx, awayPlayerLines.length);
 
-            return (
-              <div
-                key={`away-line-${lineIdx}`}
-                className="absolute inset-x-0 flex justify-around items-center px-4"
-                style={{ top: `${topPct}%`, transform: 'translateY(-50%)' }}
-              >
-                {line.map((player) => {
-                  const rating = player.sofascoreData?.seasonRating;
-                  const isSelected = selectedPlayerId === player.id;
-                  const badgeColor = getRatingBadgeColor(rating);
+            return line.map((player, pIdx) => {
+              const xPct = xCoords[pIdx] ?? 50;
+              const rating = player.sofascoreData?.seasonRating;
+              const isSelected = selectedPlayerId === player.id;
+              const badgeColor = getRatingBadgeColor(rating);
 
-                  return (
-                    <button
-                      key={player.id}
-                      type="button"
-                      onClick={() => onSelectPlayer(player)}
-                      className={`group relative flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${
-                        isSelected ? 'scale-115 z-30' : 'z-20'
+              return (
+                <button
+                  key={player.id}
+                  type="button"
+                  onClick={() => onSelectPlayer(player)}
+                  className={`group absolute flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${
+                    isSelected ? 'scale-115 z-30' : 'z-20'
+                  }`}
+                  style={{ left: `${xPct}%`, top: `${yPct}%`, transform: 'translate(-50%, -50%)' }}
+                  title={`${player.name} (${player.position}) - SofaScore: ${rating ?? 'N/A'}`}
+                >
+                  {/* Avatar / Headshot container */}
+                  <div className="relative">
+                    <PlayerHeadshot
+                      player={player}
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 bg-slate-900 object-cover shadow-lg transition-all ${
+                        isSelected
+                          ? 'border-sky-400 ring-4 ring-sky-400/40 shadow-sky-500/50'
+                          : 'border-amber-400/80 group-hover:border-white shadow-black/60'
                       }`}
-                      title={`${player.name} (${player.position}) - SofaScore: ${rating ?? 'N/A'}`}
-                    >
-                      {/* Avatar / Headshot container */}
-                      <div className="relative">
-                        <PlayerHeadshot
-                          player={player}
-                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 bg-slate-900 object-cover shadow-lg transition-all ${
-                            isSelected
-                              ? 'border-sky-400 ring-4 ring-sky-400/40 shadow-sky-500/50'
-                              : 'border-amber-400/80 group-hover:border-white shadow-black/60'
-                          }`}
-                        />
-                        {/* Jersey Number */}
-                        <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-amber-300">
-                          #{player.number}
-                        </span>
+                    />
+                    {/* Jersey Number */}
+                    <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-amber-300">
+                      #{player.number}
+                    </span>
 
-                        {/* SofaScore Rating Badge */}
-                        {rating && (
-                          <span
-                            className={`absolute -bottom-1 -right-1 px-1 py-0.2 min-w-[20px] text-center rounded-md text-[9px] font-mono shadow-md border ${badgeColor.bg} ${badgeColor.text} ${badgeColor.border}`}
-                          >
-                            {rating.toFixed(1)}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Name Label */}
-                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-amber-400">
-                        {player.name}
+                    {/* SofaScore Rating Badge */}
+                    {rating && (
+                      <span
+                        className={`absolute -bottom-1 -right-1 px-1 py-0.2 min-w-[20px] text-center rounded-md text-[9px] font-mono shadow-md border ${badgeColor.bg} ${badgeColor.text} ${badgeColor.border}`}
+                      >
+                        {rating.toFixed(1)}
                       </span>
-                    </button>
-                  );
-                })}
-              </div>
-            );
+                    )}
+                  </div>
+
+                  {/* Name Label */}
+                  <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-amber-400">
+                    {player.name}
+                  </span>
+                </button>
+              );
+            });
           })}
         </div>
 
         {/* Home Team Players (Bottom Half, attacking upward) */}
         <div className="absolute inset-x-0 bottom-0 h-[48%] pointer-events-auto">
           {homePlayerLines.map((line, lineIdx) => {
-            const numLines = homePlayerLines.length;
-            // Distribute lines from bottom: line 0 (GK) at bottom 10%, line N at bottom 88%
-            const bottomPct = 10 + (lineIdx / Math.max(1, numLines - 1)) * 74;
+            const xCoords = getLineXCoordinates(line.length, lineIdx, homePlayerLines.length);
+            const yPct = getLineYCoordinate(lineIdx, homePlayerLines.length);
 
-            return (
-              <div
-                key={`home-line-${lineIdx}`}
-                className="absolute inset-x-0 flex justify-around items-center px-4"
-                style={{ bottom: `${bottomPct}%`, transform: 'translateY(50%)' }}
-              >
-                {line.map((player) => {
-                  const rating = player.sofascoreData?.seasonRating;
-                  const isSelected = selectedPlayerId === player.id;
-                  const badgeColor = getRatingBadgeColor(rating);
+            return line.map((player, pIdx) => {
+              const xPct = xCoords[pIdx] ?? 50;
+              const rating = player.sofascoreData?.seasonRating;
+              const isSelected = selectedPlayerId === player.id;
+              const badgeColor = getRatingBadgeColor(rating);
 
-                  return (
-                    <button
-                      key={player.id}
-                      type="button"
-                      onClick={() => onSelectPlayer(player)}
-                      className={`group relative flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${
-                        isSelected ? 'scale-115 z-30' : 'z-20'
+              return (
+                <button
+                  key={player.id}
+                  type="button"
+                  onClick={() => onSelectPlayer(player)}
+                  className={`group absolute flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${
+                    isSelected ? 'scale-115 z-30' : 'z-20'
+                  }`}
+                  style={{ left: `${xPct}%`, bottom: `${yPct}%`, transform: 'translate(-50%, 50%)' }}
+                  title={`${player.name} (${player.position}) - SofaScore: ${rating ?? 'N/A'}`}
+                >
+                  {/* Avatar / Headshot container */}
+                  <div className="relative">
+                    <PlayerHeadshot
+                      player={player}
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 bg-slate-900 object-cover shadow-lg transition-all ${
+                        isSelected
+                          ? 'border-sky-400 ring-4 ring-sky-400/40 shadow-sky-500/50'
+                          : 'border-blue-400/80 group-hover:border-white shadow-black/60'
                       }`}
-                      title={`${player.name} (${player.position}) - SofaScore: ${rating ?? 'N/A'}`}
-                    >
-                      {/* Avatar / Headshot container */}
-                      <div className="relative">
-                        <PlayerHeadshot
-                          player={player}
-                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 bg-slate-900 object-cover shadow-lg transition-all ${
-                            isSelected
-                              ? 'border-sky-400 ring-4 ring-sky-400/40 shadow-sky-500/50'
-                              : 'border-blue-400/80 group-hover:border-white shadow-black/60'
-                          }`}
-                        />
-                        {/* Jersey Number */}
-                        <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-blue-300">
-                          #{player.number}
-                        </span>
+                    />
+                    {/* Jersey Number */}
+                    <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-blue-300">
+                      #{player.number}
+                    </span>
 
-                        {/* SofaScore Rating Badge */}
-                        {rating && (
-                          <span
-                            className={`absolute -bottom-1 -right-1 px-1 py-0.2 min-w-[20px] text-center rounded-md text-[9px] font-mono shadow-md border ${badgeColor.bg} ${badgeColor.text} ${badgeColor.border}`}
-                          >
-                            {rating.toFixed(1)}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Name Label */}
-                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-blue-400">
-                        {player.name}
+                    {/* SofaScore Rating Badge */}
+                    {rating && (
+                      <span
+                        className={`absolute -bottom-1 -right-1 px-1 py-0.2 min-w-[20px] text-center rounded-md text-[9px] font-mono shadow-md border ${badgeColor.bg} ${badgeColor.text} ${badgeColor.border}`}
+                      >
+                        {rating.toFixed(1)}
                       </span>
-                    </button>
-                  );
-                })}
-              </div>
-            );
+                    )}
+                  </div>
+
+                  {/* Name Label */}
+                  <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-blue-400">
+                    {player.name}
+                  </span>
+                </button>
+              );
+            });
           })}
         </div>
       </div>

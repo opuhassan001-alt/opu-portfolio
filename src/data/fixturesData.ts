@@ -411,16 +411,16 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Carlo Ancelotti',
       startingXI: [
         getP('courtois', 'Thibaut Courtois', 'Real Madrid', 'Goalkeeper', 1),
-        getP('carvajal', 'Dani Carvajal', 'Real Madrid', 'Defender', 2),
-        getP('militao', 'Éder Militão', 'Real Madrid', 'Defender', 3),
-        getP('rudiger', 'Antonio Rüdiger', 'Real Madrid', 'Defender', 22),
         getP('mendy', 'Ferland Mendy', 'Real Madrid', 'Defender', 23),
-        getP('valverde', 'Federico Valverde', 'Real Madrid', 'Midfielder', 8),
+        getP('rudiger', 'Antonio Rüdiger', 'Real Madrid', 'Defender', 22),
+        getP('militao', 'Éder Militão', 'Real Madrid', 'Defender', 3),
+        getP('carvajal', 'Dani Carvajal', 'Real Madrid', 'Defender', 2),
         getP('camavinga', 'Eduardo Camavinga', 'Real Madrid', 'Midfielder', 6),
+        getP('valverde', 'Federico Valverde', 'Real Madrid', 'Midfielder', 8),
         getP('bellingham', 'Jude Bellingham', 'Real Madrid', 'Midfielder', 5),
-        getP('arda-guler', 'Arda Güler', 'Real Madrid', 'Midfielder', 15),
         getP('vinicius', 'Vinícius Júnior', 'Real Madrid', 'Forward', 7),
-        getP('mbappe', 'Kylian Mbappé', 'Real Madrid', 'Forward', 9)
+        getP('mbappe', 'Kylian Mbappé', 'Real Madrid', 'Forward', 9),
+        getP('arda-guler', 'Arda Güler', 'Real Madrid', 'Midfielder', 15)
       ],
       substitutes: [
         getP('rodrygo', 'Rodrygo', 'Real Madrid', 'Forward', 11),
@@ -437,15 +437,15 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Ivan Jurić',
       startingXI: [
         getP('svilar', 'Mile Svilar', 'AS Roma', 'Goalkeeper', 99),
-        getP('mancini', 'Gianluca Mancini', 'AS Roma', 'Defender', 23),
-        getP('ndicka', 'Evan Ndicka', 'AS Roma', 'Defender', 5),
         getP('angelino', 'Angeliño', 'AS Roma', 'Defender', 3),
-        getP('celik', 'Zeki Çelik', 'AS Roma', 'Defender', 19),
+        getP('ndicka', 'Evan Ndicka', 'AS Roma', 'Defender', 5),
+        getP('mancini', 'Gianluca Mancini', 'AS Roma', 'Defender', 23),
         getP('cristante', 'Bryan Cristante', 'AS Roma', 'Midfielder', 4),
         getP('kone', 'Manu Koné', 'AS Roma', 'Midfielder', 17),
         getP('pellegrini', 'Lorenzo Pellegrini', 'AS Roma', 'Midfielder', 7),
-        getP('soule', 'Matías Soulé', 'AS Roma', 'Forward', 18),
+        getP('celik', 'Zeki Çelik', 'AS Roma', 'Defender', 19),
         getP('dybala', 'Paulo Dybala', 'AS Roma', 'Forward', 21),
+        getP('soule', 'Matías Soulé', 'AS Roma', 'Forward', 18),
         getP('dovbyk', 'Artem Dovbyk', 'AS Roma', 'Forward', 11)
       ],
       substitutes: [
@@ -502,16 +502,16 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Pep Guardiola',
       startingXI: [
         getP('ederson', 'Ederson', 'Manchester City', 'Goalkeeper', 31),
-        getP('walker', 'Kyle Walker', 'Manchester City', 'Defender', 2),
+        getP('gvardiol', 'Joško Gvardiol', 'Manchester City', 'Defender', 24),
         getP('dias', 'Rúben Dias', 'Manchester City', 'Defender', 3),
         getP('akanji', 'Manuel Akanji', 'Manchester City', 'Defender', 25),
-        getP('gvardiol', 'Joško Gvardiol', 'Manchester City', 'Defender', 24),
+        getP('walker', 'Kyle Walker', 'Manchester City', 'Defender', 2),
+        getP('foden', 'Phil Foden', 'Manchester City', 'Midfielder', 47),
         getP('rodri', 'Rodri', 'Manchester City', 'Midfielder', 16),
         getP('kdb', 'Kevin De Bruyne', 'Manchester City', 'Midfielder', 17),
-        getP('foden', 'Phil Foden', 'Manchester City', 'Midfielder', 47),
-        getP('bernardo', 'Bernardo Silva', 'Manchester City', 'Midfielder', 20),
         getP('doku', 'Jérémy Doku', 'Manchester City', 'Forward', 11),
-        getP('haaland', 'Erling Haaland', 'Manchester City', 'Forward', 9)
+        getP('haaland', 'Erling Haaland', 'Manchester City', 'Forward', 9),
+        getP('bernardo', 'Bernardo Silva', 'Manchester City', 'Midfielder', 20)
       ],
       substitutes: [
         getP('gundogan', 'İlkay Gündoğan', 'Manchester City', 'Midfielder', 19),
@@ -528,16 +528,16 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Mikel Arteta',
       startingXI: [
         getP('raya', 'David Raya', 'Arsenal', 'Goalkeeper', 22),
-        getP('white', 'Ben White', 'Arsenal', 'Defender', 4),
-        getP('saliba', 'William Saliba', 'Arsenal', 'Defender', 2),
-        getP('gabriel', 'Gabriel Magalhães', 'Arsenal', 'Defender', 6),
         getP('timber', 'Jurriën Timber', 'Arsenal', 'Defender', 12),
+        getP('gabriel', 'Gabriel Magalhães', 'Arsenal', 'Defender', 6),
+        getP('saliba', 'William Saliba', 'Arsenal', 'Defender', 2),
+        getP('white', 'Ben White', 'Arsenal', 'Defender', 4),
         getP('rice', 'Declan Rice', 'Arsenal', 'Midfielder', 41),
         getP('partey', 'Thomas Partey', 'Arsenal', 'Midfielder', 5),
         getP('odegaard', 'Martin Ødegaard', 'Arsenal', 'Midfielder', 8),
-        getP('saka', 'Bukayo Saka', 'Arsenal', 'Forward', 7),
         getP('martinelli', 'Gabriel Martinelli', 'Arsenal', 'Forward', 11),
-        getP('havertz', 'Kai Havertz', 'Arsenal', 'Forward', 29)
+        getP('havertz', 'Kai Havertz', 'Arsenal', 'Forward', 29),
+        getP('saka', 'Bukayo Saka', 'Arsenal', 'Forward', 7)
       ],
       substitutes: [
         getP('trossard', 'Leandro Trossard', 'Arsenal', 'Forward', 19),
@@ -653,15 +653,15 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Hansi Flick',
       startingXI: [
         getP('pena', 'Iñaki Peña', 'Barcelona', 'Goalkeeper', 13),
-        getP('kounde', 'Jules Koundé', 'Barcelona', 'Defender', 23),
-        getP('cubarsi', 'Pau Cubarsí', 'Barcelona', 'Defender', 2),
-        getP('martinez', 'Iñigo Martínez', 'Barcelona', 'Defender', 5),
         getP('balde', 'Alejandro Balde', 'Barcelona', 'Defender', 3),
+        getP('martinez', 'Iñigo Martínez', 'Barcelona', 'Defender', 5),
+        getP('cubarsi', 'Pau Cubarsí', 'Barcelona', 'Defender', 2),
+        getP('kounde', 'Jules Koundé', 'Barcelona', 'Defender', 23),
         getP('casado', 'Marc Casadó', 'Barcelona', 'Midfielder', 17),
         getP('pedri', 'Pedri', 'Barcelona', 'Midfielder', 8),
-        getP('yamal', 'Lamine Yamal', 'Barcelona', 'Forward', 19),
-        getP('fermin', 'Fermín López', 'Barcelona', 'Midfielder', 16),
         getP('raphinha', 'Raphinha', 'Barcelona', 'Forward', 11),
+        getP('fermin', 'Fermín López', 'Barcelona', 'Midfielder', 16),
+        getP('yamal', 'Lamine Yamal', 'Barcelona', 'Forward', 19),
         getP('lewandowski', 'Robert Lewandowski', 'Barcelona', 'Forward', 9)
       ],
       substitutes: [
@@ -679,15 +679,15 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Vincent Kompany',
       startingXI: [
         getP('neuer', 'Manuel Neuer', 'Bayern Munich', 'Goalkeeper', 1),
-        getP('guerreiro', 'Raphaël Guerreiro', 'Bayern Munich', 'Defender', 22),
-        getP('upamecano', 'Dayot Upamecano', 'Bayern Munich', 'Defender', 2),
-        getP('kim', 'Kim Min-jae', 'Bayern Munich', 'Defender', 3),
         getP('davies', 'Alphonso Davies', 'Bayern Munich', 'Defender', 19),
-        getP('kimmich', 'Joshua Kimmich', 'Bayern Munich', 'Midfielder', 6),
+        getP('kim', 'Kim Min-jae', 'Bayern Munich', 'Defender', 3),
+        getP('upamecano', 'Dayot Upamecano', 'Bayern Munich', 'Defender', 2),
+        getP('guerreiro', 'Raphaël Guerreiro', 'Bayern Munich', 'Defender', 22),
         getP('palhinha', 'João Palhinha', 'Bayern Munich', 'Midfielder', 16),
-        getP('olise', 'Michael Olise', 'Bayern Munich', 'Forward', 17),
-        getP('muller', 'Thomas Müller', 'Bayern Munich', 'Forward', 25),
+        getP('kimmich', 'Joshua Kimmich', 'Bayern Munich', 'Midfielder', 6),
         getP('gnabry', 'Serge Gnabry', 'Bayern Munich', 'Forward', 7),
+        getP('muller', 'Thomas Müller', 'Bayern Munich', 'Forward', 25),
+        getP('olise', 'Michael Olise', 'Bayern Munich', 'Forward', 17),
         getP('kane', 'Harry Kane', 'Bayern Munich', 'Forward', 9)
       ],
       substitutes: [
@@ -787,14 +787,14 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Simone Inzaghi',
       startingXI: [
         getP('sommer', 'Yann Sommer', 'Inter Milan', 'Goalkeeper', 1),
-        getP('pavard', 'Benjamin Pavard', 'Inter Milan', 'Defender', 28),
-        getP('acerbi', 'Francesco Acerbi', 'Inter Milan', 'Defender', 15),
         getP('bastoni', 'Alessandro Bastoni', 'Inter Milan', 'Defender', 95),
-        getP('dumfries', 'Denzel Dumfries', 'Inter Milan', 'Defender', 2),
-        getP('barella', 'Nicolò Barella', 'Inter Milan', 'Midfielder', 23),
-        getP('calhanoglu', 'Hakan Çalhanoğlu', 'Inter Milan', 'Midfielder', 20),
-        getP('mkhitaryan', 'Henrikh Mkhitaryan', 'Inter Milan', 'Midfielder', 22),
+        getP('acerbi', 'Francesco Acerbi', 'Inter Milan', 'Defender', 15),
+        getP('pavard', 'Benjamin Pavard', 'Inter Milan', 'Defender', 28),
         getP('dimarco', 'Federico Dimarco', 'Inter Milan', 'Defender', 32),
+        getP('mkhitaryan', 'Henrikh Mkhitaryan', 'Inter Milan', 'Midfielder', 22),
+        getP('calhanoglu', 'Hakan Çalhanoğlu', 'Inter Milan', 'Midfielder', 20),
+        getP('barella', 'Nicolò Barella', 'Inter Milan', 'Midfielder', 23),
+        getP('dumfries', 'Denzel Dumfries', 'Inter Milan', 'Defender', 2),
         getP('thuram', 'Marcus Thuram', 'Inter Milan', 'Forward', 9),
         getP('lautaro', 'Lautaro Martínez', 'Inter Milan', 'Forward', 10)
       ],
@@ -813,16 +813,16 @@ export const DUAL_TEAM_FIXTURES: MatchFixture[] = [
       coach: 'Luis Enrique',
       startingXI: [
         getP('donnarumma', 'Gianluigi Donnarumma', 'Paris Saint-Germain', 'Goalkeeper', 1),
-        getP('hakimi', 'Achraf Hakimi', 'Paris Saint-Germain', 'Defender', 2),
-        getP('marquinhos', 'Marquinhos', 'Paris Saint-Germain', 'Defender', 5),
-        getP('pacho', 'Willian Pacho', 'Paris Saint-Germain', 'Defender', 51),
         getP('mendes', 'Nuno Mendes', 'Paris Saint-Germain', 'Defender', 25),
-        getP('zaire-emery', 'Warren Zaïre-Emery', 'Paris Saint-Germain', 'Midfielder', 33),
-        getP('vitinha', 'Vitinha', 'Paris Saint-Germain', 'Midfielder', 17),
+        getP('pacho', 'Willian Pacho', 'Paris Saint-Germain', 'Defender', 51),
+        getP('marquinhos', 'Marquinhos', 'Paris Saint-Germain', 'Defender', 5),
+        getP('hakimi', 'Achraf Hakimi', 'Paris Saint-Germain', 'Defender', 2),
         getP('joao-neves', 'João Neves', 'Paris Saint-Germain', 'Midfielder', 87),
-        getP('dembele', 'Ousmane Dembélé', 'Paris Saint-Germain', 'Forward', 10),
+        getP('vitinha', 'Vitinha', 'Paris Saint-Germain', 'Midfielder', 17),
+        getP('zaire-emery', 'Warren Zaïre-Emery', 'Paris Saint-Germain', 'Midfielder', 33),
+        getP('barcola', 'Bradley Barcola', 'Paris Saint-Germain', 'Forward', 29),
         getP('asensio', 'Marco Asensio', 'Paris Saint-Germain', 'Forward', 11),
-        getP('barcola', 'Bradley Barcola', 'Paris Saint-Germain', 'Forward', 29)
+        getP('dembele', 'Ousmane Dembélé', 'Paris Saint-Germain', 'Forward', 10)
       ],
       substitutes: [
         getP('ruiz', 'Fabian Ruiz', 'Paris Saint-Germain', 'Midfielder', 8),
