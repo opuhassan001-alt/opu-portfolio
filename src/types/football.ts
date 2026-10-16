@@ -41,6 +41,7 @@ export interface PassEvent {
   xGOT?: number;
   description?: string;
   landingQuadrant?: number; // 1-9 for goalmouth quadrant target analysis
+  targetQuadrant?: number;
 }
 
 export interface MatchAction extends PassEvent {
@@ -127,7 +128,7 @@ export interface Player {
   name: string;
   club: string;
   clubId?: string;
-  leagueId: string;
+  leagueId?: string;
   position: 'Goalkeeper' | 'Defender' | 'Midfielder' | 'Forward';
   nationality: string;
   number: number;
@@ -138,9 +139,9 @@ export interface Player {
   dominanceZone: string;
   passes: PassEvent[];
   stats: PlayerStats;
-  marketInfo: MarketInfo;
-  sofascoreData: SofaScoreData;
-  optaMetrics: OptaMetrics;
+  marketInfo?: MarketInfo;
+  sofascoreData?: SofaScoreData;
+  optaMetrics?: OptaMetrics;
 }
 
 export interface Team {

@@ -26,6 +26,7 @@ const CATEGORY_METADATA: Record<
   assist: { label: 'Assist', description: 'Direct goal-assisting pass', hex: '#22c55e' },
   freekick: { label: 'Direct Free-Kick', description: 'Direct set-piece shot or goal', hex: '#ef4444' },
   aerial: { label: 'Aerial Cross / Switch', description: 'High-trajectory diagonal long ball', hex: '#c084fc' },
+  shot: { label: 'Shot / Rocket Goal', description: 'High-velocity strike or clinical finish', hex: '#f97316' },
 };
 
 export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
@@ -51,6 +52,7 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
     assist: true,
     freekick: true,
     aerial: true,
+    shot: true,
     ...(initialCategoryMask || {}),
   }));
 
@@ -79,6 +81,7 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
       assist: 0,
       freekick: 0,
       aerial: 0,
+      shot: 0,
     };
     passes.forEach(p => {
       if (counts[p.category] !== undefined) {
@@ -103,6 +106,7 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
       assist: true,
       freekick: true,
       aerial: true,
+      shot: true,
     });
   };
 
@@ -113,6 +117,7 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
       assist: false,
       freekick: false,
       aerial: false,
+      shot: false,
     });
   };
 

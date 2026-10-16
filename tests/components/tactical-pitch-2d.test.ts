@@ -38,6 +38,7 @@ describe('2D Tactical Pass Classifier', () => {
       assist: false,
       freekick: false,
       aerial: false,
+      shot: false,
     };
     const filtered = filterPasses(passes, mask);
     expect(filtered.length).toBe(0);

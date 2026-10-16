@@ -15433,6 +15433,6 @@ export function searchPlayers(query: string): Player[] {
     p.club.toLowerCase().includes(q) ||
     p.position.toLowerCase().includes(q) ||
     p.nationality.toLowerCase().includes(q) ||
-    p.leagueId.toLowerCase().includes(q)
+    (p.leagueId && p.leagueId.toLowerCase().includes(q))
   );
 }

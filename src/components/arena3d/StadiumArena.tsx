@@ -15,7 +15,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { Coordinate3D, PassEvent, Player, PASS_CATEGORY_COLORS } from '../../types/football';
+import { Coordinate3D, PassEvent, MatchAction, Player, PASS_CATEGORY_COLORS } from '../../types/football';
 import { computeMagnusTrajectory, TrajectoryResult, DEFAULT_FREEKICK_VELOCITY } from '../../physics/aerodynamics';
 import { calculateWallPosition, WALL_STANDARD_HEIGHT, WALL_PLAYER_WIDTH } from '../../physics/defensive-wall';
 import { createStadiumArenaScene } from './PitchMesh';

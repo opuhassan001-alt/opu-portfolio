@@ -19,32 +19,32 @@ describe('Mega Football Registry & Multi-Source Data Depth', () => {
     const allPlayers = getAllPlayers();
     allPlayers.forEach(player => {
       expect(player.marketInfo).toBeDefined();
-      expect(player.marketInfo.marketValueEur).toBeGreaterThan(0);
-      expect(player.marketInfo.marketValueFormatted).toMatch(/€\d+M/);
-      expect(player.marketInfo.age).toBeGreaterThanOrEqual(16);
-      expect(player.marketInfo.age).toBeLessThanOrEqual(42);
-      expect(player.marketInfo.nationality).toBeTruthy();
-      expect(player.marketInfo.preferredFoot).toMatch(/left|right|both/i);
+      expect(player.marketInfo!.marketValueEur).toBeGreaterThan(0);
+      expect(player.marketInfo!.marketValueFormatted).toMatch(/€\d+M/);
+      expect(player.marketInfo!.age).toBeGreaterThanOrEqual(16);
+      expect(player.marketInfo!.age).toBeLessThanOrEqual(42);
+      expect(player.marketInfo!.nationality).toBeTruthy();
+      expect(player.marketInfo!.preferredFoot).toMatch(/left|right|both/i);
     });
 
     const haaland = MEGA_FOOTBALL_REGISTRY['haaland'];
     expect(haaland).toBeDefined();
-    expect(haaland.marketInfo.marketValueEur).toBe(200_000_000);
-    expect(haaland.marketInfo.marketValueFormatted).toBe('€200M');
+    expect(haaland.marketInfo!.marketValueEur).toBe(200_000_000);
+    expect(haaland.marketInfo!.marketValueFormatted).toBe('€200M');
 
     const mbappe = MEGA_FOOTBALL_REGISTRY['mbappe'];
     expect(mbappe).toBeDefined();
-    expect(mbappe.marketInfo.marketValueEur).toBe(180_000_000);
+    expect(mbappe.marketInfo!.marketValueEur).toBe(180_000_000);
   });
 
   it('provides SofaScore & FotMob match ratings and form guides', () => {
     const allPlayers = getAllPlayers();
     allPlayers.forEach(player => {
       expect(player.sofascoreData).toBeDefined();
-      expect(player.sofascoreData.seasonRating).toBeGreaterThanOrEqual(6.5);
-      expect(player.sofascoreData.seasonRating).toBeLessThanOrEqual(9.5);
-      expect(player.sofascoreData.formGuide.length).toBeGreaterThanOrEqual(3);
-      expect(player.sofascoreData.matchLogs.length).toBeGreaterThanOrEqual(1);
+      expect(player.sofascoreData!.seasonRating).toBeGreaterThanOrEqual(6.5);
+      expect(player.sofascoreData!.seasonRating).toBeLessThanOrEqual(9.5);
+      expect(player.sofascoreData!.formGuide.length).toBeGreaterThanOrEqual(3);
+      expect(player.sofascoreData!.matchLogs.length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -52,12 +52,12 @@ describe('Mega Football Registry & Multi-Source Data Depth', () => {
     const allPlayers = getAllPlayers();
     allPlayers.forEach(player => {
       expect(player.optaMetrics).toBeDefined();
-      expect(player.optaMetrics.xG).toBeGreaterThanOrEqual(0);
-      expect(player.optaMetrics.xA).toBeGreaterThanOrEqual(0);
-      expect(player.optaMetrics.progressiveCarries).toBeGreaterThanOrEqual(0);
-      expect(player.optaMetrics.lineBreakingPasses).toBeGreaterThanOrEqual(0);
-      expect(player.optaMetrics.tacklesWon).toBeGreaterThanOrEqual(0);
-      expect(player.optaMetrics.interceptions).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.xG).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.xA).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.progressiveCarries).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.lineBreakingPasses).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.tacklesWon).toBeGreaterThanOrEqual(0);
+      expect(player.optaMetrics!.interceptions).toBeGreaterThanOrEqual(0);
     });
   });
 

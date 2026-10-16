@@ -3,8 +3,8 @@ import { TOP_20_COMPETITIONS } from '../../data/competitions';
 import { Activity, UserCheck, Eye, Layers } from 'lucide-react';
 
 export interface NavbarProps {
-  viewMode: '3d' | '2d';
-  onViewModeChange: (mode: '3d' | '2d') => void;
+  viewMode: '3d' | '2d' | 'match';
+  onViewModeChange: (mode: '3d' | '2d' | 'match') => void;
   selectedCompetitionId?: string;
   onSelectCompetition?: (competitionId: string) => void;
   isDossierOpen?: boolean;
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* View Mode Switcher: 3D Arena vs 2D Pitch */}
+        {/* View Mode Switcher: 3D Arena vs 2D Pitch vs Match Center */}
         <div className="flex items-center gap-1.5 p-1 bg-slate-900 rounded-xl border border-slate-800 shadow-inner">
           <button
             type="button"
@@ -72,6 +72,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <span role="img" aria-label="2D Pitch">📐</span>
             <span>2D Pitch</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onViewModeChange('match')}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+              viewMode === 'match'
+                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/30'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+            }`}
+            aria-pressed={viewMode === 'match'}
+          >
+            <span role="img" aria-label="Match Center">🏆</span>
+            <span>Match Center</span>
           </button>
         </div>
 

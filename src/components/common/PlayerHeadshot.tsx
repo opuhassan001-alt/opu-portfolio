@@ -5,6 +5,7 @@ import { getHeadshotUrlLadder } from '../../utils/image-pipeline';
 export interface PlayerHeadshotProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'onError'> {
   player: Player;
   alt?: string;
+  size?: number;
   className?: string;
   onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }
@@ -20,12 +21,19 @@ export interface PlayerHeadshotProps extends Omit<React.ImgHTMLAttributes<HTMLIm
 export const PlayerHeadshot: React.FC<PlayerHeadshotProps> = ({
   player,
   alt,
+  size,
   className = 'w-12 h-12 rounded-full object-cover bg-slate-900/50 border border-slate-800/80 shadow-inner',
   onError,
+  style,
   ...rest
 }) => {
   const ladder = useMemo(() => getHeadshotUrlLadder(player), [player]);
   const [sourceIndex, setSourceIndex] = useState(0);
+
+  const mergedStyle = useMemo(() => {
+    if (!size) return style;
+    return { width: size, height: size, minWidth: size, minHeight: size, ...style };
+  }, [size, style]);
 
   // Reset ladder progression if the player changes
   useEffect(() => {
@@ -47,6 +55,7 @@ export const PlayerHeadshot: React.FC<PlayerHeadshotProps> = ({
       loading="lazy"
       decoding="async"
       className={className}
+      style={mergedStyle}
       {...rest}
     />
   );
