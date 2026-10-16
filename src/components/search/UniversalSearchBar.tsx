@@ -73,16 +73,17 @@ export const UniversalSearchBar: React.FC<UniversalSearchBarProps> = ({
 
   // Filtered players based on search query, league, and position
   const searchResults = useMemo(() => {
-    const query = searchTerm.toLowerCase().trim();
-    if (!query && !isOpen) return [];
+    const normalize = (str: string) => (str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const qNorm = normalize(searchTerm.trim());
+    if (!qNorm && !isOpen) return [];
 
     return players.filter(player => {
-      // 1. Text matching: Name, Club, Position, Nationality, League
-      const matchesQuery = !query ||
-        player.name.toLowerCase().includes(query) ||
-        player.club.toLowerCase().includes(query) ||
-        player.position.toLowerCase().includes(query) ||
-        player.nationality.toLowerCase().includes(query);
+      // 1. Diacritic-insensitive text matching: Name, Club, Position, Nationality, League
+      const matchesQuery = !qNorm ||
+        normalize(player.name).includes(qNorm) ||
+        normalize(player.club).includes(qNorm) ||
+        normalize(player.position).includes(qNorm) ||
+        normalize(player.nationality).includes(qNorm);
 
       // 2. League matching
       const matchesLeague = activeLeague === 'all' || player.leagueId === activeLeague;
