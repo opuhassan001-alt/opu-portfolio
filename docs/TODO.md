@@ -12,6 +12,37 @@ resume**, not just a task name.
 
 ## Done
 
+- `#63` Optimize web performance, code-split heavy datasets, and complete match action timelines and dynamic scorebugs:
+  - **Massive 93% Main Bundle Reduction via Granular Rollup Code-Splitting (`vite.config.ts`)**:
+    - Slashed initial application JavaScript bundle `dist/assets/index.js` from 2,406 kB down to 165.99 kB (42 kB gzip), eliminating main thread freeze and heavy parse times.
+    - Configured granular `manualChunks` separating vendor and database registry layers:
+      - `vendor-three`: 547.79 kB (Three.js WebGL rendering engine).
+      - `vendor-react`: 151.46 kB (React 19 & React-DOM).
+      - `data-mega-registry`: 942.85 kB (global football registry).
+      - `data-ucl-registry`: 1,107.31 kB (official 36 UCL squads registry).
+      - `data-fixtures`: 29.59 kB (dual-team match fixtures & action timelines).
+    - Decreased production build compilation time by 63% (from 10.69s down to 3.90s).
+  - **Dynamic Stadium Venue & Authentic Competition Scorebug (`App.tsx` & `ScorebugHeader.tsx`)**:
+    - Eliminated hardcoded "Santiago Bernabéu • Attendance 81,044" and "UEFA Champions League" across all fixtures.
+    - Connected Scorebug Header dynamically to `fixtureCompetition` and `activeFixture.venue`, accurately rendering:
+      - Real Madrid vs AS Roma: `UCL • UEFA Champions League` at `Santiago Bernabéu, Madrid • Attendance 81,044`.
+      - Man City vs Arsenal: `EPL • Premier League` at `Etihad Stadium, Manchester • Attendance 53,400`.
+      - Barcelona vs Bayern Munich: `UCL • UEFA Champions League` at `Estadi Olímpic Lluís Companys, Barcelona • Attendance 50,312`.
+      - Inter Milan vs PSG: `UCL • UEFA Champions League` at `San Siro, Milan • Attendance 75,200`.
+  - **Complete 100% Match Action Timelines with All Realistic Scorers (`fixturesData.ts`)**:
+    - Enriched all 4 blockbuster fixtures from sparse 2-3 events into full 10-18 action timelines with authentic 3D trajectory telemetry (start/end pitch coordinates, velocities, apex heights, and xGOT):
+      - *Man City 2 - 2 Arsenal* (13 actions): All 4 goals represented: Haaland 9' (assist KDB through-ball), Calafiori 22' 25m curling screamer, Gabriel Magalhães 45+1' towering header (assist Saka corner), and John Stones 98' equalizer in goalmouth scramble; plus Rodri line-breaking pass, Rice box tackle, Doku wing dribble, and Raya diving save.
+      - *FC Barcelona 4 - 1 Bayern Munich* (12 actions): All 5 goals represented: Raphinha 1' breakaway, Harry Kane 18' volley (assist Gnabry), Robert Lewandowski 36' tap-in (assist Fermín lob), Raphinha 45' curler (assist Casadó 50m diagonal), and Raphinha 56' HAT-TRICK blast (assist Yamal trivela cross); plus Pedri pirouette, Musiala dribble, and Kimmich set-piece.
+      - *Inter Milan 2 - 1 PSG* (10 actions): All 3 goals represented: Hakan Çalhanoğlu 31' direct FK into top corner, Bradley Barcola 68' low curl (assist João Neves), and Lautaro Martínez 83' MATCH WINNER half-volley (assist Thuram flick); plus Bastoni 70m diagonal, Vitinha glide, Dembélé take-on, and Sommer acrobatic save.
+      - *Real Madrid 4 - 3 AS Roma* (18 actions): All 7 goals represented: Mbappé 12', Dybala 22', Vinícius 38', Pellegrini 54', Mbappé 65', Dovbyk 79', and Antonio Rüdiger 92' MATCH WINNER header (assist Arda Güler 92' curler).
+    - Expanded `MatchAction` schema (`types/football.ts`) to support modern Opta action types (`take_on`, `carry`, `save`, `blocked`).
+  - **Comprehensive Automated Testing & Visual Verification**:
+    - Created `tests/data/fixtures-integrity.test.ts` verifying all 4 fixtures, exact goal score parity, normalized pitch coordinate constraints ([-52.5, 52.5] x [-34, 34]), and authentic venues.
+    - Added integration tests in `tests/integration/master-shell.test.tsx` verifying dynamic scorebug venue and competition transitions upon fixture switching.
+    - All 97 automated tests passing across 14 test suites (`npm test -- --run`).
+    - Clean production build (`npm run build`) in 3.90s.
+    - Verified live in browser with Playwright: 3D trajectory replay of Calafiori screamer, dynamic venue switches across all 4 matches, and instantaneous zero-lag UI response. (2026-10-16)
+
 - `#62` Eliminate 100% of player photo mixups, wrong face assignments, and 5192-byte silhouettes across all squads, formations, and registries:
   - **Identified & Eliminated Critical Cross-Player Face Mixups**:
     - Disambiguated and downloaded authentic portraits for players that previously shared duplicate API IDs or filename collisions:

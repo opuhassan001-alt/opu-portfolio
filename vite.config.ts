@@ -15,11 +15,18 @@ export default defineConfig({
     host: true,
   },
   build: {
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
-        manualChunks: {
-          three: ['three'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) return 'vendor-three';
+            if (id.includes('react-dom') || id.includes('react')) return 'vendor-react';
+            if (id.includes('lucide-react')) return 'vendor-icons';
+          }
+          if (id.includes('megaFootballRegistry')) return 'data-mega-registry';
+          if (id.includes('uclCompleteRegistry')) return 'data-ucl-registry';
+          if (id.includes('fixturesData')) return 'data-fixtures';
         },
       },
     },

@@ -10,7 +10,8 @@ import LeagueStandingsHub from './components/standings/LeagueStandingsHub';
 import UniversalSearchBar from './components/search/UniversalSearchBar';
 import PlayerHeadshot from './components/common/PlayerHeadshot';
 import { VERIFIED_PLAYERS } from './data/players';
-import { getAllPlayers, getPlayerById } from './data/megaFootballRegistry';
+import { getAllPlayers, getPlayerById, MEGA_FOOTBALL_REGISTRY } from './data/megaFootballRegistry';
+import { getAllUclPlayers } from './data/uclCompleteRegistry';
 import { DUAL_TEAM_FIXTURES } from './data/fixturesData';
 import { Player, PassEvent, MatchFixture, MatchAction } from './types/football';
 import { TOP_20_COMPETITIONS, COMPETITIONS_BY_ID } from './data/competitions';
@@ -29,7 +30,23 @@ export const App: React.FC = () => {
   const [searchLeague, setSearchLeague] = useState<string>('all');
   const [searchPosition, setSearchPosition] = useState<string>('all');
 
-  // Registry of all 90+ verified players
+  // Official UCL 36-club registered players (217 players) + verified benchmark stars
+  const uclSquadPlayers = useMemo(() => {
+    const uclList = getAllUclPlayers();
+    const verifiedList = Object.values(VERIFIED_PLAYERS);
+    const seen = new Set<string>();
+    const combined: Player[] = [];
+    [...verifiedList, ...uclList].forEach(p => {
+      const key = p.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+      if (!seen.has(key)) {
+        seen.add(key);
+        combined.push(p);
+      }
+    });
+    return combined;
+  }, []);
+
+  // Registry of all verified players
   const allPlayers = useMemo(() => getAllPlayers(), []);
 
   // Selected fixture
@@ -37,10 +54,33 @@ export const App: React.FC = () => {
     return DUAL_TEAM_FIXTURES.find((f) => f.id === selectedFixtureId) || DUAL_TEAM_FIXTURES[0];
   }, [selectedFixtureId]);
 
+  // Derived match scorers for Scorebug Header
+  const fixtureScorers = useMemo(() => {
+    const goalEvents = activeFixture.events.filter((e) => e.outcome === 'goal');
+    if (goalEvents.length === 0) return undefined;
+    return goalEvents.map((e) => `${e.playerName} ${e.minute}'${e.category === 'freekick' ? ' (FK)' : ''}`);
+  }, [activeFixture]);
+
+  // Filter carousel players based on active search league/position (defaults to all 217 UCL official players)
+  const carouselPlayers = useMemo(() => {
+    if (searchLeague === 'all' || searchLeague === 'ucl') {
+      if (searchPosition === 'all') return uclSquadPlayers;
+      return uclSquadPlayers.filter(p => p.position.toLowerCase() === searchPosition.toLowerCase());
+    }
+    const filtered = allPlayers.filter(p => p.leagueId === searchLeague);
+    if (searchPosition === 'all') return filtered;
+    return filtered.filter(p => p.position.toLowerCase() === searchPosition.toLowerCase());
+  }, [uclSquadPlayers, allPlayers, searchLeague, searchPosition]);
+
   // Active competition metadata
   const currentCompetition = useMemo(() => {
     return COMPETITIONS_BY_ID[selectedCompetitionId] || TOP_20_COMPETITIONS[0];
   }, [selectedCompetitionId]);
+
+  // Active fixture competition metadata
+  const fixtureCompetition = useMemo(() => {
+    return COMPETITIONS_BY_ID[activeFixture.competitionId] || currentCompetition;
+  }, [activeFixture.competitionId, currentCompetition]);
 
   // Handle player selection from carousel, search, or match center
   const handleSelectPlayer = useCallback((player: Player) => {
@@ -96,11 +136,25 @@ export const App: React.FC = () => {
 
       {/* 2. Broadcast-Grade TV Scorebug Header */}
       <ScorebugHeader
-        competitionName={currentCompetition.name}
-        competitionShort={currentCompetition.shortName}
+        homeTeam={{
+          name: activeFixture.homeTeam.name,
+          shortName: activeFixture.homeTeam.shortName,
+          score: activeFixture.homeScore,
+          crestUrl: activeFixture.homeTeam.crestUrl,
+        }}
+        awayTeam={{
+          name: activeFixture.awayTeam.name,
+          shortName: activeFixture.awayTeam.shortName,
+          score: activeFixture.awayScore,
+          crestUrl: activeFixture.awayTeam.crestUrl,
+        }}
+        competitionName={fixtureCompetition.name}
+        competitionShort={fixtureCompetition.shortName}
         minute={activeFixture.minute}
         second={14}
         isLive={true}
+        scorers={fixtureScorers}
+        venue={`${activeFixture.venue}${activeFixture.attendance ? ` • Attendance ${activeFixture.attendance.toLocaleString()}` : ''}`}
       />
 
       {/* 3. Universal Search & Filter Hub */}
@@ -274,7 +328,7 @@ export const App: React.FC = () => {
 
       {/* 5. Player Carousel Strip */}
       <PlayerCarousel
-        players={VERIFIED_PLAYERS}
+        players={carouselPlayers}
         selectedPlayerId={selectedPlayer.id}
         onSelectPlayer={handleSelectPlayer}
       />

@@ -45,12 +45,12 @@ export interface PassEvent {
 }
 
 export interface MatchAction extends PassEvent {
-  actionType: 'pass' | 'through_ball' | 'cross' | 'shot' | 'free_kick' | 'tackle' | 'interception';
+  actionType: 'pass' | 'through_ball' | 'cross' | 'shot' | 'free_kick' | 'tackle' | 'interception' | 'save' | 'carry' | 'take_on';
   teamId: string;
   teamType: 'home' | 'away';
   playerName: string;
   playerNumber: number;
-  outcome: 'successful' | 'unsuccessful' | 'goal' | 'saved';
+  outcome: 'successful' | 'unsuccessful' | 'goal' | 'saved' | 'blocked';
   sequenceId?: number;
 }
 

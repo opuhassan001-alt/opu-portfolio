@@ -59,4 +59,21 @@ describe('Master Application Shell Integration', () => {
     // View mode should switch to 3D Arena
     expect(screen.getByTestId('stadium-arena-viewport')).toBeDefined();
   });
+
+  it('updates TV scorebug venue and competition dynamically when switching fixtures', () => {
+    render(<App />);
+
+    // Default fixture: RMA vs ROM at Santiago Bernabéu
+    expect(screen.getAllByText(/Santiago Bernabéu/i).length).toBeGreaterThan(0);
+
+    // Click on MCI vs ARS fixture button in match center fixture strip
+    const mciBtn = screen.getByText(/MCI 2 - 2 ARS/i).closest('button');
+    expect(mciBtn).not.toBeNull();
+    fireEvent.click(mciBtn!);
+
+    // Scorebug header should now reflect Etihad Stadium and Premier League
+    expect(screen.getAllByText(/Etihad Stadium/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/53,400/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Premier League/i).length).toBeGreaterThan(0);
+  });
 });
