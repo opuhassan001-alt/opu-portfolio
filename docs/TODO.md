@@ -12,7 +12,10 @@ resume**, not just a task name.
 
 ## Done
 
-- `#67` Deliver SofaScore & FotMob landing architecture with match formations, 35+ metrics & bio form (age, caste, religion), and 1-click & step-by-step navigation without page refresh:
+- `#67` Deliver 100% UEFA Champions League (UCL) official application branding, SofaScore & FotMob landing architecture with match formations, 35+ metrics & bio form (age, caste, religion), and 1-click & step-by-step navigation without page refresh:
+  - **100% Dedicated UEFA Champions League (UCL) Brand Identity (`index.html`, `Navbar.tsx`, `App.tsx`)**:
+    - Replaced generic NextGen titles with authentic **UEFA CHAMPIONS LEAGUE (36-TEAM LEAGUE PHASE)** starball branding, page title `<title>UEFA Champions League | UCL Tactical Vantage & 36-Team Match Center</title>`, and official UCL competition headers.
+    - Prioritized official UEFA Champions League 36-squad registered players (Mbappé, Haaland, Vinícius, Bellingham, Yamal, Saka, Kane, De Bruyne, Leão, Lautaro) at the front of the roster explorer and pitch formations.
   - **SofaScore & FotMob Match Center Landing Architecture (`App.tsx` & `TacticalFormationPitch.tsx`)**:
     - Replaced the top player name clutter above the pitch with official UEFA match scorebug and authentic tactical formations (e.g., `Real Madrid (4-3-3) 1 - 3 (4-2-3-1) AC Milan`, `Inter Milan (3-5-2) 1 - 0 (4-3-3) Arsenal`, `PSG (4-3-3) 4 - 2 (4-2-3-1) Man City`).
     - Clean 22-player formation pitch shows player icons, ratings, and jersey numbers; clicking any player icon or searching in `UniversalSearchBar` immediately opens the comprehensive Player Dossier & Bio Form.

@@ -24,23 +24,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className={`w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800/90 px-4 py-3 sticky top-0 z-40 ${className}`}>
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        {/* Brand & Live Telemetry Badge */}
+        {/* Official UEFA Champions League Brand & Telemetry Badge */}
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-400 shadow-md shadow-sky-500/20">
-            <Activity className="w-5 h-5 text-sky-400 animate-pulse" />
+            <span className="text-lg">⭐</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="font-black tracking-wider text-white text-base sm:text-lg">
-                NEXTGEN<span className="text-sky-400">FOOTBALL</span>
+                UEFA <span className="text-sky-400">CHAMPIONS LEAGUE</span>
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-0.5" />
-                LIVE TELEMETRY
+              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sky-500/20 text-sky-300 border border-sky-500/40">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping mr-0.5" />
+                36-TEAM LEAGUE PHASE
               </span>
             </div>
             <p className="text-[11px] text-slate-400 font-mono tracking-wide hidden sm:block">
-              3D Ballistics • Tactical Pitch • Verified Registry
+              Official UEFA Match Center • 22-Player Tactical Pitch • 36-Club Squads
             </p>
           </div>
         </div>

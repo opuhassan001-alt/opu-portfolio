@@ -37,7 +37,8 @@ export const App: React.FC = () => {
     const verifiedList = Object.values(VERIFIED_PLAYERS);
     const seen = new Set<string>();
     const combined: Player[] = [];
-    [...verifiedList, ...uclList].forEach(p => {
+    // Prioritize official UEFA Champions League registered 36-squad players first
+    [...uclList, ...verifiedList].forEach(p => {
       const key = p.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
       if (!seen.has(key)) {
         seen.add(key);

@@ -95,7 +95,7 @@ export const PlayerCarousel: React.FC<PlayerCarouselProps> = ({
         <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
           <div className="flex items-center gap-2">
             <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider font-semibold">
-              Roster Explorer:
+              UCL 36-Club Squad Explorer:
             </span>
 
             {/* 1-Click Reset to Start */}
