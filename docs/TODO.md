@@ -12,6 +12,29 @@ resume**, not just a task name.
 
 ## Done
 
+- `#67` Deliver SofaScore & FotMob landing architecture with match formations, 35+ metrics & bio form (age, caste, religion), and 1-click & step-by-step navigation without page refresh:
+  - **SofaScore & FotMob Match Center Landing Architecture (`App.tsx` & `TacticalFormationPitch.tsx`)**:
+    - Replaced the top player name clutter above the pitch with official UEFA match scorebug and authentic tactical formations (e.g., `Real Madrid (4-3-3) 1 - 3 (4-2-3-1) AC Milan`, `Inter Milan (3-5-2) 1 - 0 (4-3-3) Arsenal`, `PSG (4-3-3) 4 - 2 (4-2-3-1) Man City`).
+    - Clean 22-player formation pitch shows player icons, ratings, and jersey numbers; clicking any player icon or searching in `UniversalSearchBar` immediately opens the comprehensive Player Dossier & Bio Form.
+  - **Comprehensive Player Identity & Cultural Heritage Form (`src/data/playerBioData.ts` & `PlayerDossierDrawer.tsx`)**:
+    - Created dedicated, prominent biographical form displaying: **Age, Caste / Social Registry, Religion / Faith, Ethnicity / Heritage, Date & Place of Birth, Nationality & Citizenship, Height, Weight, Preferred Foot, Agent, Outfitter** for all UEFA Champions League registered players with respectful civil registry mapping.
+    - Implemented **Complete 35+ Official Performance Metrics Form Tab (`bio-form`)**:
+      - Scoring & Finishing Form: Goals, Goals/90, xG, xG/90, xGOT, Shots/90, Shots on Target/90, Big Chances Missed, Conversion %.
+      - Playmaking & Chance Creation Form: Assists, Assists/90, xA, xA/90, Key Passes, Chances Created, Big Chances Created, Pass Accuracy %, Final Third Entries.
+      - Physical Running, Distance & Sprints Form: Distance Covered (km), Distance/90 (km), Number of Sprints, Sprints/90, Number of Speedings, Top Speed Recorded (km/h).
+      - Defensive & Goalkeeping Form: Tackles Won, Tackles/90, Interceptions, Clearances, Recoveries, Pressures Won, Aerial Win %, Clean Sheets, Saves, Save %, Goals Conceded.
+      - Discipline Form: Yellow Cards, Red Cards, Fouls Committed, Fouls Suffered.
+  - **1-Click Return & Step-by-Step Navigation (No Page Refresh)**:
+    - Fixture Toolbar: `Latest` 1-click button (with `RotateCcw` icon) returns to the latest match instantly without refreshing the browser; `Prev` and `Next` step buttons allow navigating match-by-match with `Match X of Y` badge.
+    - Player Dossier Drawer: Integrated `Reset to First Player` 1-click return button, `Prev Player` and `Next Player` step navigation, live counter badge (`175/493`), and `Close` button returning directly to the tactical pitch.
+  - **100% Authentic Official UEFA Champions League MD4 Fixtures (`fixturesData.ts`)**:
+    - Real Madrid 1 - 3 AC Milan (Santiago Bernabéu; Thiaw 12', Morata 39', Reijnders 73' / Vinícius 23' pen; Ancelotti 4-3-3 vs Fonseca 4-2-3-1) with 12-action 3D trajectories and authentic starting line-ups.
+    - Inter Milan 1 - 0 Arsenal (San Siro; Çalhanoğlu 45+3' pen; Inzaghi 3-5-2 vs Arteta 4-3-3) with 10-action 3D trajectories.
+  - **Comprehensive Verification**:
+    - 100/100 tests passing across 15 test suites (`npm test -- --run`).
+    - Clean production bundle (`tsc && vite build`) compiled in 4.26s.
+    - Verified live in browser with Playwright: match formations, 22-player pitch, 1-click navigation, and full bio & 35+ metrics form tabs. (2026-10-16)
+
 - `#66` Align Manchester City & PSG lineups with 100% authentic UEFA match data, eliminate non-playing/injured players, and resolve tactical formation mapping:
   - **Exclusion of Non-Playing/Injured Players (Rodri)**: Rodri suffered a season-ending ACL rupture in September 2024 and was completely excluded from the starting XI and match events for the UCL clash on 22 January 2025.
   - **Authentic Match Lineups (4-2-3-1 vs 4-3-3)**:
