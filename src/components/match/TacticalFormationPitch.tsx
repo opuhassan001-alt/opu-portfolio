@@ -165,7 +165,7 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
                         />
                         {/* Jersey Number */}
                         <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-amber-300">
-                          {player.number}
+                          #{player.number}
                         </span>
 
                         {/* SofaScore Rating Badge */}
@@ -179,8 +179,8 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
                       </div>
 
                       {/* Name Label */}
-                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[85px] truncate text-center shadow group-hover:border-amber-400">
-                        {player.name.split(' ').pop()}
+                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-amber-400">
+                        {player.name}
                       </span>
                     </button>
                   );
@@ -230,7 +230,7 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
                         />
                         {/* Jersey Number */}
                         <span className="absolute -top-1 -left-1 px-1 py-0.2 min-w-[16px] text-center rounded-full bg-slate-900/95 border border-slate-700 text-[10px] font-mono font-black text-blue-300">
-                          {player.number}
+                          #{player.number}
                         </span>
 
                         {/* SofaScore Rating Badge */}
@@ -244,8 +244,8 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
                       </div>
 
                       {/* Name Label */}
-                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[85px] truncate text-center shadow group-hover:border-blue-400">
-                        {player.name.split(' ').pop()}
+                      <span className="mt-1 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm border border-slate-800 text-[10px] sm:text-[11px] font-semibold text-white max-w-[95px] truncate text-center shadow group-hover:border-blue-400">
+                        {player.name}
                       </span>
                     </button>
                   );

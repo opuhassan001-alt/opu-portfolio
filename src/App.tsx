@@ -17,7 +17,7 @@ import { TOP_20_COMPETITIONS, COMPETITIONS_BY_ID } from './data/competitions';
 
 export const App: React.FC = () => {
   // Primary application state
-  const [viewMode, setViewMode] = useState<'3d' | '2d' | 'match' | 'standings'>('3d');
+  const [viewMode, setViewMode] = useState<'3d' | '2d' | 'match' | 'standings'>('match');
   const [selectedPlayer, setSelectedPlayer] = useState<Player>(() => VERIFIED_PLAYERS['messi']);
   const [selectedPass, setSelectedPass] = useState<PassEvent | null>(() => {
     const messi = VERIFIED_PLAYERS['messi'];

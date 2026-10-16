@@ -19,7 +19,7 @@ export const DualTeamMatchCenter: React.FC<DualTeamMatchCenterProps> = ({
   selectedActionId,
   className = ''
 }) => {
-  const [activeTab, setActiveTab] = useState<'lineups' | 'pitch' | 'timeline' | 'stats'>('lineups');
+  const [activeTab, setActiveTab] = useState<'lineups' | 'pitch' | 'timeline' | 'stats'>('pitch');
   const [activeLineupTeam, setActiveLineupTeam] = useState<'both' | 'home' | 'away'>('both');
 
   const { homeTeam, awayTeam, homeScore, awayScore, homeLineup, awayLineup, events, stats } = fixture;

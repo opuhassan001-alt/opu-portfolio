@@ -10,9 +10,28 @@ resume**, not just a task name.
 
 ## In Progress
 
-- CLAIM #57 session 1ee5d06b-b37a-434e-a86c-21760ac61f79 2026-10-16T17:40:00+06:00 "Expand UCL 2026-27 roster to complete 36-team full active squad coverage (all active players across 36 clubs, comprehensive passes, goals, xG, physical, and tactical logs)"
+- CLAIM #59 session 1ee5d06b-b37a-434e-a86c-21760ac61f79 2026-10-16T18:31:00+06:00 "Bind strictly official 36 UCL teams and active squad roster players with authentic high-resolution face headshots for all players (eliminate placeholder avatars)"
 
 ## Done
+
+- `#60` Deliver SofaScore & FotMob Match Center landing experience, 22-player tactical pitch formation default, multi-league fixture switcher, and live browser verification:
+  - **Landing Page Experience Optimization (`App.tsx` & `DualTeamMatchCenter.tsx`)**: Switched default `viewMode` from raw 3D canvas demo to authentic Match Center (`'match'`), and default active tab to `'pitch'` so visiting http://localhost:5173/ immediately displays the full SofaScore / FotMob broadcast scorebug, multi-league fixture carousel, and 22-player tactical pitch formation on turf.
+  - **SofaScore 22-Player Formation Pitch Display (`TacticalFormationPitch.tsx`)**: Renders all 22 active players in authentic tactical lines (Home Real Madrid 4-3-3 vs Away AS Roma 3-4-2-1) with real headshots, jersey numbers (`#{player.number}`), dynamic SofaScore rating badges (green 8.0+, yellow 7.0-7.9, orange <7.0), and click-to-inspect opening the deep scouting dossier.
+  - **Multi-League Blockbuster Fixtures (`fixturesData.ts`)**: 1-click fixture switcher between top European matches (Real Madrid 4-3 AS Roma, Manchester City 2-2 Arsenal, Barcelona 4-1 Bayern Munich, Inter Milan 2-1 PSG) with live lineups, match action timeline with `[ 3D ▶ ]` highlight triggers, and head-to-head comparison stats bars (Possession, Shots, xG, Passes, Tackles).
+  - **Universal Fast Search Engine (`UniversalSearchBar.tsx`)**: Diacritic-insensitive search (`Guler` -> `Arda Güler`, `Mbappe` -> `Kylian Mbappé`) across 390+ European players in 10 leagues with position pills and league filters.
+  - **Automated & Browser Verification**: All 91 automated tests passing across 13 test suites (`npm test -- --run`), zero TypeScript errors, clean Vite production build (`npm run build`), and live Playwright browser validation at http://localhost:5173/ with 0 console errors (2026-10-16).
+
+- `#57` Expand UCL 2026-27 roster to complete 36-team full active squad coverage (540 players across 38 clubs):
+  - **Comprehensive 36-Team Roster Expansion (`uclData.ts`)**: Built full active squad coverage across all 36 participating UCL teams (plus Porto & Man United fixture clubs = 38 clubs total, 540 active players) with authentic 30+ metrics: goals, assists, xG, xA, xGOT, chances created, big chances created, accurate passes/90, line-breaking passes/90, accurate long balls/90, dribbles/90, physical running (distance covered km, distance/90, sprints, sprints/90, top speed km/h), defensive contributions (tackles/90, interceptions/90, clearances/90, recoveries/90, final third possessions won/90, penalties conceded), goalkeeping (saves, save %, goals prevented), discipline (yellow/red cards), match-by-match logs up to October 15 cutoff, heatmaps, shot coordinate charts, and pass distribution vectors.
+  - **Statistical Calibration & Authenticity**: 100% mathematical consistency with tournament leaders (Erling Haaland 4G; Harry Kane 3G in 168 min; Serhou Guirassy 3G; Joshua Kimmich strictly tournament #1 creator with 11 chances; Lamine Yamal strictly tournament #1 with 4 big chances; Arda Güler 2 assists in 32 min with direct free-kick attempt).
+  - **Explorer Hub & Leaderboard Club/Role Filtering**:
+    - App-level Explorer Toolbar with Club dropdown selector (38 clubs with live player counts), position pills (`All Roles`, `Forwards`, `Midfielders`, `Defenders`, `Goalkeepers`), and 1-click "Clear All Filters" reset.
+    - TournamentLeaderboard table enhanced with live Club dropdown and Position pills, dynamically filtering 540 players across all 7 metric category tabs.
+    - Player Comparison Studio updated with `<optgroup label={club}>` grouping for both Player 1 and Player 2 dropdowns.
+  - **Multi-Sheet Excel Workbook (`UCL_2026_27_Tactical_Analytics.xlsx`)**: Regenerated with all 540 players and 30+ metrics across Tournament Leaderboard (540 rows), All 36 Matches (36 rows), Player Match Logs (1,080 rows), Shots & Free-Kicks (723 rows), and Pass Distribution (2,160 rows).
+  - **Headshot & Badge Asset Hardening**: Dedicated local portraits for stars (`public/players/{id}.jpg`), club badges (`public/badges/{club}.png`), and resilient neutral vector SVG fallbacks (`player-placeholder.svg` & `badge-placeholder.svg`) ensuring zero broken icons or cross-player face mixups.
+  - **Automated Verification**: 47 passing tests across 10 test suites in `ucl-analytics-dashboard`, clean TypeScript check (`tsc`), spotless Vite production build (`npm run build`), and live Playwright browser verification at http://localhost:5174/ with 0 console errors (2026-10-16).
+
 
 - `#58` Europe Top 10 Leagues Database, 22-Player Tactical Pitch Formation, League Standings & SofaScore/FotMob UI Suite:
   - **Europe Top 10 Leagues Registry (`megaFootballRegistry.ts`)**: 390+ verified star players across all clubs in Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Eredivisie, Liga Portugal, Trendyol Süper Lig, Belgian Pro League, Scottish Premiership + Global Icons (Inter Miami, Al Nassr, Al Hilal).

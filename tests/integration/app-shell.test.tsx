@@ -61,13 +61,15 @@ describe('App Shell Integration', () => {
   it('strictly maintains 0 freekick goals for Mbappé with zero hallucinations', () => {
     render(<App />);
     // Select Mbappé
-    const mbappeBtn = screen.getByText('Kylian Mbappé').closest('button');
+    const mbappeBtn = screen.getAllByText('Kylian Mbappé').pop()!.closest('button');
     expect(mbappeBtn).not.toBeNull();
     fireEvent.click(mbappeBtn!);
 
-    // Open dossier
-    const dossierBtn = screen.getByRole('button', { name: /Scouting Dossier|Dossier/i });
-    fireEvent.click(dossierBtn);
+    // Open dossier if not already open
+    if (!screen.queryByTestId('player-dossier-drawer')) {
+      const dossierBtn = screen.getByRole('button', { name: /^Scouting Dossier$/i });
+      fireEvent.click(dossierBtn);
+    }
 
     // Mbappé dominance zone and strictly 0 FK goals
     expect(screen.getByText('Left Wing Cut-in')).toBeDefined();
