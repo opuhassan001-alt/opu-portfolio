@@ -461,9 +461,11 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
             playbackRef.current.isNetFlexing = true;
           }
         } else {
-          // Ball in net or at target: perform harmonic net flexing
+          // Ball in net or at target: increment dwell time for all pass types
+          playbackRef.current.impactTime += delta * speed;
+
+          // Perform harmonic net flexing if freekick hit the netting
           if (playbackRef.current.isNetFlexing && attackingNetRef.current) {
-            playbackRef.current.impactTime += delta * speed;
             attackingNetRef.current.deformNet(
               traj.netLandingPoint,
               traj.initialVelocity || DEFAULT_FREEKICK_VELOCITY,
@@ -471,7 +473,7 @@ export const StadiumArena: React.FC<StadiumArenaProps> = ({
             );
           }
 
-          // Loop replay after short delay
+          // Loop replay after short delay (1.8s)
           if (playbackRef.current.impactTime > 1.8) {
             playbackRef.current.progress = 0.0;
             playbackRef.current.impactTime = 0.0;

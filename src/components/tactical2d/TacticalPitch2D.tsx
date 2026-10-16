@@ -96,6 +96,26 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
     }));
   };
 
+  const showAllCategories = () => {
+    setCategoryMask({
+      normal: true,
+      key: true,
+      assist: true,
+      freekick: true,
+      aerial: true,
+    });
+  };
+
+  const clearAllCategories = () => {
+    setCategoryMask({
+      normal: false,
+      key: false,
+      assist: false,
+      freekick: false,
+      aerial: false,
+    });
+  };
+
   // Select pass handler
   const handleSelectPass = (pass: PassEvent) => {
     if (selectedPassId === pass.id) {
@@ -129,6 +149,26 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
               <Filter className="h-3.5 w-3.5" />
               <span>Filters:</span>
             </span>
+
+            <div className="flex items-center gap-1 mr-2 text-[11px] font-mono">
+              <button
+                type="button"
+                data-testid="filter-show-all"
+                onClick={showAllCategories}
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-2 px-1"
+              >
+                All
+              </button>
+              <span className="text-slate-600">/</span>
+              <button
+                type="button"
+                data-testid="filter-clear-all"
+                onClick={clearAllCategories}
+                className="text-slate-400 hover:text-slate-300 underline underline-offset-2 px-1"
+              >
+                Clear
+              </button>
+            </div>
 
             {(['normal', 'key', 'assist', 'freekick', 'aerial'] as PassCategory[]).map(cat => {
               const isActive = categoryMask[cat];

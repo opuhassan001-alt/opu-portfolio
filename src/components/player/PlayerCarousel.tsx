@@ -45,7 +45,12 @@ export const PlayerCarousel: React.FC<PlayerCarouselProps> = ({
       data-testid="player-carousel"
       className={`w-full bg-slate-950/80 border-t border-slate-800/80 p-3 ${className}`}
     >
-      <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+      <div
+        onWheel={(e) => {
+          e.currentTarget.scrollLeft += e.deltaY;
+        }}
+        className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900"
+      >
         {uniquePlayers.map((player) => {
           const isSelected = selectedPlayerId === player.id;
 
