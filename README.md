@@ -137,15 +137,19 @@ The test suite covers schema validation, physics solvers, image pipelines, UI co
 │   │   │   ├── FlexibleNet.ts
 │   │   │   ├── PitchMesh.ts
 │   │   │   └── StadiumArena.tsx
-│   │   ├── pitch2d/              # 2D Tactical Pitch & Target Grid
-│   │   │   ├── GoalmouthGrid.tsx
-│   │   │   ├── PassLegend.tsx
-│   │   │   ├── PassVectors.tsx
-│   │   │   └── TacticalPitch2D.tsx
-│   │   ├── Navbar.tsx            # Global navigation & view toggles
-│   │   ├── PlayerCarousel.tsx    # Clean player card strip standard
-│   │   ├── PlayerDossierDrawer.tsx # Analytical scouting drawer
-│   │   └── ScorebugHeader.tsx    # TV match clock & scorebug banner
+│   │   ├── common/               # Shared UI elements
+│   │   │   └── PlayerHeadshot.tsx # Multi-CDN resilient avatar component
+│   │   ├── layout/               # Shell layout & scorebug
+│   │   │   ├── Navbar.tsx        # Global navigation & 3D/2D instant toggles
+│   │   │   └── ScorebugHeader.tsx # Broadcast match clock & scorebug banner
+│   │   ├── player/               # Player scouting & selection
+│   │   │   ├── PlayerCarousel.tsx # Strict [Headshot] [Name] [Club] format
+│   │   │   └── PlayerDossierDrawer.tsx # Deep analytical scouting drawer
+│   │   └── tactical2d/           # 2D Precision Tactical Pitch & Heatmap
+│   │       ├── GoalmouthPopup.tsx # 3x3 9-quadrant goalmouth target analysis
+│   │       ├── PassVectorLayer.tsx # 5-color directional pass vectors
+│   │       ├── TacticalPitch2D.tsx # Regulation 105m x 68m SVG pitch
+│   │       └── ThermalHeatmap.tsx # Gaussian dominance zone heatmap
 │   ├── data/
 │   │   ├── competitions.ts       # Top 20 verified league datasets
 │   │   └── players.ts            # Verified player database & trajectories
