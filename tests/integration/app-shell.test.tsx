@@ -6,8 +6,8 @@ import App from '../../src/App';
 describe('App Shell Integration', () => {
   it('renders clean player cards with [Headshot] [Name] [Club] format only', () => {
     render(<App />);
-    expect(screen.getByText('Lionel Messi')).toBeDefined();
-    expect(screen.getByText('Inter Miami')).toBeDefined();
+    expect(screen.getAllByText('Lionel Messi').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Inter Miami').length).toBeGreaterThan(0);
     expect(screen.queryByText(/Maestro/i)).toBeNull();
   });
 

@@ -61,4 +61,21 @@ describe('Dual-Team Match Center & Tactical Lineups', () => {
     fireEvent.click(eventEl);
     expect(handleSelectAction).toHaveBeenCalledWith(expect.objectContaining({ playerId: 'mbappe' }));
   });
+
+  it('switches to 22-player formation pitch tab and displays both squads on turf', () => {
+    const handleSelectPlayer = vi.fn();
+    render(
+      <DualTeamMatchCenter
+        fixture={fixture}
+        onSelectPlayer={handleSelectPlayer}
+        onSelectAction={vi.fn()}
+      />
+    );
+
+    const pitchTab = screen.getByText(/22-Player Formation Pitch/i);
+    fireEvent.click(pitchTab);
+
+    expect(screen.getByText(/Outstanding/i)).toBeDefined();
+    expect(screen.getByText(/Average/i)).toBeDefined();
+  });
 });

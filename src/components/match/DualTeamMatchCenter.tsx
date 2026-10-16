@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MatchFixture, MatchAction, Player } from '../../types/football';
 import PlayerHeadshot from '../common/PlayerHeadshot';
 import MatchEventTimeline from './MatchEventTimeline';
+import TacticalFormationPitch from './TacticalFormationPitch';
 
 export interface DualTeamMatchCenterProps {
   fixture: MatchFixture;
@@ -18,7 +19,7 @@ export const DualTeamMatchCenter: React.FC<DualTeamMatchCenterProps> = ({
   selectedActionId,
   className = ''
 }) => {
-  const [activeTab, setActiveTab] = useState<'lineups' | 'timeline' | 'stats'>('lineups');
+  const [activeTab, setActiveTab] = useState<'lineups' | 'pitch' | 'timeline' | 'stats'>('lineups');
   const [activeLineupTeam, setActiveLineupTeam] = useState<'both' | 'home' | 'away'>('both');
 
   const { homeTeam, awayTeam, homeScore, awayScore, homeLineup, awayLineup, events, stats } = fixture;
@@ -110,41 +111,55 @@ export const DualTeamMatchCenter: React.FC<DualTeamMatchCenterProps> = ({
 
       {/* 2. Navigation Tabs */}
       <div className="flex items-center justify-between px-6 border-b border-slate-800 bg-slate-950/40">
-        <div className="flex items-center gap-1 py-3">
+        <div className="flex items-center gap-1 py-3 overflow-x-auto">
+          <button
+            onClick={() => setActiveTab('pitch')}
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === 'pitch'
+                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-1 ring-emerald-400'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <span>⚽</span>
+            <span>22-Player Formation Pitch</span>
+          </button>
           <button
             onClick={() => setActiveTab('lineups')}
-            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'lineups'
                 ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
             }`}
           >
-            📋 Tactical Lineups
+            <span>📋</span>
+            <span>Tactical Lineups</span>
           </button>
           <button
             onClick={() => setActiveTab('timeline')}
-            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'timeline'
                 ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
             }`}
           >
-            ⏱️ Action Timeline ({events.length})
+            <span>⏱️</span>
+            <span>Action Timeline ({events.length})</span>
           </button>
           <button
             onClick={() => setActiveTab('stats')}
-            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'stats'
                 ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
             }`}
           >
-            📊 Head-to-Head Stats
+            <span>📊</span>
+            <span>Head-to-Head Stats</span>
           </button>
         </div>
 
         {activeTab === 'lineups' && (
-          <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
+          <div className="hidden sm:flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
             <button
               onClick={() => setActiveLineupTeam('both')}
               className={`px-3 py-1 text-xs font-bold rounded transition ${
@@ -181,6 +196,19 @@ export const DualTeamMatchCenter: React.FC<DualTeamMatchCenterProps> = ({
 
       {/* 3. Tab Contents */}
       <div className="p-6">
+        {/* Tab 0: 22-Player Tactical Formation Pitch */}
+        {activeTab === 'pitch' && (
+          <TacticalFormationPitch
+            homeTeam={homeTeam}
+            awayTeam={awayTeam}
+            homeFormation={homeLineup.formation}
+            awayFormation={awayLineup.formation}
+            homeStartingXI={homeLineup.startingXI}
+            awayStartingXI={awayLineup.startingXI}
+            onSelectPlayer={onSelectPlayer}
+          />
+        )}
+
         {/* Tab 1: Tactical Lineups */}
         {activeTab === 'lineups' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

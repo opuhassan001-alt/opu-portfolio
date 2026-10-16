@@ -6,7 +6,9 @@ import PlayerDossierDrawer from './components/player/PlayerDossierDrawer';
 import StadiumArena from './components/arena3d/StadiumArena';
 import TacticalPitch2D from './components/tactical2d/TacticalPitch2D';
 import DualTeamMatchCenter from './components/match/DualTeamMatchCenter';
+import LeagueStandingsHub from './components/standings/LeagueStandingsHub';
 import UniversalSearchBar from './components/search/UniversalSearchBar';
+import PlayerHeadshot from './components/common/PlayerHeadshot';
 import { VERIFIED_PLAYERS } from './data/players';
 import { getAllPlayers, getPlayerById } from './data/megaFootballRegistry';
 import { DUAL_TEAM_FIXTURES } from './data/fixturesData';
@@ -15,7 +17,7 @@ import { TOP_20_COMPETITIONS, COMPETITIONS_BY_ID } from './data/competitions';
 
 export const App: React.FC = () => {
   // Primary application state
-  const [viewMode, setViewMode] = useState<'3d' | '2d' | 'match'>('3d');
+  const [viewMode, setViewMode] = useState<'3d' | '2d' | 'match' | 'standings'>('3d');
   const [selectedPlayer, setSelectedPlayer] = useState<Player>(() => VERIFIED_PLAYERS['messi']);
   const [selectedPass, setSelectedPass] = useState<PassEvent | null>(() => {
     const messi = VERIFIED_PLAYERS['messi'];
@@ -198,7 +200,76 @@ export const App: React.FC = () => {
               />
             </div>
           )}
+
+          {viewMode === 'standings' && (
+            <div data-testid="league-standings-viewport" className="w-full">
+              <LeagueStandingsHub
+                onSelectPlayer={(p) => {
+                  handleSelectPlayer(p);
+                  setIsDossierOpen(true);
+                }}
+              />
+            </div>
+          )}
         </div>
+
+        {/* 4b. SofaScore & Opta Live Player Intelligence Hub Bar */}
+        {(viewMode === '3d' || viewMode === '2d') && (
+          <div className="w-full bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <PlayerHeadshot
+                player={selectedPlayer}
+                className="w-14 h-14 rounded-xl border-2 border-sky-400 bg-slate-950 object-cover shadow-lg"
+              />
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-black text-white">{selectedPlayer.name}</h3>
+                  <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-slate-800 text-sky-400 border border-slate-700">
+                    #{selectedPlayer.number}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-400 font-medium mt-0.5">
+                  {selectedPlayer.position} • {selectedPlayer.club} • {selectedPlayer.nationality}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
+              {/* Transfermarkt Value */}
+              <div className="px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-emerald-400">
+                <span className="text-[10px] text-slate-400 block uppercase font-sans">Market Value</span>
+                <span className="font-bold text-sm">{selectedPlayer.marketInfo?.marketValueFormatted || 'N/A'}</span>
+              </div>
+
+              {/* SofaScore Rating */}
+              <div className="px-3 py-1.5 rounded-lg bg-amber-950/60 border border-amber-800/40 text-amber-300">
+                <span className="text-[10px] text-slate-400 block uppercase font-sans">SofaScore Rating</span>
+                <span className="font-bold text-sm">★ {selectedPlayer.sofascoreData?.seasonRating?.toFixed(2) || 'N/A'}</span>
+              </div>
+
+              {/* Opta xG & xA */}
+              <div className="px-3 py-1.5 rounded-lg bg-sky-950/60 border border-sky-800/40 text-sky-300">
+                <span className="text-[10px] text-slate-400 block uppercase font-sans">Opta xG / xA</span>
+                <span className="font-bold text-sm">{selectedPlayer.optaMetrics?.xG ?? 0} / {selectedPlayer.optaMetrics?.xA ?? 0}</span>
+              </div>
+
+              {/* Free-Kick Goals */}
+              <div className="px-3 py-1.5 rounded-lg bg-rose-950/60 border border-rose-800/40 text-rose-300">
+                <span className="text-[10px] text-slate-400 block uppercase font-sans">Career Direct FK</span>
+                <span className="font-bold text-sm">{selectedPlayer.careerFreeKickGoals} Goals</span>
+              </div>
+
+              {/* Open Dossier Button */}
+              <button
+                onClick={() => setIsDossierOpen(true)}
+                className="px-4 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs tracking-wider uppercase transition shadow-md shadow-sky-500/20 flex items-center gap-1.5 font-sans"
+              >
+                <span>📋</span>
+                <span>Inspect Deep Telemetry →</span>
+              </button>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* 5. Player Carousel Strip */}

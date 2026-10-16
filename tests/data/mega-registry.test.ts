@@ -64,7 +64,7 @@ describe('Mega Football Registry & Multi-Source Data Depth', () => {
   it('strictly preserves historical verified free-kick integrity', () => {
     const mbappe = MEGA_FOOTBALL_REGISTRY['mbappe'];
     expect(mbappe.careerFreeKickGoals).toBe(0);
-    expect(mbappe.passes.filter(p => p.category === 'freekick')).toHaveLength(0);
+    expect(mbappe.passes.filter((p: any) => p.category === 'freekick')).toHaveLength(0);
 
     const messi = MEGA_FOOTBALL_REGISTRY['messi'];
     expect(messi.careerFreeKickGoals).toBe(67);

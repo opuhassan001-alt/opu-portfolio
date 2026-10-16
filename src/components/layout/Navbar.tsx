@@ -3,8 +3,8 @@ import { TOP_20_COMPETITIONS } from '../../data/competitions';
 import { Activity, UserCheck, Eye, Layers } from 'lucide-react';
 
 export interface NavbarProps {
-  viewMode: '3d' | '2d' | 'match';
-  onViewModeChange: (mode: '3d' | '2d' | 'match') => void;
+  viewMode: '3d' | '2d' | 'match' | 'standings';
+  onViewModeChange: (mode: '3d' | '2d' | 'match' | 'standings') => void;
   selectedCompetitionId?: string;
   onSelectCompetition?: (competitionId: string) => void;
   isDossierOpen?: boolean;
@@ -85,6 +85,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <span role="img" aria-label="Match Center">🏆</span>
             <span>Match Center</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onViewModeChange('standings')}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+              viewMode === 'standings'
+                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/30'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+            }`}
+            aria-pressed={viewMode === 'standings'}
+          >
+            <span role="img" aria-label="Standings">📊</span>
+            <span>Standings</span>
           </button>
         </div>
 
