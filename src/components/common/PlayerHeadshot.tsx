@@ -2,10 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Player } from '../../types/football';
 import { getHeadshotUrlLadder } from '../../utils/image-pipeline';
 
-export interface PlayerHeadshotProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
+export interface PlayerHeadshotProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'onError'> {
   player: Player;
   alt?: string;
   className?: string;
+  onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }
 
 /**
@@ -20,6 +21,7 @@ export const PlayerHeadshot: React.FC<PlayerHeadshotProps> = ({
   player,
   alt,
   className = 'w-12 h-12 rounded-full object-cover bg-slate-900/50 border border-slate-800/80 shadow-inner',
+  onError,
   ...rest
 }) => {
   const ladder = useMemo(() => getHeadshotUrlLadder(player), [player]);
@@ -32,10 +34,9 @@ export const PlayerHeadshot: React.FC<PlayerHeadshotProps> = ({
 
   const currentSrc = ladder[sourceIndex] || ladder[ladder.length - 1];
 
-  const handleError = () => {
-    if (sourceIndex < ladder.length - 1) {
-      setSourceIndex(prev => prev + 1);
-    }
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setSourceIndex(prev => (prev < ladder.length - 1 ? prev + 1 : prev));
+    onError?.(e);
   };
 
   return (

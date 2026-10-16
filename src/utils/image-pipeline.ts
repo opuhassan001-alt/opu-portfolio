@@ -47,7 +47,7 @@ export function generateInitialsAvatarSvg(name: string, club?: string): string {
   ${sanitizedClub ? `<title>${sanitizedName} (${sanitizedClub})</title>` : `<title>${sanitizedName}</title>`}
 </svg>`;
 
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
 /**
