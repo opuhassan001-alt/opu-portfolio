@@ -171,7 +171,7 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
 
               return (
                 <button
-                  key={player.id}
+                  key={`away-${player.id}-${player.number}-${lineIdx}-${pIdx}`}
                   type="button"
                   onClick={() => onSelectPlayer(player)}
                   className={`group absolute flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${
@@ -229,7 +229,7 @@ export const TacticalFormationPitch: React.FC<TacticalFormationPitchProps> = ({
 
               return (
                 <button
-                  key={player.id}
+                  key={`home-${player.id}-${player.number}-${lineIdx}-${pIdx}`}
                   type="button"
                   onClick={() => onSelectPlayer(player)}
                   className={`group absolute flex flex-col items-center transition-all duration-150 hover:scale-110 focus:outline-none ${

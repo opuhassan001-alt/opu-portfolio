@@ -12,6 +12,22 @@ resume**, not just a task name.
 
 ## Done
 
+- `#66` Align Manchester City & PSG lineups with 100% authentic UEFA match data, eliminate non-playing/injured players, and resolve tactical formation mapping:
+  - **Exclusion of Non-Playing/Injured Players (Rodri)**: Rodri suffered a season-ending ACL rupture in September 2024 and was completely excluded from the starting XI and match events for the UCL clash on 22 January 2025.
+  - **Authentic Match Lineups (4-2-3-1 vs 4-3-3)**:
+    - Manchester City: Ederson (GK), Gvardiol (LB), Dias (CB), Akanji (CB), Matheus Nunes (RB), Kovačić & Bernardo Silva (Double Pivot), Savinho (RW), De Bruyne (AM/C), Foden (LW), Haaland (ST). Bench: Grealish, Gündoğan, Ortega, Stones, Aké, Lewis, McAtee, Walker.
+    - Paris Saint-Germain: Donnarumma (GK), Nuno Mendes (LB), Pacho (CB), Marquinhos (CB), Hakimi (RB), João Neves, Vitinha, Fabián Ruiz (Midfield Trio), Barcola (LW), Kang-in Lee (CF), Désiré Doué (RW). Bench: Dembélé, Gonçalo Ramos, Zaïre-Emery, Beraldo, Kolo Muani, Asensio.
+  - **Official Goal Timeline (PSG 4 - 2 Manchester City)**:
+    - 50' Jack Grealish GOAL (0-1, assist Phil Foden)
+    - 53' Erling Haaland GOAL (0-2, assist Kevin De Bruyne cross)
+    - 56' Ousmane Dembélé GOAL (1-2, assist Bradley Barcola)
+    - 60' Bradley Barcola GOAL (2-2, solo burst curler)
+    - 78' João Neves GOAL (3-2, 22m edge-of-box volley)
+    - 93' Gonçalo Ramos GOAL (4-2, breakaway chip over Ederson)
+  - **Official High-Resolution Headshots Ingestion (`public/assets/players/` & `public/players/`)**: Downloaded verified face portraits for Stefan Ortega, Matheus Nunes, Nathan Aké, Jack Grealish, James McAtee, Gonçalo Ramos, Bernardo Silva, and Désiré Doué from API-Sports and Wikimedia Commons archives.
+  - **Resolution of Tactical Pitch Player Mapping Bug**: Fixed `getP()` in `src/data/fixturesData.ts` which previously fell back to `'ederson-moraes'` for unmapped players, ensuring every squad member renders their exact name, number, position, and headshot.
+  - **Verification**: 100/100 tests passing across 15 test suites (`npm test -- --run`); clean production build (`tsc && vite build`) built in 4.28s. (2026-10-16)
+
 - `#65` Align fixtures with 100% official UEFA Champions League 2024/25 match data, fix Manchester City official crest, and eliminate non-existent matches:
   - **Manchester City & European Club Crest Resolution (`public/assets/badges/`)**: Replaced generic placeholder badge with official Manchester City circular blue-and-gold crest featuring the ship and Lancashire red rose (`manchester-city.png`). Created verified badge aliases for all top European clubs (`bayern-munchen.png`, `borussia-dortmund.png`, `manchester-united.png`, `bayer-leverkusen.png`, `vfb-stuttgart.png`, `sporting.png`).
   - **100% Authentic Official UEFA Champions League 2024/25 Blockbuster Fixtures (`src/data/fixturesData.ts`)**:

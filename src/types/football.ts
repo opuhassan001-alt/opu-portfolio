@@ -73,8 +73,17 @@ export interface MarketInfo {
   contractUntil: string; // e.g. "2029"
   age: number;
   heightCm: number;
+  weightKg?: number;
   nationality: string;
   preferredFoot: 'Left' | 'Right' | 'Both';
+  birthDate?: string;
+  birthPlace?: string;
+  ethnicity?: string;
+  religion?: string;
+  caste?: string;
+  citizenship?: string;
+  agent?: string;
+  outfitter?: string;
   previousClubs?: string[];
   joinedDate?: string;
 }

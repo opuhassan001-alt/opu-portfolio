@@ -34,9 +34,9 @@ describe('Dual-Team Match Center & Tactical Lineups', () => {
     );
 
     // Starting XI players
-    expect(screen.getByText('Ousmane Dembélé')).toBeDefined();
+    expect(screen.getByText('Bradley Barcola')).toBeDefined();
     expect(screen.getByText('Erling Haaland')).toBeDefined();
-    expect(screen.getAllByText(/4-3-3/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/4-3-3|4-2-3-1/i).length).toBeGreaterThan(0);
   });
 
   it('renders minute-by-minute match action events and handles selection', () => {

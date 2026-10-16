@@ -15,6 +15,7 @@ import { getAllUclPlayers } from './data/uclCompleteRegistry';
 import { DUAL_TEAM_FIXTURES } from './data/fixturesData';
 import { Player, PassEvent, MatchFixture, MatchAction } from './types/football';
 import { TOP_20_COMPETITIONS, COMPETITIONS_BY_ID } from './data/competitions';
+import { RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const App: React.FC = () => {
   // Primary application state
@@ -177,9 +178,13 @@ export const App: React.FC = () => {
         {/* Active Telemetry Status Bar */}
         <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-mono">
           <div className="flex items-center gap-3">
-            <span className="text-slate-400">TELEMETRY TARGET:</span>
+            <span className="text-slate-400">
+              {viewMode === 'match' ? 'OFFICIAL UEFA MATCH:' : 'TELEMETRY TARGET:'}
+            </span>
             <span className="text-sky-400 font-bold tracking-wider">
-              #{selectedPlayer.number} {selectedPlayer.name.toUpperCase()} ({selectedPlayer.position.toUpperCase()})
+              {viewMode === 'match'
+                ? `${activeFixture.homeTeam.name} (${activeFixture.homeLineup.formation}) ${activeFixture.homeScore} - ${activeFixture.awayScore} ${activeFixture.awayTeam.name} (${activeFixture.awayLineup.formation})`
+                : `#${selectedPlayer.number} ${selectedPlayer.name.toUpperCase()} (${selectedPlayer.position.toUpperCase()})`}
             </span>
           </div>
 
@@ -189,9 +194,9 @@ export const App: React.FC = () => {
               <span className="text-emerald-400 font-semibold uppercase">{viewMode} VIEW</span>
             </div>
             <div>
-              <span>Active Fixture: </span>
+              <span>Venue: </span>
               <span className="text-slate-200 font-mono">
-                {activeFixture.homeTeam.shortName} vs {activeFixture.awayTeam.shortName} ({activeFixture.homeScore}-{activeFixture.awayScore})
+                {activeFixture.venue}
               </span>
             </div>
           </div>
@@ -223,23 +228,72 @@ export const App: React.FC = () => {
 
           {viewMode === 'match' && (
             <div data-testid="dual-team-match-center" className="w-full space-y-4">
-              {/* Fixture Selector Strip */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-                <span className="text-xs font-mono text-slate-400 flex-shrink-0">Fixtures:</span>
-                {DUAL_TEAM_FIXTURES.map((fix) => (
+              {/* Fixture Selector Strip with 1-Click Back & Step Navigation */}
+              <div className="flex flex-wrap items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-lg">
+                {/* Step & 1-Click Reset Navigation */}
+                <div className="flex items-center gap-1.5 flex-shrink-0">
                   <button
-                    key={fix.id}
-                    onClick={() => setSelectedFixtureId(fix.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-2 flex-shrink-0 border ${
-                      selectedFixtureId === fix.id
-                        ? 'bg-sky-600 text-white border-sky-400 shadow-md shadow-sky-500/20'
-                        : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
-                    }`}
+                    type="button"
+                    onClick={() => setSelectedFixtureId(DUAL_TEAM_FIXTURES[0].id)}
+                    title="1-Click Return to Latest Match (No Refresh)"
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 transition shadow-sm"
                   >
-                    <span>{fix.homeTeam.shortName} {fix.homeScore} - {fix.awayScore} {fix.awayTeam.shortName}</span>
-                    <span className="text-[10px] text-emerald-400 font-mono">FT</span>
+                    <RotateCcw className="w-3.5 h-3.5 text-cyan-400" />
+                    <span className="hidden sm:inline">Latest</span>
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const idx = DUAL_TEAM_FIXTURES.findIndex(f => f.id === activeFixture.id);
+                      if (idx > 0) setSelectedFixtureId(DUAL_TEAM_FIXTURES[idx - 1].id);
+                    }}
+                    disabled={DUAL_TEAM_FIXTURES.findIndex(f => f.id === activeFixture.id) <= 0}
+                    title="Previous Match"
+                    className="p-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 disabled:opacity-30 transition"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] font-mono text-slate-300 font-bold whitespace-nowrap">
+                    Match {DUAL_TEAM_FIXTURES.findIndex(f => f.id === activeFixture.id) + 1} of {DUAL_TEAM_FIXTURES.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const idx = DUAL_TEAM_FIXTURES.findIndex(f => f.id === activeFixture.id);
+                      if (idx < DUAL_TEAM_FIXTURES.length - 1) setSelectedFixtureId(DUAL_TEAM_FIXTURES[idx + 1].id);
+                    }}
+                    disabled={DUAL_TEAM_FIXTURES.findIndex(f => f.id === activeFixture.id) >= DUAL_TEAM_FIXTURES.length - 1}
+                    title="Next Match"
+                    className="p-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 disabled:opacity-30 transition"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Fixture Scroll List with Formations & Scores */}
+                <div className="flex items-center gap-2 overflow-x-auto pb-0.5 scrollbar-none flex-1 max-w-full">
+                  {DUAL_TEAM_FIXTURES.map((fix) => {
+                    const isSelected = activeFixture.id === fix.id;
+                    return (
+                      <button
+                        key={fix.id}
+                        type="button"
+                        onClick={() => setSelectedFixtureId(fix.id)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-2 flex-shrink-0 border ${
+                          isSelected
+                            ? 'bg-sky-600 text-white border-sky-400 shadow-md shadow-sky-500/25 ring-1 ring-sky-400/50'
+                            : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
+                        }`}
+                      >
+                        <span className="font-semibold">{fix.homeTeam.shortName} {fix.homeScore} - {fix.awayScore} {fix.awayTeam.shortName}</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/40 text-sky-300 font-medium border border-white/5">
+                          {fix.homeLineup.formation} vs {fix.awayLineup.formation}
+                        </span>
+                        <span className="text-[10px] text-emerald-400 font-mono font-bold">FT</span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Dual-Team Match Center Component */}
@@ -340,6 +394,8 @@ export const App: React.FC = () => {
         onClose={() => setIsDossierOpen(false)}
         selectedPassId={selectedPass?.id}
         onSelectPass={handleSelectPass}
+        onSelectPlayer={handleSelectPlayer}
+        allPlayers={allPlayers}
       />
     </div>
   );
