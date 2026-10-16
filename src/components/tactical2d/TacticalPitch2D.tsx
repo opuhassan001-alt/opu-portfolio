@@ -361,3 +361,5 @@ export const TacticalPitch2D: React.FC<TacticalPitch2DProps> = ({
     </div>
   );
 };
+
+export default TacticalPitch2D;
