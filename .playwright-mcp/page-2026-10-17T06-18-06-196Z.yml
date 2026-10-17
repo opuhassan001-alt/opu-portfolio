@@ -1,0 +1,1371 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: ⭐
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: UEFA CHAMPIONS LEAGUE
+            - generic [ref=e12]: 36-TEAM LEAGUE PHASE
+          - paragraph [ref=e14]: Official UEFA Match Center • 22-Player Tactical Pitch • 36-Club Squads
+      - generic [ref=e15]:
+        - button "3D Arena 3D Arena" [pressed] [ref=e16] [cursor=pointer]:
+          - img "3D Arena" [ref=e17]: 🏟️
+          - generic [ref=e18]: 3D Arena
+        - button "2D Pitch 2D Pitch" [ref=e19] [cursor=pointer]:
+          - img "2D Pitch" [ref=e20]: 📐
+          - generic [ref=e21]: 2D Pitch
+        - button "Match Center Match Center" [ref=e22] [cursor=pointer]:
+          - img "Match Center" [ref=e23]: 🏆
+          - generic [ref=e24]: Match Center
+        - button "Standings Standings" [ref=e25] [cursor=pointer]:
+          - img "Standings" [ref=e26]: 📊
+          - generic [ref=e27]: Standings
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - combobox "Competition Selector" [ref=e30] [cursor=pointer]:
+            - option "UCL • UEFA Champions League" [selected]
+            - option "UEL • UEFA Europa League"
+            - option "UECL • UEFA Conference League"
+            - option "EPL • Premier League"
+            - option "LaLiga • La Liga"
+            - option "Serie A • Serie A"
+            - option "Bundesliga • Bundesliga"
+            - option "Ligue 1 • Ligue 1"
+            - option "Eredivisie • Eredivisie"
+            - option "Liga Portugal • Liga Portugal"
+            - option "MLS • Major League Soccer"
+            - option "Roshn SPL • Saudi Pro League"
+            - option "Brasileirão • Campeonato Brasileiro Série A"
+            - option "Liga Profesional • Primera División Argentina"
+            - option "Pro League • Belgian Pro League"
+            - option "Süper Lig • Trendyol Süper Lig"
+            - option "Premiership • Scottish Premiership"
+            - option "Super League • Swiss Super League"
+            - option "Admiral Bundesliga • Austrian Bundesliga"
+            - option "J1 • J1 League"
+          - generic: ▼
+        - button "Scouting Dossier" [ref=e31] [cursor=pointer]
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]: UCL
+        - generic [ref=e42]: •
+        - generic [ref=e43]: UEFA Champions League
+      - generic [ref=e44]:
+        - generic [ref=e45]: PSG
+        - generic [ref=e48]:
+          - generic [ref=e49]: "4"
+          - generic [ref=e50]: "-"
+          - generic [ref=e51]: "2"
+        - generic [ref=e52]: MCI
+        - generic [ref=e55]: 90:14
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]: "Goals:"
+        - generic [ref=e61]: Jack Grealish 50' • Erling Haaland 53' • Ousmane Dembélé 56' • Bradley Barcola 60' • João Neves 78' • Gonçalo Ramos 93'
+      - generic [ref=e62]: Parc des Princes, Paris • Attendance 47,926
+  - generic [ref=e69]:
+    - generic [ref=e70]:
+      - textbox "Search player, team, league, or nationality..." [ref=e71]
+      - generic [ref=e72]: Ctrl+K | /
+    - generic [ref=e74]:
+      - button "🌍All Leagues" [ref=e75] [cursor=pointer]
+      - button "🏆Champions League" [ref=e76] [cursor=pointer]
+      - button "🏴󠁧󠁢󠁥󠁮󠁧󠁿Premier League" [ref=e77] [cursor=pointer]
+      - button "🇪🇸La Liga" [ref=e78] [cursor=pointer]
+      - button "🇮🇹Serie A" [ref=e79] [cursor=pointer]
+      - button "🇩🇪Bundesliga" [ref=e80] [cursor=pointer]
+      - button "🇫🇷Ligue 1" [ref=e81] [cursor=pointer]
+    - generic [ref=e82]:
+      - button "All" [ref=e83] [cursor=pointer]
+      - button "FW" [ref=e84] [cursor=pointer]
+      - button "MF" [ref=e85] [cursor=pointer]
+      - button "DF" [ref=e86] [cursor=pointer]
+      - button "GK" [ref=e87] [cursor=pointer]
+  - main [ref=e88]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]: "TELEMETRY TARGET:"
+        - generic [ref=e92]: "#17 KEVIN DE BRUYNE (MIDFIELDER)"
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - text: "Mode:"
+          - generic [ref=e95]: 3d VIEW
+        - generic [ref=e96]: "Venue: Parc des Princes, Paris"
+    - generic [ref=e1588]:
+      - generic:
+        - generic [ref=e1591]:
+          - button "📺 TV Broadcast" [ref=e1592] [cursor=pointer]
+          - button "🚁 Sky Drone" [ref=e1593] [cursor=pointer]
+          - button "🎯 Shooter POV" [ref=e1594] [cursor=pointer]
+          - button "🥅 Net Cam" [ref=e1595] [cursor=pointer]
+        - generic [ref=e1596]:
+          - button "⏸️" [ref=e1597] [cursor=pointer]
+          - button "🔄" [ref=e1598] [cursor=pointer]
+          - button "0.25x" [active] [ref=e1600] [cursor=pointer]
+          - button "0.5x" [ref=e1601] [cursor=pointer]
+          - button "1.0x" [ref=e1602] [cursor=pointer]
+        - generic [ref=e1603]:
+          - generic [ref=e1604]:
+            - button "All Teams" [ref=e1605] [cursor=pointer]
+            - button "PSG" [ref=e1606] [cursor=pointer]
+            - button "MCI" [ref=e1607] [cursor=pointer]
+          - generic [ref=e1609]:
+            - button "◀" [ref=e1610] [cursor=pointer]
+            - generic [ref=e1611]: 2 / 16
+            - button "▶" [ref=e1612] [cursor=pointer]
+      - generic:
+        - generic:
+          - generic: KEY
+          - generic: De Bruyne trademark laser pass splitting the PSG center-backs for Haaland
+        - generic:
+          - generic:
+            - text: "Launch:"
+            - generic: 82 km/h
+          - generic:
+            - text: "Distance:"
+            - generic: 28.6m
+          - generic:
+            - text: "Apex:"
+            - generic: 0.14m
+          - generic:
+            - text: "Flight:"
+            - generic: 1.37s
+    - generic [ref=e1613]:
+      - generic [ref=e1614]:
+        - img "Kevin De Bruyne" [ref=e1636]
+        - generic [ref=e1616]:
+          - generic [ref=e1617]:
+            - heading "Kevin De Bruyne" [level=3] [ref=e1637]
+            - generic [ref=e1619]: "#17"
+          - generic [ref=e1620]: Midfielder • Manchester City • Belgium
+      - generic [ref=e1621]:
+        - generic [ref=e1622]:
+          - generic [ref=e1623]: Market Value
+          - text: €50M
+        - generic [ref=e1624]:
+          - generic [ref=e1625]: SofaScore Rating
+          - generic [ref=e1626]: ★ 8.28
+        - generic [ref=e1627]:
+          - generic [ref=e1628]: Opta xG / xA
+          - generic [ref=e1629]: 15.34 / 18.08
+        - generic [ref=e1630]:
+          - generic [ref=e1631]: Career Direct FK
+          - generic [ref=e1632]: 18 Goals
+        - button "📋 Inspect Deep Telemetry →" [ref=e1633] [cursor=pointer]:
+          - generic [ref=e1634]: 📋
+          - generic [ref=e1635]: Inspect Deep Telemetry →
+  - generic [ref=e362]:
+    - generic [ref=e363]:
+      - generic [ref=e364]:
+        - generic [ref=e365]: "UCL 36-Club Squad Explorer:"
+        - button "Reset to Start" [ref=e366] [cursor=pointer]
+        - button "Prev" [disabled]
+        - generic [ref=e375]: 1 / 240
+        - button "Next" [ref=e1638] [cursor=pointer]
+      - generic [ref=e376]:
+        - generic [ref=e377]: "Scroll:"
+        - button "Left" [ref=e378] [cursor=pointer]
+        - button "Right" [ref=e382] [cursor=pointer]
+    - generic [ref=e386]:
+      - button "Kylian Mbappé Kylian Mbappé Real Madrid CF" [ref=e387] [cursor=pointer]:
+        - img "Kylian Mbappé" [ref=e388]
+        - generic [ref=e389]:
+          - generic [ref=e390]: Kylian Mbappé
+          - generic [ref=e391]: Real Madrid CF
+      - button "Vinícius Júnior Vinícius Júnior Real Madrid CF" [ref=e392] [cursor=pointer]:
+        - img "Vinícius Júnior" [ref=e393]
+        - generic [ref=e394]:
+          - generic [ref=e395]: Vinícius Júnior
+          - generic [ref=e396]: Real Madrid CF
+      - button "Jude Bellingham Jude Bellingham Real Madrid CF" [ref=e397] [cursor=pointer]:
+        - img "Jude Bellingham" [ref=e398]
+        - generic [ref=e399]:
+          - generic [ref=e400]: Jude Bellingham
+          - generic [ref=e401]: Real Madrid CF
+      - button "Arda Güler Arda Güler Real Madrid CF" [ref=e402] [cursor=pointer]:
+        - img "Arda Güler" [ref=e403]
+        - generic [ref=e404]:
+          - generic [ref=e405]: Arda Güler
+          - generic [ref=e406]: Real Madrid CF
+      - button "Rodrygo Rodrygo Real Madrid CF" [ref=e407] [cursor=pointer]:
+        - img "Rodrygo" [ref=e408]
+        - generic [ref=e409]:
+          - generic [ref=e410]: Rodrygo
+          - generic [ref=e411]: Real Madrid CF
+      - button "Federico Valverde Federico Valverde Real Madrid CF" [ref=e412] [cursor=pointer]:
+        - img "Federico Valverde" [ref=e413]
+        - generic [ref=e414]:
+          - generic [ref=e415]: Federico Valverde
+          - generic [ref=e416]: Real Madrid CF
+      - button "Luka Modrić Luka Modrić Real Madrid CF" [ref=e417] [cursor=pointer]:
+        - img "Luka Modrić" [ref=e418]
+        - generic [ref=e419]:
+          - generic [ref=e420]: Luka Modrić
+          - generic [ref=e421]: Real Madrid CF
+      - button "Antonio Rüdiger Antonio Rüdiger Real Madrid CF" [ref=e422] [cursor=pointer]:
+        - img "Antonio Rüdiger" [ref=e423]
+        - generic [ref=e424]:
+          - generic [ref=e425]: Antonio Rüdiger
+          - generic [ref=e426]: Real Madrid CF
+      - button "Thibaut Courtois Thibaut Courtois Real Madrid CF" [ref=e427] [cursor=pointer]:
+        - img "Thibaut Courtois" [ref=e428]
+        - generic [ref=e429]:
+          - generic [ref=e430]: Thibaut Courtois
+          - generic [ref=e431]: Real Madrid CF
+      - button "Lamine Yamal Lamine Yamal FC Barcelona" [ref=e432] [cursor=pointer]:
+        - img "Lamine Yamal" [ref=e433]
+        - generic [ref=e434]:
+          - generic [ref=e435]: Lamine Yamal
+          - generic [ref=e436]: FC Barcelona
+      - button "Robert Lewandowski Robert Lewandowski FC Barcelona" [ref=e437] [cursor=pointer]:
+        - img "Robert Lewandowski" [ref=e438]
+        - generic [ref=e439]:
+          - generic [ref=e440]: Robert Lewandowski
+          - generic [ref=e441]: FC Barcelona
+      - button "Raphinha Raphinha FC Barcelona" [ref=e442] [cursor=pointer]:
+        - img "Raphinha" [ref=e443]
+        - generic [ref=e444]:
+          - generic [ref=e445]: Raphinha
+          - generic [ref=e446]: FC Barcelona
+      - button "Pedri Pedri FC Barcelona" [ref=e447] [cursor=pointer]:
+        - img "Pedri" [ref=e448]
+        - generic [ref=e449]:
+          - generic [ref=e450]: Pedri
+          - generic [ref=e451]: FC Barcelona
+      - button "Dani Olmo Dani Olmo FC Barcelona" [ref=e452] [cursor=pointer]:
+        - img "Dani Olmo" [ref=e453]
+        - generic [ref=e454]:
+          - generic [ref=e455]: Dani Olmo
+          - generic [ref=e456]: FC Barcelona
+      - button "Gavi Gavi FC Barcelona" [ref=e457] [cursor=pointer]:
+        - img "Gavi" [ref=e458]
+        - generic [ref=e459]:
+          - generic [ref=e460]: Gavi
+          - generic [ref=e461]: FC Barcelona
+      - button "Jules Koundé Jules Koundé FC Barcelona" [ref=e462] [cursor=pointer]:
+        - img "Jules Koundé" [ref=e463]
+        - generic [ref=e464]:
+          - generic [ref=e465]: Jules Koundé
+          - generic [ref=e466]: FC Barcelona
+      - button "Marc-André ter Stegen Marc-André ter Stegen FC Barcelona" [ref=e467] [cursor=pointer]:
+        - img "Marc-André ter Stegen" [ref=e468]
+        - generic [ref=e469]:
+          - generic [ref=e470]: Marc-André ter Stegen
+          - generic [ref=e471]: FC Barcelona
+      - button "Erling Haaland Erling Haaland Manchester City" [ref=e472] [cursor=pointer]:
+        - img "Erling Haaland" [ref=e473]
+        - generic [ref=e474]:
+          - generic [ref=e475]: Erling Haaland
+          - generic [ref=e476]: Manchester City
+      - button "Kevin De Bruyne Kevin De Bruyne Manchester City" [ref=e477] [cursor=pointer]:
+        - img "Kevin De Bruyne" [ref=e478]
+        - generic [ref=e479]:
+          - generic [ref=e480]: Kevin De Bruyne
+          - generic [ref=e481]: Manchester City
+      - button "Phil Foden Phil Foden Manchester City" [ref=e482] [cursor=pointer]:
+        - img "Phil Foden" [ref=e483]
+        - generic [ref=e484]:
+          - generic [ref=e485]: Phil Foden
+          - generic [ref=e486]: Manchester City
+      - button "Bernardo Silva Bernardo Silva Manchester City" [ref=e487] [cursor=pointer]:
+        - img "Bernardo Silva" [ref=e488]
+        - generic [ref=e489]:
+          - generic [ref=e490]: Bernardo Silva
+          - generic [ref=e491]: Manchester City
+      - button "Rodri Rodri Manchester City" [ref=e492] [cursor=pointer]:
+        - img "Rodri" [ref=e493]
+        - generic [ref=e494]:
+          - generic [ref=e495]: Rodri
+          - generic [ref=e496]: Manchester City
+      - button "Rúben Dias Rúben Dias Manchester City" [ref=e497] [cursor=pointer]:
+        - img "Rúben Dias" [ref=e498]
+        - generic [ref=e499]:
+          - generic [ref=e500]: Rúben Dias
+          - generic [ref=e501]: Manchester City
+      - button "Ederson Ederson Manchester City" [ref=e502] [cursor=pointer]:
+        - img "Ederson" [ref=e503]
+        - generic [ref=e504]:
+          - generic [ref=e505]: Ederson
+          - generic [ref=e506]: Manchester City
+      - button "Bukayo Saka Bukayo Saka Arsenal FC" [ref=e507] [cursor=pointer]:
+        - img "Bukayo Saka" [ref=e508]
+        - generic [ref=e509]:
+          - generic [ref=e510]: Bukayo Saka
+          - generic [ref=e511]: Arsenal FC
+      - button "Martin Ødegaard Martin Ødegaard Arsenal FC" [ref=e512] [cursor=pointer]:
+        - img "Martin Ødegaard" [ref=e513]
+        - generic [ref=e514]:
+          - generic [ref=e515]: Martin Ødegaard
+          - generic [ref=e516]: Arsenal FC
+      - button "Declan Rice Declan Rice Arsenal FC" [ref=e517] [cursor=pointer]:
+        - img "Declan Rice" [ref=e518]
+        - generic [ref=e519]:
+          - generic [ref=e520]: Declan Rice
+          - generic [ref=e521]: Arsenal FC
+      - button "Kai Havertz Kai Havertz Arsenal FC" [ref=e522] [cursor=pointer]:
+        - img "Kai Havertz" [ref=e523]
+        - generic [ref=e524]:
+          - generic [ref=e525]: Kai Havertz
+          - generic [ref=e526]: Arsenal FC
+      - button "William Saliba William Saliba Arsenal FC" [ref=e527] [cursor=pointer]:
+        - img "William Saliba" [ref=e528]
+        - generic [ref=e529]:
+          - generic [ref=e530]: William Saliba
+          - generic [ref=e531]: Arsenal FC
+      - button "Gabriel Magalhães Gabriel Magalhães Arsenal FC" [ref=e532] [cursor=pointer]:
+        - img "Gabriel Magalhães" [ref=e533]
+        - generic [ref=e534]:
+          - generic [ref=e535]: Gabriel Magalhães
+          - generic [ref=e536]: Arsenal FC
+      - button "David Raya David Raya Arsenal FC" [ref=e537] [cursor=pointer]:
+        - img "David Raya" [ref=e538]
+        - generic [ref=e539]:
+          - generic [ref=e540]: David Raya
+          - generic [ref=e541]: Arsenal FC
+      - button "Harry Kane Harry Kane FC Bayern München" [ref=e542] [cursor=pointer]:
+        - img "Harry Kane" [ref=e543]
+        - generic [ref=e544]:
+          - generic [ref=e545]: Harry Kane
+          - generic [ref=e546]: FC Bayern München
+      - button "Joshua Kimmich Joshua Kimmich FC Bayern München" [ref=e547] [cursor=pointer]:
+        - img "Joshua Kimmich" [ref=e548]
+        - generic [ref=e549]:
+          - generic [ref=e550]: Joshua Kimmich
+          - generic [ref=e551]: FC Bayern München
+      - button "Jamal Musiala Jamal Musiala FC Bayern München" [ref=e552] [cursor=pointer]:
+        - img "Jamal Musiala" [ref=e553]
+        - generic [ref=e554]:
+          - generic [ref=e555]: Jamal Musiala
+          - generic [ref=e556]: FC Bayern München
+      - button "Michael Olise Michael Olise FC Bayern München" [ref=e557] [cursor=pointer]:
+        - img "Michael Olise" [ref=e558]
+        - generic [ref=e559]:
+          - generic [ref=e560]: Michael Olise
+          - generic [ref=e561]: FC Bayern München
+      - button "Thomas Müller Thomas Müller FC Bayern München" [ref=e562] [cursor=pointer]:
+        - img "Thomas Müller" [ref=e563]
+        - generic [ref=e564]:
+          - generic [ref=e565]: Thomas Müller
+          - generic [ref=e566]: FC Bayern München
+      - button "Alphonso Davies Alphonso Davies FC Bayern München" [ref=e567] [cursor=pointer]:
+        - img "Alphonso Davies" [ref=e568]
+        - generic [ref=e569]:
+          - generic [ref=e570]: Alphonso Davies
+          - generic [ref=e571]: FC Bayern München
+      - button "Manuel Neuer Manuel Neuer FC Bayern München" [ref=e572] [cursor=pointer]:
+        - img "Manuel Neuer" [ref=e573]
+        - generic [ref=e574]:
+          - generic [ref=e575]: Manuel Neuer
+          - generic [ref=e576]: FC Bayern München
+      - button "Mohamed Salah Mohamed Salah Liverpool FC" [ref=e577] [cursor=pointer]:
+        - img "Mohamed Salah" [ref=e578]
+        - generic [ref=e579]:
+          - generic [ref=e580]: Mohamed Salah
+          - generic [ref=e581]: Liverpool FC
+      - button "Virgil van Dijk Virgil van Dijk Liverpool FC" [ref=e582] [cursor=pointer]:
+        - img "Virgil van Dijk" [ref=e583]
+        - generic [ref=e584]:
+          - generic [ref=e585]: Virgil van Dijk
+          - generic [ref=e586]: Liverpool FC
+      - button "Trent Alexander-Arnold Trent Alexander-Arnold Liverpool FC" [ref=e587] [cursor=pointer]:
+        - img "Trent Alexander-Arnold" [ref=e588]
+        - generic [ref=e589]:
+          - generic [ref=e590]: Trent Alexander-Arnold
+          - generic [ref=e591]: Liverpool FC
+      - button "Alexis Mac Allister Alexis Mac Allister Liverpool FC" [ref=e592] [cursor=pointer]:
+        - img "Alexis Mac Allister" [ref=e593]
+        - generic [ref=e594]:
+          - generic [ref=e595]: Alexis Mac Allister
+          - generic [ref=e596]: Liverpool FC
+      - button "Luis Díaz Luis Díaz Liverpool FC" [ref=e597] [cursor=pointer]:
+        - img "Luis Díaz" [ref=e598]
+        - generic [ref=e599]:
+          - generic [ref=e600]: Luis Díaz
+          - generic [ref=e601]: Liverpool FC
+      - button "Darwin Núñez Darwin Núñez Liverpool FC" [ref=e602] [cursor=pointer]:
+        - img "Darwin Núñez" [ref=e603]
+        - generic [ref=e604]:
+          - generic [ref=e605]: Darwin Núñez
+          - generic [ref=e606]: Liverpool FC
+      - button "Alisson Becker Alisson Becker Liverpool FC" [ref=e607] [cursor=pointer]:
+        - img "Alisson Becker" [ref=e608]
+        - generic [ref=e609]:
+          - generic [ref=e610]: Alisson Becker
+          - generic [ref=e611]: Liverpool FC
+      - button "Ousmane Dembélé Ousmane Dembélé Paris Saint-Germain" [ref=e612] [cursor=pointer]:
+        - img "Ousmane Dembélé" [ref=e613]
+        - generic [ref=e614]:
+          - generic [ref=e615]: Ousmane Dembélé
+          - generic [ref=e616]: Paris Saint-Germain
+      - button "Bradley Barcola Bradley Barcola Paris Saint-Germain" [ref=e617] [cursor=pointer]:
+        - img "Bradley Barcola" [ref=e618]
+        - generic [ref=e619]:
+          - generic [ref=e620]: Bradley Barcola
+          - generic [ref=e621]: Paris Saint-Germain
+      - button "Achraf Hakimi Achraf Hakimi Paris Saint-Germain" [ref=e622] [cursor=pointer]:
+        - img "Achraf Hakimi" [ref=e623]
+        - generic [ref=e624]:
+          - generic [ref=e625]: Achraf Hakimi
+          - generic [ref=e626]: Paris Saint-Germain
+      - button "Vitinha Vitinha Paris Saint-Germain" [ref=e627] [cursor=pointer]:
+        - img "Vitinha" [ref=e628]
+        - generic [ref=e629]:
+          - generic [ref=e630]: Vitinha
+          - generic [ref=e631]: Paris Saint-Germain
+      - button "Warren Zaïre-Emery Warren Zaïre-Emery Paris Saint-Germain" [ref=e632] [cursor=pointer]:
+        - img "Warren Zaïre-Emery" [ref=e633]
+        - generic [ref=e634]:
+          - generic [ref=e635]: Warren Zaïre-Emery
+          - generic [ref=e636]: Paris Saint-Germain
+      - button "Gianluigi Donnarumma Gianluigi Donnarumma Paris Saint-Germain" [ref=e637] [cursor=pointer]:
+        - img "Gianluigi Donnarumma" [ref=e638]
+        - generic [ref=e639]:
+          - generic [ref=e640]: Gianluigi Donnarumma
+          - generic [ref=e641]: Paris Saint-Germain
+      - button "Florian Wirtz Florian Wirtz Bayer 04 Leverkusen" [ref=e642] [cursor=pointer]:
+        - img "Florian Wirtz" [ref=e643]
+        - generic [ref=e644]:
+          - generic [ref=e645]: Florian Wirtz
+          - generic [ref=e646]: Bayer 04 Leverkusen
+      - button "Jeremie Frimpong Jeremie Frimpong Bayer 04 Leverkusen" [ref=e647] [cursor=pointer]:
+        - img "Jeremie Frimpong" [ref=e648]
+        - generic [ref=e649]:
+          - generic [ref=e650]: Jeremie Frimpong
+          - generic [ref=e651]: Bayer 04 Leverkusen
+      - button "Granit Xhaka Granit Xhaka Bayer 04 Leverkusen" [ref=e652] [cursor=pointer]:
+        - img "Granit Xhaka" [ref=e653]
+        - generic [ref=e654]:
+          - generic [ref=e655]: Granit Xhaka
+          - generic [ref=e656]: Bayer 04 Leverkusen
+      - button "Victor Boniface Victor Boniface Bayer 04 Leverkusen" [ref=e657] [cursor=pointer]:
+        - img "Victor Boniface" [ref=e658]
+        - generic [ref=e659]:
+          - generic [ref=e660]: Victor Boniface
+          - generic [ref=e661]: Bayer 04 Leverkusen
+      - button "Alejandro Grimaldo Alejandro Grimaldo Bayer 04 Leverkusen" [ref=e662] [cursor=pointer]:
+        - img "Alejandro Grimaldo" [ref=e663]
+        - generic [ref=e664]:
+          - generic [ref=e665]: Alejandro Grimaldo
+          - generic [ref=e666]: Bayer 04 Leverkusen
+      - button "Lukáš Hrádecký Lukáš Hrádecký Bayer 04 Leverkusen" [ref=e667] [cursor=pointer]:
+        - img "Lukáš Hrádecký" [ref=e668]
+        - generic [ref=e669]:
+          - generic [ref=e670]: Lukáš Hrádecký
+          - generic [ref=e671]: Bayer 04 Leverkusen
+      - button "Serhou Guirassy Serhou Guirassy Borussia Dortmund" [ref=e672] [cursor=pointer]:
+        - img "Serhou Guirassy" [ref=e673]
+        - generic [ref=e674]:
+          - generic [ref=e675]: Serhou Guirassy
+          - generic [ref=e676]: Borussia Dortmund
+      - button "Julian Brandt Julian Brandt Borussia Dortmund" [ref=e677] [cursor=pointer]:
+        - img "Julian Brandt" [ref=e678]
+        - generic [ref=e679]:
+          - generic [ref=e680]: Julian Brandt
+          - generic [ref=e681]: Borussia Dortmund
+      - button "Karim Adeyemi Karim Adeyemi Borussia Dortmund" [ref=e682] [cursor=pointer]:
+        - img "Karim Adeyemi" [ref=e683]
+        - generic [ref=e684]:
+          - generic [ref=e685]: Karim Adeyemi
+          - generic [ref=e686]: Borussia Dortmund
+      - button "Gregor Kobel Gregor Kobel Borussia Dortmund" [ref=e687] [cursor=pointer]:
+        - img "Gregor Kobel" [ref=e688]
+        - generic [ref=e689]:
+          - generic [ref=e690]: Gregor Kobel
+          - generic [ref=e691]: Borussia Dortmund
+      - button "Nico Schlotterbeck Nico Schlotterbeck Borussia Dortmund" [ref=e692] [cursor=pointer]:
+        - img "Nico Schlotterbeck" [ref=e693]
+        - generic [ref=e694]:
+          - generic [ref=e695]: Nico Schlotterbeck
+          - generic [ref=e696]: Borussia Dortmund
+      - button "Marcel Sabitzer Marcel Sabitzer Borussia Dortmund" [ref=e697] [cursor=pointer]:
+        - img "Marcel Sabitzer" [ref=e698]
+        - generic [ref=e699]:
+          - generic [ref=e700]: Marcel Sabitzer
+          - generic [ref=e701]: Borussia Dortmund
+      - button "Lautaro Martínez Lautaro Martínez Inter Milan" [ref=e702] [cursor=pointer]:
+        - img "Lautaro Martínez" [ref=e703]
+        - generic [ref=e704]:
+          - generic [ref=e705]: Lautaro Martínez
+          - generic [ref=e706]: Inter Milan
+      - button "Marcus Thuram Marcus Thuram Inter Milan" [ref=e707] [cursor=pointer]:
+        - img "Marcus Thuram" [ref=e708]
+        - generic [ref=e709]:
+          - generic [ref=e710]: Marcus Thuram
+          - generic [ref=e711]: Inter Milan
+      - button "Nicolò Barella Nicolò Barella Inter Milan" [ref=e712] [cursor=pointer]:
+        - img "Nicolò Barella" [ref=e713]
+        - generic [ref=e714]:
+          - generic [ref=e715]: Nicolò Barella
+          - generic [ref=e716]: Inter Milan
+      - button "Hakan Çalhanoğlu Hakan Çalhanoğlu Inter Milan" [ref=e717] [cursor=pointer]:
+        - img "Hakan Çalhanoğlu" [ref=e718]
+        - generic [ref=e719]:
+          - generic [ref=e720]: Hakan Çalhanoğlu
+          - generic [ref=e721]: Inter Milan
+      - button "Alessandro Bastoni Alessandro Bastoni Inter Milan" [ref=e722] [cursor=pointer]:
+        - img "Alessandro Bastoni" [ref=e723]
+        - generic [ref=e724]:
+          - generic [ref=e725]: Alessandro Bastoni
+          - generic [ref=e726]: Inter Milan
+      - button "Yann Sommer Yann Sommer Inter Milan" [ref=e727] [cursor=pointer]:
+        - img "Yann Sommer" [ref=e728]
+        - generic [ref=e729]:
+          - generic [ref=e730]: Yann Sommer
+          - generic [ref=e731]: Inter Milan
+      - button "Dušan Vlahović Dušan Vlahović Juventus" [ref=e732] [cursor=pointer]:
+        - img "Dušan Vlahović" [ref=e733]
+        - generic [ref=e734]:
+          - generic [ref=e735]: Dušan Vlahović
+          - generic [ref=e736]: Juventus
+      - button "Kenan Yıldız Kenan Yıldız Juventus" [ref=e737] [cursor=pointer]:
+        - img "Kenan Yıldız" [ref=e738]
+        - generic [ref=e739]:
+          - generic [ref=e740]: Kenan Yıldız
+          - generic [ref=e741]: Juventus
+      - button "Teun Koopmeiners Teun Koopmeiners Juventus" [ref=e742] [cursor=pointer]:
+        - img "Teun Koopmeiners" [ref=e743]
+        - generic [ref=e744]:
+          - generic [ref=e745]: Teun Koopmeiners
+          - generic [ref=e746]: Juventus
+      - button "Andrea Cambiaso Andrea Cambiaso Juventus" [ref=e747] [cursor=pointer]:
+        - img "Andrea Cambiaso" [ref=e748]
+        - generic [ref=e749]:
+          - generic [ref=e750]: Andrea Cambiaso
+          - generic [ref=e751]: Juventus
+      - button "Manuel Locatelli Manuel Locatelli Juventus" [ref=e752] [cursor=pointer]:
+        - img "Manuel Locatelli" [ref=e753]
+        - generic [ref=e754]:
+          - generic [ref=e755]: Manuel Locatelli
+          - generic [ref=e756]: Juventus
+      - button "Michele Di Gregorio Michele Di Gregorio Juventus" [ref=e757] [cursor=pointer]:
+        - img "Michele Di Gregorio" [ref=e758]
+        - generic [ref=e759]:
+          - generic [ref=e760]: Michele Di Gregorio
+          - generic [ref=e761]: Juventus
+      - button "Antoine Griezmann Antoine Griezmann Atlético Madrid" [ref=e762] [cursor=pointer]:
+        - img "Antoine Griezmann" [ref=e763]
+        - generic [ref=e764]:
+          - generic [ref=e765]: Antoine Griezmann
+          - generic [ref=e766]: Atlético Madrid
+      - button "Julián Álvarez Julián Álvarez Atlético Madrid" [ref=e767] [cursor=pointer]:
+        - img "Julián Álvarez" [ref=e768]
+        - generic [ref=e769]:
+          - generic [ref=e770]: Julián Álvarez
+          - generic [ref=e771]: Atlético Madrid
+      - button "Jan Oblak Jan Oblak Atlético Madrid" [ref=e772] [cursor=pointer]:
+        - img "Jan Oblak" [ref=e773]
+        - generic [ref=e774]:
+          - generic [ref=e775]: Jan Oblak
+          - generic [ref=e776]: Atlético Madrid
+      - button "Rodrigo De Paul Rodrigo De Paul Atlético Madrid" [ref=e777] [cursor=pointer]:
+        - img "Rodrigo De Paul" [ref=e778]
+        - generic [ref=e779]:
+          - generic [ref=e780]: Rodrigo De Paul
+          - generic [ref=e781]: Atlético Madrid
+      - button "Marcos Llorente Marcos Llorente Atlético Madrid" [ref=e782] [cursor=pointer]:
+        - img "Marcos Llorente" [ref=e783]
+        - generic [ref=e784]:
+          - generic [ref=e785]: Marcos Llorente
+          - generic [ref=e786]: Atlético Madrid
+      - button "Robin Le Normand Robin Le Normand Atlético Madrid" [ref=e787] [cursor=pointer]:
+        - img "Robin Le Normand" [ref=e788]
+        - generic [ref=e789]:
+          - generic [ref=e790]: Robin Le Normand
+          - generic [ref=e791]: Atlético Madrid
+      - button "Ollie Watkins Ollie Watkins Aston Villa" [ref=e792] [cursor=pointer]:
+        - img "Ollie Watkins" [ref=e793]
+        - generic [ref=e794]:
+          - generic [ref=e795]: Ollie Watkins
+          - generic [ref=e796]: Aston Villa
+      - button "Emiliano Martínez Emiliano Martínez Aston Villa" [ref=e797] [cursor=pointer]:
+        - img "Emiliano Martínez" [ref=e798]
+        - generic [ref=e799]:
+          - generic [ref=e800]: Emiliano Martínez
+          - generic [ref=e801]: Aston Villa
+      - button "John McGinn John McGinn Aston Villa" [ref=e802] [cursor=pointer]:
+        - img "John McGinn" [ref=e803]
+        - generic [ref=e804]:
+          - generic [ref=e805]: John McGinn
+          - generic [ref=e806]: Aston Villa
+      - button "Morgan Rogers Morgan Rogers Aston Villa" [ref=e807] [cursor=pointer]:
+        - img "Morgan Rogers" [ref=e808]
+        - generic [ref=e809]:
+          - generic [ref=e810]: Morgan Rogers
+          - generic [ref=e811]: Aston Villa
+      - button "Youri Tielemans Youri Tielemans Aston Villa" [ref=e812] [cursor=pointer]:
+        - img "Youri Tielemans" [ref=e813]
+        - generic [ref=e814]:
+          - generic [ref=e815]: Youri Tielemans
+          - generic [ref=e816]: Aston Villa
+      - button "Pau Torres Pau Torres Aston Villa" [ref=e817] [cursor=pointer]:
+        - img "Pau Torres" [ref=e818]
+        - generic [ref=e819]:
+          - generic [ref=e820]: Pau Torres
+          - generic [ref=e821]: Aston Villa
+      - button "Viktor Gyökeres Viktor Gyökeres Sporting CP" [ref=e822] [cursor=pointer]:
+        - img "Viktor Gyökeres" [ref=e823]
+        - generic [ref=e824]:
+          - generic [ref=e825]: Viktor Gyökeres
+          - generic [ref=e826]: Sporting CP
+      - button "Pedro Gonçalves Pedro Gonçalves Sporting CP" [ref=e827] [cursor=pointer]:
+        - img "Pedro Gonçalves" [ref=e828]
+        - generic [ref=e829]:
+          - generic [ref=e830]: Pedro Gonçalves
+          - generic [ref=e831]: Sporting CP
+      - button "Morten Hjulmand Morten Hjulmand Sporting CP" [ref=e832] [cursor=pointer]:
+        - img "Morten Hjulmand" [ref=e833]
+        - generic [ref=e834]:
+          - generic [ref=e835]: Morten Hjulmand
+          - generic [ref=e836]: Sporting CP
+      - button "Francisco Trincão Francisco Trincão Sporting CP" [ref=e837] [cursor=pointer]:
+        - img "Francisco Trincão" [ref=e838]
+        - generic [ref=e839]:
+          - generic [ref=e840]: Francisco Trincão
+          - generic [ref=e841]: Sporting CP
+      - button "Gonçalo Inácio Gonçalo Inácio Sporting CP" [ref=e842] [cursor=pointer]:
+        - img "Gonçalo Inácio" [ref=e843]
+        - generic [ref=e844]:
+          - generic [ref=e845]: Gonçalo Inácio
+          - generic [ref=e846]: Sporting CP
+      - button "Franco Israel Franco Israel Sporting CP" [ref=e847] [cursor=pointer]:
+        - img "Franco Israel" [ref=e848]
+        - generic [ref=e849]:
+          - generic [ref=e850]: Franco Israel
+          - generic [ref=e851]: Sporting CP
+      - button "Xavi Simons Xavi Simons RB Leipzig" [ref=e852] [cursor=pointer]:
+        - img "Xavi Simons" [ref=e853]
+        - generic [ref=e854]:
+          - generic [ref=e855]: Xavi Simons
+          - generic [ref=e856]: RB Leipzig
+      - button "Loïs Openda Loïs Openda RB Leipzig" [ref=e857] [cursor=pointer]:
+        - img "Loïs Openda" [ref=e858]
+        - generic [ref=e859]:
+          - generic [ref=e860]: Loïs Openda
+          - generic [ref=e861]: RB Leipzig
+      - button "Benjamin Šeško Benjamin Šeško RB Leipzig" [ref=e862] [cursor=pointer]:
+        - img "Benjamin Šeško" [ref=e863]
+        - generic [ref=e864]:
+          - generic [ref=e865]: Benjamin Šeško
+          - generic [ref=e866]: RB Leipzig
+      - button "Castello Lukeba Castello Lukeba RB Leipzig" [ref=e867] [cursor=pointer]:
+        - img "Castello Lukeba" [ref=e868]
+        - generic [ref=e869]:
+          - generic [ref=e870]: Castello Lukeba
+          - generic [ref=e871]: RB Leipzig
+      - button "Willi Orbán Willi Orbán RB Leipzig" [ref=e872] [cursor=pointer]:
+        - img "Willi Orbán" [ref=e873]
+        - generic [ref=e874]:
+          - generic [ref=e875]: Willi Orbán
+          - generic [ref=e876]: RB Leipzig
+      - button "Péter Gulácsi Péter Gulácsi RB Leipzig" [ref=e877] [cursor=pointer]:
+        - img "Péter Gulácsi" [ref=e878]
+        - generic [ref=e879]:
+          - generic [ref=e880]: Péter Gulácsi
+          - generic [ref=e881]: RB Leipzig
+      - button "Rafael Leão Rafael Leão AC Milan" [ref=e882] [cursor=pointer]:
+        - img "Rafael Leão" [ref=e883]
+        - generic [ref=e884]:
+          - generic [ref=e885]: Rafael Leão
+          - generic [ref=e886]: AC Milan
+      - button "Christian Pulisic Christian Pulisic AC Milan" [ref=e887] [cursor=pointer]:
+        - img "Christian Pulisic" [ref=e888]
+        - generic [ref=e889]:
+          - generic [ref=e890]: Christian Pulisic
+          - generic [ref=e891]: AC Milan
+      - button "Theo Hernández Theo Hernández AC Milan" [ref=e892] [cursor=pointer]:
+        - img "Theo Hernández" [ref=e893]
+        - generic [ref=e894]:
+          - generic [ref=e895]: Theo Hernández
+          - generic [ref=e896]: AC Milan
+      - button "Tijjani Reijnders Tijjani Reijnders AC Milan" [ref=e897] [cursor=pointer]:
+        - img "Tijjani Reijnders" [ref=e898]
+        - generic [ref=e899]:
+          - generic [ref=e900]: Tijjani Reijnders
+          - generic [ref=e901]: AC Milan
+      - button "Álvaro Morata Álvaro Morata AC Milan" [ref=e902] [cursor=pointer]:
+        - img "Álvaro Morata" [ref=e903]
+        - generic [ref=e904]:
+          - generic [ref=e905]: Álvaro Morata
+          - generic [ref=e906]: AC Milan
+      - button "Mike Maignan Mike Maignan AC Milan" [ref=e907] [cursor=pointer]:
+        - img "Mike Maignan" [ref=e908]
+        - generic [ref=e909]:
+          - generic [ref=e910]: Mike Maignan
+          - generic [ref=e911]: AC Milan
+      - button "Ademola Lookman Ademola Lookman Atalanta BC" [ref=e912] [cursor=pointer]:
+        - img "Ademola Lookman" [ref=e913]
+        - generic [ref=e914]:
+          - generic [ref=e915]: Ademola Lookman
+          - generic [ref=e916]: Atalanta BC
+      - button "Mateo Retegui Mateo Retegui Atalanta BC" [ref=e917] [cursor=pointer]:
+        - img "Mateo Retegui" [ref=e918]
+        - generic [ref=e919]:
+          - generic [ref=e920]: Mateo Retegui
+          - generic [ref=e921]: Atalanta BC
+      - button "Charles De Ketelaere Charles De Ketelaere Atalanta BC" [ref=e922] [cursor=pointer]:
+        - img "Charles De Ketelaere" [ref=e923]
+        - generic [ref=e924]:
+          - generic [ref=e925]: Charles De Ketelaere
+          - generic [ref=e926]: Atalanta BC
+      - button "Davide Zappacosta Davide Zappacosta Atalanta BC" [ref=e927] [cursor=pointer]:
+        - img "Davide Zappacosta" [ref=e928]
+        - generic [ref=e929]:
+          - generic [ref=e930]: Davide Zappacosta
+          - generic [ref=e931]: Atalanta BC
+      - button "Marco Carnesecchi Marco Carnesecchi Atalanta BC" [ref=e932] [cursor=pointer]:
+        - img "Marco Carnesecchi" [ref=e933]
+        - generic [ref=e934]:
+          - generic [ref=e935]: Marco Carnesecchi
+          - generic [ref=e936]: Atalanta BC
+      - button "Denis Zakaria Denis Zakaria AS Monaco" [ref=e937] [cursor=pointer]:
+        - img "Denis Zakaria" [ref=e938]
+        - generic [ref=e939]:
+          - generic [ref=e940]: Denis Zakaria
+          - generic [ref=e941]: AS Monaco
+      - button "Eliesse Ben Seghir Eliesse Ben Seghir AS Monaco" [ref=e942] [cursor=pointer]:
+        - img "Eliesse Ben Seghir" [ref=e943]
+        - generic [ref=e944]:
+          - generic [ref=e945]: Eliesse Ben Seghir
+          - generic [ref=e946]: AS Monaco
+      - button "Maghnes Akliouche Maghnes Akliouche AS Monaco" [ref=e947] [cursor=pointer]:
+        - img "Maghnes Akliouche" [ref=e948]
+        - generic [ref=e949]:
+          - generic [ref=e950]: Maghnes Akliouche
+          - generic [ref=e951]: AS Monaco
+      - button "Aleksandr Golovin Aleksandr Golovin AS Monaco" [ref=e952] [cursor=pointer]:
+        - img "Aleksandr Golovin" [ref=e953]
+        - generic [ref=e954]:
+          - generic [ref=e955]: Aleksandr Golovin
+          - generic [ref=e956]: AS Monaco
+      - button "Breel Embolo Breel Embolo AS Monaco" [ref=e957] [cursor=pointer]:
+        - img "Breel Embolo" [ref=e958]
+        - generic [ref=e959]:
+          - generic [ref=e960]: Breel Embolo
+          - generic [ref=e961]: AS Monaco
+      - button "Philipp Köhn Philipp Köhn AS Monaco" [ref=e962] [cursor=pointer]:
+        - img "Philipp Köhn" [ref=e963]
+        - generic [ref=e964]:
+          - generic [ref=e965]: Philipp Köhn
+          - generic [ref=e966]: AS Monaco
+      - button "Jonathan David Jonathan David Lille OSC" [ref=e967] [cursor=pointer]:
+        - img "Jonathan David" [ref=e968]
+        - generic [ref=e969]:
+          - generic [ref=e970]: Jonathan David
+          - generic [ref=e971]: Lille OSC
+      - button "Edon Zhegrova Edon Zhegrova Lille OSC" [ref=e972] [cursor=pointer]:
+        - img "Edon Zhegrova" [ref=e973]
+        - generic [ref=e974]:
+          - generic [ref=e975]: Edon Zhegrova
+          - generic [ref=e976]: Lille OSC
+      - button "Angel Gomes Angel Gomes Lille OSC" [ref=e977] [cursor=pointer]:
+        - img "Angel Gomes" [ref=e978]
+        - generic [ref=e979]:
+          - generic [ref=e980]: Angel Gomes
+          - generic [ref=e981]: Lille OSC
+      - button "Benjamin André Benjamin André Lille OSC" [ref=e982] [cursor=pointer]:
+        - img "Benjamin André" [ref=e983]
+        - generic [ref=e984]:
+          - generic [ref=e985]: Benjamin André
+          - generic [ref=e986]: Lille OSC
+      - button "Bafodé Diakité Bafodé Diakité Lille OSC" [ref=e987] [cursor=pointer]:
+        - img "Bafodé Diakité" [ref=e988]
+        - generic [ref=e989]:
+          - generic [ref=e990]: Bafodé Diakité
+          - generic [ref=e991]: Lille OSC
+      - button "Lucas Chevalier Lucas Chevalier Lille OSC" [ref=e992] [cursor=pointer]:
+        - img "Lucas Chevalier" [ref=e993]
+        - generic [ref=e994]:
+          - generic [ref=e995]: Lucas Chevalier
+          - generic [ref=e996]: Lille OSC
+      - button "Ermedin Demirović Ermedin Demirović VfB Stuttgart" [ref=e997] [cursor=pointer]:
+        - img "Ermedin Demirović" [ref=e998]
+        - generic [ref=e999]:
+          - generic [ref=e1000]: Ermedin Demirović
+          - generic [ref=e1001]: VfB Stuttgart
+      - button "Enzo Millot Enzo Millot VfB Stuttgart" [ref=e1002] [cursor=pointer]:
+        - img "Enzo Millot" [ref=e1003]
+        - generic [ref=e1004]:
+          - generic [ref=e1005]: Enzo Millot
+          - generic [ref=e1006]: VfB Stuttgart
+      - button "Deniz Undav Deniz Undav VfB Stuttgart" [ref=e1007] [cursor=pointer]:
+        - img "Deniz Undav" [ref=e1008]
+        - generic [ref=e1009]:
+          - generic [ref=e1010]: Deniz Undav
+          - generic [ref=e1011]: VfB Stuttgart
+      - button "Angelo Stiller Angelo Stiller VfB Stuttgart" [ref=e1012] [cursor=pointer]:
+        - img "Angelo Stiller" [ref=e1013]
+        - generic [ref=e1014]:
+          - generic [ref=e1015]: Angelo Stiller
+          - generic [ref=e1016]: VfB Stuttgart
+      - button "Maximilian Mittelstädt Maximilian Mittelstädt VfB Stuttgart" [ref=e1017] [cursor=pointer]:
+        - img "Maximilian Mittelstädt" [ref=e1018]
+        - generic [ref=e1019]:
+          - generic [ref=e1020]: Maximilian Mittelstädt
+          - generic [ref=e1021]: VfB Stuttgart
+      - button "Alexander Nübel Alexander Nübel VfB Stuttgart" [ref=e1022] [cursor=pointer]:
+        - img "Alexander Nübel" [ref=e1023]
+        - generic [ref=e1024]:
+          - generic [ref=e1025]: Alexander Nübel
+          - generic [ref=e1026]: VfB Stuttgart
+      - button "Viktor Tsygankov Viktor Tsygankov Girona FC" [ref=e1027] [cursor=pointer]:
+        - img "Viktor Tsygankov" [ref=e1028]
+        - generic [ref=e1029]:
+          - generic [ref=e1030]: Viktor Tsygankov
+          - generic [ref=e1031]: Girona FC
+      - button "Yangel Herrera Yangel Herrera Girona FC" [ref=e1032] [cursor=pointer]:
+        - img "Yangel Herrera" [ref=e1033]
+        - generic [ref=e1034]:
+          - generic [ref=e1035]: Yangel Herrera
+          - generic [ref=e1036]: Girona FC
+      - button "Daley Blind Daley Blind Girona FC" [ref=e1037] [cursor=pointer]:
+        - img "Daley Blind" [ref=e1038]
+        - generic [ref=e1039]:
+          - generic [ref=e1040]: Daley Blind
+          - generic [ref=e1041]: Girona FC
+      - button "Miguel Gutiérrez Miguel Gutiérrez Girona FC" [ref=e1042] [cursor=pointer]:
+        - img "Miguel Gutiérrez" [ref=e1043]
+        - generic [ref=e1044]:
+          - generic [ref=e1045]: Miguel Gutiérrez
+          - generic [ref=e1046]: Girona FC
+      - button "Bryan Gil Bryan Gil Girona FC" [ref=e1047] [cursor=pointer]:
+        - img "Bryan Gil" [ref=e1048]
+        - generic [ref=e1049]:
+          - generic [ref=e1050]: Bryan Gil
+          - generic [ref=e1051]: Girona FC
+      - button "Paulo Gazzaniga Paulo Gazzaniga Girona FC" [ref=e1052] [cursor=pointer]:
+        - img "Paulo Gazzaniga" [ref=e1053]
+        - generic [ref=e1054]:
+          - generic [ref=e1055]: Paulo Gazzaniga
+          - generic [ref=e1056]: Girona FC
+      - button "Riccardo Orsolini Riccardo Orsolini Bologna FC" [ref=e1057] [cursor=pointer]:
+        - img "Riccardo Orsolini" [ref=e1058]
+        - generic [ref=e1059]:
+          - generic [ref=e1060]: Riccardo Orsolini
+          - generic [ref=e1061]: Bologna FC
+      - button "Dan Ndoye Dan Ndoye Bologna FC" [ref=e1062] [cursor=pointer]:
+        - img "Dan Ndoye" [ref=e1063]
+        - generic [ref=e1064]:
+          - generic [ref=e1065]: Dan Ndoye
+          - generic [ref=e1066]: Bologna FC
+      - button "Santiago Castro Santiago Castro Bologna FC" [ref=e1067] [cursor=pointer]:
+        - img "Santiago Castro" [ref=e1068]
+        - generic [ref=e1069]:
+          - generic [ref=e1070]: Santiago Castro
+          - generic [ref=e1071]: Bologna FC
+      - button "Remo Freuler Remo Freuler Bologna FC" [ref=e1072] [cursor=pointer]:
+        - img "Remo Freuler" [ref=e1073]
+        - generic [ref=e1074]:
+          - generic [ref=e1075]: Remo Freuler
+          - generic [ref=e1076]: Bologna FC
+      - button "Stefan Posch Stefan Posch Bologna FC" [ref=e1077] [cursor=pointer]:
+        - img "Stefan Posch" [ref=e1078]
+        - generic [ref=e1079]:
+          - generic [ref=e1080]: Stefan Posch
+          - generic [ref=e1081]: Bologna FC
+      - button "Łukasz Skorupski Łukasz Skorupski Bologna FC" [ref=e1082] [cursor=pointer]:
+        - img "Łukasz Skorupski" [ref=e1083]
+        - generic [ref=e1084]:
+          - generic [ref=e1085]: Łukasz Skorupski
+          - generic [ref=e1086]: Bologna FC
+      - button "Ludovic Ajorque Ludovic Ajorque Stade Brestois 29" [ref=e1087] [cursor=pointer]:
+        - img "Ludovic Ajorque" [ref=e1088]
+        - generic [ref=e1089]:
+          - generic [ref=e1090]: Ludovic Ajorque
+          - generic [ref=e1091]: Stade Brestois 29
+      - button "Romain Del Castillo Romain Del Castillo Stade Brestois 29" [ref=e1092] [cursor=pointer]:
+        - img "Romain Del Castillo" [ref=e1093]
+        - generic [ref=e1094]:
+          - generic [ref=e1095]: Romain Del Castillo
+          - generic [ref=e1096]: Stade Brestois 29
+      - button "Pierre Lees-Melou Pierre Lees-Melou Stade Brestois 29" [ref=e1097] [cursor=pointer]:
+        - img "Pierre Lees-Melou" [ref=e1098]
+        - generic [ref=e1099]:
+          - generic [ref=e1100]: Pierre Lees-Melou
+          - generic [ref=e1101]: Stade Brestois 29
+      - button "Mahdi Camara Mahdi Camara Stade Brestois 29" [ref=e1102] [cursor=pointer]:
+        - img "Mahdi Camara" [ref=e1103]
+        - generic [ref=e1104]:
+          - generic [ref=e1105]: Mahdi Camara
+          - generic [ref=e1106]: Stade Brestois 29
+      - button "Kenny Lala Kenny Lala Stade Brestois 29" [ref=e1107] [cursor=pointer]:
+        - img "Kenny Lala" [ref=e1108]
+        - generic [ref=e1109]:
+          - generic [ref=e1110]: Kenny Lala
+          - generic [ref=e1111]: Stade Brestois 29
+      - button "Marco Bizot Marco Bizot Stade Brestois 29" [ref=e1112] [cursor=pointer]:
+        - img "Marco Bizot" [ref=e1113]
+        - generic [ref=e1114]:
+          - generic [ref=e1115]: Marco Bizot
+          - generic [ref=e1116]: Stade Brestois 29
+      - button "Ángel Di María Ángel Di María SL Benfica" [ref=e1117] [cursor=pointer]:
+        - img "Ángel Di María" [ref=e1118]
+        - generic [ref=e1119]:
+          - generic [ref=e1120]: Ángel Di María
+          - generic [ref=e1121]: SL Benfica
+      - button "Kerem Aktürkoğlu Kerem Aktürkoğlu SL Benfica" [ref=e1122] [cursor=pointer]:
+        - img "Kerem Aktürkoğlu" [ref=e1123]
+        - generic [ref=e1124]:
+          - generic [ref=e1125]: Kerem Aktürkoğlu
+          - generic [ref=e1126]: SL Benfica
+      - button "Orkun Kökçü Orkun Kökçü SL Benfica" [ref=e1127] [cursor=pointer]:
+        - img "Orkun Kökçü" [ref=e1128]
+        - generic [ref=e1129]:
+          - generic [ref=e1130]: Orkun Kökçü
+          - generic [ref=e1131]: SL Benfica
+      - button "Vangelis Pavlidis Vangelis Pavlidis SL Benfica" [ref=e1132] [cursor=pointer]:
+        - img "Vangelis Pavlidis" [ref=e1133]
+        - generic [ref=e1134]:
+          - generic [ref=e1135]: Vangelis Pavlidis
+          - generic [ref=e1136]: SL Benfica
+      - button "Nicolás Otamendi Nicolás Otamendi SL Benfica" [ref=e1137] [cursor=pointer]:
+        - img "Nicolás Otamendi" [ref=e1138]
+        - generic [ref=e1139]:
+          - generic [ref=e1140]: Nicolás Otamendi
+          - generic [ref=e1141]: SL Benfica
+      - button "Anatoliy Trubin Anatoliy Trubin SL Benfica" [ref=e1142] [cursor=pointer]:
+        - img "Anatoliy Trubin" [ref=e1143]
+        - generic [ref=e1144]:
+          - generic [ref=e1145]: Anatoliy Trubin
+          - generic [ref=e1146]: SL Benfica
+      - button "Luuk de Jong Luuk de Jong PSV Eindhoven" [ref=e1147] [cursor=pointer]:
+        - img "Luuk de Jong" [ref=e1148]
+        - generic [ref=e1149]:
+          - generic [ref=e1150]: Luuk de Jong
+          - generic [ref=e1151]: PSV Eindhoven
+      - button "Joey Veerman Joey Veerman PSV Eindhoven" [ref=e1152] [cursor=pointer]:
+        - img "Joey Veerman" [ref=e1153]
+        - generic [ref=e1154]:
+          - generic [ref=e1155]: Joey Veerman
+          - generic [ref=e1156]: PSV Eindhoven
+      - button "Johan Bakayoko Johan Bakayoko PSV Eindhoven" [ref=e1157] [cursor=pointer]:
+        - img "Johan Bakayoko" [ref=e1158]
+        - generic [ref=e1159]:
+          - generic [ref=e1160]: Johan Bakayoko
+          - generic [ref=e1161]: PSV Eindhoven
+      - button "Malik Tillman Malik Tillman PSV Eindhoven" [ref=e1162] [cursor=pointer]:
+        - img "Malik Tillman" [ref=e1163]
+        - generic [ref=e1164]:
+          - generic [ref=e1165]: Malik Tillman
+          - generic [ref=e1166]: PSV Eindhoven
+      - button "Olivier Boscagli Olivier Boscagli PSV Eindhoven" [ref=e1167] [cursor=pointer]:
+        - img "Olivier Boscagli" [ref=e1168]
+        - generic [ref=e1169]:
+          - generic [ref=e1170]: Olivier Boscagli
+          - generic [ref=e1171]: PSV Eindhoven
+      - button "Walter Benítez Walter Benítez PSV Eindhoven" [ref=e1172] [cursor=pointer]:
+        - img "Walter Benítez" [ref=e1173]
+        - generic [ref=e1174]:
+          - generic [ref=e1175]: Walter Benítez
+          - generic [ref=e1176]: PSV Eindhoven
+      - button "Santiago Gimenez Santiago Gimenez Feyenoord" [ref=e1177] [cursor=pointer]:
+        - img "Santiago Gimenez" [ref=e1178]
+        - generic [ref=e1179]:
+          - generic [ref=e1180]: Santiago Gimenez
+          - generic [ref=e1181]: Feyenoord
+      - button "Quinten Timber Quinten Timber Feyenoord" [ref=e1182] [cursor=pointer]:
+        - img "Quinten Timber" [ref=e1183]
+        - generic [ref=e1184]:
+          - generic [ref=e1185]: Quinten Timber
+          - generic [ref=e1186]: Feyenoord
+      - button "Igor Paixão Igor Paixão Feyenoord" [ref=e1187] [cursor=pointer]:
+        - img "Igor Paixão" [ref=e1188]
+        - generic [ref=e1189]:
+          - generic [ref=e1190]: Igor Paixão
+          - generic [ref=e1191]: Feyenoord
+      - button "Hwang In-beom Hwang In-beom Feyenoord" [ref=e1192] [cursor=pointer]:
+        - img "Hwang In-beom" [ref=e1193]
+        - generic [ref=e1194]:
+          - generic [ref=e1195]: Hwang In-beom
+          - generic [ref=e1196]: Feyenoord
+      - button "Dávid Hancko Dávid Hancko Feyenoord" [ref=e1197] [cursor=pointer]:
+        - img "Dávid Hancko" [ref=e1198]
+        - generic [ref=e1199]:
+          - generic [ref=e1200]: Dávid Hancko
+          - generic [ref=e1201]: Feyenoord
+      - button "Timon Wellenreuther Timon Wellenreuther Feyenoord" [ref=e1202] [cursor=pointer]:
+        - img "Timon Wellenreuther" [ref=e1203]
+        - generic [ref=e1204]:
+          - generic [ref=e1205]: Timon Wellenreuther
+          - generic [ref=e1206]: Feyenoord
+      - button "Hans Vanaken Hans Vanaken Club Brugge" [ref=e1207] [cursor=pointer]:
+        - img "Hans Vanaken" [ref=e1208]
+        - generic [ref=e1209]:
+          - generic [ref=e1210]: Hans Vanaken
+          - generic [ref=e1211]: Club Brugge
+      - button "Christos Tzolis Christos Tzolis Club Brugge" [ref=e1212] [cursor=pointer]:
+        - img "Christos Tzolis" [ref=e1213]
+        - generic [ref=e1214]:
+          - generic [ref=e1215]: Christos Tzolis
+          - generic [ref=e1216]: Club Brugge
+      - button "Andreas Skov Olsen Andreas Skov Olsen Club Brugge" [ref=e1217] [cursor=pointer]:
+        - img "Andreas Skov Olsen" [ref=e1218]
+        - generic [ref=e1219]:
+          - generic [ref=e1220]: Andreas Skov Olsen
+          - generic [ref=e1221]: Club Brugge
+      - button "Maxim De Cuyper Maxim De Cuyper Club Brugge" [ref=e1222] [cursor=pointer]:
+        - img "Maxim De Cuyper" [ref=e1223]
+        - generic [ref=e1224]:
+          - generic [ref=e1225]: Maxim De Cuyper
+          - generic [ref=e1226]: Club Brugge
+      - button "Raphael Onyedika Raphael Onyedika Club Brugge" [ref=e1227] [cursor=pointer]:
+        - img "Raphael Onyedika" [ref=e1228]
+        - generic [ref=e1229]:
+          - generic [ref=e1230]: Raphael Onyedika
+          - generic [ref=e1231]: Club Brugge
+      - button "Simon Mignolet Simon Mignolet Club Brugge" [ref=e1232] [cursor=pointer]:
+        - img "Simon Mignolet" [ref=e1233]
+        - generic [ref=e1234]:
+          - generic [ref=e1235]: Simon Mignolet
+          - generic [ref=e1236]: Club Brugge
+      - button "Callum McGregor Callum McGregor Celtic FC" [ref=e1237] [cursor=pointer]:
+        - img "Callum McGregor" [ref=e1238]
+        - generic [ref=e1239]:
+          - generic [ref=e1240]: Callum McGregor
+          - generic [ref=e1241]: Celtic FC
+      - button "Kyogo Furuhashi Kyogo Furuhashi Celtic FC" [ref=e1242] [cursor=pointer]:
+        - img "Kyogo Furuhashi" [ref=e1243]
+        - generic [ref=e1244]:
+          - generic [ref=e1245]: Kyogo Furuhashi
+          - generic [ref=e1246]: Celtic FC
+      - button "Reo Hatate Reo Hatate Celtic FC" [ref=e1247] [cursor=pointer]:
+        - img "Reo Hatate" [ref=e1248]
+        - generic [ref=e1249]:
+          - generic [ref=e1250]: Reo Hatate
+          - generic [ref=e1251]: Celtic FC
+      - button "Nicolas Kühn Nicolas Kühn Celtic FC" [ref=e1252] [cursor=pointer]:
+        - img "Nicolas Kühn" [ref=e1253]
+        - generic [ref=e1254]:
+          - generic [ref=e1255]: Nicolas Kühn
+          - generic [ref=e1256]: Celtic FC
+      - button "Cameron Carter-Vickers Cameron Carter-Vickers Celtic FC" [ref=e1257] [cursor=pointer]:
+        - img "Cameron Carter-Vickers" [ref=e1258]
+        - generic [ref=e1259]:
+          - generic [ref=e1260]: Cameron Carter-Vickers
+          - generic [ref=e1261]: Celtic FC
+      - button "Kasper Schmeichel Kasper Schmeichel Celtic FC" [ref=e1262] [cursor=pointer]:
+        - img "Kasper Schmeichel" [ref=e1263]
+        - generic [ref=e1264]:
+          - generic [ref=e1265]: Kasper Schmeichel
+          - generic [ref=e1266]: Celtic FC
+      - button "Georgiy Sudakov Georgiy Sudakov FC Shakhtar Donetsk" [ref=e1267] [cursor=pointer]:
+        - img "Georgiy Sudakov" [ref=e1268]
+        - generic [ref=e1269]:
+          - generic [ref=e1270]: Georgiy Sudakov
+          - generic [ref=e1271]: FC Shakhtar Donetsk
+      - button "Artem Bondarenko Artem Bondarenko FC Shakhtar Donetsk" [ref=e1272] [cursor=pointer]:
+        - img "Artem Bondarenko" [ref=e1273]
+        - generic [ref=e1274]:
+          - generic [ref=e1275]: Artem Bondarenko
+          - generic [ref=e1276]: FC Shakhtar Donetsk
+      - button "Mykola Matviyenko Mykola Matviyenko FC Shakhtar Donetsk" [ref=e1277] [cursor=pointer]:
+        - img "Mykola Matviyenko" [ref=e1278]
+        - generic [ref=e1279]:
+          - generic [ref=e1280]: Mykola Matviyenko
+          - generic [ref=e1281]: FC Shakhtar Donetsk
+      - button "Lassina Traoré Lassina Traoré FC Shakhtar Donetsk" [ref=e1282] [cursor=pointer]:
+        - img "Lassina Traoré" [ref=e1283]
+        - generic [ref=e1284]:
+          - generic [ref=e1285]: Lassina Traoré
+          - generic [ref=e1286]: FC Shakhtar Donetsk
+      - button "Dmytro Riznyk Dmytro Riznyk FC Shakhtar Donetsk" [ref=e1287] [cursor=pointer]:
+        - img "Dmytro Riznyk" [ref=e1288]
+        - generic [ref=e1289]:
+          - generic [ref=e1290]: Dmytro Riznyk
+          - generic [ref=e1291]: FC Shakhtar Donetsk
+      - button "Mika Biereth Mika Biereth SK Sturm Graz" [ref=e1292] [cursor=pointer]:
+        - img "Mika Biereth" [ref=e1293]
+        - generic [ref=e1294]:
+          - generic [ref=e1295]: Mika Biereth
+          - generic [ref=e1296]: SK Sturm Graz
+      - button "Otar Kiteishvili Otar Kiteishvili SK Sturm Graz" [ref=e1297] [cursor=pointer]:
+        - img "Otar Kiteishvili" [ref=e1298]
+        - generic [ref=e1299]:
+          - generic [ref=e1300]: Otar Kiteishvili
+          - generic [ref=e1301]: SK Sturm Graz
+      - button "Jon Gorenc Stanković Jon Gorenc Stanković SK Sturm Graz" [ref=e1302] [cursor=pointer]:
+        - img "Jon Gorenc Stanković" [ref=e1303]
+        - generic [ref=e1304]:
+          - generic [ref=e1305]: Jon Gorenc Stanković
+          - generic [ref=e1306]: SK Sturm Graz
+      - button "William Bøving William Bøving SK Sturm Graz" [ref=e1307] [cursor=pointer]:
+        - img "William Bøving" [ref=e1308]
+        - generic [ref=e1309]:
+          - generic [ref=e1310]: William Bøving
+          - generic [ref=e1311]: SK Sturm Graz
+      - button "Kjell Scherpen Kjell Scherpen SK Sturm Graz" [ref=e1312] [cursor=pointer]:
+        - img "Kjell Scherpen" [ref=e1313]
+        - generic [ref=e1314]:
+          - generic [ref=e1315]: Kjell Scherpen
+          - generic [ref=e1316]: SK Sturm Graz
+      - button "Oscar Gloukh Oscar Gloukh Red Bull Salzburg" [ref=e1317] [cursor=pointer]:
+        - img "Oscar Gloukh" [ref=e1318]
+        - generic [ref=e1319]:
+          - generic [ref=e1320]: Oscar Gloukh
+          - generic [ref=e1321]: Red Bull Salzburg
+      - button "Karim Konaté Karim Konaté Red Bull Salzburg" [ref=e1322] [cursor=pointer]:
+        - img "Karim Konaté" [ref=e1323]
+        - generic [ref=e1324]:
+          - generic [ref=e1325]: Karim Konaté
+          - generic [ref=e1326]: Red Bull Salzburg
+      - button "Amar Dedić Amar Dedić Red Bull Salzburg" [ref=e1327] [cursor=pointer]:
+        - img "Amar Dedić" [ref=e1328]
+        - generic [ref=e1329]:
+          - generic [ref=e1330]: Amar Dedić
+          - generic [ref=e1331]: Red Bull Salzburg
+      - button "Maurits Kjærgaard Maurits Kjærgaard Red Bull Salzburg" [ref=e1332] [cursor=pointer]:
+        - img "Maurits Kjærgaard" [ref=e1333]
+        - generic [ref=e1334]:
+          - generic [ref=e1335]: Maurits Kjærgaard
+          - generic [ref=e1336]: Red Bull Salzburg
+      - button "Janis Blaswich Janis Blaswich Red Bull Salzburg" [ref=e1337] [cursor=pointer]:
+        - img "Janis Blaswich" [ref=e1338]
+        - generic [ref=e1339]:
+          - generic [ref=e1340]: Janis Blaswich
+          - generic [ref=e1341]: Red Bull Salzburg
+      - button "Silvère Ganvoula Silvère Ganvoula BSC Young Boys" [ref=e1342] [cursor=pointer]:
+        - img "Silvère Ganvoula" [ref=e1343]
+        - generic [ref=e1344]:
+          - generic [ref=e1345]: Silvère Ganvoula
+          - generic [ref=e1346]: BSC Young Boys
+      - button "Filip Ugrinic Filip Ugrinic BSC Young Boys" [ref=e1347] [cursor=pointer]:
+        - img "Filip Ugrinic" [ref=e1348]
+        - generic [ref=e1349]:
+          - generic [ref=e1350]: Filip Ugrinic
+          - generic [ref=e1351]: BSC Young Boys
+      - button "Meschack Elia Meschack Elia BSC Young Boys" [ref=e1352] [cursor=pointer]:
+        - img "Meschack Elia" [ref=e1353]
+        - generic [ref=e1354]:
+          - generic [ref=e1355]: Meschack Elia
+          - generic [ref=e1356]: BSC Young Boys
+      - button "Joël Monteiro Joël Monteiro BSC Young Boys" [ref=e1357] [cursor=pointer]:
+        - img "Joël Monteiro" [ref=e1358]
+        - generic [ref=e1359]:
+          - generic [ref=e1360]: Joël Monteiro
+          - generic [ref=e1361]: BSC Young Boys
+      - button "David von Ballmoos David von Ballmoos BSC Young Boys" [ref=e1362] [cursor=pointer]:
+        - img "David von Ballmoos" [ref=e1363]
+        - generic [ref=e1364]:
+          - generic [ref=e1365]: David von Ballmoos
+          - generic [ref=e1366]: BSC Young Boys
+      - button "Lukáš Haraslín Lukáš Haraslín Sparta Praha" [ref=e1367] [cursor=pointer]:
+        - img "Lukáš Haraslín" [ref=e1368]
+        - generic [ref=e1369]:
+          - generic [ref=e1370]: Lukáš Haraslín
+          - generic [ref=e1371]: Sparta Praha
+      - button "Veljko Birmančević Veljko Birmančević Sparta Praha" [ref=e1372] [cursor=pointer]:
+        - img "Veljko Birmančević" [ref=e1373]
+        - generic [ref=e1374]:
+          - generic [ref=e1375]: Veljko Birmančević
+          - generic [ref=e1376]: Sparta Praha
+      - button "Victor Olatunji Victor Olatunji Sparta Praha" [ref=e1377] [cursor=pointer]:
+        - img "Victor Olatunji" [ref=e1378]
+        - generic [ref=e1379]:
+          - generic [ref=e1380]: Victor Olatunji
+          - generic [ref=e1381]: Sparta Praha
+      - button "Kaan Kairinen Kaan Kairinen Sparta Praha" [ref=e1382] [cursor=pointer]:
+        - img "Kaan Kairinen" [ref=e1383]
+        - generic [ref=e1384]:
+          - generic [ref=e1385]: Kaan Kairinen
+          - generic [ref=e1386]: Sparta Praha
+      - button "Peter Vindahl Jensen Peter Vindahl Jensen Sparta Praha" [ref=e1387] [cursor=pointer]:
+        - img "Peter Vindahl Jensen" [ref=e1388]
+        - generic [ref=e1389]:
+          - generic [ref=e1390]: Peter Vindahl Jensen
+          - generic [ref=e1391]: Sparta Praha
+      - button "Martin Baturina Martin Baturina GNK Dinamo Zagreb" [ref=e1392] [cursor=pointer]:
+        - img "Martin Baturina" [ref=e1393]
+        - generic [ref=e1394]:
+          - generic [ref=e1395]: Martin Baturina
+          - generic [ref=e1396]: GNK Dinamo Zagreb
+      - button "Bruno Petković Bruno Petković GNK Dinamo Zagreb" [ref=e1397] [cursor=pointer]:
+        - img "Bruno Petković" [ref=e1398]
+        - generic [ref=e1399]:
+          - generic [ref=e1400]: Bruno Petković
+          - generic [ref=e1401]: GNK Dinamo Zagreb
+      - button "Petar Sučić Petar Sučić GNK Dinamo Zagreb" [ref=e1402] [cursor=pointer]:
+        - img "Petar Sučić" [ref=e1403]
+        - generic [ref=e1404]:
+          - generic [ref=e1405]: Petar Sučić
+          - generic [ref=e1406]: GNK Dinamo Zagreb
+      - button "Arijan Ademi Arijan Ademi GNK Dinamo Zagreb" [ref=e1407] [cursor=pointer]:
+        - img "Arijan Ademi" [ref=e1408]
+        - generic [ref=e1409]:
+          - generic [ref=e1410]: Arijan Ademi
+          - generic [ref=e1411]: GNK Dinamo Zagreb
+      - button "Ivan Nevistić Ivan Nevistić GNK Dinamo Zagreb" [ref=e1412] [cursor=pointer]:
+        - img "Ivan Nevistić" [ref=e1413]
+        - generic [ref=e1414]:
+          - generic [ref=e1415]: Ivan Nevistić
+          - generic [ref=e1416]: GNK Dinamo Zagreb
+      - button "Cherif Ndiaye Cherif Ndiaye Red Star Belgrade" [ref=e1417] [cursor=pointer]:
+        - img "Cherif Ndiaye" [ref=e1418]
+        - generic [ref=e1419]:
+          - generic [ref=e1420]: Cherif Ndiaye
+          - generic [ref=e1421]: Red Star Belgrade
+      - button "Silas Katompa Mvumpa Silas Katompa Mvumpa Red Star Belgrade" [ref=e1422] [cursor=pointer]:
+        - img "Silas Katompa Mvumpa" [ref=e1423]
+        - generic [ref=e1424]:
+          - generic [ref=e1425]: Silas Katompa Mvumpa
+          - generic [ref=e1426]: Red Star Belgrade
+      - button "Rade Krunić Rade Krunić Red Star Belgrade" [ref=e1427] [cursor=pointer]:
+        - img "Rade Krunić" [ref=e1428]
+        - generic [ref=e1429]:
+          - generic [ref=e1430]: Rade Krunić
+          - generic [ref=e1431]: Red Star Belgrade
+      - button "Mirko Ivanić Mirko Ivanić Red Star Belgrade" [ref=e1432] [cursor=pointer]:
+        - img "Mirko Ivanić" [ref=e1433]
+        - generic [ref=e1434]:
+          - generic [ref=e1435]: Mirko Ivanić
+          - generic [ref=e1436]: Red Star Belgrade
+      - button "Omri Glazer Omri Glazer Red Star Belgrade" [ref=e1437] [cursor=pointer]:
+        - img "Omri Glazer" [ref=e1438]
+        - generic [ref=e1439]:
+          - generic [ref=e1440]: Omri Glazer
+          - generic [ref=e1441]: Red Star Belgrade
+      - button "Tigran Barseghyan Tigran Barseghyan Slovan Bratislava" [ref=e1442] [cursor=pointer]:
+        - img "Tigran Barseghyan" [ref=e1443]
+        - generic [ref=e1444]:
+          - generic [ref=e1445]: Tigran Barseghyan
+          - generic [ref=e1446]: Slovan Bratislava
+      - button "David Strelec David Strelec Slovan Bratislava" [ref=e1447] [cursor=pointer]:
+        - img "David Strelec" [ref=e1448]
+        - generic [ref=e1449]:
+          - generic [ref=e1450]: David Strelec
+          - generic [ref=e1451]: Slovan Bratislava
+      - button "Vladimír Weiss Vladimír Weiss Slovan Bratislava" [ref=e1452] [cursor=pointer]:
+        - img "Vladimír Weiss" [ref=e1453]
+        - generic [ref=e1454]:
+          - generic [ref=e1455]: Vladimír Weiss
+          - generic [ref=e1456]: Slovan Bratislava
+      - button "Juraj Kucka Juraj Kucka Slovan Bratislava" [ref=e1457] [cursor=pointer]:
+        - img "Juraj Kucka" [ref=e1458]
+        - generic [ref=e1459]:
+          - generic [ref=e1460]: Juraj Kucka
+          - generic [ref=e1461]: Slovan Bratislava
+      - button "Dominik Takáč Dominik Takáč Slovan Bratislava" [ref=e1462] [cursor=pointer]:
+        - img "Dominik Takáč" [ref=e1463]
+        - generic [ref=e1464]:
+          - generic [ref=e1465]: Dominik Takáč
+          - generic [ref=e1466]: Slovan Bratislava
+      - button "Fikayo Tomori Fikayo Tomori AC Milan" [ref=e1467] [cursor=pointer]:
+        - img "Fikayo Tomori" [ref=e1468]
+        - generic [ref=e1469]:
+          - generic [ref=e1470]: Fikayo Tomori
+          - generic [ref=e1471]: AC Milan
+      - button "Ruben Loftus-Cheek Ruben Loftus-Cheek AC Milan" [ref=e1472] [cursor=pointer]:
+        - img "Ruben Loftus-Cheek" [ref=e1473]
+        - generic [ref=e1474]:
+          - generic [ref=e1475]: Ruben Loftus-Cheek
+          - generic [ref=e1476]: AC Milan
+      - button "Youssouf Fofana Youssouf Fofana AC Milan" [ref=e1477] [cursor=pointer]:
+        - img "Youssouf Fofana" [ref=e1478]
+        - generic [ref=e1479]:
+          - generic [ref=e1480]: Youssouf Fofana
+          - generic [ref=e1481]: AC Milan
+      - button "Samuel Chukwueze Samuel Chukwueze AC Milan" [ref=e1482] [cursor=pointer]:
+        - img "Samuel Chukwueze" [ref=e1483]
+        - generic [ref=e1484]:
+          - generic [ref=e1485]: Samuel Chukwueze
+          - generic [ref=e1486]: AC Milan
+      - button "Tammy Abraham Tammy Abraham AC Milan" [ref=e1487] [cursor=pointer]:
+        - img "Tammy Abraham" [ref=e1488]
+        - generic [ref=e1489]:
+          - generic [ref=e1490]: Tammy Abraham
+          - generic [ref=e1491]: AC Milan
+      - button "Emerson Royal Emerson Royal AC Milan" [ref=e1492] [cursor=pointer]:
+        - img "Emerson Royal" [ref=e1493]
+        - generic [ref=e1494]:
+          - generic [ref=e1495]: Emerson Royal
+          - generic [ref=e1496]: AC Milan
+      - button "Malick Thiaw Malick Thiaw AC Milan" [ref=e1497] [cursor=pointer]:
+        - img "Malick Thiaw" [ref=e1498]
+        - generic [ref=e1499]:
+          - generic [ref=e1500]: Malick Thiaw
+          - generic [ref=e1501]: AC Milan
+      - button "Strahinja Pavlović Strahinja Pavlović AC Milan" [ref=e1502] [cursor=pointer]:
+        - img "Strahinja Pavlović" [ref=e1503]
+        - generic [ref=e1504]:
+          - generic [ref=e1505]: Strahinja Pavlović
+          - generic [ref=e1506]: AC Milan
+      - button "Matteo Gabbia Matteo Gabbia AC Milan" [ref=e1507] [cursor=pointer]:
+        - img "Matteo Gabbia" [ref=e1508]
+        - generic [ref=e1509]:
+          - generic [ref=e1510]: Matteo Gabbia
+          - generic [ref=e1511]: AC Milan
+      - button "Davide Calabria Davide Calabria AC Milan" [ref=e1512] [cursor=pointer]:
+        - img "Davide Calabria" [ref=e1513]
+        - generic [ref=e1514]:
+          - generic [ref=e1515]: Davide Calabria
+          - generic [ref=e1516]: AC Milan
+      - button "Yunus Musah Yunus Musah AC Milan" [ref=e1517] [cursor=pointer]:
+        - img "Yunus Musah" [ref=e1518]
+        - generic [ref=e1519]:
+          - generic [ref=e1520]: Yunus Musah
+          - generic [ref=e1521]: AC Milan
+      - button "Noah Okafor Noah Okafor AC Milan" [ref=e1522] [cursor=pointer]:
+        - img "Noah Okafor" [ref=e1523]
+        - generic [ref=e1524]:
+          - generic [ref=e1525]: Noah Okafor
+          - generic [ref=e1526]: AC Milan
+      - button "Federico Dimarco Federico Dimarco Inter Milan" [ref=e1527] [cursor=pointer]:
+        - img "Federico Dimarco" [ref=e1528]
+        - generic [ref=e1529]:
+          - generic [ref=e1530]: Federico Dimarco
+          - generic [ref=e1531]: Inter Milan
+      - button "Benjamin Pavard Benjamin Pavard Inter Milan" [ref=e1532] [cursor=pointer]:
+        - img "Benjamin Pavard" [ref=e1533]
+        - generic [ref=e1534]:
+          - generic [ref=e1535]: Benjamin Pavard
+          - generic [ref=e1536]: Inter Milan
+      - button "Denzel Dumfries Denzel Dumfries Inter Milan" [ref=e1537] [cursor=pointer]:
+        - img "Denzel Dumfries" [ref=e1538]
+        - generic [ref=e1539]:
+          - generic [ref=e1540]: Denzel Dumfries
+          - generic [ref=e1541]: Inter Milan
+      - button "Henrikh Mkhitaryan Henrikh Mkhitaryan Inter Milan" [ref=e1542] [cursor=pointer]:
+        - img "Henrikh Mkhitaryan" [ref=e1543]
+        - generic [ref=e1544]:
+          - generic [ref=e1545]: Henrikh Mkhitaryan
+          - generic [ref=e1546]: Inter Milan
+      - button "Piotr Zieliński Piotr Zieliński Inter Milan" [ref=e1547] [cursor=pointer]:
+        - img "Piotr Zieliński" [ref=e1548]
+        - generic [ref=e1549]:
+          - generic [ref=e1550]: Piotr Zieliński
+          - generic [ref=e1551]: Inter Milan
+      - button "Mehdi Taremi Mehdi Taremi Inter Milan" [ref=e1552] [cursor=pointer]:
+        - img "Mehdi Taremi" [ref=e1553]
+        - generic [ref=e1554]:
+          - generic [ref=e1555]: Mehdi Taremi
+          - generic [ref=e1556]: Inter Milan
+      - button "Davide Frattesi Davide Frattesi Inter Milan" [ref=e1557] [cursor=pointer]:
+        - img "Davide Frattesi" [ref=e1558]
+        - generic [ref=e1559]:
+          - generic [ref=e1560]: Davide Frattesi
+          - generic [ref=e1561]: Inter Milan
+      - button "Francesco Acerbi Francesco Acerbi Inter Milan" [ref=e1562] [cursor=pointer]:
+        - img "Francesco Acerbi" [ref=e1563]
+        - generic [ref=e1564]:
+          - generic [ref=e1565]: Francesco Acerbi
+          - generic [ref=e1566]: Inter Milan
+      - button "Yann Aurel Bisseck Yann Aurel Bisseck Inter Milan" [ref=e1567] [cursor=pointer]:
+        - img "Yann Aurel Bisseck" [ref=e1568]
+        - generic [ref=e1569]:
+          - generic [ref=e1570]: Yann Aurel Bisseck
+          - generic [ref=e1571]: Inter Milan
+      - button "Stefan de Vrij Stefan de Vrij Inter Milan" [ref=e1572] [cursor=pointer]:
+        - img "Stefan de Vrij" [ref=e1573]
+        - generic [ref=e1574]:
+          - generic [ref=e1575]: Stefan de Vrij
+          - generic [ref=e1576]: Inter Milan
+      - button "Matteo Darmian Matteo Darmian Inter Milan" [ref=e1577] [cursor=pointer]:
+        - img "Matteo Darmian" [ref=e1578]
+        - generic [ref=e1579]:
+          - generic [ref=e1580]: Matteo Darmian
+          - generic [ref=e1581]: Inter Milan
+      - button "Lionel Messi Lionel Messi Inter Miami" [ref=e1582] [cursor=pointer]:
+        - img "Lionel Messi" [ref=e1583]
+        - generic [ref=e1584]:
+          - generic [ref=e1585]: Lionel Messi
+          - generic [ref=e1586]: Inter Miami

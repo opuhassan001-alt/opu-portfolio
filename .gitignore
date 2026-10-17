@@ -40,3 +40,11 @@ next-env.d.ts
 
 # MCP and local tool config (contains personal access tokens)
 .mcp.json
+
+# Playwright MCP session files
+/.playwright-mcp/
+
+
+# Nested git repos (independent projects)
+/agent-sentinel-mcp/
+
