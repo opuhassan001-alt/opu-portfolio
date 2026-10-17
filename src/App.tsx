@@ -99,8 +99,10 @@ export const App: React.FC = () => {
   // Handle timeline action selection from Match Center
   const handleSelectMatchAction = useCallback((action: MatchAction) => {
     // Check if player exists in registry, else fallback to match player or active player
-    const matchedPlayer = getPlayerById(action.playerId) || selectedPlayer;
-    setSelectedPlayer(matchedPlayer);
+    const matchedPlayer = getPlayerById(action.playerId);
+    if (matchedPlayer) {
+      setSelectedPlayer(matchedPlayer);
+    }
 
     // Convert MatchAction to PassEvent compatible trajectory
     const passCompatible: PassEvent = {
@@ -122,7 +124,34 @@ export const App: React.FC = () => {
     setSelectedPass(passCompatible);
     // Switch to 3D Arena for live trajectory playback
     setViewMode('3d');
-  }, [selectedPlayer]);
+  }, []);
+
+  // Dual-team filter and action navigation for 3D Arena
+  const [teamFilter, setTeamFilter] = useState<'all' | 'home' | 'away'>('all');
+
+  const filteredMatchActions = useMemo(() => {
+    if (teamFilter === 'all') return activeFixture.events;
+    return activeFixture.events.filter((e) => e.teamType === teamFilter);
+  }, [activeFixture.events, teamFilter]);
+
+  const currentActionIndex = useMemo(() => {
+    if (!selectedPass) return 0;
+    const idx = filteredMatchActions.findIndex((a) => a.id === selectedPass.id);
+    return idx >= 0 ? idx : 0;
+  }, [filteredMatchActions, selectedPass]);
+
+  const handlePrevAction = useCallback(() => {
+    if (filteredMatchActions.length === 0) return;
+    const newIdx = (currentActionIndex - 1 + filteredMatchActions.length) % filteredMatchActions.length;
+    handleSelectMatchAction(filteredMatchActions[newIdx]);
+  }, [filteredMatchActions, currentActionIndex, handleSelectMatchAction]);
+
+  const handleNextAction = useCallback(() => {
+    if (filteredMatchActions.length === 0) return;
+    const newIdx = (currentActionIndex + 1) % filteredMatchActions.length;
+    handleSelectMatchAction(filteredMatchActions[newIdx]);
+  }, [filteredMatchActions, currentActionIndex, handleSelectMatchAction]);
+
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-sky-500/30 selection:text-white">
@@ -210,8 +239,16 @@ export const App: React.FC = () => {
               <StadiumArena
                 selectedPlayer={selectedPlayer}
                 selectedPass={selectedPass || undefined}
-                passes={selectedPlayer.passes}
+                passes={filteredMatchActions.length > 0 ? filteredMatchActions : selectedPlayer.passes}
                 onPassSelect={handleSelectPass}
+                onPrevAction={handlePrevAction}
+                onNextAction={handleNextAction}
+                actionIndex={currentActionIndex}
+                totalActions={filteredMatchActions.length}
+                selectedTeamFilter={teamFilter}
+                onTeamFilterChange={setTeamFilter}
+                homeTeamName={activeFixture.homeTeam.shortName}
+                awayTeamName={activeFixture.awayTeam.shortName}
               />
             </div>
           )}

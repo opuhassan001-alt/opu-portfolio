@@ -12,7 +12,20 @@ resume**, not just a task name.
 
 ## Done
 
-- `#68` Exclusively align application with 2026–27 UEFA Champions League season (MD1–MD3 matches up to 17 Oct 2026), 36-team single league table, verified squad rosters, SofaScore/FotMob formation presentation, and player bio identity form:
+- `#69` Wire 3D Stadium Arena dual-team match actions, action stepper HUD, team filter, camera presets, and real-time playback:
+  - **Dual-Team Match Action Synchronization (`src/App.tsx`)**:
+    - Wired active fixture actions into `<StadiumArena passes={filteredMatchActions} />` with support for dual-team filtering (`All Teams`, `Home Team`, `Away Team`) and action stepping (`◀ 1 / 16 ▶`).
+    - Synchronized `handleSelectMatchAction` to load any match event (goals, key passes, direct free kicks, crosses) directly into the 3D Arena with authentic aerodynamic Magnus trajectory curvature, comet trail ribbons, and 4-man defensive wall physics.
+    - Synchronized player identity cards dynamically upon cycling actions in 3D (e.g. stepping to De Bruyne's laser pass displays Kevin De Bruyne's verified headshot and metrics).
+  - **3D Stadium Arena WebGL Features (`StadiumArena.tsx`)**:
+    - 4 broadcast camera presets (`📺 TV Broadcast`, `🚁 Sky Drone`, `🎯 Shooter POV`, `🥅 Net Cam`) with smooth transitions.
+    - Replay speed controls (`0.25x Super Slow-Mo`, `0.5x`, `1.0x Real-Time`) and Play/Pause/Restart.
+    - Real-time telemetry HUD displaying Launch Velocity (km/h), Distance (m), Apex Height (m), Wall Clearance (+m), and Flight Time (s).
+  - **Comprehensive Verification**:
+    - 100/100 automated vitest tests passing across all 15 test suites (`npm test -- --run`).
+    - Clean Vite production build compiled with 0 errors (`tsc && vite build`).
+    - Verified live in browser with Playwright: 3D arena playback, action stepping, team filters, camera switching, and dossier 35+ metrics form. (2026-10-17)
+
   - **Exclusively 2026–27 UEFA Champions League Season Matches (`src/data/fixturesData.ts` & `src/App.tsx`)**:
     - Purged legacy 2024–25 dates and standardized all 10 blockbuster fixtures to September & October 2026 (the official 2026/27 UCL season up to 17 Oct 2026):
       - `ucl-psg-mci`: Paris Saint-Germain 4 - 2 Manchester City (`2026-10-15`, Parc des Princes, 4-3-3 vs 4-2-3-1)
