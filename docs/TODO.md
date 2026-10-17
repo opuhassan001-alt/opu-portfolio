@@ -12,6 +12,38 @@ resume**, not just a task name.
 
 ## Done
 
+- `#68` Exclusively align application with 2026–27 UEFA Champions League season (MD1–MD3 matches up to 17 Oct 2026), 36-team single league table, verified squad rosters, SofaScore/FotMob formation presentation, and player bio identity form:
+  - **Exclusively 2026–27 UEFA Champions League Season Matches (`src/data/fixturesData.ts` & `src/App.tsx`)**:
+    - Purged legacy 2024–25 dates and standardized all 10 blockbuster fixtures to September & October 2026 (the official 2026/27 UCL season up to 17 Oct 2026):
+      - `ucl-psg-mci`: Paris Saint-Germain 4 - 2 Manchester City (`2026-10-15`, Parc des Princes, 4-3-3 vs 4-2-3-1)
+      - `ucl-rma-acm`: Real Madrid 1 - 3 AC Milan (`2026-10-15`, Santiago Bernabéu, 4-3-3 vs 4-2-3-1)
+      - `ucl-int-ars`: Inter Milan 1 - 0 Arsenal (`2026-10-14`, San Siro, 3-5-2 vs 4-3-3)
+      - `ucl-bar-bay`: FC Barcelona 4 - 1 Bayern Munich (`2026-10-14`, Estadi Olímpic Lluís Companys, 4-2-3-1 vs 4-2-3-1)
+      - `ucl-rma-bvb`: Real Madrid 5 - 2 Borussia Dortmund (`2026-10-14`, Santiago Bernabéu, 4-3-3 vs 4-2-3-1)
+      - `ucl-ars-psg`: Arsenal 2 - 0 Paris Saint-Germain (`2026-09-30`, Emirates Stadium, 4-3-3 vs 4-3-3)
+      - `ucl-rma-rom`: AS Roma 1 - 3 Real Madrid (`2026-10-14`, Stadio Olimpico, 3-4-2-1 vs 4-3-3)
+      - `ucl-mci-spa`: Manchester City 4 - 1 Sparta Praha (`2026-10-14`, Etihad Stadium, 4-1-4-1 vs 3-4-3)
+      - `ucl-ars-sha`: Arsenal FC 2 - 0 Shakhtar Donetsk (`2026-10-14`, Emirates Stadium, 4-3-3 vs 4-1-4-1)
+      - `ucl-rbl-liv`: RB Leipzig 0 - 1 Liverpool FC (`2026-10-15`, Red Bull Arena, 4-2-2-2 vs 4-2-3-1)
+    - Set default active fixture to `DUAL_TEAM_FIXTURES[0]` (`ucl-psg-mci`).
+  - **Official 36-Team UEFA Champions League 2026/27 Single League Phase Standings Table (`src/data/standingsData.ts` & `LeagueStandingsHub.tsx`)**:
+    - Added the complete 36-club official UEFA Champions League table (Ranks 1 to 36) at index 0 of `TOP_10_LEAGUES_STANDINGS` with official badges, P, W, D, L, GF, GA, GD, PTS, and recent 3-match form:
+      - Ranks 1 to 8: Direct Round of 16 qualification zone (Emerald indicator).
+      - Ranks 9 to 24: Knockout Phase Play-offs zone (Sky indicator).
+      - Ranks 25 to 36: Eliminated zone (Slate indicator).
+    - Defaulted `LeagueStandingsHub` to `'ucl'` so users immediately see the 36-team UCL table without switching leagues manually.
+  - **SofaScore & FotMob Style Formation Presentation (`TacticalFormationPitch.tsx` & `App.tsx`)**:
+    - Ensured no player name clutter or giant floating carousels above the pitch; pitch is the central focal point with match scorebug and tactical formations (`4-3-3` vs `4-2-3-1`, `3-5-2` vs `4-3-3`, `3-4-2-1` vs `4-3-3`).
+    - Fixture strip displays each match's tactical formations (e.g., `PSG 4 - 2 MCI 4-3-3 vs 4-2-3-1 FT`), with persistent `Latest` 1-click return button and `Match X of 10` step navigation.
+    - Clicking any player icon on the 22-player pitch or searching by name opens the full Player Dossier & Bio Form.
+  - **Prominent Player Identity & 35+ Performance Form (`PlayerDossierDrawer.tsx` & `playerBioData.ts`)**:
+    - Top identity card features: **Age, Caste / Social Registry, Religion / Faith, Ethnicity / Heritage, Date & Place of Birth, Nationality & Citizenship, Preferred Foot, Agent, Boot Outfitter**.
+    - Dedicated `35+ Metrics` tab provides official running, scoring, playmaking, defending, goalkeeping, and discipline metrics with 1-click reset and step navigation.
+  - **Comprehensive Verification**:
+    - 100/100 automated vitest tests passing across all 15 test suites (`npm test -- --run`).
+    - Clean Vite production build compiled with 0 errors (`tsc && vite build`).
+    - Verified live in browser with Playwright: all 10 fixtures in the switcher, 36-team standings table, 3D Arena ball flight trajectory playback, tactical formations, and bio form rendering. (2026-10-17)
+
 - `#67` Deliver 100% UEFA Champions League (UCL) official application branding, SofaScore & FotMob landing architecture with match formations, 35+ metrics & bio form (age, caste, religion), and 1-click & step-by-step navigation without page refresh:
   - **100% Dedicated UEFA Champions League (UCL) Brand Identity (`index.html`, `Navbar.tsx`, `App.tsx`)**:
     - Replaced generic NextGen titles with authentic **UEFA CHAMPIONS LEAGUE (36-TEAM LEAGUE PHASE)** starball branding, page title `<title>UEFA Champions League | UCL Tactical Vantage & 36-Team Match Center</title>`, and official UCL competition headers.

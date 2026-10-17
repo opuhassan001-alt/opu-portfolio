@@ -27,7 +27,7 @@ export const App: React.FC = () => {
   });
   const [selectedCompetitionId, setSelectedCompetitionId] = useState<string>('ucl');
   const [isDossierOpen, setIsDossierOpen] = useState<boolean>(false);
-  const [selectedFixtureId, setSelectedFixtureId] = useState<string>('ucl-rma-rom');
+  const [selectedFixtureId, setSelectedFixtureId] = useState<string>(DUAL_TEAM_FIXTURES[0].id);
   const [searchLeague, setSearchLeague] = useState<string>('all');
   const [searchPosition, setSearchPosition] = useState<string>('all');
 
@@ -240,7 +240,7 @@ export const App: React.FC = () => {
                     className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 transition shadow-sm"
                   >
                     <RotateCcw className="w-3.5 h-3.5 text-cyan-400" />
-                    <span className="hidden sm:inline">Latest</span>
+                    <span>Latest</span>
                   </button>
                   <button
                     type="button"

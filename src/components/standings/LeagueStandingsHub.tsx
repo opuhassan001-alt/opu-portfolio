@@ -6,14 +6,16 @@ import PlayerHeadshot from '../common/PlayerHeadshot';
 
 export interface LeagueStandingsHubProps {
   onSelectPlayer: (player: Player) => void;
+  initialLeagueId?: string;
   className?: string;
 }
 
 export const LeagueStandingsHub: React.FC<LeagueStandingsHubProps> = ({
   onSelectPlayer,
+  initialLeagueId = 'ucl',
   className = ''
 }) => {
-  const [selectedLeagueId, setSelectedLeagueId] = useState<string>('premier-league');
+  const [selectedLeagueId, setSelectedLeagueId] = useState<string>(initialLeagueId);
   const [activeLeaderboardTab, setActiveLeaderboardTab] = useState<'scorers' | 'assists' | 'rating' | 'freekicks'>('scorers');
 
   const currentLeague: LeagueStandings =
@@ -93,14 +95,28 @@ export const LeagueStandingsHub: React.FC<LeagueStandingsHubProps> = ({
                 ({currentLeague.table.length} Clubs)
               </span>
             </div>
-            <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500" /> UCL
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-amber-500" /> UEL
-              </span>
-            </div>
+            {currentLeague.id === 'ucl' ? (
+              <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" /> Round of 16 (1-8)
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-sky-500" /> Play-offs (9-24)
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-slate-600" /> Eliminated (25-36)
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" /> UCL
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-amber-500" /> UEL
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="overflow-x-auto">
@@ -122,8 +138,11 @@ export const LeagueStandingsHub: React.FC<LeagueStandingsHubProps> = ({
               </thead>
               <tbody className="divide-y divide-slate-800/40 text-xs">
                 {currentLeague.table.map(row => {
-                  const isUCL = row.rank <= 4;
-                  const isUEL = row.rank === 5;
+                  const isUclLeague = currentLeague.id === 'ucl';
+                  const isUclR16 = isUclLeague && row.rank <= 8;
+                  const isUclPlayoff = isUclLeague && row.rank > 8 && row.rank <= 24;
+                  const isUCL = !isUclLeague && row.rank <= 4;
+                  const isUEL = !isUclLeague && row.rank === 5;
 
                   return (
                     <tr
@@ -134,7 +153,11 @@ export const LeagueStandingsHub: React.FC<LeagueStandingsHubProps> = ({
                       <td className="py-3 px-3 text-center font-mono">
                         <span
                           className={`inline-block w-5 h-5 leading-5 rounded text-center font-bold text-[11px] ${
-                            isUCL
+                            isUclR16
+                              ? 'bg-emerald-600/30 text-emerald-300 border border-emerald-500/40'
+                              : isUclPlayoff
+                              ? 'bg-sky-600/30 text-sky-300 border border-sky-500/40'
+                              : isUCL
                               ? 'bg-blue-600/30 text-blue-300 border border-blue-500/40'
                               : isUEL
                               ? 'bg-amber-600/30 text-amber-300 border border-amber-500/40'

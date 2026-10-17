@@ -744,3 +744,4 @@ export function getVerifiedPlayerBio(player: {
     marketValueFormatted: override?.marketValueFormatted ?? market.marketValueFormatted ?? '€45M'
   };
 }
+
