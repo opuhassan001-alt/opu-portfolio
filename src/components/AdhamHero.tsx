@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function AdhamHero() {
@@ -32,14 +32,14 @@ export default function AdhamHero() {
             }`}
           >
             <a
-              href="#portfolio"
+              href="#marketing-work"
               className="inline-block group focus:outline-none"
             >
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors lowercase leading-none">
                 marketer
               </h1>
               <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm">
-                Growth & product marketer specialising in consumer psychology, brand strategy and business analytics.
+                Growth &amp; product marketer specialising in consumer psychology, brand strategy and business analytics.
               </p>
               <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform">
                 <span>View marketing work</span>
@@ -86,7 +86,7 @@ export default function AdhamHero() {
             }`}
           >
             <a
-              href="#lab"
+              href="#ai-work"
               className="inline-block group focus:outline-none"
             >
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-900 group-hover:text-cyan-600 transition-colors leading-none">
@@ -95,7 +95,7 @@ export default function AdhamHero() {
                 <span className="text-slate-400 font-light">&gt;</span>
               </h1>
               <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm ml-auto">
-                Prompt & context engineer who designs zero-trust MCP systems, token-budgeted memory and reliable AI workflows.
+                Prompt &amp; context engineer who designs zero-trust MCP systems, token-budgeted memory and reliable AI workflows.
               </p>
               <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-cyan-700 group-hover:-translate-x-1 transition-transform">
                 <ArrowRight className="w-3.5 h-3.5 rotate-180" />

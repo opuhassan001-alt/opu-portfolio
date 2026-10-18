@@ -15,7 +15,8 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AdhamHero from "@/components/AdhamHero";
-import AdhamWork from "@/components/AdhamWork";
+import MarketingShowcase from "@/components/MarketingShowcase";
+import AIShowcase from "@/components/AIShowcase";
 import PromptLab from "@/components/PromptLab";
 import ContactSection from "@/components/ContactSection";
 import { portfolioData } from "@/data/portfolio";
@@ -30,8 +31,11 @@ export default function HomePage() {
         {/* 1:1 Adham Dannaway Hero with Pure White Background and Master Split Image */}
         <AdhamHero />
 
-        {/* 1:1 Adham Dannaway Dark "Some of my latest work" Section */}
-        <AdhamWork />
+        {/* Dedicated Marketing Work Showcase with Mac Window Mockups */}
+        <MarketingShowcase />
+
+        {/* Dedicated AI Systems & Context Engineering Showcase with Mac Window Mockups */}
+        <AIShowcase />
 
         {/* Prompt & Context Engineering Interactive Lab */}
         <PromptLab />
@@ -180,8 +184,11 @@ export default function HomePage() {
             <a href="#hero" className="hover:text-slate-900 transition-colors">
               about
             </a>
-            <a href="#portfolio" className="hover:text-slate-900 transition-colors">
-              portfolio
+            <a href="#marketing-work" className="hover:text-slate-900 transition-colors">
+              marketing
+            </a>
+            <a href="#ai-work" className="hover:text-slate-900 transition-colors">
+              ai systems
             </a>
             <a href="#lab" className="hover:text-slate-900 transition-colors">
               lab
