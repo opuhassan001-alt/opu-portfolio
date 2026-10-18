@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#178` Reduce floating hover pop-up window size by 86% to an ultra-compact mini-window: streamlined hover cards across Work, Lab, Disciplines, and Education sections to a compact 192px × 56px mini-card featuring only the short headline and a high-contrast white "VIEW ↗" button, removing long paragraphs and tag clutter while preserving full deep-dive click-to-open modals (2026-10-19)
+
 - `#177` Remove hero availability badge, contact green pulse dot, and footer green dot per user screenshots: eliminated the "Open to AI Product Marketing..." pill bar from AdhamHero, removed the green pulsing dot from (05 / GET IN TOUCH), and removed the green dot preceding the footer copyright notice (2026-10-19)
 
 - `#176` Refactor Lab, About/Disciplines, and Education sections to show only clean main headings on page with automatic medium-sized hover preview pop-ups and click-to-open inspection windows: tucked all sub-options inside interactive modals, preserved page scannability with Dennis Snellenberg full-width rows, and enabled instant preview upon hovering (2026-10-18)

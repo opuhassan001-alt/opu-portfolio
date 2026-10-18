@@ -69,86 +69,13 @@ export default function DennisWork() {
     return p.track === activeFilter;
   });
 
-  // Plain, easy-to-understand project descriptions (Zero AI slop, pure clarity)
-  const projectSummaries: Record<
-    string,
-    { label: string; plainDescription: string; tags: string[] }
-  > = {
-    "agent-sentinel-mcp": {
-      label: "AI Security & Tool Gateway",
-      plainDescription:
-        "Security gateway that prevents autonomous AI agents from leaking API keys and executing harmful terminal commands.",
-      tags: ["Open Source", "TypeScript", "Zero-Trust"],
-    },
-    "mindshield-extension": {
-      label: "Productivity Extension",
-      plainDescription:
-        "Chrome extension that stops compulsive doom-scrolling on social media using quick cognitive reflex challenges.",
-      tags: ["Chrome Manifest V3", "Productivity", "JavaScript"],
-    },
-    "dhaka-retail-consumer-study": {
-      label: "Consumer Market Research",
-      plainDescription:
-        "Field research study of 150+ urban shoppers in Dhaka analyzing price sensitivity and brand trust drivers.",
-      tags: ["Market Research", "BBA Thesis", "Dhaka"],
-    },
-    "sql-excel-sales-analytics": {
-      label: "Sales Performance Analytics",
-      plainDescription:
-        "Executive business model isolating top revenue-generating products and identifying seasonal retail revenue leaks.",
-      tags: ["Data Analytics", "Excel", "SQL"],
-    },
-    "fmcg-supply-chain-inventory": {
-      label: "Supply Chain & Inventory Model",
-      plainDescription:
-        "Inventory planning spreadsheet designed to help retail managers avoid stock-outs on fast-selling products.",
-      tags: ["Supply Chain", "Retail Operations", "Inventory"],
-    },
-  };
-
-  // Pure Monochrome Black & White Floating Preview Card (Zero AI-slop, Minimal Font)
-  const renderProjectVisual = (project: CaseStudy) => {
-    const details = projectSummaries[project.id] || {
-      label: project.category,
-      plainDescription: project.subtitle,
-      tags: project.tools.slice(0, 3),
-    };
-
-    return (
-      <div className="w-full h-full bg-[#0F0F10] p-6 text-white flex flex-col justify-between rounded-2xl border border-neutral-800 shadow-2xl relative select-none">
-        {/* Top: Track & Category Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-neutral-800/80">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 font-medium">
-            {details.label}
-          </span>
-          <span className="text-[11px] font-mono text-neutral-500">
-            {project.track === "ai-engineering" ? "Systems Track" : "Marketing Track"}
-          </span>
-        </div>
-
-        {/* Center: Clear Title and Plain Human Description */}
-        <div className="py-2">
-          <h4 className="text-xl font-medium tracking-tight text-white">
-            {project.title}
-          </h4>
-          <p className="mt-2 text-xs text-neutral-300 font-sans leading-relaxed">
-            {details.plainDescription}
-          </p>
-        </div>
-
-        {/* Bottom: Clean Monochrome Tag Pills */}
-        <div className="flex items-center gap-1.5 pt-3 border-t border-neutral-800/80">
-          {details.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-2.5 py-0.5 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    );
+  // Short concise headlines for the ultra-compact Dennis Snellenberg floating hover preview
+  const shortHeadlines: Record<string, string> = {
+    "agent-sentinel-mcp": "Agent Sentinel",
+    "mindshield-extension": "MindShield",
+    "dhaka-retail-consumer-study": "Dhaka Retail Study",
+    "sql-excel-sales-analytics": "Sales Analytics",
+    "fmcg-supply-chain-inventory": "FMCG Inventory",
   };
 
   return (
@@ -178,8 +105,8 @@ export default function DennisWork() {
       />
 
       {/* ============================================================ */}
-      {/* DENNIS SNELLENBERG FLOATING CURSOR ZOOM PREVIEW MODAL         */}
-      {/* Follows mouse with smooth spring lerp physics and zooms in   */}
+      {/* DENNIS SNELLENBERG FLOATING CURSOR ZOOM PREVIEW MINI-WINDOW  */}
+      {/* Reduced by 86% : Ultra-compact with Short Headline & VIEW    */}
       {/* ============================================================ */}
       <div
         className="pointer-events-none fixed top-0 left-0 z-50 transition-transform duration-75 ease-out hidden md:block"
@@ -187,22 +114,29 @@ export default function DennisWork() {
           transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
         }}
       >
-        {/* Floating Preview Card Container */}
+        {/* Floating Mini-Window Container (86% smaller than original) */}
         <div
-          className={`relative -top-36 -left-44 w-88 h-56 transition-all duration-300 ease-out origin-center ${
+          className={`relative -top-16 -left-24 w-48 h-14 transition-all duration-200 ease-out origin-center ${
             hoveredProject && isInsideSection
               ? "scale-100 opacity-100 translate-y-0"
-              : "scale-50 opacity-0 translate-y-6 pointer-events-none"
+              : "scale-75 opacity-0 translate-y-2 pointer-events-none"
           }`}
         >
-          {hoveredProject && renderProjectVisual(hoveredProject)}
-
-          {/* Dennis Snellenberg Minimalist Circular "View" Cursor */}
-          <div className="absolute -bottom-3 -right-3 w-14 h-14 rounded-full bg-white text-neutral-950 flex items-center justify-center text-[11px] font-sans font-medium tracking-wider uppercase shadow-xl border border-neutral-200 pointer-events-none">
-            <span className="flex items-center gap-0.5">
-              View <ArrowUpRight className="w-3 h-3" />
-            </span>
-          </div>
+          {hoveredProject && (
+            <div className="w-full h-full bg-[#0E0E10] text-white px-3 py-2 rounded-xl border border-neutral-800 shadow-2xl flex flex-col justify-between select-none">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-200 font-semibold truncate">
+                {shortHeadlines[hoveredProject.id] || hoveredProject.title}
+              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
+                  CASE STUDY
+                </span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-sans font-bold text-neutral-950 bg-white px-2.5 py-0.5 rounded-full shadow-sm">
+                  VIEW <ArrowUpRight className="w-2.5 h-2.5 stroke-[2.5]" />
+                </span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
