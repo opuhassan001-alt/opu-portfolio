@@ -1,21 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
-import { Copy, Terminal, Check, ArrowUpRight } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowUpRight, Copy, Terminal, Check, X, Shield, Lock, ArrowRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export default function DennisLab() {
-  const [activeTab, setActiveTab] = useState(
-    portfolioData.promptEngineeringLab.modules[0].id
-  );
+  const [hoveredModuleId, setHoveredModuleId] = useState<string | null>(null);
+  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [testInput, setTestInput] = useState(
     "SELECT * FROM users WHERE key = 'sk-proj-9a8b7c6d5e4f3a2b1c0d';"
   );
 
-  const activeModule =
-    portfolioData.promptEngineeringLab.modules.find((m) => m.id === activeTab) ||
-    portfolioData.promptEngineeringLab.modules[0];
+  // Smooth mouse tracking physics for the floating preview pop-up window
+  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
+  const targetPos = useRef({ x: -500, y: -500 });
+  const currentPos = useRef({ x: -500, y: -500 });
+  const animationFrameRef = useRef<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInsideSection, setIsInsideSection] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      targetPos.current = { x: e.clientX, y: e.clientY };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const lerp = (start: number, end: number, factor: number) => {
+      return start + (end - start) * factor;
+    };
+
+    const updatePhysics = () => {
+      currentPos.current.x = lerp(currentPos.current.x, targetPos.current.x, 0.14);
+      currentPos.current.y = lerp(currentPos.current.y, targetPos.current.y, 0.14);
+
+      setMousePos({
+        x: Math.round(currentPos.current.x),
+        y: Math.round(currentPos.current.y),
+      });
+
+      animationFrameRef.current = requestAnimationFrame(updatePhysics);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(updatePhysics);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
 
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code);
@@ -51,18 +87,54 @@ export default function DennisLab() {
   const simulationResult = simulateSanitization(testInput);
 
   // Plain human explanations for each lab module
-  const modulePlainExplanations: Record<string, string> = {
-    "system-prompt":
-      "A structured system prompt template that ensures AI agents stick to strict JSON formats and never hallucinate answers.",
-    "zero-trust-mcp":
-      "An execution firewall that scans agent inputs and outputs, automatically masking secret credentials and blocking dangerous terminal commands.",
-    "token-partitioning":
-      "A smart memory strategy that splits the 32,000-token context window into reserved sections so the AI never runs out of room during long tasks.",
-  };
+  const labModules = [
+    {
+      id: "system-prompt",
+      number: "01",
+      title: "Structured System Prompt Template",
+      subtitle: "Schema Invariants & Prompt Hardening &bull; Architecture Spec",
+      plainSummary:
+        "A structured prompt template enforcing strict JSON schemas, system invariants, and hallucination defense.",
+      tags: ["System Invariants", "JSON Schema", "CoT Structuring"],
+      code: portfolioData.promptEngineeringLab.modules[0].code,
+      type: "Prompt Architecture",
+    },
+    {
+      id: "zero-trust-mcp",
+      number: "02",
+      title: "Zero-Trust MCP Protocol & Live DLP Censor",
+      subtitle: "Pre-Execution Command Interceptor & Secret Firewall &bull; Active Gateway",
+      plainSummary:
+        "Execution firewall that scans agent inputs and outputs, automatically masking secret credentials and blocking dangerous commands.",
+      tags: ["Zero-Trust DLP", "AST Sanitizer", "Live Simulation"],
+      code: portfolioData.promptEngineeringLab.modules[1].code,
+      type: "Runtime Security",
+    },
+    {
+      id: "token-partitioning",
+      number: "03",
+      title: "Hierarchical Token Partitioning Engine",
+      subtitle: "32k Context Compaction & Reserved State Trees &bull; Memory Strategy",
+      plainSummary:
+        "Smart memory strategy splitting the context window into reserved partitions so the AI never runs out of room during long tasks.",
+      tags: ["Context Budgeting", "32k Window", "Memory Trees"],
+      code: portfolioData.promptEngineeringLab.modules[2].code,
+      type: "Context Engineering",
+    },
+  ];
+
+  const hoveredModule = labModules.find((m) => m.id === hoveredModuleId) || null;
+  const selectedModule = labModules.find((m) => m.id === selectedModuleId) || null;
 
   return (
     <section
       id="lab"
+      ref={sectionRef}
+      onMouseEnter={() => setIsInsideSection(true)}
+      onMouseLeave={() => {
+        setIsInsideSection(false);
+        setHoveredModuleId(null);
+      }}
       className="py-28 sm:py-36 bg-[#FAFAFA] text-[#141414] border-t border-neutral-200/80 relative select-none overflow-hidden"
     >
       {/* Subtle Dennis Snellenberg Editorial Grid Pattern */}
@@ -75,8 +147,68 @@ export default function DennisLab() {
         }}
       />
 
+      {/* ============================================================ */}
+      {/* AUTOMATIC HOVER POP-UP WINDOW (MEDIUM SIZE & MONOCHROME)     */}
+      {/* ============================================================ */}
+      <div
+        className="pointer-events-none fixed top-0 left-0 z-50 transition-transform duration-75 ease-out hidden md:block"
+        style={{
+          transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
+        }}
+      >
+        <div
+          className={`relative -top-36 -left-44 w-88 h-56 transition-all duration-300 ease-out origin-center ${
+            hoveredModule && isInsideSection
+              ? "scale-100 opacity-100 translate-y-0"
+              : "scale-50 opacity-0 translate-y-6 pointer-events-none"
+          }`}
+        >
+          {hoveredModule && (
+            <div className="w-full h-full bg-[#0F0F10] p-6 text-white flex flex-col justify-between rounded-2xl border border-neutral-800 shadow-2xl relative select-none">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-800/80">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 font-medium">
+                  SPECIFICATION &bull; {hoveredModule.type}
+                </span>
+                <span className="text-[11px] font-mono text-neutral-500">
+                  Chapter {hoveredModule.number}
+                </span>
+              </div>
+
+              <div className="py-2">
+                <h4 className="text-xl font-medium tracking-tight text-white">
+                  {hoveredModule.title}
+                </h4>
+                <p className="mt-1.5 text-xs text-neutral-300 font-sans leading-relaxed">
+                  {hoveredModule.plainSummary}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-neutral-800/80 text-[11px] font-mono text-neutral-400">
+                <div className="flex items-center gap-1.5">
+                  {hoveredModule.tags.slice(0, 2).map((t) => (
+                    <span key={t} className="bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <span className="text-white font-sans font-medium flex items-center gap-1">
+                  Click to open <ArrowRight className="w-3 h-3" />
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Minimalist Circular "Inspect" Badge */}
+          <div className="absolute -bottom-3 -right-3 w-14 h-14 rounded-full bg-white text-neutral-950 flex items-center justify-center text-[11px] font-sans font-medium tracking-wider uppercase shadow-xl border border-neutral-200 pointer-events-none">
+            <span className="flex items-center gap-0.5">
+              Open <ArrowUpRight className="w-3 h-3" />
+            </span>
+          </div>
+        </div>
+      </div>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header (Matching DennisWork Exactly) */}
+        {/* Editorial Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20 pb-8 border-b border-neutral-200">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-neutral-500 mb-3">
@@ -85,98 +217,146 @@ export default function DennisLab() {
             </div>
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-neutral-950 leading-[1.08]">
               Context engineering &amp; <br />
-              <span className="text-neutral-400">zero-trust engine.</span>
+              <span className="text-neutral-400">zero-trust protocol.</span>
             </h2>
           </div>
 
           <p className="text-sm sm:text-base text-neutral-600 font-sans max-w-md self-start md:self-end leading-relaxed">
-            Live architectural frameworks for AI agent reliability, token window compaction, and runtime security firewalls.
+            Live architectural frameworks for LLM token compaction, zero-trust MCP protocols, and runtime credential DLP firewalls.
           </p>
         </div>
 
-        {/* Minimalist Studio Console Container (Monochrome Black & White) */}
-        <div className="rounded-3xl bg-white border border-neutral-200 shadow-[0_10px_40px_rgba(0,0,0,0.03)] overflow-hidden">
-          {/* Top Bar with Numbered Tabs */}
-          <div className="flex flex-wrap items-center justify-between border-b border-neutral-200 px-6 py-4 bg-neutral-50/60 gap-4">
-            <div className="flex flex-wrap gap-2">
-              {portfolioData.promptEngineeringLab.modules.map((mod, idx) => {
-                const isActive = activeTab === mod.id;
-                return (
-                  <button
-                    key={mod.id}
-                    type="button"
-                    onClick={() => setActiveTab(mod.id)}
-                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer flex items-center gap-2 ${
-                      isActive
-                        ? "bg-neutral-950 text-white shadow-sm"
-                        : "bg-white text-neutral-600 hover:text-neutral-950 border border-neutral-200"
-                    }`}
-                  >
-                    <span className="font-mono text-[11px] opacity-60">0{idx + 1}.</span>
-                    <span>{mod.name}</span>
-                  </button>
-                );
-              })}
-            </div>
+        {/* ============================================================ */}
+        {/* ONLY MAIN HEADINGS ON THE PAGE (DENNIS SNELLENBERG ROWS)     */}
+        {/* ============================================================ */}
+        <div className="divide-y divide-neutral-200 border-b border-neutral-200">
+          {labModules.map((mod) => {
+            const isHovered = hoveredModuleId === mod.id;
+            const isDimmed = hoveredModuleId !== null && !isHovered;
 
+            return (
+              <div
+                key={mod.id}
+                onMouseEnter={() => setHoveredModuleId(mod.id)}
+                onClick={() => setSelectedModuleId(mod.id)}
+                className={`group relative py-10 sm:py-14 cursor-pointer transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 px-2 sm:px-6 rounded-2xl ${
+                  isHovered ? "bg-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)]" : ""
+                } ${isDimmed ? "opacity-35" : "opacity-100"}`}
+              >
+                {/* Left: Number & Main Heading */}
+                <div className="flex items-baseline gap-4 sm:gap-8">
+                  <span className="text-xs sm:text-sm font-mono text-neutral-400 group-hover:text-neutral-900 transition-colors">
+                    {mod.number}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-neutral-950 group-hover:translate-x-3 transition-transform duration-300">
+                      {mod.title}
+                    </h3>
+                    <p
+                      className="mt-2 text-xs sm:text-sm text-neutral-500 font-sans max-w-xl group-hover:text-neutral-700 transition-colors"
+                      dangerouslySetInnerHTML={{ __html: mod.subtitle }}
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Type & Action Arrow */}
+                <div className="flex items-center gap-4 sm:gap-6 self-start md:self-center shrink-0">
+                  <div className="text-right">
+                    <div className="text-xs sm:text-sm font-mono text-neutral-800 font-medium">
+                      {mod.type}
+                    </div>
+                    <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
+                      Click to Open Window
+                    </div>
+                  </div>
+
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-neutral-200 group-hover:border-neutral-950 group-hover:bg-neutral-950 group-hover:text-white text-neutral-500 flex items-center justify-center transition-all duration-300 shadow-2xs">
+                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Editorial Callout */}
+        <div className="mt-14 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-neutral-400 pt-4">
+          <span>HOVER ROW TO REVEAL MEDIUM PREVIEW &bull; CLICK TO OPEN FULL INTERACTIVE WINDOW</span>
+          <span>ZERO-TRUST DLP SIMULATOR EMBEDDED INSIDE MODULE 02</span>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* CLICK-TO-OPEN MEDIUM-SIZED WINDOW (STUDIO MODAL)             */}
+      {/* ============================================================ */}
+      {selectedModule && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-3xl max-h-[88vh] overflow-y-auto bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-200">
+            {/* Close Button */}
             <button
               type="button"
-              onClick={() => copyCode(activeModule.code)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-xs font-mono text-neutral-800 transition-colors font-medium cursor-pointer"
+              onClick={() => setSelectedModuleId(null)}
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 flex items-center justify-center transition-colors cursor-pointer"
             >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-neutral-950" />
-                  <span>Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5 text-neutral-600" />
-                  <span>Copy Code</span>
-                </>
-              )}
+              <X className="w-5 h-5" />
             </button>
-          </div>
 
-          {/* Module Content */}
-          <div className="p-6 sm:p-10 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-neutral-100">
-              <div>
-                <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
-                  Specification &bull; {activeModule.type}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-neutral-950 mt-1">
-                  {activeModule.name}
-                </h3>
+            {/* Modal Header */}
+            <div className="mb-6 pr-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-xs font-mono font-medium mb-3">
+                <span>CHAPTER {selectedModule.number}</span>
+                <span>&bull;</span>
+                <span>{selectedModule.type}</span>
               </div>
-              <p className="text-xs sm:text-sm text-neutral-600 font-sans max-w-md leading-relaxed">
-                {modulePlainExplanations[activeModule.id] || activeModule.description}
+              <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-neutral-950">
+                {selectedModule.title}
+              </h3>
+              <p className="mt-2 text-sm text-neutral-600 font-sans leading-relaxed">
+                {selectedModule.plainSummary}
               </p>
             </div>
 
-            {/* High-Contrast Matte Black Code Slate (Zero AI Slop) */}
-            <div className="relative rounded-2xl bg-[#0F0F10] border border-neutral-800 p-6 font-mono text-xs text-neutral-200 overflow-x-auto shadow-inner">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800/80 text-[11px] text-neutral-400">
-                <span className="flex items-center gap-2">
-                  <Terminal className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>{activeModule.id}.ts</span>
+            {/* Code Block Slate */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider">
+                  Specification Code ({selectedModule.id}.ts)
                 </span>
-                <span className="text-neutral-500 font-mono">TypeScript &bull; Architecture Spec</span>
+                <button
+                  type="button"
+                  onClick={() => copyCode(selectedModule.code)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-xs font-mono text-neutral-800 transition-colors font-medium cursor-pointer"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-neutral-950" />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-neutral-600" />
+                      <span>Copy Code</span>
+                    </>
+                  )}
+                </button>
               </div>
-              <pre className="leading-relaxed whitespace-pre font-mono text-[12px] text-neutral-300">
-                {activeModule.code}
-              </pre>
+
+              <div className="relative rounded-2xl bg-[#0F0F10] border border-neutral-800 p-6 font-mono text-xs text-neutral-200 overflow-x-auto shadow-inner max-h-72">
+                <pre className="leading-relaxed whitespace-pre font-mono text-[12px] text-neutral-300">
+                  {selectedModule.code}
+                </pre>
+              </div>
             </div>
 
-            {/* Interactive Zero-Trust DLP Testbed (Monochrome Black & White) */}
-            {activeTab === "zero-trust-mcp" && (
-              <div className="pt-6 border-t border-neutral-100 space-y-4">
+            {/* Live Interactive DLP Simulation Inside Window (Module 02) */}
+            {selectedModule.id === "zero-trust-mcp" && (
+              <div className="pt-6 border-t border-neutral-200 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-800 font-semibold">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-900 font-bold">
                     Live Input Sanitization Simulator
                   </h4>
                   <span className="text-xs text-neutral-500 font-sans">
-                    Test how the security filter catches leaked API keys and command injections
+                    Test command injection and API secret sanitization in real time
                   </span>
                 </div>
 
@@ -192,7 +372,6 @@ export default function DennisLab() {
                   />
                 </div>
 
-                {/* Monochrome Status Card */}
                 <div className="p-4 rounded-xl bg-[#0F0F10] text-white border border-neutral-800 text-xs font-sans space-y-2">
                   <div className="flex items-center gap-2">
                     <span
@@ -216,7 +395,7 @@ export default function DennisLab() {
             )}
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

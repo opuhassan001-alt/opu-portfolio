@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#176` Refactor Lab, About/Disciplines, and Education sections to show only clean main headings on page with automatic medium-sized hover preview pop-ups and click-to-open inspection windows: tucked all sub-options inside interactive modals, preserved page scannability with Dennis Snellenberg full-width rows, and enabled instant preview upon hovering (2026-10-18)
+
 - `#175` Unify Context Lab, About/Disciplines, and Education sections with Dennis Snellenberg monochrome typography, zero colors/AI-slop, and clean row hierarchy: replaced colorful orange/green bars with full-width numbered capability rows with hover-focus dimming, streamlined DennisLab with pure monochrome black/white studio console and plain-language DLP testbed, and styled Education in full-width minimalist credentials rows (2026-10-18)
 
 - `#174` Refactor Dennis Snellenberg floating cursor zoom preview to minimalist monochrome black and white design: eliminated all colorful badges, blinking status lights, and AI slop; replaced with a clean matte black (#0F0F10) preview card, single minimal font, clear plain-English summaries, and a crisp white circular view cursor (2026-10-18)
