@@ -143,42 +143,44 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Education Timeline: Authentic Brutalism Theme */}
-        <section id="education" className="py-24 bg-[#E5E5E5] border-t-[4px] border-black text-black select-none">
+        {/* Education Section: Swiss International Modernism Theme */}
+        <section id="education" className="py-24 bg-[#F8F9FA] border-t border-slate-200 text-slate-900 select-none">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-              <div className="inline-block px-3.5 py-1 bg-black text-white text-xs font-mono font-black uppercase tracking-widest mb-3 border-2 border-black shadow-[3px_3px_0px_#F59E0B]">
-                SYSTEM_RECORD // ACADEMIC_CREDENTIALS
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-sans font-bold tracking-wider uppercase mb-3">
+                <span className="w-2 h-2 rounded-full bg-red-600" />
+                <span>SWISS INTERNATIONAL STYLE &bull; ACADEMIC HONORS</span>
               </div>
-              <h3 className="font-mono text-3xl sm:text-4xl font-black uppercase tracking-tight text-black">
-                EDUCATION &amp; ACADEMICS
+              <h3 className="font-sans text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                Education &amp; Academic Credentials
               </h3>
-              <p className="mt-2 text-xs sm:text-sm font-mono uppercase font-bold text-neutral-600">
-                OFFICIAL INSTITUTIONAL RECORDS &bull; NATIONAL UNIVERSITY AFFILIATION
+              <p className="mt-2 text-xs sm:text-sm font-sans text-slate-500 max-w-lg mx-auto leading-relaxed">
+                National University curriculum in Business Administration, consumer research, and empirical analytics.
               </p>
             </div>
 
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-3xl mx-auto space-y-5">
               {portfolioData.education.map((edu) => (
                 <div
                   key={edu.degree}
-                  className="rounded-none bg-white p-6 sm:p-7 border-[3.5px] border-black shadow-[6px_6px_0px_#000] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+                  className="rounded-2xl bg-white p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div>
-                    <div className="text-xs font-mono font-black text-black uppercase tracking-widest bg-[#FDE047] inline-block px-2 py-0.5 border-2 border-black mb-2">
-                      {edu.period} &bull; {edu.majorOrGroup}
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 text-xs font-mono font-semibold uppercase tracking-wider mb-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                      <span>{edu.period} &bull; {edu.majorOrGroup}</span>
                     </div>
-                    <h4 className="font-mono text-lg sm:text-xl font-black text-black uppercase tracking-tight">
+                    <h4 className="font-sans text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
                       {edu.degree}
                     </h4>
-                    <p className="text-xs font-mono text-neutral-800 font-bold mt-1 uppercase">
-                      INSTITUTION: {edu.institution}
+                    <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
+                      {edu.institution}
                     </p>
                   </div>
 
-                  <div className="self-start sm:self-center px-4 py-2.5 rounded-none bg-black text-white text-right border-2 border-black shadow-[3px_3px_0px_#525252]">
-                    <div className="font-mono font-black text-white text-base tracking-wider">{edu.result}</div>
-                    <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-bold">SCALE: {edu.scale}</div>
+                  <div className="self-start sm:self-center px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-right shrink-0">
+                    <div className="font-sans font-bold text-slate-900 text-base">{edu.result}</div>
+                    <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">Scale {edu.scale}</div>
                   </div>
                 </div>
               ))}
