@@ -95,30 +95,30 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Context Engineer Skills (High-Tech Obsidian Palette) */}
-              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#090D17] border border-cyan-900/40 text-slate-100">
+              {/* Right Column: Context Engineer Skills (Cool Precision Technical Blueprint Palette) */}
+              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#F1F5F9] border border-[#CBD5E1] shadow-2xs">
                 <div>
-                  <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-white text-[#0F172A] border border-[#CBD5E1] text-xs font-mono font-semibold uppercase tracking-wider">
                     Engineering Systems
                   </span>
-                  <h4 className="font-mono text-xl sm:text-2xl font-bold text-white mt-1">
+                  <h4 className="font-mono text-2xl font-bold text-[#0F172A] mt-2">
                     prompt &amp; context engineering
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed font-sans">
-                    Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability and context budgeting.
+                  <p className="text-xs sm:text-sm text-[#475569] mt-1 leading-relaxed font-sans">
+                    Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability, MCP protocols, and context budgeting.
                   </p>
                 </div>
 
                 <div className="space-y-4 font-mono">
                   {portfolioData.skills.aiEngineering.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-200 mb-1">
+                      <div className="flex items-center justify-between text-xs font-semibold text-[#0F172A] mb-1">
                         <span>{skill.name}</span>
-                        <span className="text-slate-400 font-normal">{skill.level}</span>
+                        <span className="text-[#64748B] font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-[#E2E8F0] overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,240,255,0.4)]"
+                          className="h-full rounded-full bg-[#0F172A]"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -126,10 +126,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-3 flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-mono text-[#0F172A]">
                   {["AgentSentinel MCP", "Zero-Trust DLP", "Token Budgeting", "Manifest V3", "Circuit Breakers"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-[#05070E] border border-cyan-900/60 shadow-2xs">
+                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#CBD5E1] shadow-2xs">
                         {item}
                       </span>
                     )
