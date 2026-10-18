@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#177` Remove hero availability badge, contact green pulse dot, and footer green dot per user screenshots: eliminated the "Open to AI Product Marketing..." pill bar from AdhamHero, removed the green pulsing dot from (05 / GET IN TOUCH), and removed the green dot preceding the footer copyright notice (2026-10-19)
+
 - `#176` Refactor Lab, About/Disciplines, and Education sections to show only clean main headings on page with automatic medium-sized hover preview pop-ups and click-to-open inspection windows: tucked all sub-options inside interactive modals, preserved page scannability with Dennis Snellenberg full-width rows, and enabled instant preview upon hovering (2026-10-18)
 
 - `#175` Unify Context Lab, About/Disciplines, and Education sections with Dennis Snellenberg monochrome typography, zero colors/AI-slop, and clean row hierarchy: replaced colorful orange/green bars with full-width numbered capability rows with hover-focus dimming, streamlined DennisLab with pure monochrome black/white studio console and plain-language DLP testbed, and styled Education in full-width minimalist credentials rows (2026-10-18)

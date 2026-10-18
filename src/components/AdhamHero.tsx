@@ -77,14 +77,6 @@ export default function AdhamHero() {
       className="relative bg-white text-slate-900 overflow-hidden border-b border-slate-200/80 pt-6 pb-12 sm:pb-20 select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Availability / Sub-header bar */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200/80 text-xs font-medium text-slate-700">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            {portfolioData.personal.availability}
-          </div>
-        </div>
-
         {/* Adham Dannaway Exact Split Stage */}
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0 min-h-[480px] lg:min-h-[560px]">
           {/* LEFT: DESIGNER / MARKETER COLUMN */}
