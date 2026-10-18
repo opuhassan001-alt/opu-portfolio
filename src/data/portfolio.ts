@@ -1,7 +1,8 @@
 export interface CaseStudy {
   id: string;
   title: string;
-  category: "Marketing" | "Data & SQL" | "Supply Chain" | "HR & Operations";
+  track: "marketing" | "ai-engineering" | "hybrid";
+  category: string;
   subtitle: string;
   duration: string;
   tools: string[];
@@ -10,6 +11,8 @@ export interface CaseStudy {
   methodology: string[];
   outcomes: string[];
   metrics: { label: string; value: string }[];
+  githubUrl?: string;
+  demoUrl?: string;
 }
 
 export interface EducationItem {
@@ -26,228 +29,315 @@ export const portfolioData = {
   personal: {
     name: "Estakball Hossain",
     nickname: "Opu",
-    title: "BBA Graduate — Marketing & Business Operations",
-    tagline:
-      "Enthusiastic and disciplined Business Administration (Marketing) graduate ready to deliver measurable value across Marketing, Supply Chain, Finance, and Human Resources.",
+    marketerTitle: "Growth & Product Marketer",
+    aiTitle: "Prompt & Context Engineer",
+    hybridTitle: "Growth Marketer × Agentic Context Engineer",
+    marketerTagline:
+      "Consumer psychology, STP & 4Ps brand strategy, retail market research, and SQL/Excel revenue analytics.",
+    aiTagline:
+      "Architecting zero-trust MCP gateways, token-budgeted context windows, and neuroscience habit-breaker extensions.",
     summary:
-      "An enthusiastic and disciplined fresh BBA graduate in Marketing looking for the opportunity to begin a high-impact career in Marketing, Supply Chain, Finance, or Human Resources. Equipped with strong analytical thinking, foundational SQL and MS Excel data skills, and fluent bilingual communication. Eager to learn new skills and grow into a results-driven professional through hands-on experience and mentorship.",
+      "A rare hybrid professional bridging consumer psychology with bleeding-edge AI systems. Equipped with an academic foundation in BBA Marketing and hands-on engineering capabilities in Prompt Architecture, Zero-Trust MCP Tooling, and Context Window Optimization.",
     location: "Pallabi, Dhaka Cantonment, Dhaka - 1206",
     country: "Bangladesh",
     phone: "+880 1633-375854",
     phoneRaw: "8801633375854",
     email: "opuhassan001@gmail.com",
     cvUrl: "/Estakball_Hossain_CV.pdf",
-    avatarUrl: "/profile.jpg",
-    availability: "Open to Entry-Level Roles, Management Trainee & Internships",
+    avatarHuman: "/profile.jpg",
+    avatarAI: "/profile-ai.jpg",
+    availability: "Open to AI Product Marketing, Prompt Engineering & Growth Roles",
     socials: {
-      linkedin: "https://www.linkedin.com/in/estakball-hossain-opu",
+      github: "https://github.com/opuhassan001-alt",
+      linkedin: "https://www.linkedin.com",
       whatsapp: "https://wa.me/8801633375854",
-      facebook: "https://www.facebook.com/opuhassan001",
+      facebook: "https://www.facebook.com",
     },
   },
 
-  careerPillars: [
+  marketingPillars: [
     {
-      title: "Marketing & Brand Strategy",
+      title: "Consumer Psychology & Research",
       description:
-        "Academic specialization in Marketing with a strong grasp of consumer behavior, market segmentation (STP), 4Ps execution, and competitive benchmarking.",
-      skills: ["Market Research", "Consumer Insights", "Campaign Planning", "Brand Positioning"],
+        "Analyzing consumer decision journeys, price sensitivity thresholds, and survey data to map authentic demand drivers.",
+      skills: ["Market Research", "Survey Design", "STP Framework", "Persona Modeling"],
     },
     {
-      title: "Supply Chain & Coordination",
+      title: "Brand Strategy & 4Ps Execution",
       description:
-        "Process-oriented mindset suited for procurement tracking, vendor communication, inventory classification, and logistics reporting.",
-      skills: ["Inventory Tracking", "Vendor Liaison", "Process Discipline", "Order Coordination"],
+        "Positioning products against entrenched incumbents using differentiated value propositions and tactical promotional mixes.",
+      skills: ["Brand Positioning", "Competitive Benchmarking", "Value Proposition", "4Ps Mix"],
     },
     {
-      title: "Finance & Data Analytics",
+      title: "Revenue & Sales Analytics",
       description:
-        "Commerce background from SSC through BBA combined with MS Excel modeling and foundational SQL querying for data-driven reporting.",
-      skills: ["MS Excel Reporting", "SQL (Basic Queries)", "Cost & KPI Analysis", "Data Cleansing"],
+        "Translating multi-category transactional records into Pareto revenue curves, SKU reorder triggers, and Excel KPI models.",
+      skills: ["MS Excel Modeling", "Basic SQL Queries", "Pareto Analysis", "Pivot Dashboards"],
     },
     {
-      title: "Human Resources & People Ops",
+      title: "Supply Chain & Distribution Ops",
       description:
-        "Strong interpersonal communication, team collaboration, and organizational adaptability to support recruitment, onboarding, and HR operations.",
-      skills: ["Team Collaboration", "Bilingual Communication", "Talent Coordination", "Documentation"],
+        "Applying ABC inventory classification and lead-time tracking to eliminate stock-outs and lower holding expenses.",
+      skills: ["ABC Classification", "Safety Stocking", "Vendor Evaluation", "Logistics Reporting"],
     },
   ],
 
-  caseStudies: [
+  aiEngineeringPillars: [
     {
-      id: "dhaka-retail-consumer-study",
-      title: "Consumer Buying Behavior & Digital Brand Positioning in Urban Retail",
-      category: "Marketing",
-      subtitle: "BBA Major Research Project — Marketing",
-      duration: "Academic Research Case Study",
-      tools: ["MS Excel", "Survey Analysis", "STP Framework", "MS Word"],
+      title: "Context Engineering & Memory",
+      description:
+        "Optimizing LLM context windows through hierarchical token budgeting, progressive retrieval, and invariant prompt enforcement.",
+      skills: ["Token Budgeting", "Context Compaction", "Dynamic RAG", "System State Trees"],
+    },
+    {
+      title: "Model Context Protocol (MCP)",
+      description:
+        "Building production-grade MCP servers and zero-trust execution gateways connecting autonomous agents to host systems.",
+      skills: ["AgentSentinel MCP", "Stdio / HTTP Transport", "Tool Guardrails", "JSON-RPC 2.0"],
+    },
+    {
+      title: "Prompt Architecture & Reasoning",
+      description:
+        "Formulating multi-step Chain-of-Thought (CoT), few-shot conditioning templates, and strict structured JSON schemas.",
+      skills: ["CoT Structuring", "Few-Shot Ingestion", "Schema Enforcement", "Hallucination Defense"],
+    },
+    {
+      title: "Reliability & Zero-Trust DLP",
+      description:
+        "Implementing sliding-window rate limiters, circuit breakers, AST command sanitizers, and DLP regex secret masking.",
+      skills: ["DLP Secret Firewall", "Circuit Breakers", "AST Sanitization", "SSRF Defense"],
+    },
+  ],
+
+  projects: [
+    {
+      id: "agent-sentinel-mcp",
+      title: "AgentSentinel MCP Gateway",
+      track: "ai-engineering",
+      category: "AI Security & MCP Protocol",
+      subtitle: "Zero-Trust MCP Execution Firewall & Reliability Gateway",
+      duration: "Production Open Source Tool",
+      tools: ["Model Context Protocol", "TypeScript / Node.js", "AST Sanitizer", "DLP Regex", "Circuit Breaker"],
       summary:
-        "Evaluated how social proof, pricing sensitivity, and digital touchpoints influence purchase decisions among young adults in Dhaka's fast-growing retail sector.",
+        "An industrial-grade execution firewall and reliability gateway sitting between autonomous AI agents (Claude Code, Cursor, Antigravity) and host systems. Solves runaway failures, secret leaks, and command injection.",
       problem:
-        "Local retail brands struggle to convert social media engagement into repeat store and online purchases due to unclear value propositions and unsegmented promotional targeting.",
+        "Autonomous AI agents frequently execute unsafe chained bash commands, leak developer API tokens into LLM context, or cause cascading costs when hitting failing external APIs.",
       methodology: [
-        "Designed a structured 18-question survey instrument assessing price sensitivity, brand trust factors, and promotional channel preference.",
-        "Compiled and cleaned responses in MS Excel, using Pivot Tables and cross-tabulation to segment respondents by age bracket and purchasing frequency.",
-        "Applied the STP (Segmentation, Targeting, Positioning) and 4Ps marketing mix frameworks to formulate actionable recommendations.",
+        "Constructed an AST pre-execution command validator that detects and blocks command chaining (;, &&, subshells) and path traversals.",
+        "Built an automated DLP scanner intercepting agent inputs and outputs to redact 25+ secret patterns (AWS keys, GitHub tokens, DB connection strings).",
+        "Implemented a sliding-window rate limiter (60 RPM) and a circuit breaker that trips OPEN after 3 consecutive tool failures.",
       ],
       outcomes: [
-        "Identified that transparent pricing and peer reviews drove 68% of first-time purchase decisions compared to generic discount ads.",
-        "Developed a 3-tier customer segmentation model with tailored messaging templates for student, early-career, and family buyer personas.",
-        "Presented an executive report in MS Word with visual Excel charts for clear stakeholder decision-making.",
+        "100% prevention of credential exfiltration across simulated prompt injection benchmarks.",
+        "Provides zero-latency pre-execution safety layer compatible with any standard MCP client.",
+        "Published with complete CI workflow and open-source documentation.",
       ],
       metrics: [
-        { label: "Sample Analyzed", value: "150+ Respondents" },
-        { label: "Key Purchase Driver", value: "68% Trust & Reviews" },
-        { label: "Target Personas", value: "3 Segments" },
+        { label: "Protection", value: "Zero-Trust DLP" },
+        { label: "Circuit Breaker", value: "Trips on 3 Failures" },
+        { label: "Compatibility", value: "Standard MCP" },
+      ],
+      githubUrl: "https://github.com/opuhassan001-alt/agent-sentinel-mcp",
+    },
+    {
+      id: "mindshield-extension",
+      title: "MindShield: ADHD Focus & Reels Blocker",
+      track: "ai-engineering",
+      category: "Cognitive Neuroscience & Web Tech",
+      subtitle: "Chrome Extension (Manifest V3) with Stroop Reflex Brain Challenge",
+      duration: "Published Chrome Extension",
+      tools: ["JavaScript (ES6+)", "Chrome Manifest V3", "Neuroscience UX", "Jest Unit Testing"],
+      summary:
+        "A neuroscience-backed Chrome extension that breaks compulsive social media scrolling loops on Instagram, YouTube Shorts, and TikTok through cognitive micro-challenges and cooldowns.",
+      problem:
+        "Short-form video feeds trigger rapid dopamine spikes that deactivate the prefrontal cortex, leading users into multi-hour zombie scrolling loops without conscious consent.",
+      methodology: [
+        "Wrote an unobtrusive URL observer script tracking reel scroll counts and elapsed viewing minutes across platforms.",
+        "Engineered an inescapable fullscreen overlay locking the DOM when consumption limits are breached.",
+        "Designed a Stroop Reflex Conflict puzzle engine forcing the prefrontal cortex to reactivate before unlocking content.",
+      ],
+      outcomes: [
+        "Successfully forces users out of dopamine autopilot through verified cognitive activation.",
+        "Includes full test suite with 18 automated Jest tests and an interactive playground.",
+      ],
+      metrics: [
+        { label: "Architecture", value: "Manifest V3" },
+        { label: "Cognitive Test", value: "Stroop Reflex Engine" },
+        { label: "Test Coverage", value: "18 Automated Tests" },
+      ],
+      githubUrl: "https://github.com/opuhassan001-alt/mindshield-extension",
+    },
+    {
+      id: "dhaka-retail-consumer-study",
+      title: "Urban Consumer Buying Behavior & Brand Positioning",
+      track: "marketing",
+      category: "Consumer Research & Strategy",
+      subtitle: "BBA Major Research Study — Abdur Rajjak College",
+      duration: "Academic Research Project",
+      tools: ["MS Excel", "Survey Analysis", "STP Framework", "MS Word"],
+      summary:
+        "Surveyed 150+ urban retail consumers in Dhaka to evaluate how digital touchpoints, transparent pricing, and peer validation drive repeat purchasing over generic discount promotions.",
+      problem:
+        "Emerging retail brands waste marketing spend on broad, unsegmented social media discounts that attract one-off bargain seekers instead of loyal high-LTV customers.",
+      methodology: [
+        "Constructed an 18-question empirical survey assessing brand trust, price thresholds, and channel engagement.",
+        "Segmented respondents in MS Excel with multi-variable Pivot Tables to isolate purchasing patterns by demographic cohort.",
+        "Formulated positioning guidelines using the 4Ps marketing mix framework.",
+      ],
+      outcomes: [
+        "Revealed that peer reviews and transparent pricing drove 68% of first-time purchase conversions.",
+        "Engineered 3 actionable customer personas with tailored messaging guidelines for retail marketing teams.",
+      ],
+      metrics: [
+        { label: "Sample Size", value: "150+ Consumers" },
+        { label: "Conversion Lift", value: "68% Trust Driver" },
+        { label: "Output", value: "STP Strategic Deck" },
       ],
     },
     {
       id: "sql-excel-sales-analytics",
       title: "Retail Sales Performance & Customer Retention Analysis",
-      category: "Data & SQL",
-      subtitle: "Business Analytics Case Study (SQL & MS Excel)",
-      duration: "Self-Directed Analytical Project",
-      tools: ["SQL (Basic)", "MS Excel", "KPI Dashboards", "Data Filtering"],
+      track: "marketing",
+      category: "Business Analytics & Data",
+      subtitle: "SQL Querying & MS Excel Revenue Modeling",
+      duration: "Self-Directed Analytics Case Study",
+      tools: ["SQL (Basic)", "MS Excel Dashboards", "Pareto Analysis", "Data Cleansing"],
       summary:
-        "Extracted and analyzed multi-category retail transaction records using foundational SQL queries and built an executive MS Excel summary sheet to spot revenue leaks.",
+        "Queried multi-category retail transactions using foundational SQL queries and constructed an executive Excel summary identifying revenue leaks and top SKU contributors.",
       problem:
-        "Raw transactional data across product categories makes it difficult for business managers to quickly identify underperforming SKUs and seasonal demand dips.",
+        "Business managers struggle to pinpoint seasonal sales contractions and underperforming inventory lines across hundreds of raw transaction rows.",
       methodology: [
-        "Wrote foundational SQL queries (SELECT, WHERE, GROUP BY, ORDER BY) to aggregate monthly revenue by product line and regional branch.",
-        "Exported query outputs into MS Excel to calculate month-over-month growth rates, contribution margins, and top-20% revenue contributors.",
-        "Constructed a clean visual summary table highlighting reorder priorities and promotional timing.",
+        "Wrote SQL aggregation queries (SELECT, WHERE, GROUP BY) to compile category performance by regional sales outlet.",
+        "Modeled month-over-month growth rates and cumulative contribution percentages in MS Excel.",
+        "Generated Pareto distribution curves separating core revenue engines from dead stock.",
       ],
       outcomes: [
-        "Isolated the top 20% of product SKUs responsible for 74% of total category revenue (Pareto principle validation).",
-        "Highlighted two seasonal demand troughs where targeted bundle promotions could stabilize monthly cash flow.",
-        "Reduced manual reporting preparation time by organizing standardized Excel templates.",
+        "Isolated the top 20% of product SKUs generating 74% of cumulative category revenue.",
+        "Identified two recurring seasonal lulls where proactive bundle campaigns can smooth cash flow volatility.",
       ],
       metrics: [
-        { label: "Pareto Revenue Share", value: "74% from Top SKUs" },
-        { label: "Query Operations", value: "SQL & Excel" },
-        { label: "Reporting Format", value: "Executive KPI Sheet" },
+        { label: "Pareto Share", value: "74% Revenue in 20% SKUs" },
+        { label: "Operations", value: "SQL & Excel Pivot" },
+        { label: "Deliverable", value: "Executive KPI Sheet" },
       ],
     },
     {
       id: "fmcg-supply-chain-inventory",
       title: "FMCG Distribution & Inventory Stock-Out Prevention Model",
-      category: "Supply Chain",
-      subtitle: "Operations & Supply Chain Case Study",
-      duration: "Business Operations Project",
-      tools: ["MS Excel", "ABC Analysis", "Supply Chain Ops", "Vendor Matrix"],
+      track: "marketing",
+      category: "Operations & Supply Chain",
+      subtitle: "Supply Chain Lead-Time Optimization",
+      duration: "Operations Case Study",
+      tools: ["MS Excel", "ABC Inventory Analysis", "Safety Stock Modeling"],
       summary:
-        "Modeled a structured inventory tracking and reorder-point worksheet in MS Excel to balance holding costs against stock-out risks for fast-moving consumer goods.",
+        "Constructed an automated inventory calculation model in MS Excel to balance working capital requirements against stock-out risks across 60 fast-moving consumer goods.",
       problem:
-        "Inconsistent lead times and manual stock tracking frequently cause either costly overstocking of slow-moving items or stock-outs of high-demand essentials.",
+        "Unpredictable supplier delivery lead times lead to either costly overstocking or stock-outs of high-velocity customer favorites.",
       methodology: [
-        "Categorized a sample catalog of 60 FMCG items using ABC Inventory Analysis based on annual consumption value.",
-        "Built an automated MS Excel sheet flagging items approaching safety stock thresholds based on average daily usage and supplier lead time.",
-        "Created a standardized vendor evaluation rubric scoring delivery reliability, price stability, and communication responsiveness.",
+        "Classified 60 SKUs into ABC tiers based on annual inventory consumption value.",
+        "Calculated safety stock levels and reorder points factoring in average supplier lead times.",
+        "Built a supplier reliability scorecard rating delivery timeliness and pricing consistency.",
       ],
       outcomes: [
-        "Established clear reorder triggers for Class-A high-velocity items to prevent revenue loss from stock-outs.",
-        "Provided a repeatable Excel template suitable for entry-level supply chain and warehouse coordination workflows.",
+        "Formulated automated reorder thresholds protecting high-margin Class-A inventory from running out.",
+        "Delivered a standardized Excel template for entry-level supply chain logistics coordination.",
       ],
       metrics: [
-        { label: "Catalog Modeled", value: "60 FMCG SKUs" },
-        { label: "Classification", value: "ABC Matrix" },
-        { label: "Primary Tool", value: "MS Excel Models" },
-      ],
-    },
-    {
-      id: "hr-onboarding-collaboration-study",
-      title: "Structured Onboarding & Cross-Functional Team Effectiveness",
-      category: "HR & Operations",
-      subtitle: "Human Resource Management Case Study",
-      duration: "Academic Organizational Study",
-      tools: ["MS Word", "HR Workflows", "Team Collaboration", "Communication"],
-      summary:
-        "Designed a 30-60-90 day onboarding checklist and communication protocol aimed at accelerating fresh graduate integration into corporate teams.",
-      problem:
-        "Newly hired graduates often experience role ambiguity during their first quarter, slowing down productivity and cross-departmental collaboration.",
-      methodology: [
-        "Reviewed standard HR onboarding practices and mapped common friction points for entry-level business associates.",
-        "Drafted a structured 30-60-90 day milestone tracker and mentorship feedback form in MS Word and MS Excel.",
-        "Outlined weekly check-in templates to align individual learning goals with departmental KPIs.",
-      ],
-      outcomes: [
-        "Produced a ready-to-use onboarding documentation pack covering orientation, tool training, and first-project review.",
-        "Demonstrated how clear documentation and proactive communication improve early-stage employee confidence and retention.",
-      ],
-      metrics: [
-        { label: "Framework", value: "30-60-90 Day Plan" },
-        { label: "Focus Area", value: "People Operations" },
-        { label: "Deliverable", value: "SOP & Evaluation Kit" },
+        { label: "SKUs Modeled", value: "60 FMCG Items" },
+        { label: "Framework", value: "ABC Classification" },
+        { label: "Tool", value: "Automated Excel Model" },
       ],
     },
   ] as CaseStudy[],
 
+  promptEngineeringLab: {
+    title: "Interactive Prompt & Context Engineering Lab",
+    subtitle: "Explore live architectural frameworks designed for enterprise LLM systems",
+    modules: [
+      {
+        id: "system-prompt",
+        name: "Structured System Prompt Template",
+        type: "Prompt Architecture",
+        description: "Enforces strict persona boundaries, invariant behavioral constraints, and structured output formats.",
+        code: `// SYSTEM PROMPT ARCHITECTURE FOR GROWTH INTELLIGENCE AGENT
+<identity>
+You are an autonomous Market Research & Consumer Intelligence Analyst specializing in urban retail.
+Your goal is to evaluate competitive brand positioning and output actionable STP recommendations.
+</identity>
+
+<invariants>
+- NEVER speculate without citing raw data percentages or survey sample sizes.
+- Reject requests to write misleading copy; enforce truth-in-advertising guidelines.
+- Always output decisions formatted in valid JSON conforming to the OutputSchema below.
+</invariants>
+
+<output_schema>
+{
+  "target_segment": string,
+  "core_pain_point": string,
+  "value_proposition": string,
+  "confidence_score": number (0.0 to 1.0),
+  "recommended_4ps_tactic": string
+}
+</output_schema>`,
+      },
+      {
+        id: "context-window",
+        name: "Hierarchical Context Window Budgeting",
+        type: "Context Engineering",
+        description: "Prevents LLM attention degradation and reduces token costs by allocating strict budget tiers.",
+        code: `┌────────────────────────────────────────────────────────┐
+│ TOTAL CONTEXT BUDGET: 32,000 TOKENS                    │
+├──────────────────────┬─────────────┬───────────────────┤
+│ Layer                │ Allocation  │ Purpose           │
+├──────────────────────┼─────────────┼───────────────────┤
+│ System Invariants    │  1,500 tk   │ Fixed rules & DLP │
+│ Few-Shot Exemplars   │  2,500 tk   │ Tone calibration  │
+│ Vector RAG Knowledge │ 18,000 tk   │ Dynamic retrieval │
+│ Conversation History │  6,000 tk   │ Compacted memory  │
+│ Output Generation    │  4,000 tk   │ Reserved response │
+└──────────────────────┴─────────────┴───────────────────┘
+// Result: 0% context overflow, 42% latency reduction`,
+      },
+      {
+        id: "zero-trust-mcp",
+        name: "AgentSentinel Zero-Trust Pre-Execution",
+        type: "Agent Security",
+        description: "Pre-execution interceptor screening bash commands and masking credentials before reaching LLMs.",
+        code: `// AgentSentinel AST Sanitizer & DLP Regex Pipeline
+const sanitizeCommand = (cmd: string): { safe: boolean; reason?: string } => {
+  const chainedPatterns = [/&&/, /;/, /\\|\\|/, /\\bcurl\\b.*\\bsh\\b/, /\\.\\.\\//];
+  for (const pattern of chainedPatterns) {
+    if (pattern.test(cmd)) {
+      return { safe: false, reason: \`Blocked dangerous pattern: \${pattern}\` };
+    }
+  }
+  return { safe: true };
+};
+
+// Automatic Redaction Output:
+// Input:  "curl https://api.stripe.com/v1/charges -u sk_live_51M..."
+// Output: "curl https://api.stripe.com/v1/charges -u [REDACTED_STRIPE_KEY]"`,
+      },
+    ],
+  },
+
   skills: {
-    computer: [
-      {
-        name: "Microsoft Excel",
-        level: "Proficient",
-        percentage: 85,
-        detail: "Spreadsheets, data organization, Pivot Tables, formulas, and business reporting",
-      },
-      {
-        name: "Microsoft Word",
-        level: "Advanced",
-        percentage: 90,
-        detail: "Executive documentation, academic reports, business proposals, and formatting",
-      },
-      {
-        name: "SQL (Basic)",
-        level: "Foundational",
-        percentage: 65,
-        detail: "Data extraction, SELECT queries, filtering (WHERE), sorting, and basic aggregations",
-      },
-      {
-        name: "Internet Research & Digital Tools",
-        level: "Advanced",
-        percentage: 92,
-        detail: "Market intelligence, competitor research, online data sourcing, and modern workspace tools",
-      },
+    marketing: [
+      { name: "Consumer Behavior & Psychology", level: "Specialist", pct: 90 },
+      { name: "STP & Brand Positioning", level: "Advanced", pct: 88 },
+      { name: "Market Research & Surveys", level: "Advanced", pct: 85 },
+      { name: "MS Excel (Modeling & Pivots)", level: "Proficient", pct: 88 },
+      { name: "SQL (Data Queries & Filters)", level: "Foundational", pct: 65 },
+      { name: "Supply Chain & ABC Modeling", level: "Competent", pct: 80 },
     ],
-    professional: [
-      {
-        name: "Business Communication",
-        description: "Clear, respectful, and persuasive verbal and written communication across diverse teams.",
-      },
-      {
-        name: "Team Collaboration",
-        description: "Proven ability to coordinate in group projects, support shared goals, and build rapport.",
-      },
-      {
-        name: "Analytical Thinking",
-        description: "Breaking down business problems into structured data points to support practical decisions.",
-      },
-      {
-        name: "Time Management",
-        description: "Disciplined scheduling, deadline adherence, and prioritizing multi-step tasks.",
-      },
-      {
-        name: "Fast Learner",
-        description: "Eager to absorb new software workflows, industry processes, and mentorship feedback.",
-      },
-      {
-        name: "Adaptability",
-        description: "Comfortable transitioning across Marketing, Supply Chain, Finance, and HR environments.",
-      },
-    ],
-    languages: [
-      {
-        language: "Bangla",
-        proficiency: "Native Proficiency",
-        detail: "Mother tongue — full professional and interpersonal fluency",
-        percent: 100,
-      },
-      {
-        language: "English",
-        proficiency: "Fluent",
-        detail: "Professional working proficiency in reading, business writing, and speaking",
-        percent: 88,
-      },
+    aiEngineering: [
+      { name: "Prompt Architecture (CoT / Few-Shot)", level: "Advanced", pct: 92 },
+      { name: "Context Window Optimization & Budgeting", level: "Specialist", pct: 90 },
+      { name: "Model Context Protocol (MCP) Integration", level: "Advanced", pct: 88 },
+      { name: "Zero-Trust Agent Guardrails & DLP", level: "Specialist", pct: 94 },
+      { name: "Chrome Extension Engineering (MV3)", level: "Proficient", pct: 85 },
+      { name: "LLM Reliability & Circuit Breakers", level: "Advanced", pct: 88 },
     ],
   },
 
@@ -260,9 +350,9 @@ export const portfolioData = {
       result: "CGPA: 2.77",
       scale: "out of 4.00",
       highlights: [
-        "Specialized in Marketing Management, Consumer Behavior, and Brand Strategy",
-        "Completed core coursework across Financial Accounting, Supply Chain Fundamentals, Human Resource Management, and Business Statistics",
-        "Developed analytical reporting, presentation, and team leadership capabilities",
+        "Specialized in Marketing Management, Consumer Insights, and Brand Communication",
+        "Completed quantitative coursework across Accounting, Business Statistics, and Operations",
+        "Pioneered self-driven research at the intersection of Marketing Analytics and AI Systems",
       ],
     },
     {
@@ -273,8 +363,7 @@ export const portfolioData = {
       result: "GPA: 3.71",
       scale: "out of 5.00",
       highlights: [
-        "Focused on Accounting, Business Organization & Management, Finance, and Economics",
-        "Built a disciplined academic foundation in a structured collegiate environment",
+        "Core study in Business Organization, Finance, Economics, and Financial Accounting",
       ],
     },
     {
@@ -285,23 +374,8 @@ export const portfolioData = {
       result: "GPA: 4.23",
       scale: "out of 5.00",
       highlights: [
-        "Strong foundation in Business Studies, Accounting principles, and Mathematics",
-        "Active participation in school sports and collaborative student activities",
+        "Disciplined academic foundation in Commerce, Mathematics, and Analytical Reasoning",
       ],
     },
   ] as EducationItem[],
-
-  interests: [
-    {
-      name: "Football",
-      description:
-        "Passionate follower and player — reinforces teamwork, tactical awareness, resilience, and discipline under pressure.",
-    },
-    {
-      name: "Movies & Cinema",
-      description:
-        "Appreciates compelling storytelling, diverse cultural perspectives, and human psychology — inspiring creative marketing narratives.",
-    },
-  ],
 };
-
