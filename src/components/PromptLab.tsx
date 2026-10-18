@@ -47,22 +47,28 @@ export default function PromptLab() {
   const simulationResult = simulateSanitization(testInput);
 
   return (
-    <section id="lab" className="py-20 bg-[#111111] text-white border-t border-[#222]">
+    <section id="lab" className="py-24 bg-[#05080E] text-slate-100 border-t border-cyan-950/60 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white lowercase">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/70 border border-cyan-800/40 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-3">
+            <Shield className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Interactive Context Engineering Playground</span>
+          </div>
+          <h3 className="font-mono text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight text-white leading-tight">
+            <span className="text-cyan-400 font-light">&lt;</span>
             prompt &amp; context engineering lab
+            <span className="text-cyan-400 font-light">&gt;</span>
           </h3>
-          <p className="mt-2 text-sm text-[#888888] max-w-xl mx-auto">
+          <p className="mt-3 text-xs sm:text-sm text-slate-400 max-w-xl mx-auto font-mono leading-relaxed">
             Architectural patterns designed for enterprise LLMs: system prompt invariants, hierarchical context budgeting, and zero-trust pre-execution security.
           </p>
         </div>
 
         {/* Tabbed Card Container */}
-        <div className="rounded-xl bg-[#1b1b1b] border border-[#2d2d2d] overflow-hidden shadow-2xl">
+        <div className="rounded-2xl bg-[#090D17] border border-cyan-900/50 overflow-hidden shadow-[0_0_40px_rgba(0,240,255,0.08)]">
           {/* Top Bar */}
-          <div className="flex flex-wrap items-center justify-between border-b border-[#2d2d2d] bg-[#161616] px-4 py-3 gap-2">
+          <div className="flex flex-wrap items-center justify-between border-b border-cyan-950 bg-[#060911] px-4 py-3 gap-2">
             <div className="flex flex-wrap gap-2">
               {portfolioData.promptEngineeringLab.modules.map((mod) => (
                 <button
@@ -71,8 +77,8 @@ export default function PromptLab() {
                   onClick={() => setActiveTab(mod.id)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
                     activeTab === mod.id
-                      ? "bg-white text-black font-bold"
-                      : "text-[#888] hover:text-white hover:bg-white/5"
+                      ? "bg-cyan-400 text-slate-950 font-bold shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {mod.name}
@@ -83,7 +89,7 @@ export default function PromptLab() {
             <button
               type="button"
               onClick={() => copyCode(activeModule.code)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-[#aaa] font-mono transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950/60 hover:bg-cyan-900/50 text-xs text-cyan-300 border border-cyan-800/40 font-mono transition-colors"
             >
               {copied ? (
                 <>
@@ -103,20 +109,20 @@ export default function PromptLab() {
           <div className="p-6 sm:p-8 space-y-6">
             <div>
               <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-white/10 text-white">
+                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-cyan-950 text-cyan-300 border border-cyan-800/50">
                   {activeModule.type}
                 </span>
-                <h4 className="font-display font-bold text-lg text-white">
+                <h4 className="font-mono font-bold text-lg text-white">
                   {activeModule.name}
                 </h4>
               </div>
-              <p className="text-xs sm:text-sm text-[#888] mt-1.5">
+              <p className="text-xs sm:text-sm text-slate-400 mt-1.5 font-sans">
                 {activeModule.description}
               </p>
             </div>
 
             {/* Code Box */}
-            <div className="rounded-xl bg-[#121212] border border-[#252525] p-4 sm:p-5 font-mono text-xs text-slate-200 overflow-x-auto">
+            <div className="rounded-xl bg-[#05070E] border border-cyan-950/80 p-4 sm:p-5 font-mono text-xs text-slate-200 overflow-x-auto shadow-inner">
               <pre className="leading-relaxed whitespace-pre font-mono">
                 {activeModule.code}
               </pre>
@@ -124,26 +130,26 @@ export default function PromptLab() {
 
             {/* Live Interactive DLP test */}
             {activeTab === "zero-trust-mcp" && (
-              <div className="pt-6 border-t border-[#2d2d2d] space-y-4">
+              <div className="pt-6 border-t border-cyan-950/80 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h5 className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                  <h5 className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 font-mono">
                     <Shield className="w-4 h-4 text-cyan-400" />
                     AgentSentinel Live DLP Interceptor
                   </h5>
-                  <span className="text-[11px] text-[#777]">
-                    Type a command to test live regex redaction & AST blocking
+                  <span className="text-[11px] text-slate-400 font-mono">
+                    Type a command to test live regex redaction &amp; AST blocking
                   </span>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-[11px] text-[#888] font-mono">
+                  <label className="block text-[11px] text-slate-400 font-mono">
                     Agent Input Command:
                   </label>
                   <input
                     type="text"
                     value={testInput}
                     onChange={(e) => setTestInput(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#121212] border border-[#333] text-xs font-mono text-white focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#05070E] border border-cyan-900/60 text-xs font-mono text-white focus:outline-none focus:ring-1 focus:ring-cyan-400 transition"
                   />
                 </div>
 

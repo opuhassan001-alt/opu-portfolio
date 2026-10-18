@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#164` Overhaul Marketing and AI Systems tracks with two completely distinct visual themes, bespoke font hierarchies, and distinct color palettes: warm luxury editorial parchment (`#F8F6F0`) with Playfair Display serif typography and terracotta/amber accents for Marketing, and deep obsidian cyber systems (`#060A12`) with JetBrains Mono monospace typography and glowing cyan/emerald accents for AI Systems (2026-10-18)
+
 - `#123` `#82` `#81` Save and archive emmabostian/developer-portfolios repository metadata, curated portfolio breakdown, submission guide, and 2,100+ raw entry mirror to docs/developer-portfolios.md and docs/developer-portfolios-raw.md (2026-10-17)
 
 - `#124` `#83` `#41` `#20` Design, implement, test, and publish AgentSentinel (opuhassan001-alt/agent-sentinel-mcp): Industrial-Grade Zero-Trust MCP Gateway, DLP Secret Firewall, Runaway Loop Circuit Breaker, and Local-First Architecture with 41 passing automated tests (2026-10-15)

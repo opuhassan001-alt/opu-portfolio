@@ -35,13 +35,13 @@ export default function AdhamHero() {
               href="#marketing-work"
               className="inline-block group focus:outline-none"
             >
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors lowercase leading-none">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-slate-900 group-hover:text-[#C2410C] transition-colors lowercase leading-none">
                 marketer
               </h1>
               <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm">
                 Growth &amp; product marketer specialising in consumer psychology, brand strategy and business analytics.
               </p>
-              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform">
+              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#C2410C] group-hover:translate-x-1 transition-transform">
                 <span>View marketing work</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
@@ -57,7 +57,7 @@ export default function AdhamHero() {
                   hoveredSide === "left"
                     ? "bg-amber-200/40"
                     : hoveredSide === "right"
-                    ? "bg-blue-100/60"
+                    ? "bg-cyan-200/40"
                     : "bg-slate-100/50"
                 }`}
               />
@@ -89,7 +89,7 @@ export default function AdhamHero() {
               href="#ai-work"
               className="inline-block group focus:outline-none"
             >
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-900 group-hover:text-cyan-600 transition-colors leading-none">
+              <h1 className="font-mono text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-slate-900 group-hover:text-cyan-600 transition-colors leading-none">
                 <span className="text-slate-400 font-light">&lt;</span>
                 engineer
                 <span className="text-slate-400 font-light">&gt;</span>

@@ -41,10 +41,10 @@ export default function HomePage() {
         <PromptLab />
 
         {/* About & Skills: 2-Column Editorial Section */}
-        <section id="skills" className="py-20 bg-white border-t border-slate-200">
+        <section id="skills" className="py-24 bg-white border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
+            <div className="text-center mb-16">
+              <h3 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
                 about &amp; skills
               </h3>
               <p className="mt-2 text-sm text-slate-600 max-w-lg mx-auto">
@@ -53,13 +53,16 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14">
-              {/* Left Column: Marketer Skills */}
-              <div className="space-y-6">
+              {/* Left Column: Marketer Skills (Warm Editorial Palette) */}
+              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-[#E7DFD3]">
                 <div>
-                  <h4 className="font-display text-xl font-bold text-slate-900 lowercase">
+                  <span className="text-xs font-serif italic text-[#C2410C] font-semibold uppercase tracking-wider">
+                    Commercial Domain
+                  </span>
+                  <h4 className="font-serif text-2xl font-bold text-[#1C1917] mt-1">
                     growth &amp; product marketing
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                  <p className="text-xs sm:text-sm text-[#78716C] mt-1 leading-relaxed">
                     BBA in Marketing (2021–2026) with core focus on consumer research, segmentation, and empirical revenue analytics.
                   </p>
                 </div>
@@ -67,13 +70,13 @@ export default function HomePage() {
                 <div className="space-y-4">
                   {portfolioData.skills.marketing.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
+                      <div className="flex items-center justify-between text-xs font-semibold text-[#1C1917] mb-1">
                         <span>{skill.name}</span>
-                        <span className="text-slate-500 font-normal">{skill.level}</span>
+                        <span className="text-[#78716C] font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-[#EBE5DC] overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-slate-900"
+                          className="h-full rounded-full bg-[#C2410C]"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -81,10 +84,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-medium text-[#78350F]">
                   {["STP Targeting", "4Ps Marketing Mix", "Dhaka Retail Survey", "Excel Pivot Models", "SQL Aggregations"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
+                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#E2DBD0] shadow-2xs">
                         {item}
                       </span>
                     )
@@ -92,27 +95,30 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Context Engineer Skills */}
-              <div className="space-y-6">
+              {/* Right Column: Context Engineer Skills (High-Tech Obsidian Palette) */}
+              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#090D17] border border-cyan-900/40 text-slate-100">
                 <div>
-                  <h4 className="font-display text-xl font-bold text-slate-900 lowercase">
+                  <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
+                    Engineering Systems
+                  </span>
+                  <h4 className="font-mono text-xl sm:text-2xl font-bold text-white mt-1">
                     prompt &amp; context engineering
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed font-sans">
                     Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability and context budgeting.
                   </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 font-mono">
                   {portfolioData.skills.aiEngineering.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-200 mb-1">
                         <span>{skill.name}</span>
-                        <span className="text-slate-500 font-normal">{skill.level}</span>
+                        <span className="text-slate-400 font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-slate-900"
+                          className="h-full rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,240,255,0.4)]"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -120,10 +126,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-4 flex flex-wrap gap-2 text-xs font-mono text-slate-600">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
                   {["AgentSentinel MCP", "Zero-Trust DLP", "Token Budgeting", "Manifest V3", "Circuit Breakers"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
+                      <span key={item} className="px-3 py-1 rounded-full bg-[#05070E] border border-cyan-900/60 shadow-2xs">
                         {item}
                       </span>
                     )
@@ -135,11 +141,11 @@ export default function HomePage() {
         </section>
 
         {/* Education Timeline */}
-        <section id="education" className="py-20 bg-slate-50 border-t border-slate-200">
+        <section id="education" className="py-24 bg-slate-50 border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
-                education &amp; credentials
+            <div className="text-center mb-14">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                Education &amp; Academic Credentials
               </h3>
             </div>
 
@@ -147,19 +153,19 @@ export default function HomePage() {
               {portfolioData.education.map((edu) => (
                 <div
                   key={edu.degree}
-                  className="rounded-xl bg-white p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  className="rounded-2xl bg-white p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div>
-                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-mono">
                       {edu.period} • {edu.majorOrGroup}
                     </div>
-                    <h4 className="font-display text-lg font-bold text-slate-900 mt-1">
+                    <h4 className="font-serif text-lg sm:text-xl font-bold text-slate-900 mt-1">
                       {edu.degree}
                     </h4>
                     <p className="text-sm text-slate-600">{edu.institution}</p>
                   </div>
 
-                  <div className="self-start sm:self-center px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-right">
+                  <div className="self-start sm:self-center px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-right">
                     <div className="font-bold text-slate-900 text-sm">{edu.result}</div>
                     <div className="text-[11px] text-slate-500">Scale {edu.scale}</div>
                   </div>
