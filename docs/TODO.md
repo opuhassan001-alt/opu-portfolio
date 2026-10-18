@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#168` Replicate Adham Dannaway's interactive split-portrait dynamic motion and enlarge hero presentation: implemented real-time dampened mouse tracking across the hero stage, interactive split click hotzones (left half links to #marketing-work, right half links to #ai-work), smooth directional translation slide physics (translateX -52px / +52px) upon click and hover, and increased portrait display area by 35% with responsive auto-framing (2026-10-18)
+
 - `#167` Eliminate all blue, black, orange, and yellow from AI and engineering sections and redesign the bottom Contact section in luxury Glassmorphism: transformed Contact section into a frosted glassmorphic panel with ambient refraction, frosted cards, and emerald actions; overhauled AI Systems, Prompt Lab, and Skills right card to an elite Emerald & Sage Slate palette (#F8FAF9, #059669, #1C2824) with zero navy or AI slop (2026-10-18)
 
 - `#166` Overhaul Explore AI Systems, Prompt Lab, and WindowMockup components with Adham Dannaway's authentic Lean Design System: neutral clean canvas (#FAFAFA), deep navy (#0F172A) text with sentence case typography, 1px functional borders (#E2E8F0), pure action blue (#2563EB) accents, and clean macOS desktop window mockups replacing all dark/neon elements (2026-10-18)
