@@ -15,7 +15,8 @@ import {
   Copy,
   Check,
   ShieldCheck,
-  Lock,
+  Sparkles,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
@@ -122,180 +123,182 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-slate-50 via-emerald-50/20 to-slate-100 border-t border-slate-200"
+      className="py-24 relative overflow-hidden bg-[#FEFCE8] text-black border-t-[4px] border-black select-none"
     >
-      {/* Ambient background light spheres for genuine frosted glassmorphic refraction */}
-      <div className="absolute top-12 left-12 w-80 h-80 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-12 right-12 w-96 h-96 bg-teal-200/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-slate-200/40 rounded-full blur-3xl pointer-events-none" />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Column: Direct Contact & Social Channels (Frosted Glassmorphism Panel) */}
-          <div className="lg:col-span-5 backdrop-blur-2xl bg-white/70 border border-white/80 rounded-3xl p-6 sm:p-8 shadow-[0_10px_35px_rgba(0,0,0,0.04)] space-y-7">
+          {/* Left Column: Direct Contact & Channels (Neo-Brutalist Panel) */}
+          <div className="lg:col-span-5 bg-white border-[3.5px] border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0px_#000] space-y-6">
             <div>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Available for Immediate Joining
-              </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-800 leading-snug">
-                Let&apos;s Discuss How I Can Contribute to Your Team
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#FDE047] border-2 border-black text-black font-mono font-black text-xs uppercase tracking-wider mb-3 shadow-[3px_3px_0px_#000] -rotate-1">
+                <Zap className="w-3.5 h-3.5 text-black fill-current" />
+                <span>IMMEDIATE JOINING AVAILABLE</span>
+              </div>
+              <h2 className="font-mono text-2xl sm:text-3xl font-black uppercase tracking-tight text-black leading-snug">
+                LET&apos;S TALK &bull; CONNECT DIRECTLY
               </h2>
-              <p className="mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Whether you are hiring for an entry-level position, Management
-                Trainee program, or internship in{" "}
-                <span className="text-slate-800 font-semibold">
-                  Marketing, Supply Chain, Finance, or Human Resources
-                </span>
-                , I would love to connect.
+              <p className="mt-2 text-neutral-700 text-xs sm:text-sm font-medium leading-relaxed font-sans">
+                Open for high-impact opportunities in{" "}
+                <strong className="text-black bg-[#FED7AA] px-1 py-0.5 border border-black rounded">
+                  Marketing, Supply Chain, Business Analytics &amp; AI Systems
+                </strong>
+                .
               </p>
             </div>
 
-            {/* Direct Contact Cards (Frosted Glass Interactive Cards) */}
-            <div className="space-y-3">
+            {/* Direct Contact Cards (Neo-Brutalism Color Pop Cards) */}
+            <div className="space-y-3 font-mono">
+              {/* Phone Card - Pastel Mint */}
               <a
                 href={`tel:${portfolioData.personal.phoneRaw}`}
-                className="flex items-center gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/60 hover:bg-white/90 border border-white/90 hover:border-emerald-300 shadow-2xs hover:shadow-sm transition-all duration-300 group"
+                className="flex items-center gap-4 p-3.5 rounded-xl bg-[#A7F3D0] border-[2.5px] border-black shadow-[4px_4px_0px_#000] hover:shadow-[6px_6px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-700 shrink-0 group-hover:scale-105 transition-transform">
-                  <Phone className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center shrink-0 border-2 border-black group-hover:scale-105 transition-transform">
+                  <Phone className="w-5 h-5 text-[#A7F3D0]" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 font-medium">Phone / Mobile (Click to Call)</div>
-                  <div className="text-sm sm:text-base font-semibold text-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-wider text-neutral-800">Direct Phone (Click to Call)</div>
+                  <div className="text-sm sm:text-base font-black text-black">
                     {portfolioData.personal.phone}
                   </div>
                 </div>
               </a>
 
+              {/* Email Card - Pastel Lavender */}
               <a
                 href={`mailto:${portfolioData.personal.email}`}
-                className="flex items-center gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/60 hover:bg-white/90 border border-white/90 hover:border-emerald-300 shadow-2xs hover:shadow-sm transition-all duration-300 group"
+                className="flex items-center gap-4 p-3.5 rounded-xl bg-[#DDD6FE] border-[2.5px] border-black shadow-[4px_4px_0px_#000] hover:shadow-[6px_6px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-700 shrink-0 group-hover:scale-105 transition-transform">
-                  <Mail className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center shrink-0 border-2 border-black group-hover:scale-105 transition-transform">
+                  <Mail className="w-5 h-5 text-[#DDD6FE]" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 font-medium">Email Address (Click to Write)</div>
-                  <div className="text-sm sm:text-base font-semibold text-slate-800 break-all">
+                  <div className="text-[10px] font-black uppercase tracking-wider text-neutral-800">Email Address (Click to Write)</div>
+                  <div className="text-sm sm:text-base font-black text-black break-all">
                     {portfolioData.personal.email}
                   </div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-2xl backdrop-blur-md bg-white/60 border border-white/90 shadow-2xs">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-700 shrink-0">
-                  <MapPin className="w-5 h-5" />
+              {/* Location Card - Pastel Peach */}
+              <div className="flex items-center gap-4 p-3.5 rounded-xl bg-[#FED7AA] border-[2.5px] border-black shadow-[4px_4px_0px_#000]">
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center shrink-0 border-2 border-black">
+                  <MapPin className="w-5 h-5 text-[#FED7AA]" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 font-medium">Location</div>
-                  <div className="text-sm sm:text-base font-semibold text-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-wider text-neutral-800">Base Location</div>
+                  <div className="text-sm sm:text-base font-black text-black">
                     {portfolioData.personal.location}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Social & Instant Links */}
+            {/* Social Channels (Neo-Brutalism Buttons) */}
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
-                Connect &amp; Download CV
+              <div className="text-xs font-mono font-black uppercase tracking-widest text-neutral-800 mb-2.5">
+                INSTANT CHANNELS &bull; CV
               </div>
               <div className="flex flex-wrap gap-2.5">
                 <a
                   href={portfolioData.personal.socials.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#22C55E] text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp Direct
+                  <MessageCircle className="w-4 h-4 text-black fill-current" />
+                  WhatsApp
                 </a>
                 <a
                   href={portfolioData.personal.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 hover:bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition-all shadow-2xs hover:text-emerald-700"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
                 >
-                  <Linkedin className="w-4 h-4 text-emerald-600" />
+                  <Linkedin className="w-4 h-4 text-black" />
                   LinkedIn
                 </a>
                 <a
                   href={portfolioData.personal.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl backdrop-blur-md bg-white/80 hover:bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition-all shadow-2xs hover:text-emerald-700"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
                 >
-                  <Facebook className="w-4 h-4 text-emerald-600" />
+                  <Facebook className="w-4 h-4 text-black" />
                   Facebook
                 </a>
                 <a
                   href={portfolioData.personal.cvUrl}
                   download="Estakball_Hossain_CV.pdf"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FACC15] text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
                 >
-                  <Download className="w-4 h-4" />
-                  CV (PDF)
+                  <Download className="w-4 h-4 text-black" />
+                  Download CV
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Interactive Contact Form (Frosted Glass Panel) */}
+          {/* Right Column: Send Direct Message Form (Neo-Brutalism Card) */}
           <div className="lg:col-span-7">
-            <div className="backdrop-blur-2xl bg-white/75 text-slate-900 rounded-3xl p-6 sm:p-8 shadow-[0_10px_35px_rgba(0,0,0,0.04)] border border-white/80">
-              <h3 className="font-display text-xl font-bold text-slate-800">
-                Send a Direct Message
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Fill out the form below to connect with Estakball Hossain via email or instant WhatsApp.
-              </p>
+            <div className="bg-white border-[3.5px] border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0px_#000]">
+              <div className="flex items-center justify-between pb-3 border-b-2 border-black">
+                <div>
+                  <h3 className="font-mono text-xl sm:text-2xl font-black uppercase text-black">
+                    SEND DIRECT MESSAGE
+                  </h3>
+                  <p className="text-xs font-mono text-neutral-600 font-bold mt-0.5">
+                    TRANSMIT VIA EMAIL PROTOCOL OR INSTANT WHATSAPP
+                  </p>
+                </div>
+                <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-black shadow-[2px_2px_0px_#000]" />
+              </div>
 
-              {/* Error Message Alert */}
+              {/* Error Alert */}
               {errorMessage && (
                 <div
                   role="alert"
-                  className="mt-4 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 flex items-center gap-2.5 text-xs sm:text-sm animate-in fade-in"
+                  className="mt-4 p-3 rounded-xl bg-[#FEE2E2] border-2 border-black shadow-[3px_3px_0px_#000] text-black font-mono text-xs font-bold flex items-center gap-2"
                 >
-                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                   <span>{errorMessage}</span>
                 </div>
               )}
 
-              {/* Success Notification Card */}
+              {/* Submitted Card */}
               {submitted ? (
-                <div className="mt-6 p-5 sm:p-6 rounded-2xl bg-emerald-50/80 border border-emerald-200 text-emerald-900 space-y-4">
-                  <div className="flex items-center gap-2.5 font-bold text-base text-emerald-950">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                    Message Prepared &amp; Ready!
+                <div className="mt-6 p-5 sm:p-6 rounded-xl bg-[#D1FAE5] border-2 border-black shadow-[5px_5px_0px_#000] text-black space-y-4 font-mono">
+                  <div className="flex items-center gap-2 font-black text-base">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-800 shrink-0" />
+                    <span>MESSAGE PREPARED &amp; DISPATCH READY!</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-emerald-800 leading-relaxed">
-                    Thank you, <span className="font-semibold">{name}</span>! Your message has been formatted for{" "}
-                    <span className="font-semibold">{portfolioData.personal.email}</span>.
-                    You can dispatch it immediately via email or WhatsApp below:
+                  <p className="text-xs font-sans text-neutral-800 leading-relaxed font-medium">
+                    Thank you, <strong className="font-mono">{name}</strong>! Your message is formatted for{" "}
+                    <strong className="font-mono">{portfolioData.personal.email}</strong>.
+                    Send it immediately below:
                   </p>
                   <div className="flex flex-wrap gap-2.5 pt-1">
                     <button
                       type="button"
                       onClick={handleWhatsAppSend}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-xs sm:text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-xs"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#22C55E] text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="w-4 h-4 text-black fill-current" />
                       Send on WhatsApp
                     </button>
                     <button
                       type="button"
                       onClick={handleCopyMessage}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold hover:bg-slate-50 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-black text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
                     >
                       {copied ? (
                         <>
-                          <Check className="w-4 h-4 text-emerald-600" />
-                          Copied to Clipboard!
+                          <Check className="w-4 h-4 text-emerald-700" />
+                          Copied!
                         </>
                       ) : (
                         <>
-                          <Copy className="w-4 h-4 text-slate-500" />
+                          <Copy className="w-4 h-4 text-black" />
                           Copy Message
                         </>
                       )}
@@ -303,7 +306,7 @@ export default function ContactSection() {
                     <button
                       type="button"
                       onClick={() => setSubmitted(false)}
-                      className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold hover:bg-slate-50 transition-colors"
+                      className="px-4 py-2.5 rounded-xl bg-neutral-100 text-black font-mono font-bold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
                     >
                       Edit Message
                     </button>
@@ -313,8 +316,8 @@ export default function ContactSection() {
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
-                        Your Name *
+                      <label htmlFor="contact-name" className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                        YOUR NAME *
                       </label>
                       <input
                         id="contact-name"
@@ -325,46 +328,49 @@ export default function ContactSection() {
                           setName(e.target.value);
                           if (errorMessage) setErrorMessage("");
                         }}
-                        placeholder="e.g., Tanvir Ahmed"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                        placeholder="e.g. Tanvir Ahmed"
+                        className="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-black bg-white text-sm font-sans font-medium text-black placeholder:text-neutral-400 shadow-[3px_3px_0px_#000] focus:shadow-[5px_5px_0px_#000] focus:outline-none transition-all"
                       />
                     </div>
                     <div>
-                      <label htmlFor="contact-company" className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
-                        Company / Organization
+                      <label htmlFor="contact-company" className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                        ORGANIZATION / COMPANY
                       </label>
                       <input
                         id="contact-company"
                         type="text"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        placeholder="e.g., Square / Pran-RFL / Agency"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                        placeholder="e.g. Square / FMCG / Tech Agency"
+                        className="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-black bg-white text-sm font-sans font-medium text-black placeholder:text-neutral-400 shadow-[3px_3px_0px_#000] focus:shadow-[5px_5px_0px_#000] focus:outline-none transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="contact-role" className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
-                      Opportunity / Department
+                    <label htmlFor="contact-role" className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                      OPPORTUNITY / ROLE TRACK
                     </label>
                     <select
                       id="contact-role"
                       value={roleType}
                       onChange={(e) => setRoleType(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-black bg-white text-sm font-sans font-bold text-black shadow-[3px_3px_0px_#000] focus:shadow-[5px_5px_0px_#000] focus:outline-none transition-all cursor-pointer"
                     >
                       <option value="Marketing Role / Management Trainee">
                         Marketing &amp; Brand Management
                       </option>
                       <option value="Supply Chain &amp; Operations Role">
-                        Supply Chain &amp; Operations
+                        Supply Chain &amp; FMCG Operations
                       </option>
                       <option value="Finance &amp; Business Analytics Role">
                         Finance &amp; Business Analytics (Excel / SQL)
                       </option>
                       <option value="Human Resources (HR) Role">
                         Human Resources &amp; Administration
+                      </option>
+                      <option value="Autonomous AI &amp; Agent Engineering">
+                        Autonomous AI &amp; Agent Zero Systems
                       </option>
                       <option value="General Career Opportunity">
                         General Interview / Networking Inquiry
@@ -373,8 +379,8 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
-                      Message *
+                    <label htmlFor="contact-message" className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                      MESSAGE *
                     </label>
                     <textarea
                       id="contact-message"
@@ -385,13 +391,13 @@ export default function ContactSection() {
                         setMessage(e.target.value);
                         if (errorMessage) setErrorMessage("");
                       }}
-                      placeholder="Hello Estakball, we reviewed your BBA portfolio and would like to invite you for an interview..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white/80 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                      placeholder="Hello Estakball, we reviewed your portfolio and would like to invite you for an interview..."
+                      className="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-black bg-white text-sm font-sans font-medium text-black placeholder:text-neutral-400 shadow-[3px_3px_0px_#000] focus:shadow-[5px_5px_0px_#000] focus:outline-none transition-all"
                     />
                   </div>
 
-                  {/* Consent & Age Checkboxes */}
-                  <div className="space-y-2.5 pt-1 text-xs text-slate-700">
+                  {/* Consents */}
+                  <div className="space-y-2 pt-1 text-xs font-mono text-black">
                     <label className="flex items-start gap-2.5 cursor-pointer select-none">
                       <input
                         type="checkbox"
@@ -400,10 +406,10 @@ export default function ContactSection() {
                           setAgeConsent(e.target.checked);
                           if (errorMessage) setErrorMessage("");
                         }}
-                        className="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        className="mt-0.5 h-4 w-4 rounded border-2 border-black text-black focus:ring-black cursor-pointer"
                       />
                       <span>
-                        I confirm that I am at least <strong className="text-slate-900">16 years of age</strong>.
+                        I confirm that I am at least <strong>16 years of age</strong>.
                       </span>
                     </label>
 
@@ -415,44 +421,39 @@ export default function ContactSection() {
                           setPrivacyConsent(e.target.checked);
                           if (errorMessage) setErrorMessage("");
                         }}
-                        className="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        className="mt-0.5 h-4 w-4 rounded border-2 border-black text-black focus:ring-black cursor-pointer"
                       />
                       <span>
                         I agree to the{" "}
-                        <Link href="/privacy-policy" target="_blank" className="text-emerald-700 underline font-semibold hover:text-emerald-800">
+                        <Link href="/privacy-policy" target="_blank" className="underline font-black hover:text-amber-800">
                           Privacy Policy
                         </Link>{" "}
-                        and consent to processing my submitted contact details for business correspondence.
+                        and consent to processing my submitted contact details.
                       </span>
                     </label>
                   </div>
 
-                  {/* Privacy & Anti-Spam Guarantee */}
-                  <div className="p-3 rounded-xl backdrop-blur-xs bg-emerald-50/50 border border-emerald-100 text-[11px] text-emerald-900 space-y-1">
-                    <div className="flex items-center gap-1.5 font-semibold text-emerald-800">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Zero Spam &amp; Total Privacy Guarantee</span>
-                    </div>
-                    <p className="text-slate-600">
-                      Your data is never sold or shared. You can request immediate data deletion anytime by replying STOP or visiting our{" "}
-                      <Link href="/privacy-policy" className="underline text-emerald-700 font-medium">Privacy Policy</Link>.
-                    </p>
+                  {/* Anti-spam sticker */}
+                  <div className="p-3 rounded-xl bg-[#F0FDF4] border-2 border-black shadow-[3px_3px_0px_#000] text-xs font-mono text-black flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-emerald-800 shrink-0" />
+                    <span>ZERO SPAM GUARANTEE &bull; DATA NEVER SOLD OR SHARED</span>
                   </div>
 
+                  {/* Submit Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3 pt-2">
                     <button
                       type="submit"
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition-colors shadow-xs cursor-pointer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#22C55E] text-black font-mono font-black text-sm uppercase border-[2.5px] border-black shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
                     >
-                      <Send className="w-4 h-4" />
+                      <Send className="w-4 h-4 text-black fill-current" />
                       Send via Email
                     </button>
                     <button
                       type="button"
                       onClick={handleWhatsAppSend}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors cursor-pointer shadow-xs"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#38BDF8] text-black font-mono font-black text-sm uppercase border-[2.5px] border-black shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="w-4 h-4 text-black fill-current" />
                       Send on WhatsApp
                     </button>
                   </div>

@@ -40,43 +40,46 @@ export default function HomePage() {
         {/* Prompt & Context Engineering Interactive Lab */}
         <PromptLab />
 
-        {/* About & Skills: 2-Column Editorial Section */}
-        <section id="skills" className="py-24 bg-white border-t border-slate-200">
+        {/* About & Skills: 2-Column Wabi-Sabi Section */}
+        <section id="skills" className="py-24 bg-[#F7F4EE] border-t border-[#E3DDCF] text-[#2C2926] select-none">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h3 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
-                about &amp; skills
+              <span className="inline-block px-3 py-1 rounded-full bg-[#EAE4D8] text-[#6E675F] text-[11px] font-serif tracking-widest uppercase mb-3 border border-[#DCD5C7]">
+                侘寂 • WABI-SABI CRAFT • GROUNDED HARMONY
+              </span>
+              <h3 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#2C2926] lowercase">
+                about &amp; cultivated crafts
               </h3>
-              <p className="mt-2 text-sm text-slate-600 max-w-lg mx-auto">
-                Bridging commercial growth strategy with technical AI agent engineering.
+              <p className="mt-2 text-sm text-[#787268] max-w-lg mx-auto font-serif leading-relaxed">
+                The quiet intersection of human commercial intuition and autonomous systems architecture. Two disciplines honed through deliberate practice.
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14">
-              {/* Left Column: Marketer Skills (Warm Editorial Palette) */}
-              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-[#E7DFD3]">
+              {/* Left Column: Commercial Grounding (Wabi-Sabi Clay & Linen Palette) */}
+              <div className="space-y-6 p-7 sm:p-9 rounded-3xl bg-[#FAF7F2] border border-[#E3DDCF] shadow-[0_4px_25px_rgba(50,40,30,0.03)]">
                 <div>
-                  <span className="text-xs font-serif italic text-[#C2410C] font-semibold uppercase tracking-wider">
-                    Commercial Domain
+                  <span className="text-xs font-serif italic text-[#B2644D] font-semibold uppercase tracking-wider">
+                    Commercial Domain • BBA Marketing
                   </span>
-                  <h4 className="font-serif text-2xl font-bold text-[#1C1917] mt-1">
+                  <h4 className="font-serif text-2xl font-bold text-[#2C2926] mt-1">
                     growth &amp; product marketing
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#78716C] mt-1 leading-relaxed">
-                    BBA in Marketing (2021–2026) with core focus on consumer research, segmentation, and empirical revenue analytics.
+                  <p className="text-xs sm:text-sm text-[#787268] mt-1.5 leading-relaxed font-serif">
+                    BBA in Marketing (2021–2026) focusing on consumer research, retail distribution channel dynamics, and revenue concentration.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   {portfolioData.skills.marketing.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-[#1C1917] mb-1">
-                        <span>{skill.name}</span>
-                        <span className="text-[#78716C] font-normal">{skill.level}</span>
+                      <div className="flex items-center justify-between text-xs font-medium text-[#2C2926] mb-1.5">
+                        <span className="font-serif">{skill.name}</span>
+                        <span className="text-[#8C8478] text-[11px] font-mono">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-[#EBE5DC] overflow-hidden">
+                      <div className="w-full h-1.5 rounded-full bg-[#EAE4D8] overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-[#C2410C]"
+                          className="h-full rounded-full bg-[#B2644D]"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -84,10 +87,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-3 flex flex-wrap gap-2 text-xs font-medium text-[#78350F]">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-serif text-[#787268]">
                   {["STP Targeting", "4Ps Marketing Mix", "Dhaka Retail Survey", "Excel Pivot Models", "SQL Aggregations"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#E2DBD0] shadow-2xs">
+                      <span key={item} className="px-3 py-1 rounded-full bg-[#F3EFE7] border border-[#DFD8CC] shadow-2xs">
                         {item}
                       </span>
                     )
@@ -95,30 +98,30 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Context Engineer Skills (Emerald Sage Palette) */}
-              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#F3F7F5] border border-[#DCE4E0] shadow-2xs">
+              {/* Right Column: Agent Zero Systems (Wabi-Sabi River Stone & Matcha Palette) */}
+              <div className="space-y-6 p-7 sm:p-9 rounded-3xl bg-[#F4F6F2] border border-[#D8DFD5] shadow-[0_4px_25px_rgba(30,50,40,0.03)]">
                 <div>
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-sans font-semibold tracking-wide">
-                    Engineering Systems
+                  <span className="inline-block px-3 py-0.5 rounded-full bg-[#E5ECE3] text-[#4F6449] border border-[#CCD8CA] text-xs font-mono font-medium tracking-wide">
+                    Agent Zero Systems
                   </span>
-                  <h4 className="font-sans text-2xl font-bold text-slate-800 mt-2">
+                  <h4 className="font-serif text-2xl font-bold text-[#232822] mt-2">
                     Prompt &amp; context engineering
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed font-sans">
-                    Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability, MCP protocols, and context budgeting.
+                  <p className="text-xs sm:text-sm text-[#677363] mt-1.5 leading-relaxed font-serif">
+                    Author of AgentSentinel MCP Gateway and MindShield MV3. Specialist in LLM reliability, MCP protocols, and context budgeting.
                   </p>
                 </div>
 
-                <div className="space-y-4 font-sans">
+                <div className="space-y-4">
                   {portfolioData.skills.aiEngineering.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
-                        <span>{skill.name}</span>
-                        <span className="text-slate-500 font-normal">{skill.level}</span>
+                      <div className="flex items-center justify-between text-xs font-medium text-[#232822] mb-1.5">
+                        <span className="font-serif">{skill.name}</span>
+                        <span className="text-[#73806F] text-[11px] font-mono">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                      <div className="w-full h-1.5 rounded-full bg-[#DCE4D9] overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-emerald-600"
+                          className="h-full rounded-full bg-[#4F6449]"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -126,10 +129,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-3 flex flex-wrap gap-2 text-xs font-sans text-slate-800">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-serif text-[#4F6449]">
                   {["AgentSentinel MCP", "Zero-Trust DLP", "Token Budgeting", "Manifest V3", "Circuit Breakers"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#DCE4E0] shadow-2xs font-medium">
+                      <span key={item} className="px-3 py-1 rounded-full bg-[#EBF0E9] border border-[#D5DDD2] shadow-2xs">
                         {item}
                       </span>
                     )
@@ -140,34 +143,42 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Education Timeline */}
-        <section id="education" className="py-24 bg-slate-50 border-t border-slate-200">
+        {/* Education Timeline: Authentic Brutalism Theme */}
+        <section id="education" className="py-24 bg-[#E5E5E5] border-t-[4px] border-black text-black select-none">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-                Education &amp; Academic Credentials
+              <div className="inline-block px-3.5 py-1 bg-black text-white text-xs font-mono font-black uppercase tracking-widest mb-3 border-2 border-black shadow-[3px_3px_0px_#F59E0B]">
+                SYSTEM_RECORD // ACADEMIC_CREDENTIALS
+              </div>
+              <h3 className="font-mono text-3xl sm:text-4xl font-black uppercase tracking-tight text-black">
+                EDUCATION &amp; ACADEMICS
               </h3>
+              <p className="mt-2 text-xs sm:text-sm font-mono uppercase font-bold text-neutral-600">
+                OFFICIAL INSTITUTIONAL RECORDS &bull; NATIONAL UNIVERSITY AFFILIATION
+              </p>
             </div>
 
             <div className="max-w-3xl mx-auto space-y-6">
               {portfolioData.education.map((edu) => (
                 <div
                   key={edu.degree}
-                  className="rounded-2xl bg-white p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  className="rounded-none bg-white p-6 sm:p-7 border-[3.5px] border-black shadow-[6px_6px_0px_#000] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
                 >
                   <div>
-                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-mono">
-                      {edu.period} • {edu.majorOrGroup}
+                    <div className="text-xs font-mono font-black text-black uppercase tracking-widest bg-[#FDE047] inline-block px-2 py-0.5 border-2 border-black mb-2">
+                      {edu.period} &bull; {edu.majorOrGroup}
                     </div>
-                    <h4 className="font-serif text-lg sm:text-xl font-bold text-slate-900 mt-1">
+                    <h4 className="font-mono text-lg sm:text-xl font-black text-black uppercase tracking-tight">
                       {edu.degree}
                     </h4>
-                    <p className="text-sm text-slate-600">{edu.institution}</p>
+                    <p className="text-xs font-mono text-neutral-800 font-bold mt-1 uppercase">
+                      INSTITUTION: {edu.institution}
+                    </p>
                   </div>
 
-                  <div className="self-start sm:self-center px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-right">
-                    <div className="font-bold text-slate-900 text-sm">{edu.result}</div>
-                    <div className="text-[11px] text-slate-500">Scale {edu.scale}</div>
+                  <div className="self-start sm:self-center px-4 py-2.5 rounded-none bg-black text-white text-right border-2 border-black shadow-[3px_3px_0px_#525252]">
+                    <div className="font-mono font-black text-white text-base tracking-wider">{edu.result}</div>
+                    <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-bold">SCALE: {edu.scale}</div>
                   </div>
                 </div>
               ))}

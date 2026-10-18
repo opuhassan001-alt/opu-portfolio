@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#169` Multi-theme portfolio overhaul across sections: replaced engineer with agent zero in hero; implemented tactile Scrapbook theme for Marketing with washi tape, pushpins, polaroids, and stamps; implemented Dark Mode UI theme for AI Systems with obsidian canvas and glowing terminal telemetry; implemented Gothic cathedral scriptorium theme for Prompt & Context Engineering with pointed arches and gold/crimson filigree; implemented Wabi-Sabi theme for About & Skills with raw linen, earth clay, and river stone; implemented structural Brutalism for Education with heavy black borders and hard black shadows; and implemented Neo-Brutalism for Send Direct Message with vibrant pastel pop cards, thick outlines, and tactile button depression (2026-10-18)
+
 - `#168` Replicate Adham Dannaway's interactive split-portrait dynamic motion and enlarge hero presentation: implemented real-time dampened mouse tracking across the hero stage, interactive split click hotzones (left half links to #marketing-work, right half links to #ai-work), smooth directional translation slide physics (translateX -52px / +52px) upon click and hover, and increased portrait display area by 35% with responsive auto-framing (2026-10-18)
 
 - `#167` Eliminate all blue, black, orange, and yellow from AI and engineering sections and redesign the bottom Contact section in luxury Glassmorphism: transformed Contact section into a frosted glassmorphic panel with ambient refraction, frosted cards, and emerald actions; overhauled AI Systems, Prompt Lab, and Skills right card to an elite Emerald & Sage Slate palette (#F8FAF9, #059669, #1C2824) with zero navy or AI slop (2026-10-18)
