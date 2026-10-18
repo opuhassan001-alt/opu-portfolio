@@ -95,16 +95,16 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Context Engineer Skills (Adham Lean Design System) */}
-              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs">
+              {/* Right Column: Context Engineer Skills (Emerald Sage Palette) */}
+              <div className="space-y-6 p-6 sm:p-8 rounded-3xl bg-[#F3F7F5] border border-[#DCE4E0] shadow-2xs">
                 <div>
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] text-xs font-sans font-semibold tracking-wide">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-sans font-semibold tracking-wide">
                     Engineering Systems
                   </span>
-                  <h4 className="font-sans text-2xl font-bold text-[#0F172A] mt-2">
+                  <h4 className="font-sans text-2xl font-bold text-slate-800 mt-2">
                     Prompt &amp; context engineering
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#475569] mt-1 leading-relaxed font-sans">
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed font-sans">
                     Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability, MCP protocols, and context budgeting.
                   </p>
                 </div>
@@ -112,13 +112,13 @@ export default function HomePage() {
                 <div className="space-y-4 font-sans">
                   {portfolioData.skills.aiEngineering.map((skill) => (
                     <div key={skill.name}>
-                      <div className="flex items-center justify-between text-xs font-semibold text-[#0F172A] mb-1">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
                         <span>{skill.name}</span>
-                        <span className="text-[#64748B] font-normal">{skill.level}</span>
+                        <span className="text-slate-500 font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-[#E2E8F0] overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-[#2563EB]"
+                          className="h-full rounded-full bg-emerald-600"
                           style={{ width: `${skill.pct}%` }}
                         />
                       </div>
@@ -126,10 +126,10 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="pt-3 flex flex-wrap gap-2 text-xs font-sans text-[#0F172A]">
+                <div className="pt-3 flex flex-wrap gap-2 text-xs font-sans text-slate-800">
                   {["AgentSentinel MCP", "Zero-Trust DLP", "Token Budgeting", "Manifest V3", "Circuit Breakers"].map(
                     (item) => (
-                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#CBD5E1] shadow-2xs font-medium">
+                      <span key={item} className="px-3 py-1 rounded-full bg-white border border-[#DCE4E0] shadow-2xs font-medium">
                         {item}
                       </span>
                     )

@@ -89,7 +89,7 @@ export default function AdhamHero() {
               href="#ai-work"
               className="inline-block group focus:outline-none"
             >
-              <h1 className="font-mono text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-slate-900 group-hover:text-[#1E3A8A] transition-colors leading-none">
+              <h1 className="font-mono text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors leading-none">
                 <span className="text-slate-400 font-light">&lt;</span>
                 engineer
                 <span className="text-slate-400 font-light">&gt;</span>
@@ -97,7 +97,7 @@ export default function AdhamHero() {
               <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm ml-auto">
                 Prompt &amp; context engineer who designs zero-trust MCP systems, token-budgeted memory and reliable AI workflows.
               </p>
-              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#1E3A8A] group-hover:-translate-x-1 transition-transform">
+              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 group-hover:-translate-x-1 transition-transform">
                 <ArrowRight className="w-3.5 h-3.5 rotate-180" />
                 <span>Explore AI systems</span>
               </div>

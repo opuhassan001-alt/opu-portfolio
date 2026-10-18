@@ -57,12 +57,12 @@ export default function WindowMockup({
         {/* Window Title Bar */}
         <div
           className={`text-[11px] truncate max-w-[200px] sm:max-w-xs text-center flex items-center justify-center gap-1.5 font-sans font-medium ${
-            isMarketing ? "text-[#57534E]" : "text-[#475569]"
+            isMarketing ? "text-[#57534E]" : "text-slate-600"
           }`}
         >
           <span
             className={`w-1.5 h-1.5 rounded-full ${
-              isMarketing ? "bg-amber-600/70" : "bg-[#2563EB]"
+              isMarketing ? "bg-amber-600/70" : "bg-emerald-600"
             }`}
           />
           {windowTitle}
@@ -79,7 +79,7 @@ export default function WindowMockup({
               className={`p-1 rounded transition-colors ${
                 isMarketing
                   ? "text-[#78716C] hover:text-[#1C1917]"
-                  : "text-[#64748B] hover:text-[#0F172A]"
+                  : "text-slate-500 hover:text-emerald-700"
               }`}
               title="View Source on GitHub"
             >
@@ -88,7 +88,7 @@ export default function WindowMockup({
           ) : (
             <span
               className={`text-[10px] font-mono ${
-                isMarketing ? "text-[#A8A29E]" : "text-[#64748B]"
+                isMarketing ? "text-[#A8A29E]" : "text-slate-500"
               }`}
             >
               v1.0
@@ -100,7 +100,7 @@ export default function WindowMockup({
       {/* WINDOW MOCKUP CANVAS / CONTENT */}
       <div
         className={`relative p-5 sm:p-6 overflow-hidden min-h-[220px] flex flex-col justify-center ${
-          isMarketing ? "bg-[#FAF8F5]" : "bg-[#F8FAFC]"
+          isMarketing ? "bg-[#FAF8F5]" : "bg-[#F8FAF9]"
         }`}
       >
         {children}
@@ -111,7 +111,7 @@ export default function WindowMockup({
         className={`p-4 sm:p-5 flex items-center justify-between transition-colors ${
           isMarketing
             ? "bg-white border-t border-[#E7DFD3] group-hover:bg-[#FAF8F5]"
-            : "bg-white border-t border-[#E2E8F0] group-hover:bg-[#F8FAFC]/60"
+            : "bg-white border-t border-slate-200 group-hover:bg-slate-50/70"
         }`}
       >
         <div>
@@ -119,14 +119,14 @@ export default function WindowMockup({
             className={`tracking-tight leading-tight transition-colors ${
               isMarketing
                 ? "font-serif text-base sm:text-lg font-bold text-[#1C1917] group-hover:text-[#C2410C]"
-                : "font-sans text-base sm:text-lg font-bold text-[#0F172A] group-hover:text-[#2563EB]"
+                : "font-sans text-base sm:text-lg font-bold text-slate-800 group-hover:text-emerald-700"
             }`}
           >
             {title}
           </h4>
           <p
             className={`text-xs mt-1 font-sans ${
-              isMarketing ? "font-medium text-[#78716C]" : "text-[#64748B]"
+              isMarketing ? "font-medium text-[#78716C]" : "text-slate-500"
             }`}
           >
             {role} • {category}
@@ -134,10 +134,10 @@ export default function WindowMockup({
         </div>
 
         <span
-          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ml-3 shadow-xs ${
+          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ml-3 shadow-2xs ${
             isMarketing
               ? "bg-[#F3EFE7] text-[#1C1917] group-hover:bg-[#C2410C] group-hover:text-white"
-              : "bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] group-hover:bg-[#2563EB] group-hover:text-white"
+              : "bg-emerald-50 text-emerald-700 border border-emerald-200 group-hover:bg-emerald-600 group-hover:text-white"
           }`}
         >
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
