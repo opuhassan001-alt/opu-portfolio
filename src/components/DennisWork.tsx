@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, Github, ExternalLink, X, Shield, Brain, BarChart3, Database, Truck, Check, Sparkles } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, X, Check } from "lucide-react";
 import { portfolioData, CaseStudy } from "@/data/portfolio";
 
 export default function DennisWork() {
@@ -69,135 +69,86 @@ export default function DennisWork() {
     return p.track === activeFilter;
   });
 
-  // Project Visual Preview Generator for the floating zoom modal
+  // Plain, easy-to-understand project descriptions (Zero AI slop, pure clarity)
+  const projectSummaries: Record<
+    string,
+    { label: string; plainDescription: string; tags: string[] }
+  > = {
+    "agent-sentinel-mcp": {
+      label: "AI Security & Tool Gateway",
+      plainDescription:
+        "Security gateway that prevents autonomous AI agents from leaking API keys and executing harmful terminal commands.",
+      tags: ["Open Source", "TypeScript", "Zero-Trust"],
+    },
+    "mindshield-extension": {
+      label: "Productivity Extension",
+      plainDescription:
+        "Chrome extension that stops compulsive doom-scrolling on social media using quick cognitive reflex challenges.",
+      tags: ["Chrome Manifest V3", "Productivity", "JavaScript"],
+    },
+    "dhaka-retail-consumer-study": {
+      label: "Consumer Market Research",
+      plainDescription:
+        "Field research study of 150+ urban shoppers in Dhaka analyzing price sensitivity and brand trust drivers.",
+      tags: ["Market Research", "BBA Thesis", "Dhaka"],
+    },
+    "sql-excel-sales-analytics": {
+      label: "Sales Performance Analytics",
+      plainDescription:
+        "Executive business model isolating top revenue-generating products and identifying seasonal retail revenue leaks.",
+      tags: ["Data Analytics", "Excel", "SQL"],
+    },
+    "fmcg-supply-chain-inventory": {
+      label: "Supply Chain & Inventory Model",
+      plainDescription:
+        "Inventory planning spreadsheet designed to help retail managers avoid stock-outs on fast-selling products.",
+      tags: ["Supply Chain", "Retail Operations", "Inventory"],
+    },
+  };
+
+  // Pure Monochrome Black & White Floating Preview Card (Zero AI-slop, Minimal Font)
   const renderProjectVisual = (project: CaseStudy) => {
-    switch (project.id) {
-      case "agent-sentinel-mcp":
-        return (
-          <div className="w-full h-full bg-[#0F172A] p-6 text-white flex flex-col justify-between rounded-2xl border border-slate-700/80 shadow-2xl relative overflow-hidden">
-            <div className="absolute -right-10 -bottom-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                  <Shield className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-mono font-semibold tracking-wider text-emerald-400">ZERO-TRUST MCP</span>
-              </div>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-white mb-1">AgentSentinel Gateway</div>
-              <div className="text-xs font-mono text-slate-400">AST Sanitizer &bull; DLP Regex &bull; Circuit Breaker</div>
-            </div>
-            <div className="flex items-center justify-between text-[11px] font-mono pt-3 border-t border-slate-800 text-slate-400">
-              <span>Failures: 0</span>
-              <span className="text-emerald-400 font-bold">100% BLOCKED</span>
-            </div>
-          </div>
-        );
+    const details = projectSummaries[project.id] || {
+      label: project.category,
+      plainDescription: project.subtitle,
+      tags: project.tools.slice(0, 3),
+    };
 
-      case "mindshield-extension":
-        return (
-          <div className="w-full h-full bg-[#1E1B4B] p-6 text-white flex flex-col justify-between rounded-2xl border border-indigo-700/80 shadow-2xl relative overflow-hidden">
-            <div className="absolute -right-10 -bottom-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-300">
-                  <Brain className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-mono font-semibold tracking-wider text-indigo-300">NEUROSCIENCE UX</span>
-              </div>
-              <span className="px-2 py-0.5 rounded-full bg-indigo-500/30 text-[10px] font-mono text-indigo-200">MV3</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-white mb-1">MindShield Extension</div>
-              <div className="text-xs font-mono text-indigo-200">Stroop Reflex &bull; Reels Blocker &bull; Jest Tests</div>
-            </div>
-            <div className="flex items-center justify-between text-[11px] font-mono pt-3 border-t border-indigo-900 text-indigo-300">
-              <span>Dopamine Loop</span>
-              <span className="text-indigo-200 font-bold">INTERCEPTED</span>
-            </div>
-          </div>
-        );
+    return (
+      <div className="w-full h-full bg-[#0F0F10] p-6 text-white flex flex-col justify-between rounded-2xl border border-neutral-800 shadow-2xl relative select-none">
+        {/* Top: Track & Category Header */}
+        <div className="flex items-center justify-between pb-3 border-b border-neutral-800/80">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 font-medium">
+            {details.label}
+          </span>
+          <span className="text-[11px] font-mono text-neutral-500">
+            {project.track === "ai-engineering" ? "Systems Track" : "Marketing Track"}
+          </span>
+        </div>
 
-      case "dhaka-retail-consumer-study":
-        return (
-          <div className="w-full h-full bg-[#FBF7F0] p-6 text-[#292524] flex flex-col justify-between rounded-2xl border border-[#E7DFD3] shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#F97316]/10 border border-[#F97316]/30 flex items-center justify-center text-[#EA580C]">
-                  <BarChart3 className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-mono font-semibold tracking-wider text-[#EA580C]">BBA RESEARCH</span>
-              </div>
-              <span className="text-xs font-serif font-bold text-[#78716C]">N = 150+</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-[#1C1917] mb-1">Urban Buying Behavior</div>
-              <div className="text-xs font-serif text-[#78716C]">STP Framework &bull; Consumer Psychology &bull; Dhaka</div>
-            </div>
-            <div className="flex items-center justify-between text-[11px] font-mono pt-3 border-t border-[#E7DFD3] text-[#78716C]">
-              <span>Trust Driver</span>
-              <span className="text-[#EA580C] font-bold">+68% LIFT</span>
-            </div>
-          </div>
-        );
+        {/* Center: Clear Title and Plain Human Description */}
+        <div className="py-2">
+          <h4 className="text-xl font-medium tracking-tight text-white">
+            {project.title}
+          </h4>
+          <p className="mt-2 text-xs text-neutral-300 font-sans leading-relaxed">
+            {details.plainDescription}
+          </p>
+        </div>
 
-      case "sql-excel-sales-analytics":
-        return (
-          <div className="w-full h-full bg-[#F0FDF4] p-6 text-[#14532D] flex flex-col justify-between rounded-2xl border border-emerald-200 shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-600/10 border border-emerald-600/30 flex items-center justify-center text-emerald-700">
-                  <Database className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-mono font-semibold tracking-wider text-emerald-800">DATA ANALYTICS</span>
-              </div>
-              <span className="text-xs font-mono font-bold text-emerald-700">SQL &bull; EXCEL</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-[#0F291E] mb-1">Retail Sales Performance</div>
-              <div className="text-xs font-mono text-emerald-800">Pareto Distribution &bull; Retention Analysis</div>
-            </div>
-            <div className="flex items-center justify-between text-[11px] font-mono pt-3 border-t border-emerald-200 text-emerald-800">
-              <span>Top 20% SKUs</span>
-              <span className="font-bold">74% REVENUE</span>
-            </div>
-          </div>
-        );
-
-      case "fmcg-supply-chain-inventory":
-        return (
-          <div className="w-full h-full bg-[#FFFBEB] p-6 text-[#78350F] flex flex-col justify-between rounded-2xl border border-amber-200 shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700">
-                  <Truck className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-mono font-semibold tracking-wider text-amber-800">SUPPLY CHAIN</span>
-              </div>
-              <span className="text-xs font-mono font-bold text-amber-700">60 SKUs</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-[#451A03] mb-1">FMCG Inventory Prevention</div>
-              <div className="text-xs font-mono text-amber-800">ABC Classification &bull; Safety Stocking</div>
-            </div>
-            <div className="flex items-center justify-between text-[11px] font-mono pt-3 border-t border-amber-200 text-amber-800">
-              <span>Out-of-Stock Risk</span>
-              <span className="font-bold text-emerald-700">ELIMINATED</span>
-            </div>
-          </div>
-        );
-
-      default:
-        return (
-          <div className="w-full h-full bg-neutral-900 p-6 text-white rounded-2xl flex flex-col justify-between">
-            <span className="text-xs font-mono text-neutral-400">{project.category}</span>
-            <div className="text-lg font-bold">{project.title}</div>
-            <div className="text-xs text-neutral-400">{project.subtitle}</div>
-          </div>
-        );
-    }
+        {/* Bottom: Clean Monochrome Tag Pills */}
+        <div className="flex items-center gap-1.5 pt-3 border-t border-neutral-800/80">
+          {details.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-2.5 py-0.5 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -246,10 +197,10 @@ export default function DennisWork() {
         >
           {hoveredProject && renderProjectVisual(hoveredProject)}
 
-          {/* Dennis Snellenberg Circular Magnetic "View" Cursor */}
-          <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center text-xs font-medium tracking-wider uppercase shadow-xl border-2 border-white pointer-events-none">
+          {/* Dennis Snellenberg Minimalist Circular "View" Cursor */}
+          <div className="absolute -bottom-3 -right-3 w-14 h-14 rounded-full bg-white text-neutral-950 flex items-center justify-center text-[11px] font-sans font-medium tracking-wider uppercase shadow-xl border border-neutral-200 pointer-events-none">
             <span className="flex items-center gap-0.5">
-              View <ArrowUpRight className="w-3.5 h-3.5" />
+              View <ArrowUpRight className="w-3 h-3" />
             </span>
           </div>
         </div>

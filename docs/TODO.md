@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#174` Refactor Dennis Snellenberg floating cursor zoom preview to minimalist monochrome black and white design: eliminated all colorful badges, blinking status lights, and AI slop; replaced with a clean matte black (#0F0F10) preview card, single minimal font, clear plain-English summaries, and a crisp white circular view cursor (2026-10-18)
+
 - `#173` Redesign all non-hero sections in Dennis Snellenberg award-winning creative developer style: interactive floating cursor zoom preview modal with smooth spring lerp physics, full-width work rows with hover translation, clean unified typography hierarchy, DennisLab studio console with zero-trust DLP testbed, dual-discipline editorial about section, and iconic giant magnetic pill contact section (2026-10-18)
 
 - `#172` Redesign Prompt and Context Engineering section in authentic Victorian theme: antique vellum parchment (#F5EFE6), ornate filigree double-borders, Regency gold ribbons, Victorian typography, and the Analytical Engine's Zero-Trust Telegraph Censor DLP simulation (2026-10-18)
