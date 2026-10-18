@@ -3,141 +3,124 @@ import {
   TrendingUp,
   Cpu,
   GraduationCap,
-  Award,
-  Layers,
-  ArrowRight,
   CheckCircle2,
-  Github,
-  Globe2,
+  Download,
+  ArrowUp,
   Mail,
   Phone,
   MapPin,
-  Sparkles,
+  Github,
+  Linkedin,
+  MessageCircle,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import DualHero from "@/components/DualHero";
-import ProjectsSection from "@/components/ProjectsSection";
+import AdhamHero from "@/components/AdhamHero";
+import AdhamWork from "@/components/AdhamWork";
 import PromptLab from "@/components/PromptLab";
 import ContactSection from "@/components/ContactSection";
 import { portfolioData } from "@/data/portfolio";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-slate-900 selection:text-white">
+      {/* 1:1 Adham Dannaway Minimalist Header */}
       <Navbar />
 
       <main className="flex-1">
-        {/* HERO: ADHAM DANNAWAY STYLE DUAL-PERSONA SPLIT */}
-        <DualHero />
+        {/* 1:1 Adham Dannaway Hero with Pure White Background and Master Split Image */}
+        <AdhamHero />
 
-        {/* FEATURED PROJECTS (AI SYSTEMS + MARKETING STRATEGY) */}
-        <ProjectsSection />
+        {/* 1:1 Adham Dannaway Dark "Some of my latest work" Section */}
+        <AdhamWork />
 
-        {/* INTERACTIVE PROMPT ARCHITECTURE & CONTEXT ENGINEERING LAB */}
+        {/* Prompt & Context Engineering Interactive Lab */}
         <PromptLab />
 
-        {/* DUAL SKILLS MATRIX: MARKETING VS AI CONTEXT ENGINEERING */}
-        <section id="skills" className="py-20 bg-slate-900/60 border-t border-white/10">
+        {/* About & Skills: 2-Column Editorial Section */}
+        <section id="skills" className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-14">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-mono uppercase tracking-wider mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                Cross-Functional Competency
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                Two Disciplines. One Unfair Advantage.
-              </h2>
-              <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-                Most teams struggle because marketers cannot speak to engineers, and engineers don&apos;t understand
-                buyers. I operate fluently across both domains.
+            <div className="text-center mb-14">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
+                about &amp; skills
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 max-w-lg mx-auto">
+                Bridging commercial growth strategy with technical AI agent engineering.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left Pillar: Growth & Product Marketing */}
-              <div className="bg-slate-950 rounded-2xl p-6 sm:p-8 border border-blue-500/20 shadow-xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                    <TrendingUp className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-lg text-white">
-                      Growth & Product Marketing
-                    </h3>
-                    <p className="text-xs text-slate-400 font-mono">BBA Specialization & Applied Research</p>
-                  </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14">
+              {/* Left Column: Marketer Skills */}
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-display text-xl font-bold text-slate-900 lowercase">
+                    growth &amp; product marketing
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                    BBA in Marketing (2021–2026) with core focus on consumer research, segmentation, and empirical revenue analytics.
+                  </p>
                 </div>
 
                 <div className="space-y-4">
-                  {portfolioData.skills.marketing.map((s) => (
-                    <div key={s.name}>
-                      <div className="flex items-center justify-between text-xs font-medium mb-1.5">
-                        <span className="text-slate-200">{s.name}</span>
-                        <span className="text-blue-300 font-mono">{s.level}</span>
+                  {portfolioData.skills.marketing.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
+                        <span>{skill.name}</span>
+                        <span className="text-slate-500 font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-400"
-                          style={{ width: `${s.pct}%` }}
+                          className="h-full rounded-full bg-slate-900"
+                          style={{ width: `${skill.pct}%` }}
                         />
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-2">
-                  {["Consumer Insights", "STP Targeting", "Survey Cross-Tab", "Pareto Analysis", "4Ps Execution"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md bg-blue-950/60 border border-blue-500/30 text-blue-300 text-xs"
-                      >
-                        {tag}
+                <div className="pt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                  {["STP Targeting", "4Ps Marketing Mix", "Dhaka Retail Survey", "Excel Pivot Models", "SQL Aggregations"].map(
+                    (item) => (
+                      <span key={item} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
+                        {item}
                       </span>
                     )
                   )}
                 </div>
               </div>
 
-              {/* Right Pillar: Prompt & Context Engineering */}
-              <div className="bg-slate-950 rounded-2xl p-6 sm:p-8 border border-cyan-500/20 shadow-xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-lg text-white">
-                      Prompt & Context Engineering
-                    </h3>
-                    <p className="text-xs text-slate-400 font-mono">MCP Protocol & Agent Reliability</p>
-                  </div>
+              {/* Right Column: Context Engineer Skills */}
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-display text-xl font-bold text-slate-900 lowercase">
+                    prompt &amp; context engineering
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                    Author of AgentSentinel MCP Gateway and MindShield Extension. Specialist in LLM reliability and context budgeting.
+                  </p>
                 </div>
 
                 <div className="space-y-4">
-                  {portfolioData.skills.aiEngineering.map((s) => (
-                    <div key={s.name}>
-                      <div className="flex items-center justify-between text-xs font-medium mb-1.5">
-                        <span className="text-slate-200">{s.name}</span>
-                        <span className="text-cyan-300 font-mono">{s.level}</span>
+                  {portfolioData.skills.aiEngineering.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-800 mb-1">
+                        <span>{skill.name}</span>
+                        <span className="text-slate-500 font-normal">{skill.level}</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400"
-                          style={{ width: `${s.pct}%` }}
+                          className="h-full rounded-full bg-slate-900"
+                          style={{ width: `${skill.pct}%` }}
                         />
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-2">
-                  {["Zero-Trust DLP", "Model Context Protocol", "Token Compaction", "AST Command Guard", "Manifest V3"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono"
-                      >
-                        {tag}
+                <div className="pt-4 flex flex-wrap gap-2 text-xs font-mono text-slate-600">
+                  {["AgentSentinel MCP", "Zero-Trust DLP", "Token Budgeting", "Manifest V3", "Circuit Breakers"].map(
+                    (item) => (
+                      <span key={item} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
+                        {item}
                       </span>
                     )
                   )}
@@ -147,76 +130,77 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* EDUCATION SECTION */}
-        <section id="education" className="py-20 bg-slate-950 border-t border-white/10">
+        {/* Education Timeline */}
+        <section id="education" className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mb-12">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono uppercase tracking-wider text-slate-300 mb-3">
-                <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
-                Academic Grounding
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                Education & Foundational Degrees
-              </h2>
+            <div className="text-center mb-12">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 lowercase">
+                education &amp; credentials
+              </h3>
             </div>
 
-            <div className="space-y-6">
-              {portfolioData.education.map((edu, idx) => (
+            <div className="max-w-3xl mx-auto space-y-6">
+              {portfolioData.education.map((edu) => (
                 <div
                   key={edu.degree}
-                  className="rounded-2xl bg-slate-900/60 border border-white/10 p-6 sm:p-8 hover:border-white/20 transition-colors"
+                  className="rounded-xl bg-white p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
-                    <div>
-                      <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-                        <span>{edu.period}</span>
-                        <span>•</span>
-                        <span>{edu.majorOrGroup}</span>
-                      </div>
-                      <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
-                        {edu.degree}
-                      </h3>
-                      <p className="text-sm text-slate-400 mt-0.5">{edu.institution}</p>
+                  <div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                      {edu.period} • {edu.majorOrGroup}
                     </div>
-
-                    <div className="bg-slate-950 px-4 py-2 rounded-xl border border-white/10 self-start md:self-center">
-                      <div className="font-display font-bold text-white text-sm">{edu.result}</div>
-                      <div className="text-[10px] text-slate-400 font-mono">Scale {edu.scale}</div>
-                    </div>
+                    <h4 className="font-display text-lg font-bold text-slate-900 mt-1">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-sm text-slate-600">{edu.institution}</p>
                   </div>
 
-                  <ul className="mt-4 space-y-2">
-                    {edu.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="self-start sm:self-center px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-right">
+                    <div className="font-bold text-slate-900 text-sm">{edu.result}</div>
+                    <div className="text-[11px] text-slate-500">Scale {edu.scale}</div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CONTACT SECTION */}
+        {/* Contact Section */}
         <ContactSection />
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-950 border-t border-white/10 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-md bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-[10px] flex items-center justify-center">
-              EH
-            </span>
-            <span className="text-white font-semibold">{portfolioData.personal.name}</span>
-            <span>— Growth Marketer & Context Engineer</span>
+      {/* 1:1 Adham Dannaway Exact Footer */}
+      <footer id="footer" className="bg-white border-t border-slate-200 py-8 text-xs text-slate-600">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="font-medium">
+            &copy; {new Date().getFullYear()} Estakball Hossain. All rights reserved.
           </div>
 
-          <div>
-            © {new Date().getFullYear()} Estakball Hossain. Built with Next.js & Tailwind CSS.
-          </div>
+          <nav className="flex items-center gap-6 font-semibold lowercase">
+            <a href="#hero" className="hover:text-slate-900 transition-colors">
+              about
+            </a>
+            <a href="#portfolio" className="hover:text-slate-900 transition-colors">
+              portfolio
+            </a>
+            <a href="#lab" className="hover:text-slate-900 transition-colors">
+              lab
+            </a>
+            <a href="#skills" className="hover:text-slate-900 transition-colors">
+              skills
+            </a>
+            <a href="#contact" className="hover:text-slate-900 transition-colors">
+              contact
+            </a>
+          </nav>
+
+          <a
+            href="#hero"
+            className="inline-flex items-center gap-1 font-semibold text-slate-900 hover:text-slate-600 transition-colors"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </a>
         </div>
       </footer>
     </div>
