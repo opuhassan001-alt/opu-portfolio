@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#166` Overhaul Explore AI Systems, Prompt Lab, and WindowMockup components with Adham Dannaway's authentic Lean Design System: neutral clean canvas (#FAFAFA), deep navy (#0F172A) text with sentence case typography, 1px functional borders (#E2E8F0), pure action blue (#2563EB) accents, and clean macOS desktop window mockups replacing all dark/neon elements (2026-10-18)
+
 - `#165` Redesign Explore AI Work, Prompt Lab, and Skills right side using real-world engineering portfolio aesthetic: replace generic dark theme with Brittany Chiang iconic deep oceanic navy (`#0A192F` / `#112240`) and authentic developer IDE studio with JetBrains Mono typography, real AST/DLP architectural diagrams, and harmonized cool precision slate (`#F1F5F9`) for Context Engineering skills (2026-10-18)
 
 - `#164` Overhaul Marketing and AI Systems tracks with two completely distinct visual themes, bespoke font hierarchies, and distinct color palettes: warm luxury editorial parchment (`#F8F6F0`) with Playfair Display serif typography and terracotta/amber accents for Marketing, and deep obsidian cyber systems (`#060A12`) with JetBrains Mono monospace typography and glowing cyan/emerald accents for AI Systems (2026-10-18)
