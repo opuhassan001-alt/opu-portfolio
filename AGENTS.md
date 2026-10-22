@@ -31,3 +31,9 @@ progress trail for whoever resumes it next. Abandoning it early? Same rule:
 backstop, not a substitute for releasing.
 
 `.gitattributes` sets `merge=union` on the file so parallel appends don't conflict.
+
+
+## Project Isolation & Global Tooling Policy
+
+1. **Global Plugin & Skill Availability**: All plugins and skills are available on-demand whenever needed for this project.
+2. **Strict Project Isolation**: This repository (`opu-portfolio`) is strictly project-based. Its code, assets, and design must never be exported, leaked, or referenced in other projects unless explicitly requested by the user.
