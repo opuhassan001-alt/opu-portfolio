@@ -12,8 +12,6 @@ resume**, not just a task name.
 
 ## Done
 
-- `#179` Build 3D interactive book portfolio matching seanaiux.com/book: engineered Three.js WebGL 3D book on a lamp-lit desk with procedural paper curl physics, interactive split-character front cover (AdhamHero mouse-tracking character shift between Marketer and AI Engineer), procedural Web Audio API paper flip sound, high-DPI canvas texture spreads for all case studies, credentials, and contact channels, and full keyboard/drag/click turning (2026-10-22)
-
 - `#178` Reduce floating hover pop-up window size by 86% to an ultra-compact mini-window: streamlined hover cards across Work, Lab, Disciplines, and Education sections to a compact 192px × 56px mini-card featuring only the short headline and a high-contrast white "VIEW ↗" button, removing long paragraphs and tag clutter while preserving full deep-dive click-to-open modals (2026-10-19)
 
 - `#177` Remove hero availability badge, contact green pulse dot, and footer green dot per user screenshots: eliminated the "Open to AI Product Marketing..." pill bar from AdhamHero, removed the green pulsing dot from (05 / GET IN TOUCH), and removed the green dot preceding the footer copyright notice (2026-10-19)

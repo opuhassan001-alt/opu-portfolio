@@ -1,7 +1,5 @@
-"use client";
-
-import React, { useState } from "react";
-import Interactive3DBook from "@/components/Interactive3DBook";
+import React from "react";
+import { ArrowUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AdhamHero from "@/components/AdhamHero";
 import DennisWork from "@/components/DennisWork";
@@ -9,38 +7,18 @@ import DennisLab from "@/components/DennisLab";
 import DennisAboutSkills from "@/components/DennisAboutSkills";
 import DennisEducation from "@/components/DennisEducation";
 import DennisContact from "@/components/DennisContact";
-import { BookOpen, ArrowUp } from "lucide-react";
 
 export default function HomePage() {
-  const [viewMode, setViewMode] = useState<"book" | "classic">("book");
-
-  // Default Experience: Hyper-Realistic 3D Interactive Book (Matching seanaiux.com/book)
-  if (viewMode === "book") {
-    return <Interactive3DBook onSwitchToClassic={() => setViewMode("classic")} />;
-  }
-
-  // Classic View Fallback with quick toggle back to 3D Book Mode
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white relative">
-      {/* Persistent Floating 3D Book Mode Switcher */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() => setViewMode("book")}
-          className="flex items-center gap-2 px-5 py-3 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-mono text-xs uppercase tracking-wider shadow-2xl border border-neutral-700 transition-all hover:scale-105"
-        >
-          <BookOpen className="w-4 h-4 text-[#D4AF37]" />
-          <span>Switch to 3D Book Experience</span>
-        </button>
-      </div>
-
+    <div className="min-h-screen flex flex-col bg-white text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
       {/* Navigation Header */}
       <Navbar />
 
       <main className="flex-1">
-        {/* Adham Hero with Split Dual-Portrait */}
+        {/* Adham Hero with Split Dual-Portrait (Kept Intact) */}
         <AdhamHero />
 
-        {/* Dennis Snellenberg Recent Work Rows & Floating Zoom Mini-Card */}
+        {/* Dennis Snellenberg Recent Work Rows & Floating Zoom Modal */}
         <DennisWork />
 
         {/* Dennis Snellenberg Context Engineering & Zero-Trust Lab */}
