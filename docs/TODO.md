@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#179` Revert 3D book experiment per user request and restore Dennis Snellenberg dual-track portfolio: reverted to the exact battle-tested Adham Dannaway split-hero and Dennis Snellenberg editorial layout across Work, Lab, Disciplines, Education, and Contact sections with zero WebGL dependencies (2026-10-22)
+
 - `#178` Reduce floating hover pop-up window size by 86% to an ultra-compact mini-window: streamlined hover cards across Work, Lab, Disciplines, and Education sections to a compact 192px × 56px mini-card featuring only the short headline and a high-contrast white "VIEW ↗" button, removing long paragraphs and tag clutter while preserving full deep-dive click-to-open modals (2026-10-19)
 
 - `#177` Remove hero availability badge, contact green pulse dot, and footer green dot per user screenshots: eliminated the "Open to AI Product Marketing..." pill bar from AdhamHero, removed the green pulsing dot from (05 / GET IN TOUCH), and removed the green dot preceding the footer copyright notice (2026-10-19)
