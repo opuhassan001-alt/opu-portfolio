@@ -2,32 +2,17 @@
 
 import React, { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence, useSpring } from "framer-motion";
-import { reelPose, normalizeAngle, cubicBezierEase, SceneParams } from "@/utils/reelPose";
-import SectionLoaderUI from "./SectionLoaderUI";
+import { reelPose, normalizeAngle, SceneParams } from "@/utils/reelPose";
 import ReelCard, { ReelItem } from "./ReelCard";
-import { ArrowDown, RotateCw, X, ExternalLink, Github, CheckCircle2 } from "lucide-react";
-
-function lerp(start: number, end: number, factor: number) {
-  return start + (end - start) * factor;
-}
+import { ArrowDown, RotateCw, X, ExternalLink } from "lucide-react";
 
 export default function ReelPortfolioWall() {
   const sectionRef = useRef<HTMLElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
-  // Two Motion Values Driving the entire experience
-  const [formation, setFormation] = useState(0); // 0 -> 1 (2.4s linear deal)
-  const [expansion, setExpansion] = useState(0); // 0 -> 1 (2.0s cubic-bezier(.5, 0, .15, 1))
-
-  // In-View Trigger State (starts when section enters viewport)
-  const [inView, setInView] = useState(false);
-  const hasStartedEntrance = useRef(false);
-
-  // Asset Loading State
-  const [loadedCount, setLoadedCount] = useState(0);
-  const loadedCountRef = useRef(0);
-  const [isLoaderComplete, setIsLoaderComplete] = useState(false);
-  const [isEntranceDone, setIsEntranceDone] = useState(false);
+  // Ready and visible by default - NO blank screen, NO blocking loader
+  const [formation, setFormation] = useState(1);
+  const [expansion, setExpansion] = useState(1);
 
   // Selected Reel Item for Deep-Dive Modal Inspection
   const [selectedItem, setSelectedItem] = useState<ReelItem | null>(null);
@@ -236,26 +221,16 @@ export default function ReelPortfolioWall() {
     },
   ], []);
 
-  // Compute Current Scene Parameters from Expansion (0 -> 1)
+  // Standard scene params: inside level view
   const currentScene: SceneParams = useMemo(() => {
     return {
-      radius: lerp(460, 1800, expansion),
-      tilt: lerp(-22, 0, expansion),
-      roll: lerp(-20, 0, expansion),
-      perspective: lerp(1000, 450, expansion),
-      scale: lerp(0.52, 2.3, expansion),
+      radius: 1800,
+      tilt: 0,
+      roll: 0,
+      perspective: 450,
+      scale: 2.3,
     };
-  }, [expansion]);
-
-  // Set shared ring CSS variables on the ring element directly
-  useEffect(() => {
-    if (ringRef.current) {
-      ringRef.current.style.setProperty("--ring-radius", `${currentScene.radius}px`);
-      ringRef.current.style.setProperty("--ring-tilt", `${currentScene.tilt}deg`);
-      ringRef.current.style.setProperty("--ring-roll", `${currentScene.roll}deg`);
-      ringRef.current.style.setProperty("--ring-scale", `${currentScene.scale}`);
-    }
-  }, [currentScene]);
+  }, []);
 
   // Sync spring angle to local state
   useEffect(() => {
@@ -265,145 +240,16 @@ export default function ReelPortfolioWall() {
     return unsub;
   }, [springAngle]);
 
-  // Real Asset Loading Simulator: counts loaded images/covers
-  useEffect(() => {
-    let loaded = 0;
-    const interval = setInterval(() => {
-      loaded += 2;
-      loadedCountRef.current = Math.min(16, loaded);
-      setLoadedCount(Math.min(16, loaded));
-      if (loaded >= 16) {
-        clearInterval(interval);
-      }
-    }, 150);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Intersection Observer: Start entrance when section enters view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting && !hasStartedEntrance.current) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Animation timeline controller: Deal -> 360° Entrance Revolution -> Stand in front
-  useEffect(() => {
-    if (!inView) return;
-    if (hasStartedEntrance.current) return;
-    hasStartedEntrance.current = true;
-
-    // Check prefers-reduced-motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setFormation(1);
-      setExpansion(1);
-      targetAngleRef.current = 0;
-      springAngle.set(0);
-      setIsLoaderComplete(true);
-      setIsEntranceDone(true);
-      return;
-    }
-
-    // Lock page scroll while section entrance plays
-    document.body.style.overflow = "hidden";
-
-    let animId: number;
-    const startTime = performance.now();
-    const formationDuration = 2400; // 2.4s linear deal
-    const expansionDuration = 2000; // 2.0s expansion & 360° turn
-
-    let expansionStarted = false;
-    let expStartTime = 0;
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-
-      // 1. Formation (0 to 1) linear driver
-      if (elapsed < formationDuration) {
-        setFormation(Math.min(1, elapsed / formationDuration));
-      } else {
-        setFormation(1);
-
-        // 2. Expansion starts only when formation finished AND real assets ready
-        if (!expansionStarted) {
-          if (loadedCountRef.current >= 16) {
-            expansionStarted = true;
-            setIsLoaderComplete(true);
-            expStartTime = now;
-            targetAngleRef.current = -360;
-            springAngle.set(-360);
-          }
-        } else {
-          const expElapsed = now - expStartTime;
-          const t = Math.min(1, expElapsed / expansionDuration);
-          const eased = cubicBezierEase(t);
-          setExpansion(eased);
-
-          // ENTRANCE 360° TURN: All cards revolve once around the ring (-360° -> 0°) and stand in front
-          const sweepAngle = lerp(-360, 0, eased);
-          targetAngleRef.current = sweepAngle;
-          springAngle.set(sweepAngle);
-
-          if (t >= 1) {
-            setExpansion(1);
-            targetAngleRef.current = 0;
-            springAngle.set(0);
-            setIsEntranceDone(true);
-            document.body.style.overflow = ""; // Unlock page scroll
-            return;
-          }
-        }
-      }
-
-      animId = requestAnimationFrame(tick);
-    };
-
-    animId = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      document.body.style.overflow = "";
-    };
-  }, [inView, springAngle]);
-
-  // Skip / Escape handler
-  const handleSkip = useCallback(() => {
-    setFormation(1);
-    setExpansion(1);
-    setLoadedCount(16);
-    loadedCountRef.current = 16;
-    targetAngleRef.current = 0;
-    springAngle.set(0);
-    setIsLoaderComplete(true);
-    setIsEntranceDone(true);
-    document.body.style.overflow = "";
-  }, [springAngle]);
-
+  // Keyboard escape handler for modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        if (selectedItem) {
-          setSelectedItem(null);
-        } else {
-          handleSkip();
-        }
-      } else if (e.key === "Tab" && !isEntranceDone) {
-        handleSkip();
+      if (e.key === "Escape" && selectedItem) {
+        setSelectedItem(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleSkip, selectedItem, isEntranceDone]);
+  }, [selectedItem]);
 
   // Drag, Swipe and Wheel Interaction Handlers:
   // User Requirement:
@@ -423,8 +269,6 @@ export default function ReelPortfolioWall() {
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isEntranceDone) return;
-
     if (isDragging.current && e.buttons === 1) {
       const deltaX = e.clientX - dragStartX.current;
       const deltaY = e.clientY - dragStartY.current;
@@ -460,8 +304,6 @@ export default function ReelPortfolioWall() {
   // Scroll UP (deltaY < 0) -> rotates LEFT
   // Scroll DOWN (deltaY > 0) -> rotates RIGHT
   const handleWheel = (e: React.WheelEvent) => {
-    if (!isEntranceDone) return;
-
     if (e.deltaY < 0) {
       targetAngleRef.current -= Math.min(45, Math.abs(e.deltaY) * 0.24);
     } else if (e.deltaY > 0) {
@@ -475,7 +317,7 @@ export default function ReelPortfolioWall() {
     springAngle.set(targetAngleRef.current);
   };
 
-  // Card click: open deep-dive modal or handle navigation
+  // Card click: open deep-dive modal or handle external navigation
   const handleCardClick = (item: ReelItem) => {
     if (item.link.startsWith("http")) {
       window.open(item.link, "_blank", "noopener,noreferrer");
@@ -495,43 +337,16 @@ export default function ReelPortfolioWall() {
       onWheel={handleWheel}
       className="relative w-full h-screen min-h-[720px] max-h-[1080px] overflow-hidden bg-[#FAFAFA] text-neutral-950 select-none cursor-grab active:cursor-grabbing border-b border-neutral-200"
       style={{
-        perspective: `${currentScene.perspective}px`,
+        perspective: "450px",
       }}
     >
-      {/* SECTION LOADER BACKDROP: White surface that fades out while cards keep moving (No reset) */}
-      <motion.div
-        animate={{ opacity: isLoaderComplete ? 0 : 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className={`absolute inset-0 bg-white z-20 pointer-events-none ${
-          isEntranceDone ? "hidden" : "block"
-        }`}
-      />
-
-      {/* LOADER UI: Bottom right tabular counter + top left flying wordmark */}
-      {!isEntranceDone && inView && (
-        <SectionLoaderUI
-          loadedCount={loadedCount}
-          totalCount={16}
-          isComplete={isLoaderComplete}
-          onSkip={handleSkip}
-        />
-      )}
-
-      {/* SECTION HEADER: Restrained, confident editorial typography (Zero AI buzzwords) */}
-      <div
-        className={`absolute top-8 left-8 sm:top-14 sm:left-14 z-10 transition-opacity duration-1000 ${
-          expansion > 0.4 ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <motion.div
-          layoutId="section-header-wordmark"
-          transition={{ duration: 1.4, ease: [0.5, 0, 0.15, 1] }}
-          className="mb-2"
-        >
+      {/* SECTION HEADER: Restrained, confident editorial typography (Always visible, zero flash) */}
+      <div className="absolute top-8 left-8 sm:top-14 sm:left-14 z-10 pointer-events-none">
+        <div className="mb-2">
           <span className="font-mono text-xs uppercase tracking-wider text-neutral-500 font-medium">
             PORTFOLIO SHOWCASE
           </span>
-        </motion.div>
+        </div>
         <h2 className="text-3xl sm:text-5xl font-normal tracking-tight text-neutral-950">
           Selected Works &amp; Systems.
         </h2>
@@ -546,7 +361,7 @@ export default function ReelPortfolioWall() {
         className="w-full h-full flex items-center justify-center pointer-events-none"
         style={{
           transformStyle: "preserve-3d",
-          transform: `rotateX(var(--ring-tilt, ${currentScene.tilt}deg)) rotateZ(var(--ring-roll, ${currentScene.roll}deg))`,
+          transform: "rotateX(0deg) rotateZ(0deg)",
         }}
       >
         <div
@@ -558,7 +373,7 @@ export default function ReelPortfolioWall() {
           {items.map((item, slotIndex) => {
             const slotRestingAngle = (slotIndex * 360) / 16;
             const netAngle = slotRestingAngle + currentRingAngle;
-            const pose = reelPose(netAngle, formation, currentScene, slotIndex);
+            const pose = reelPose(netAngle, 1, currentScene, slotIndex);
 
             const isFacingCamera = Math.abs(normalizeAngle(pose.yaw)) < 65;
 
@@ -578,11 +393,7 @@ export default function ReelPortfolioWall() {
       </div>
 
       {/* Persistent Bottom Hint & Controls */}
-      <div
-        className={`absolute bottom-6 left-8 right-8 sm:left-14 sm:right-14 z-10 flex items-center justify-between text-xs font-mono text-neutral-500 pointer-events-auto transition-opacity duration-700 ${
-          expansion > 0.6 ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
+      <div className="absolute bottom-6 left-8 right-8 sm:left-14 sm:right-14 z-10 flex items-center justify-between text-xs font-mono text-neutral-500 pointer-events-auto">
         <div className="flex items-center gap-2">
           <RotateCw className="w-3.5 h-3.5 text-neutral-400" />
           <span className="hidden sm:inline">SCROLL OR MOVE MOUSE UP/DOWN TO ROTATE &bull; CLICK ANY CARD TO INSPECT</span>
