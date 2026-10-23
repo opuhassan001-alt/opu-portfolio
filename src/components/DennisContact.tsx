@@ -33,8 +33,8 @@ export default function DennisContact() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Dennis Snellenberg Big Contact Statement */}
         <div className="mb-20 pb-12 border-b border-neutral-800">
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-neutral-400 mb-6">
-            <span>(05 / GET IN TOUCH)</span>
+          <div className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-6">
+            Direct Contact
           </div>
 
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white leading-[1.05]">

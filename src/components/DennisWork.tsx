@@ -144,13 +144,11 @@ export default function DennisWork() {
         {/* Editorial Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20 pb-8 border-b border-neutral-200">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-neutral-500 mb-3">
-              <span className="w-2 h-2 rounded-full bg-neutral-900 inline-block" />
-              <span>(RECENT WORK &bull; DUAL TRACKS)</span>
+            <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-3">
+              Detailed Case Studies
             </div>
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-neutral-950 leading-[1.08]">
-              Creating next-gen systems <br />
-              <span className="text-neutral-400">&amp; commercial impact.</span>
+              Deep Dive Records.
             </h2>
           </div>
 

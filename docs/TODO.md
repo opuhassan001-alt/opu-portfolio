@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#184` Overhaul portfolio aesthetic to eliminate all AI slop: replaced generic Lucide icon-in-a-box placeholders with authentic bespoke case study mockups (AST terminal firewall, Manifest V3 timer popup, Dhaka FMCG survey metrics, Pareto revenue SQL, ABC inventory grid), removed fake two-axis background grid overlays, purged noisy mono section numbering and eyebrows, added interactive full case study modal on card click, and elevated typography to confident human craft (2026-10-23)
+
 - `#183` Implement user-scroll-driven 3D cylinder rotation and 360-degree entrance sweep: engineered initial 360-degree expansion revolution settling level in front of camera, disabled unwanted continuous auto-spin so cylinder rotates only when user scrolls or moves mouse, mapped mouse wheel/move UP to rotate left and DOWN to rotate right with ultra-smooth critically-damped spring physics, preserving 100% of portfolio hero and Dennis Snellenberg sections without harm (2026-10-23)
 
 - `#182` Globally install and configure Google Research Harness² (google-research/harness2) across the system with Windows compatibility patch, CLI executables (harness2, harness2-setup, harness2-check, harness2-demo, harness2-judge, harness2-report, harness2-bridge), global plugin rules (AGENTS.md), agents (harness-proposer, harness-composer, harness-evaluator), and global skills for peak recursive agent harnessing across all projects (2026-10-23)

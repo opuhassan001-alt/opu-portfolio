@@ -137,16 +137,6 @@ export default function DennisLab() {
       }}
       className="py-28 sm:py-36 bg-[#FAFAFA] text-[#141414] border-t border-neutral-200/80 relative select-none overflow-hidden"
     >
-      {/* Subtle Dennis Snellenberg Editorial Grid Pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-
       {/* ============================================================ */}
       {/* AUTOMATIC HOVER POP-UP MINI-WINDOW (ULTRA-COMPACT MONOCHROME)*/}
       {/* Reduced by 86% : Compact with Short Headline & VIEW          */}
@@ -190,9 +180,8 @@ export default function DennisLab() {
         {/* Editorial Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20 pb-8 border-b border-neutral-200">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-neutral-500 mb-3">
-              <span className="w-2 h-2 rounded-full bg-neutral-900 inline-block" />
-              <span>(02 / INTERACTIVE LAB &bull; ARCHITECTURE)</span>
+            <div className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-3">
+              Systems &amp; Security Lab
             </div>
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-neutral-950 leading-[1.08]">
               Context engineering &amp; <br />
