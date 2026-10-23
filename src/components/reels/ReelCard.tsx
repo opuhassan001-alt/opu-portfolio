@@ -14,6 +14,8 @@ export interface ReelItem {
   tools: string[];
   link: string;
   iconName: string;
+  problem?: string;
+  solution?: string;
 }
 
 interface ReelCardProps {
@@ -182,18 +184,116 @@ function ReelCardComponent({
         );
 
       case "bba-marketing":
-      case "hsc-science":
-      case "ssc-science":
         return (
           <div className="w-full bg-[#0C0F17] rounded-lg p-3 border border-blue-900/40 text-left font-sans shadow-inner">
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
-              <span>ACADEMIC MERIT</span>
-              <span className="text-blue-400 font-bold">OFFICIAL</span>
+              <span>NATIONAL UNIVERSITY</span>
+              <span className="text-blue-400 font-bold">GRADUATE</span>
             </div>
-            <p className="text-xs font-semibold text-white truncate">{item.subtitle}</p>
+            <p className="text-xs font-semibold text-white truncate">BBA in Marketing</p>
+            <p className="text-[10px] text-neutral-400 mt-0.5">Abdur Rajjak College</p>
             <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-mono font-bold text-white bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
-              {item.metric}
+              CGPA 2.77 / 4.00
             </div>
+          </div>
+        );
+
+      case "hsc-commerce":
+        return (
+          <div className="w-full bg-[#0C0F17] rounded-lg p-3 border border-blue-900/40 text-left font-sans shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
+              <span>JASHORE BOARD</span>
+              <span className="text-blue-400 font-bold">COMMERCE</span>
+            </div>
+            <p className="text-xs font-semibold text-white truncate">Higher Secondary (HSC)</p>
+            <p className="text-[10px] text-neutral-400 mt-0.5">Cantonment College, Jashore</p>
+            <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-mono font-bold text-white bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
+              GPA 3.71 / 5.00
+            </div>
+          </div>
+        );
+
+      case "ssc-commerce":
+        return (
+          <div className="w-full bg-[#0C0F17] rounded-lg p-3 border border-blue-900/40 text-left font-sans shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
+              <span>DHAKA BOARD</span>
+              <span className="text-blue-400 font-bold">COMMERCE</span>
+            </div>
+            <p className="text-xs font-semibold text-white truncate">Secondary School (SSC)</p>
+            <p className="text-[10px] text-neutral-400 mt-0.5">B.A.F Shaheen School &amp; College</p>
+            <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-mono font-bold text-white bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
+              GPA 4.23 / 5.00
+            </div>
+          </div>
+        );
+
+      case "islamic-reminder":
+        return (
+          <div className="w-full bg-[#080E0C] rounded-lg p-3 border border-emerald-950/70 font-sans text-left shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
+              <span>SOLAR PWA ENGINE</span>
+              <span className="text-emerald-400 font-bold">64 DISTRICTS</span>
+            </div>
+            <div className="flex items-baseline justify-between">
+              <span className="text-sm font-mono font-bold text-white tracking-tight">FAJR • DHUHR • ASR</span>
+            </div>
+            <div className="mt-2 text-[10px] text-neutral-300 bg-neutral-900/80 px-2 py-1 rounded border border-neutral-800 flex items-center justify-between">
+              <span>Smart Haptic Tasbeeh</span>
+              <span className="text-emerald-400 font-mono text-[9px]">100% OFFLINE</span>
+            </div>
+          </div>
+        );
+
+      case "mcp-protocol":
+        return (
+          <div className="w-full bg-[#08090C] rounded-lg p-3 border border-neutral-800 font-mono text-[9px] text-left shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-neutral-800 text-neutral-500">
+              <span>STDIO / JSON-RPC</span>
+              <span className="text-emerald-400 font-bold">v2.0 PROTOCOL</span>
+            </div>
+            <p className="text-neutral-400">tools/call &bull; agent-sentinel</p>
+            <p className="text-emerald-400 mt-1">&#10003; Local Host Guardrail</p>
+          </div>
+        );
+
+      case "circuit-breaker":
+        return (
+          <div className="w-full bg-[#0C090A] rounded-lg p-3 border border-neutral-800 font-mono text-[9px] text-left shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-neutral-800 text-neutral-500">
+              <span>CIRCUIT BREAKER</span>
+              <span className="text-amber-400 font-bold">FAILSAFE</span>
+            </div>
+            <div className="flex items-center gap-1 text-[9px] text-neutral-400 mt-1">
+              <span className="px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">CLOSED</span>
+              <span>&rarr;</span>
+              <span className="px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800/60">TRIP (3x FAIL)</span>
+            </div>
+            <p className="text-neutral-500 text-[8px] mt-1.5">Rate Limit: 60 RPM sliding window</p>
+          </div>
+        );
+
+      case "consumer-psych":
+        return (
+          <div className="w-full bg-[#12100E] rounded-lg p-3 border border-amber-950/50 font-sans text-left shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
+              <span>CONSUMER JOURNEY</span>
+              <span className="text-amber-400">BEHAVIORAL</span>
+            </div>
+            <p className="text-[11px] text-neutral-200">Decision Frictions &amp; Trust Triggers</p>
+            <p className="text-[9px] text-neutral-400 font-mono mt-1">STP Persona Segmentation</p>
+          </div>
+        );
+
+      case "brand-strategy":
+        return (
+          <div className="w-full bg-[#12100E] rounded-lg p-3 border border-amber-950/50 font-sans text-left shadow-inner">
+            <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-neutral-800 text-neutral-400 text-[9px] font-mono">
+              <span>BRAND POSITIONING</span>
+              <span className="text-amber-400">4PS FRAMEWORK</span>
+            </div>
+            <p className="text-[11px] text-neutral-200">Differentiation vs Incumbents</p>
+            <p className="text-[9px] text-neutral-400 font-mono mt-1">Value Proposition Architecture</p>
           </div>
         );
 

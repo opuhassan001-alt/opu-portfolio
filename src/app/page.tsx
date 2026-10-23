@@ -3,10 +3,6 @@ import { ArrowUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AdhamHero from "@/components/AdhamHero";
 import ReelPortfolioWall from "@/components/reels/ReelPortfolioWall";
-import DennisWork from "@/components/DennisWork";
-import DennisLab from "@/components/DennisLab";
-import DennisAboutSkills from "@/components/DennisAboutSkills";
-import DennisEducation from "@/components/DennisEducation";
 import DennisContact from "@/components/DennisContact";
 
 export default function HomePage() {
@@ -21,18 +17,6 @@ export default function HomePage() {
 
         {/* Post-Hero 3D Cylinder Portfolio Showcase (Consolidating all portfolio works) */}
         <ReelPortfolioWall />
-
-        {/* Dennis Snellenberg Recent Work Rows & Floating Zoom Modal */}
-        <DennisWork />
-
-        {/* Dennis Snellenberg Context Engineering & Zero-Trust Lab */}
-        <DennisLab />
-
-        {/* Dennis Snellenberg Philosophy & Dual Disciplines */}
-        <DennisAboutSkills />
-
-        {/* Dennis Snellenberg Academic Education & Credentials */}
-        <DennisEducation />
 
         {/* Dennis Snellenberg Iconic Giant Magnetic Contact Section */}
         <DennisContact />
@@ -50,16 +34,10 @@ export default function HomePage() {
               about
             </a>
             <a href="#portfolio-showcase" className="hover:text-white transition-colors">
-              reels
-            </a>
-            <a href="#work" className="hover:text-white transition-colors">
-              work
+              portfolio
             </a>
             <a href="#lab" className="hover:text-white transition-colors">
               lab
-            </a>
-            <a href="#about" className="hover:text-white transition-colors">
-              disciplines
             </a>
             <a href="#education" className="hover:text-white transition-colors">
               credentials

@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#186` Audit and purge all unnecessary data, duplicate sections, fake grades, and AI slop: eliminated redundant DennisWork, DennisLab, DennisAboutSkills, and DennisEducation sections duplicated beneath ReelPortfolioWall so the 3D showcase truly consolidates all portfolio work post-hero; replaced filler and fake cards (CGPA 3.65/3.42, fake Science Honors, Executive Synthesis) with 100% authentic projects (Islamic Prayer PWA, MCP Protocols, Loop Circuit Breakers) and verified academic records (BBA Marketing CGPA 2.77, HSC Commerce GPA 3.71, SSC Commerce GPA 4.23); added quick category rotation tabs (All, AI Systems, Marketing, Credentials) and full case study modal with challenge, solution, metric, and repo links (2026-10-23)
+
 - `#185` Fix blank white screen and scroll-lock bug: eradicated document.body.style.overflow scroll-hijacking, eliminated blocking opaque white overlay, and ensured 3D showcase cards and headings are rendered directly and immediately without waiting or freezing browser scrolling (2026-10-23)
 
 - `#184` Overhaul portfolio aesthetic to eliminate all AI slop: replaced generic Lucide icon-in-a-box placeholders with authentic bespoke case study mockups (AST terminal firewall, Manifest V3 timer popup, Dhaka FMCG survey metrics, Pareto revenue SQL, ABC inventory grid), removed fake two-axis background grid overlays, purged noisy mono section numbering and eyebrows, added interactive full case study modal on card click, and elevated typography to confident human craft (2026-10-23)

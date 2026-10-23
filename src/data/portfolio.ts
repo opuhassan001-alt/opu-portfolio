@@ -37,7 +37,7 @@ export const portfolioData = {
     aiTagline:
       "Architecting zero-trust MCP gateways, token-budgeted context windows, and neuroscience habit-breaker extensions.",
     summary:
-      "A rare hybrid professional bridging consumer psychology with bleeding-edge AI systems. Equipped with an academic foundation in BBA Marketing and hands-on engineering capabilities in Prompt Architecture, Zero-Trust MCP Tooling, and Context Window Optimization.",
+      "Growth marketer with a BBA in Marketing from Abdur Rajjak College (National University), building deterministic AI tools, zero-trust MCP execution firewalls, and neuroscience focus extensions in Dhaka, Bangladesh.",
     location: "Pallabi, Dhaka Cantonment, Dhaka - 1206",
     country: "Bangladesh",
     phone: "+880 1633-375854",
@@ -166,6 +166,35 @@ export const portfolioData = {
         { label: "Test Coverage", value: "18 Automated Tests" },
       ],
       githubUrl: "https://github.com/opuhassan001-alt/mindshield-extension",
+    },
+    {
+      id: "islamic-reminder-app",
+      title: "Daily Prayer & Hadith Reminder PWA",
+      track: "ai-engineering",
+      category: "Web Engineering & Algorithms",
+      subtitle: "Offline-First PWA with Bangladesh 64-District Solar Engine",
+      duration: "Published Mobile Web App",
+      tools: ["JavaScript (ES6+)", "Service Worker Cache", "Solar Algorithms", "PWA Manifest"],
+      summary:
+        "A 100% offline-first Progressive Web App calculating accurate astronomical prayer schedules across all 64 districts of Bangladesh with automated Hadith inspiration and haptic tasbeeh.",
+      problem:
+        "Standard prayer applications rely on remote server APIs, track user location continuously, or display intrusive ads during daily spiritual reflection.",
+      methodology: [
+        "Implemented local solar declination and astronomical calculation algorithms running completely on-device without internet.",
+        "Built a resilient Service Worker offline precaching engine supporting instantaneous loads and background updates.",
+        "Engineered an interactive 33-33-34 smart tasbeeh with haptic feedback vibration patterns.",
+      ],
+      outcomes: [
+        "100% offline operation with zero remote data collection or telemetry tracking.",
+        "Deployed to GitHub Pages with full mobile install support on Brave and Chrome.",
+      ],
+      metrics: [
+        { label: "Coverage", value: "64 BD Districts" },
+        { label: "Offline Precaching", value: "100% PWA Cache" },
+        { label: "Privacy", value: "Zero Telemetry" },
+      ],
+      githubUrl: "https://github.com/opuhassan001-alt/islamic-reminder-app",
+      demoUrl: "https://opuhassan001-alt.github.io/islamic-reminder-app",
     },
     {
       id: "dhaka-retail-consumer-study",
