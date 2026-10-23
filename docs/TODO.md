@@ -12,6 +12,10 @@ resume**, not just a task name.
 
 ## Done
 
+- `#183` Implement user-scroll-driven 3D cylinder rotation and 360-degree entrance sweep: engineered initial 360-degree expansion revolution settling level in front of camera, disabled unwanted continuous auto-spin so cylinder rotates only when user scrolls or moves mouse, mapped mouse wheel/move UP to rotate left and DOWN to rotate right with ultra-smooth critically-damped spring physics, preserving 100% of portfolio hero and Dennis Snellenberg sections without harm (2026-10-23)
+
+- `#182` Globally install and configure Google Research Harness² (google-research/harness2) across the system with Windows compatibility patch, CLI executables (harness2, harness2-setup, harness2-check, harness2-demo, harness2-judge, harness2-report, harness2-bridge), global plugin rules (AGENTS.md), agents (harness-proposer, harness-composer, harness-evaluator), and global skills for peak recursive agent harnessing across all projects (2026-10-23)
+
 - `#181` Diagnose and eliminate 3D showcase transition glitch: resolved 150ms animation loop restart caused by loadedCount effect dependency, stripped conflicting 300ms CSS transition fighting per-frame JS transforms, eliminated 60 FPS DOM unmounting thrash by keeping all 16 cards mounted with visibility culling, corrected shortest-arc circular deal interpolation, added peripheral fade-out to prevent camera clipping, and attached IntersectionObserver to trigger entrance only when in view (2026-10-23)
 
 - `#180` Build post-hero 3D CSS cylinder portfolio showcase with synchronized formation loader, expansion reveal, reelPose math, and real asset counter: implemented 16-card vertical cylinder (270x480px, 9:16), pure mathematical pose engine reelPose with passing unit test suite, staggered formation deal-out (0->1 in 2.6s), expansion reveal (0->1 in 1.9s) transitioning from tilt -22 roll -20 radius 460 to inside radius 1800 scale 2.3, real asset tabular rolling counter, card recycling, spring physics, and keyboard/drag/wheel controls (2026-10-23)
@@ -49,56 +53,56 @@ resume**, not just a task name.
 
 - `#164` Overhaul Marketing and AI Systems tracks with two completely distinct visual themes, bespoke font hierarchies, and distinct color palettes: warm luxury editorial parchment (`#F8F6F0`) with Playfair Display serif typography and terracotta/amber accents for Marketing, and deep obsidian cyber systems (`#060A12`) with JetBrains Mono monospace typography and glowing cyan/emerald accents for AI Systems (2026-10-18)
 
-- `#123` `#82` `#81` Save and archive emmabostian/developer-portfolios repository metadata, curated portfolio breakdown, submission guide, and 2,100+ raw entry mirror to docs/developer-portfolios.md and docs/developer-portfolios-raw.md (2026-10-17)
+- `#81` Save and archive emmabostian/developer-portfolios repository metadata, curated portfolio breakdown, submission guide, and 2,100+ raw entry mirror to docs/developer-portfolios.md and docs/developer-portfolios-raw.md (2026-10-17)
 
-- `#124` `#83` `#41` `#20` Design, implement, test, and publish AgentSentinel (opuhassan001-alt/agent-sentinel-mcp): Industrial-Grade Zero-Trust MCP Gateway, DLP Secret Firewall, Runaway Loop Circuit Breaker, and Local-First Architecture with 41 passing automated tests (2026-10-15)
+- `#20` Design, implement, test, and publish AgentSentinel (opuhassan001-alt/agent-sentinel-mcp): Industrial-Grade Zero-Trust MCP Gateway, DLP Secret Firewall, Runaway Loop Circuit Breaker, and Local-First Architecture with 41 passing automated tests (2026-10-15)
 
-- `#125` `#84` `#42` `#39` Install and configure Kapture MCP server (`kapture-mcp`) globally and across Antigravity, Gemini CLI, workspace `.mcp.json`, and VS Code configs with full 31-tool schema generation (2026-10-15)
+- `#39` Install and configure Kapture MCP server (`kapture-mcp`) globally and across Antigravity, Gemini CLI, workspace `.mcp.json`, and VS Code configs with full 31-tool schema generation (2026-10-15)
 
-- `#126` `#85` `#43` `#38` Enterprise Security Hardening & Zero-Leak Audit: Reinforced CSP with base-uri and form-action restrictions, added X-Frame-Options DENY (clickjacking protection) and Permissions-Policy camera/mic/payment lockdown, verified zero DOM XSS/innerHTML/eval vectors, hardened .gitignore secrets protection, audited extension manifest V3 minimal permissions, and validated 100% offline zero-telemetry data privacy (2026-10-15)
+- `#38` Enterprise Security Hardening & Zero-Leak Audit: Reinforced CSP with base-uri and form-action restrictions, added X-Frame-Options DENY (clickjacking protection) and Permissions-Policy camera/mic/payment lockdown, verified zero DOM XSS/innerHTML/eval vectors, hardened .gitignore secrets protection, audited extension manifest V3 minimal permissions, and validated 100% offline zero-telemetry data privacy (2026-10-15)
 
-- `#127` `#86` `#44` `#37` Comprehensive Backend and Frontend Deep Audit & Industrial Upgrades: singleton AudioContext context-exhaustion prevention, crash-proof safe storage engine with quota fallbacks, resilient service worker offline precaching, interactive 267° Qibla Compass with live device sensor support, unified aesthetic emerald glassmorphism modals, Escape/backdrop UX dismiss, and consistent Bengali numerals throughout (2026-10-15)
+- `#37` Comprehensive Backend and Frontend Deep Audit & Industrial Upgrades: singleton AudioContext context-exhaustion prevention, crash-proof safe storage engine with quota fallbacks, resilient service worker offline precaching, interactive 267° Qibla Compass with live device sensor support, unified aesthetic emerald glassmorphism modals, Escape/backdrop UX dismiss, and consistent Bengali numerals throughout (2026-10-15)
 
-- `#128` `#87` `#45` `#35` Regular Content & Feature Expansion: Daily Hadith of the Day inspirator, Quranic 40 Rabbana Duas library, and Sunnah Fasting calendar tracker (v1.4.0) (2026-10-15)
-- `#129` `#88` `#46` `#36` Implement MindShield continuous update infrastructure (GitHub Actions CI/CD automated release pipeline and in-app update checker) and expansion roadmap (2026-10-15)
-- `#130` `#89` `#47` `#34` Fix challenge repetition flaw with persistent 30-item deduplication buffer in chrome.storage and dramatically upgrade cognitive puzzle standard to Dhaka University IBA, BCS Mental Ability, and Cognitive Reflection (CRT-3) tests (2026-10-15)
-- `#131` `#90` `#48` `#33` Implement dynamic anger mood progression emojis (1st reel chill/funny -> progressive rage -> 10th reel explosion), time escalation, and live floating status icon bar with collapsible mini-badge (2026-10-15)
-- `#132` `#91` `#49` `#31` Comprehensive Launch & Legal Compliance Suite: In-app LegalModal (Terms of Use & Privacy Policy), standalone public web documents (privacy-policy.html & terms-of-service.html), Content Security Policy (CSP), Trademark & App Name clearance audit, and Zero-leak Data Security protocol (v1.3.1) (2026-10-15)
-- `#133` `#92` `#50` `#32` Mute MindShield warning chime sound and prevent repetitive overlay re-rendering loop during reel lock (2026-10-15)
-- `#134` `#93` `#51` `#30` Aesthetic Islamic luxury UI overhaul with ambient nocturnal background, literary typography (Amiri & Noto Serif Bengali), Bangladesh 64-district solar prayer times engine with live countdown, and innovative Spiritual Mood Recommender (v1.3.0) (2026-10-15)
-- `#135` `#94` `#52` `#28` Phase 1 Industrial Upgrade: Masnoon Duas Library with real-time keyword search, categories, and Smart 33-33-34 auto-flow Tasbeeh engine with haptic feedback (v1.2.0) (2026-10-15)
-- `#136` `#95` `#53` `#29` Fix MindShield Chrome Extension runtime errors: resolve manifest V3 match pattern syntax, handle chrome.runtime.lastError, and wrap service-worker message dispatch in try-catch (2026-10-15)
-- `#137` `#96` `#54` `#27` Fix PWA complete offline precaching for JS and CSS bundles, restart dev server, and push v1.1.1 to GitHub Pages (2026-10-15)
-- `#138` `#97` `#55` `#26` Implement industrial risk mitigations, dual threshold (10 reels OR 15 minutes), Dhaka University IBA entrance math & BCS mental ability puzzles, brain games, zero-secret anti-bot security architecture, and native mobile (Android/iOS) architecture blueprint (2026-10-15)
-- `#139` `#98` `#56` `#25` Configure Everything Claude Code (ECC) globally across all projects via ~/.gemini/config/plugins/ecc (manifest, rules, workflows, agents) and sync 291 skills into ~/.agents/skills (2026-10-14)
-- `#140` `#99` `#57` `#24` Install Everything Claude Code (ECC) suite (affaan-m/ecc) into Antigravity workspace (.agents/) with full profile (122 rules, 94 workflows, 290 skills, 68 agents) (2026-10-14)
-- `#141` `#100` `#58` `#23` Implement automated GitHub Actions CI/CD deployment, PWA auto-updater, and in-app update-checker UI for regular continuous releases (2026-10-14)
-- `#142` `#101` `#59` `#22` Comprehensive code bug audit, fix daytime prayer selection, and deploy live HTTPS PWA on GitHub Pages (opuhassan001-alt/islamic-reminder-app) with 100% offline service worker and Brave mobile install verification (2026-10-14)
-- `#143` `#102` `#60` `#21` Add ultra-hard cognitive challenges (CRT logic riddles, matrix number grids, insane multi-step algebra) and step-by-step solution breakdown on cooldown screen and popup (2026-10-14)
-- `#144` `#103` `#61` `#40` Resolve Brave mobile PWA HTTP installation bypass (brave://flags insecure origins guidance and modal troubleshooting) (2026-10-14)
-- `#145` `#104` `#62` `#19` Create public GitHub repository for MindShield Chrome Extension (opuhassan001-alt/mindshield-extension) with clean git history, MIT license, and automated tests (2026-10-14)
-- `#146` `#105` `#63` `#18` Optimize Islamic Reminder PWA for Brave Browser mobile with high-res PNG icons, updated manifest, and comprehensive Bengali installation guidance (2026-10-14)
-- `#147` `#106` `#64` `#17` Resolve MindShield extension injection and reel detection on live sites (Instagram, YouTube Shorts, Facebook, TikTok) by bundling standalone scripts without dynamic imports, adding HTML5 video viewport detection, and adding live floating counter pill (2026-10-14)
-- `#148` `#107` `#65` `#16` Implement full compliance, legal & privacy suite (Privacy Policy, Terms of Service, Refund Policy, Cookie Policy, Cookie Consent banner, accessibility WCAG AA contrast, and Data Deletion Request) (2026-10-14)
-- `#149` `#108` `#66` `#15` Implement science-backed neuro-focus soundscapes (Brown Noise, 40Hz Gamma waves, Alpha & Beta Binaural Beats) into MindShield Extension overlay and popup (2026-10-14)
-- `#150` `#109` `#67` `#14` Scholarly research and integration of authentic Hadiths for post-prayer adhkar and essential sins forgiveness (guna maaf) into Islamic reminder app (2026-10-14)
-- `#151` `#110` `#68` `#13` Integrate researched authentic Hadiths (Hisnul Muslim, Bukhari, Muslim, Abu Dawood, Tirmidhi, Nasa'i) with narrator, Arabic text, and proof viewer into Islamic reminder app (2026-10-14)
+- `#35` Regular Content & Feature Expansion: Daily Hadith of the Day inspirator, Quranic 40 Rabbana Duas library, and Sunnah Fasting calendar tracker (v1.4.0) (2026-10-15)
+- `#36` Implement MindShield continuous update infrastructure (GitHub Actions CI/CD automated release pipeline and in-app update checker) and expansion roadmap (2026-10-15)
+- `#34` Fix challenge repetition flaw with persistent 30-item deduplication buffer in chrome.storage and dramatically upgrade cognitive puzzle standard to Dhaka University IBA, BCS Mental Ability, and Cognitive Reflection (CRT-3) tests (2026-10-15)
+- `#33` Implement dynamic anger mood progression emojis (1st reel chill/funny -> progressive rage -> 10th reel explosion), time escalation, and live floating status icon bar with collapsible mini-badge (2026-10-15)
+- `#31` Comprehensive Launch & Legal Compliance Suite: In-app LegalModal (Terms of Use & Privacy Policy), standalone public web documents (privacy-policy.html & terms-of-service.html), Content Security Policy (CSP), Trademark & App Name clearance audit, and Zero-leak Data Security protocol (v1.3.1) (2026-10-15)
+- `#32` Mute MindShield warning chime sound and prevent repetitive overlay re-rendering loop during reel lock (2026-10-15)
+- `#30` Aesthetic Islamic luxury UI overhaul with ambient nocturnal background, literary typography (Amiri & Noto Serif Bengali), Bangladesh 64-district solar prayer times engine with live countdown, and innovative Spiritual Mood Recommender (v1.3.0) (2026-10-15)
+- `#28` Phase 1 Industrial Upgrade: Masnoon Duas Library with real-time keyword search, categories, and Smart 33-33-34 auto-flow Tasbeeh engine with haptic feedback (v1.2.0) (2026-10-15)
+- `#29` Fix MindShield Chrome Extension runtime errors: resolve manifest V3 match pattern syntax, handle chrome.runtime.lastError, and wrap service-worker message dispatch in try-catch (2026-10-15)
+- `#27` Fix PWA complete offline precaching for JS and CSS bundles, restart dev server, and push v1.1.1 to GitHub Pages (2026-10-15)
+- `#26` Implement industrial risk mitigations, dual threshold (10 reels OR 15 minutes), Dhaka University IBA entrance math & BCS mental ability puzzles, brain games, zero-secret anti-bot security architecture, and native mobile (Android/iOS) architecture blueprint (2026-10-15)
+- `#25` Configure Everything Claude Code (ECC) globally across all projects via ~/.gemini/config/plugins/ecc (manifest, rules, workflows, agents) and sync 291 skills into ~/.agents/skills (2026-10-14)
+- `#24` Install Everything Claude Code (ECC) suite (affaan-m/ecc) into Antigravity workspace (.agents/) with full profile (122 rules, 94 workflows, 290 skills, 68 agents) (2026-10-14)
+- `#23` Implement automated GitHub Actions CI/CD deployment, PWA auto-updater, and in-app update-checker UI for regular continuous releases (2026-10-14)
+- `#22` Comprehensive code bug audit, fix daytime prayer selection, and deploy live HTTPS PWA on GitHub Pages (opuhassan001-alt/islamic-reminder-app) with 100% offline service worker and Brave mobile install verification (2026-10-14)
+- `#21` Add ultra-hard cognitive challenges (CRT logic riddles, matrix number grids, insane multi-step algebra) and step-by-step solution breakdown on cooldown screen and popup (2026-10-14)
+- `#40` Resolve Brave mobile PWA HTTP installation bypass (brave://flags insecure origins guidance and modal troubleshooting) (2026-10-14)
+- `#19` Create public GitHub repository for MindShield Chrome Extension (opuhassan001-alt/mindshield-extension) with clean git history, MIT license, and automated tests (2026-10-14)
+- `#18` Optimize Islamic Reminder PWA for Brave Browser mobile with high-res PNG icons, updated manifest, and comprehensive Bengali installation guidance (2026-10-14)
+- `#17` Resolve MindShield extension injection and reel detection on live sites (Instagram, YouTube Shorts, Facebook, TikTok) by bundling standalone scripts without dynamic imports, adding HTML5 video viewport detection, and adding live floating counter pill (2026-10-14)
+- `#16` Implement full compliance, legal & privacy suite (Privacy Policy, Terms of Service, Refund Policy, Cookie Policy, Cookie Consent banner, accessibility WCAG AA contrast, and Data Deletion Request) (2026-10-14)
+- `#15` Implement science-backed neuro-focus soundscapes (Brown Noise, 40Hz Gamma waves, Alpha & Beta Binaural Beats) into MindShield Extension overlay and popup (2026-10-14)
+- `#14` Scholarly research and integration of authentic Hadiths for post-prayer adhkar and essential sins forgiveness (guna maaf) into Islamic reminder app (2026-10-14)
+- `#13` Integrate researched authentic Hadiths (Hisnul Muslim, Bukhari, Muslim, Abu Dawood, Tirmidhi, Nasa'i) with narrator, Arabic text, and proof viewer into Islamic reminder app (2026-10-14)
 
-- `#152` `#111` `#69` `#11` Add rich synthesized audio soundscapes (success chord, warning bell, error buzzer) and reward particle animations to MindShield Extension (2026-10-14)
-- `#153` `#112` `#70` `#12` Add interactive UI audio cues and smooth entrance animations to the Portfolio Website (2026-10-14)
+- `#11` Add rich synthesized audio soundscapes (success chord, warning bell, error buzzer) and reward particle animations to MindShield Extension (2026-10-14)
+- `#12` Add interactive UI audio cues and smooth entrance animations to the Portfolio Website (2026-10-14)
 
-- `#154` `#113` `#71` `#10` Build and verify Islamic Prayer & Daily Dua Reminder mobile PWA app with offline support, prayer adhkar, tasbeeh counter, and mobile install guide (2026-10-14)
-- `#155` `#114` `#72` `#6` Portfolio UI & UX Overhaul: mobile menu, clickable logo/contacts, mobile overflow fix, body styling (2026-10-14)
-- `#156` `#115` `#73` `#7` Metadata & SEO: favicon, page titles, OpenGraph/Twitter meta descriptions, custom 404 page (2026-10-14)
-- `#157` `#116` `#74` `#8` Forms & Links: contact form validation with error/success messages, modal link fixes, broken link remediation (2026-10-14)
-- `#158` `#117` `#75` `#9` Performance & Images: Next.js Image optimization, Next.js production build verification (2026-10-14)
+- `#10` Build and verify Islamic Prayer & Daily Dua Reminder mobile PWA app with offline support, prayer adhkar, tasbeeh counter, and mobile install guide (2026-10-14)
+- `#6` Portfolio UI & UX Overhaul: mobile menu, clickable logo/contacts, mobile overflow fix, body styling (2026-10-14)
+- `#7` Metadata & SEO: favicon, page titles, OpenGraph/Twitter meta descriptions, custom 404 page (2026-10-14)
+- `#8` Forms & Links: contact form validation with error/success messages, modal link fixes, broken link remediation (2026-10-14)
+- `#9` Performance & Images: Next.js Image optimization, Next.js production build verification (2026-10-14)
 
 
-- `#159` `#118` `#76` `#1` Design and implement MindShield ADHD Reels Blocker extension architecture, manifest, and core modules (2026-10-14)
-- `#160` `#119` `#77` `#2` Implement brain challenge engine (math, logic puzzles, Stroop tests) with unit test suite (2026-10-14)
-- `#161` `#120` `#78` `#3` Implement platform reel detectors (Instagram, YouTube Shorts, Facebook Reels, TikTok) and scroll blocker overlay (2026-10-14)
-- `#162` `#121` `#79` `#4` Implement popup UI, settings dashboard, and cooldown lockout timer (2026-10-14)
-- `#163` `#122` `#80` `#5` Test and verify extension end-to-end with simulated reels playground and automated test suite (2026-10-14)
+- `#1` Design and implement MindShield ADHD Reels Blocker extension architecture, manifest, and core modules (2026-10-14)
+- `#2` Implement brain challenge engine (math, logic puzzles, Stroop tests) with unit test suite (2026-10-14)
+- `#3` Implement platform reel detectors (Instagram, YouTube Shorts, Facebook Reels, TikTok) and scroll blocker overlay (2026-10-14)
+- `#4` Implement popup UI, settings dashboard, and cooldown lockout timer (2026-10-14)
+- `#5` Test and verify extension end-to-end with simulated reels playground and automated test suite (2026-10-14)
 
 
 Append-only session locks, keyed by each item's permanent `#N` id (one

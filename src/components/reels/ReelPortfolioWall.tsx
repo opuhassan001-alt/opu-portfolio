@@ -29,13 +29,13 @@ export default function ReelPortfolioWall() {
   const [isLoaderComplete, setIsLoaderComplete] = useState(false);
   const [isEntranceDone, setIsEntranceDone] = useState(false);
 
-  // Physics Spring for Ring Rotation (Continuous Target Angle)
+  // Physics Spring for Ring Rotation: Ultra-smooth near-critical damping
   const targetAngleRef = useRef(0);
-  const springAngle = useSpring(0, { stiffness: 55, damping: 18, mass: 0.8 });
+  const springAngle = useSpring(0, { stiffness: 45, damping: 25, mass: 1.0 });
   const [currentRingAngle, setCurrentRingAngle] = useState(0);
 
-  // Frame count for hover hit-testing every 3rd frame
-  const frameCountRef = useRef(0);
+  // Mouse tracking for subtle hover movement
+  const lastYRef = useRef<number | null>(null);
 
   // 16 Consolidated Portfolio Items representing all post-hero sections & projects
   const items: ReelItem[] = useMemo(() => [
@@ -244,7 +244,7 @@ export default function ReelPortfolioWall() {
     };
   }, [expansion]);
 
-  // Set shared ring CSS variables on the ring element directly (Performance requirement)
+  // Set shared ring CSS variables on the ring element directly
   useEffect(() => {
     if (ringRef.current) {
       ringRef.current.style.setProperty("--ring-radius", `${currentScene.radius}px`);
@@ -294,7 +294,7 @@ export default function ReelPortfolioWall() {
     return () => observer.disconnect();
   }, []);
 
-  // Animation timeline controller
+  // Animation timeline controller: Deal -> 360° Entrance Revolution -> Stand in front
   useEffect(() => {
     if (!inView) return;
     if (hasStartedEntrance.current) return;
@@ -304,6 +304,8 @@ export default function ReelPortfolioWall() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setFormation(1);
       setExpansion(1);
+      targetAngleRef.current = 0;
+      springAngle.set(0);
       setIsLoaderComplete(true);
       setIsEntranceDone(true);
       return;
@@ -314,8 +316,8 @@ export default function ReelPortfolioWall() {
 
     let animId: number;
     const startTime = performance.now();
-    const formationDuration = 2600; // 2.6s linear deal
-    const expansionDuration = 1900; // 1.9s cubic-bezier(.5, 0, .15, 1)
+    const formationDuration = 2400; // 2.4s linear deal
+    const expansionDuration = 2000; // 2.0s expansion & 360° turn
 
     let expansionStarted = false;
     let expStartTime = 0;
@@ -335,6 +337,8 @@ export default function ReelPortfolioWall() {
             expansionStarted = true;
             setIsLoaderComplete(true);
             expStartTime = now;
+            targetAngleRef.current = -360;
+            springAngle.set(-360);
           }
         } else {
           const expElapsed = now - expStartTime;
@@ -342,8 +346,15 @@ export default function ReelPortfolioWall() {
           const eased = cubicBezierEase(t);
           setExpansion(eased);
 
+          // ENTRANCE 360° TURN: All cards revolve once around the ring (-360° -> 0°) and stand in front
+          const sweepAngle = lerp(-360, 0, eased);
+          targetAngleRef.current = sweepAngle;
+          springAngle.set(sweepAngle);
+
           if (t >= 1) {
             setExpansion(1);
+            targetAngleRef.current = 0;
+            springAngle.set(0);
             setIsEntranceDone(true);
             document.body.style.overflow = ""; // Unlock page scroll
             return;
@@ -360,22 +371,7 @@ export default function ReelPortfolioWall() {
       cancelAnimationFrame(animId);
       document.body.style.overflow = "";
     };
-  }, [inView]);
-
-  // Idle rotation loop once entrance is completed
-  useEffect(() => {
-    let idleAnimId: number;
-    const idleTick = () => {
-      frameCountRef.current++;
-      if (isEntranceDone && !isDragging.current) {
-        targetAngleRef.current += 0.06; // Slow auto-spin
-        springAngle.set(targetAngleRef.current);
-      }
-      idleAnimId = requestAnimationFrame(idleTick);
-    };
-    idleAnimId = requestAnimationFrame(idleTick);
-    return () => cancelAnimationFrame(idleAnimId);
-  }, [isEntranceDone, springAngle]);
+  }, [inView, springAngle]);
 
   // Skip / Escape handler
   const handleSkip = useCallback(() => {
@@ -383,10 +379,12 @@ export default function ReelPortfolioWall() {
     setExpansion(1);
     setLoadedCount(16);
     loadedCountRef.current = 16;
+    targetAngleRef.current = 0;
+    springAngle.set(0);
     setIsLoaderComplete(true);
     setIsEntranceDone(true);
     document.body.style.overflow = "";
-  }, []);
+  }, [springAngle]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -398,35 +396,82 @@ export default function ReelPortfolioWall() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleSkip]);
 
-  // Drag, Swipe and Wheel Interaction Handlers
+  // Drag, Swipe and Wheel Interaction Handlers:
+  // User Requirement:
+  // - Mouse/Wheel Scroll UP -> rotates LEFT (counter-clockwise)
+  // - Mouse/Wheel Scroll DOWN -> rotates RIGHT (clockwise)
+  // - Cursor moving UP -> rotates LEFT
+  // - Cursor moving DOWN -> rotates RIGHT
+  // - Rotates ONLY when user interacts (no erratic auto-spin)
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
+  const dragStartY = useRef(0);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     isDragging.current = true;
     dragStartX.current = e.clientX;
+    dragStartY.current = e.clientY;
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isEntranceDone) return;
+
     if (isDragging.current && e.buttons === 1) {
       const deltaX = e.clientX - dragStartX.current;
+      const deltaY = e.clientY - dragStartY.current;
       dragStartX.current = e.clientX;
-      targetAngleRef.current -= deltaX * 0.24;
+      dragStartY.current = e.clientY;
+
+      // Moving mouse/touch Up (deltaY < 0) -> rotates Left (-angle)
+      // Moving mouse/touch Down (deltaY > 0) -> rotates Right (+angle)
+      // Dragging Left (deltaX < 0) -> rotates Left
+      // Dragging Right (deltaX > 0) -> rotates Right
+      const rotationStep = -deltaX * 0.22 + deltaY * 0.22;
+      targetAngleRef.current += rotationStep;
       springAngle.set(targetAngleRef.current);
+      return;
     }
+
+    // Natural hover gesture: Moving cursor Up -> Left, Down -> Right
+    if (lastYRef.current !== null) {
+      const dy = e.clientY - lastYRef.current;
+      if (Math.abs(dy) > 1 && Math.abs(dy) < 60) {
+        targetAngleRef.current += dy * 0.14;
+        springAngle.set(targetAngleRef.current);
+      }
+    }
+    lastYRef.current = e.clientY;
   };
 
   const handlePointerUp = () => {
     isDragging.current = false;
   };
 
+  const handlePointerLeave = () => {
+    isDragging.current = false;
+    lastYRef.current = null;
+  };
+
+  // Mouse Wheel Handler:
+  // Scroll UP (deltaY < 0) -> rotates LEFT
+  // Scroll DOWN (deltaY > 0) -> rotates RIGHT
   const handleWheel = (e: React.WheelEvent) => {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-      targetAngleRef.current += e.deltaX * 0.15;
-    } else {
-      targetAngleRef.current += e.deltaY * 0.15;
+    if (!isEntranceDone) return;
+
+    if (e.deltaY < 0) {
+      // Wheel Scroll UP -> Rotates LEFT
+      targetAngleRef.current -= Math.min(45, Math.abs(e.deltaY) * 0.24);
+    } else if (e.deltaY > 0) {
+      // Wheel Scroll DOWN -> Rotates RIGHT
+      targetAngleRef.current += Math.min(45, Math.abs(e.deltaY) * 0.24);
     }
+
+    // Also support horizontal trackpad swipes
+    if (Math.abs(e.deltaX) > 2) {
+      targetAngleRef.current += e.deltaX * 0.24;
+    }
+
     springAngle.set(targetAngleRef.current);
   };
 
@@ -437,6 +482,7 @@ export default function ReelPortfolioWall() {
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
+      onPointerLeave={handlePointerLeave}
       onWheel={handleWheel}
       className="relative w-full h-screen min-h-[720px] max-h-[1080px] overflow-hidden bg-[#FAFAFA] text-neutral-950 select-none cursor-grab active:cursor-grabbing border-b border-neutral-200"
       style={{
@@ -537,13 +583,14 @@ export default function ReelPortfolioWall() {
         }`}
       >
         <div className="flex items-center gap-2">
-          <RotateCw className="w-3.5 h-3.5 animate-spin-slow text-neutral-400" />
-          <span>DRAG, SWIPE OR WHEEL TO ROTATE CYLINDER</span>
+          <RotateCw className="w-3.5 h-3.5 text-neutral-400" />
+          <span className="hidden sm:inline">SCROLL OR MOVE MOUSE UP/DOWN TO ROTATE CYLINDER</span>
+          <span className="sm:hidden">SCROLL OR SWIPE TO ROTATE</span>
         </div>
 
         <a
           href="#work"
-          className="hidden sm:inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-950 transition-colors uppercase"
+          className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-950 transition-colors uppercase font-medium"
         >
           <span>Scroll to detailed records</span>
           <ArrowDown className="w-3.5 h-3.5" />
