@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import AdhamHero from "@/components/AdhamHero";
+import ReelPortfolioWall from "@/components/reels/ReelPortfolioWall";
 import DennisWork from "@/components/DennisWork";
 import DennisLab from "@/components/DennisLab";
 import DennisAboutSkills from "@/components/DennisAboutSkills";
@@ -15,8 +16,11 @@ export default function HomePage() {
       <Navbar />
 
       <main className="flex-1">
-        {/* Adham Hero with Split Dual-Portrait (Kept Intact) */}
+        {/* Adham Hero with Split Dual-Portrait */}
         <AdhamHero />
+
+        {/* Post-Hero 3D Cylinder Portfolio Showcase (Consolidating all portfolio works) */}
+        <ReelPortfolioWall />
 
         {/* Dennis Snellenberg Recent Work Rows & Floating Zoom Modal */}
         <DennisWork />
@@ -44,6 +48,9 @@ export default function HomePage() {
           <nav className="flex items-center gap-6 font-medium lowercase">
             <a href="#hero" className="hover:text-white transition-colors">
               about
+            </a>
+            <a href="#portfolio-showcase" className="hover:text-white transition-colors">
+              reels
             </a>
             <a href="#work" className="hover:text-white transition-colors">
               work

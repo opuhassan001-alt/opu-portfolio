@@ -12,7 +12,10 @@ resume**, not just a task name.
 
 ## Done
 
-- `#179` Revert 3D book experiment per user request and restore Dennis Snellenberg dual-track portfolio: reverted to the exact battle-tested Adham Dannaway split-hero and Dennis Snellenberg editorial layout across Work, Lab, Disciplines, Education, and Contact sections with zero WebGL dependencies (2026-10-22)
+- `#180` Build post-hero 3D CSS cylinder portfolio showcase with synchronized formation loader, expansion reveal, reelPose math, and real asset counter: implemented 16-card vertical cylinder (270x480px, 9:16), pure mathematical pose engine reelPose with passing unit test suite, staggered formation deal-out (0->1 in 2.6s), expansion reveal (0->1 in 1.9s) transitioning from tilt -22 roll -20 radius 460 to inside radius 1800 scale 2.3, real asset tabular rolling counter, card recycling, spring physics, and keyboard/drag/wheel controls (2026-10-23)
+
+
+- `#179` Revert 3D book experiment per user request and restore Dennis Snellenberg dual-track portfolio: restored the exact battle-tested Adham Dannaway split-hero and Dennis Snellenberg editorial layout across Work, Lab, Disciplines, Education, and Contact sections with zero WebGL dependencies (2026-10-22)
 
 - `#178` Reduce floating hover pop-up window size by 86% to an ultra-compact mini-window: streamlined hover cards across Work, Lab, Disciplines, and Education sections to a compact 192px × 56px mini-card featuring only the short headline and a high-contrast white "VIEW ↗" button, removing long paragraphs and tag clutter while preserving full deep-dive click-to-open modals (2026-10-19)
 
