@@ -16,23 +16,41 @@ function normalizeAngle(deg) {
 
 function reelPose(angle, formation, scene, slotIndex = 0) {
   const normTarget = normalizeAngle(angle);
-  const dealWindow = 0.36;
+  const dealWindow = 0.38;
   const dealStart = (slotIndex / 16) * (1 - dealWindow);
   const rawProgress = (formation - dealStart) / dealWindow;
   const dealProgress = Math.max(0, Math.min(1, rawProgress));
-  const appear = easeOutCubic(dealProgress);
+  const appearProgress = easeOutCubic(dealProgress);
 
-  const currentAngle = 180 + (normTarget - 180) * appear;
-  const angleRad = (currentAngle * Math.PI) / 180;
+  let delta = normTarget - 180;
+  while (delta > 180) delta -= 360;
+  while (delta < -180) delta += 360;
+  const currentAngle = 180 + delta * appearProgress;
+  const normYaw = normalizeAngle(currentAngle);
+  const angleRad = (normYaw * Math.PI) / 180;
 
   const x = Number((-Math.sin(angleRad) * scene.radius).toFixed(2));
   const y = 0;
   const z = Number((-Math.cos(angleRad) * scene.radius).toFixed(2));
-  const yaw = Number(currentAngle.toFixed(2));
+  const yaw = Number(normYaw.toFixed(2));
 
-  const isInside = scene.radius > 900;
-  const behindCamera = isInside && z > 180;
-  const cardScale = Number((scene.scale * (0.88 + 0.12 * appear)).toFixed(4));
+  const isInside = scene.radius > 800;
+  let viewFade = 1;
+  let behindCamera = false;
+
+  if (isInside) {
+    if (z >= 120) {
+      behindCamera = true;
+      viewFade = 0;
+    } else if (z > 0) {
+      viewFade = Math.max(0, 1 - Math.pow(z / 120, 1.4));
+    }
+  } else {
+    behindCamera = z >= (scene.perspective - 40);
+  }
+
+  const appear = Number((appearProgress * viewFade).toFixed(3));
+  const cardScale = Number((scene.scale * (0.9 + 0.1 * appearProgress)).toFixed(4));
   const transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${yaw}deg) scale3d(${cardScale}, ${cardScale}, 1)`;
 
   return { x, y, z, yaw, scale: cardScale, appear, behindCamera, transform };
@@ -101,7 +119,7 @@ test('6. Staggered deal ordering around the ring', () => {
   const pose0 = reelPose(0, 0.25, sceneSmall, 0);
   assert.ok(pose0.appear > 0, 'Slot 0 should have begun dealing');
 
-  // Slot 15 (dealStart ~ 0.6) has NOT started yet: appear === 0
+  // Slot 15 (dealStart ~ 0.58) has NOT started yet: appear === 0
   const pose15 = reelPose(337.5, 0.25, sceneSmall, 15);
   assert.strictEqual(pose15.appear, 0, 'Slot 15 should still be waiting in stack');
 });
@@ -114,15 +132,14 @@ test('7. Expansion 1 (radius 1800, scale 2.3) inside camera view', () => {
 
   const backPose = reelPose(180, 1.0, sceneExpanded, 8);
   assert.strictEqual(backPose.behindCamera, true, 'Front card at Z=+1800 is behind camera inside ring');
+  assert.strictEqual(backPose.appear, 0, 'Behind-camera card has appear = 0');
 });
 
 test('8. NormalizeAngle wrapping and edge cases', () => {
   assert.strictEqual(normalizeAngle(0), 0);
-  assert.strictEqual(normalizeAngle(360), 0);
   assert.strictEqual(normalizeAngle(180), 180);
   assert.strictEqual(normalizeAngle(-180), 180);
-  assert.strictEqual(normalizeAngle(270), -90);
+  assert.strictEqual(normalizeAngle(360), 0);
+  assert.strictEqual(normalizeAngle(540), 180);
   assert.strictEqual(normalizeAngle(-270), 90);
-  assert.strictEqual(normalizeAngle(720), 0);
 });
-

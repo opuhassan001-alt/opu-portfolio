@@ -12,6 +12,8 @@ resume**, not just a task name.
 
 ## Done
 
+- `#181` Diagnose and eliminate 3D showcase transition glitch: resolved 150ms animation loop restart caused by loadedCount effect dependency, stripped conflicting 300ms CSS transition fighting per-frame JS transforms, eliminated 60 FPS DOM unmounting thrash by keeping all 16 cards mounted with visibility culling, corrected shortest-arc circular deal interpolation, added peripheral fade-out to prevent camera clipping, and attached IntersectionObserver to trigger entrance only when in view (2026-10-23)
+
 - `#180` Build post-hero 3D CSS cylinder portfolio showcase with synchronized formation loader, expansion reveal, reelPose math, and real asset counter: implemented 16-card vertical cylinder (270x480px, 9:16), pure mathematical pose engine reelPose with passing unit test suite, staggered formation deal-out (0->1 in 2.6s), expansion reveal (0->1 in 1.9s) transitioning from tilt -22 roll -20 radius 460 to inside radius 1800 scale 2.3, real asset tabular rolling counter, card recycling, spring physics, and keyboard/drag/wheel controls (2026-10-23)
 
 

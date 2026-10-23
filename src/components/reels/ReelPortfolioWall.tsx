@@ -2,11 +2,10 @@
 
 import React, { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { motion, useSpring } from "framer-motion";
-import { reelPose, normalizeAngle, SceneParams } from "@/utils/reelPose";
+import { reelPose, normalizeAngle, cubicBezierEase, SceneParams } from "@/utils/reelPose";
 import SectionLoaderUI from "./SectionLoaderUI";
 import ReelCard, { ReelItem } from "./ReelCard";
-import { portfolioData } from "@/data/portfolio";
-import { ArrowDown, RotateCw, Volume2, VolumeX } from "lucide-react";
+import { ArrowDown, RotateCw } from "lucide-react";
 
 function lerp(start: number, end: number, factor: number) {
   return start + (end - start) * factor;
@@ -20,8 +19,13 @@ export default function ReelPortfolioWall() {
   const [formation, setFormation] = useState(0); // 0 -> 1 (2.6s linear deal)
   const [expansion, setExpansion] = useState(0); // 0 -> 1 (1.9s cubic-bezier(.5, 0, .15, 1))
 
+  // In-View Trigger State (starts when section enters viewport)
+  const [inView, setInView] = useState(false);
+  const hasStartedEntrance = useRef(false);
+
   // Asset Loading State
   const [loadedCount, setLoadedCount] = useState(0);
+  const loadedCountRef = useRef(0);
   const [isLoaderComplete, setIsLoaderComplete] = useState(false);
   const [isEntranceDone, setIsEntranceDone] = useState(false);
 
@@ -263,7 +267,8 @@ export default function ReelPortfolioWall() {
     let loaded = 0;
     const interval = setInterval(() => {
       loaded += 2;
-      setLoadedCount((prev) => Math.min(16, prev + 2));
+      loadedCountRef.current = Math.min(16, loaded);
+      setLoadedCount(Math.min(16, loaded));
       if (loaded >= 16) {
         clearInterval(interval);
       }
@@ -271,8 +276,30 @@ export default function ReelPortfolioWall() {
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer: Start entrance when section enters view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !hasStartedEntrance.current) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   // Animation timeline controller
   useEffect(() => {
+    if (!inView) return;
+    if (hasStartedEntrance.current) return;
+    hasStartedEntrance.current = true;
+
     // Check prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setFormation(1);
@@ -287,10 +314,11 @@ export default function ReelPortfolioWall() {
 
     let animId: number;
     const startTime = performance.now();
-    const formationDuration = 2600; // 2.6s linear
+    const formationDuration = 2600; // 2.6s linear deal
     const expansionDuration = 1900; // 1.9s cubic-bezier(.5, 0, .15, 1)
 
     let expansionStarted = false;
+    let expStartTime = 0;
 
     const tick = (now: number) => {
       const elapsed = now - startTime;
@@ -302,36 +330,28 @@ export default function ReelPortfolioWall() {
         setFormation(1);
 
         // 2. Expansion starts only when formation finished AND real assets ready
-        if (!expansionStarted && loadedCount >= 16) {
-          expansionStarted = true;
-          setIsLoaderComplete(true);
-          const expStart = performance.now();
+        if (!expansionStarted) {
+          if (loadedCountRef.current >= 16) {
+            expansionStarted = true;
+            setIsLoaderComplete(true);
+            expStartTime = now;
+          }
+        } else {
+          const expElapsed = now - expStartTime;
+          const t = Math.min(1, expElapsed / expansionDuration);
+          const eased = cubicBezierEase(t);
+          setExpansion(eased);
 
-          const expTick = (expNow: number) => {
-            const expElapsed = expNow - expStart;
-            const t = Math.min(1, expElapsed / expansionDuration);
-
-            // Strong cubic-bezier(.5, 0, .15, 1) approximation
-            // t < 0.5 -> 4 * t^3; t >= 0.5 -> 1 - (-2t + 2)^3 / 2
-            const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-            setExpansion(eased);
-
-            if (t < 1) {
-              requestAnimationFrame(expTick);
-            } else {
-              setExpansion(1);
-              setIsEntranceDone(true);
-              document.body.style.overflow = ""; // Unlock page scroll
-            }
-          };
-          requestAnimationFrame(expTick);
-          return;
+          if (t >= 1) {
+            setExpansion(1);
+            setIsEntranceDone(true);
+            document.body.style.overflow = ""; // Unlock page scroll
+            return;
+          }
         }
       }
 
-      if (!expansionStarted) {
-        animId = requestAnimationFrame(tick);
-      }
+      animId = requestAnimationFrame(tick);
     };
 
     animId = requestAnimationFrame(tick);
@@ -340,7 +360,7 @@ export default function ReelPortfolioWall() {
       cancelAnimationFrame(animId);
       document.body.style.overflow = "";
     };
-  }, [loadedCount]);
+  }, [inView]);
 
   // Idle rotation loop once entrance is completed
   useEffect(() => {
@@ -362,6 +382,7 @@ export default function ReelPortfolioWall() {
     setFormation(1);
     setExpansion(1);
     setLoadedCount(16);
+    loadedCountRef.current = 16;
     setIsLoaderComplete(true);
     setIsEntranceDone(true);
     document.body.style.overflow = "";
@@ -432,7 +453,7 @@ export default function ReelPortfolioWall() {
       />
 
       {/* LOADER UI: Bottom right tabular counter + top left flying wordmark */}
-      {!isEntranceDone && (
+      {!isEntranceDone && inView && (
         <SectionLoaderUI
           loadedCount={loadedCount}
           totalCount={16}
@@ -492,10 +513,7 @@ export default function ReelPortfolioWall() {
             const netAngle = slotRestingAngle + currentRingAngle;
             const pose = reelPose(netAngle, formation, currentScene, slotIndex);
 
-            // Performance: Cull cards when behind camera
-            if (pose.behindCamera) return null;
-
-            // Only cards facing camera play video/animations (|yaw| < 65 deg)
+            // Performance: Card facing camera check for animations (|yaw| < 65 deg)
             const isFacingCamera = Math.abs(normalizeAngle(pose.yaw)) < 65;
 
             return (
@@ -504,6 +522,7 @@ export default function ReelPortfolioWall() {
                 item={item}
                 poseTransform={pose.transform}
                 appear={pose.appear}
+                behindCamera={pose.behindCamera}
                 isFrontFacing={isFacingCamera}
               />
             );
@@ -533,4 +552,3 @@ export default function ReelPortfolioWall() {
     </section>
   );
 }
-

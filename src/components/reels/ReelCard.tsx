@@ -20,14 +20,16 @@ interface ReelCardProps {
   item: ReelItem;
   poseTransform: string;
   appear: number;
+  behindCamera?: boolean;
   isFrontFacing: boolean; // Only front-facing cards animate/play video
   onClick?: () => void;
 }
 
-export default function ReelCard({
+function ReelCardComponent({
   item,
   poseTransform,
   appear,
+  behindCamera = false,
   isFrontFacing,
   onClick,
 }: ReelCardProps) {
@@ -51,6 +53,8 @@ export default function ReelCard({
     }
   };
 
+  const isHidden = behindCamera || appear <= 0.001;
+
   return (
     <a
       href={item.link}
@@ -61,11 +65,13 @@ export default function ReelCard({
         }
       }}
       aria-label={`${item.title} — ${item.subtitle}`}
-      className="absolute top-1/2 left-1/2 -mt-[240px] -ml-[135px] w-[270px] h-[480px] rounded-2xl bg-[#0D0D10] text-white p-5 flex flex-col justify-between shadow-2xl border border-neutral-800/80 transition-all duration-300 group select-none pointer-events-auto hover:border-neutral-500 will-change-transform"
+      className="absolute top-1/2 left-1/2 -mt-[240px] -ml-[135px] w-[270px] h-[480px] rounded-2xl bg-[#0D0D10] text-white p-5 flex flex-col justify-between shadow-2xl border border-neutral-800/80 hover:border-neutral-500 group select-none will-change-transform transition-colors duration-150"
       style={{
         transformStyle: "preserve-3d",
         transform: poseTransform,
-        opacity: appear,
+        opacity: behindCamera ? 0 : appear,
+        visibility: isHidden ? "hidden" : "visible",
+        pointerEvents: isHidden || appear < 0.8 ? "none" : "auto",
         backfaceVisibility: "hidden",
       }}
     >
@@ -92,7 +98,7 @@ export default function ReelCard({
       <div className="my-auto py-4 flex flex-col items-center text-center">
         {/* Animated Visual Glyph Box */}
         <div
-          className={`w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-4 transition-transform duration-300 ${
+          className={`w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-4 transition-transform duration-200 ${
             isFrontFacing ? "scale-105 shadow-lg shadow-black/40" : "scale-100"
           } group-hover:scale-110`}
         >
@@ -126,3 +132,5 @@ export default function ReelCard({
   );
 }
 
+const ReelCard = React.memo(ReelCardComponent);
+export default ReelCard;
