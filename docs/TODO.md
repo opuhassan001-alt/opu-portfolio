@@ -12,10 +12,10 @@ resume**, not just a task name.
 
 ## In Progress
 
-- CLAIM #186 session 1e9a5cf2-a9fb-41de-80b5-b4a60e271982 2026-11-04T00:03:00+06:00 "Deploy portfolio to Vercel production and push latest code to GitHub origin main"
-
 
 ## Done
+
+- `#186` Deploy portfolio to Vercel production and push latest code to GitHub origin main: published live at https://opu-portfolio-beige.vercel.app with Lenis smooth scroll and interactive motion polish (2026-11-04)
 
 - `#185` Implement UX & motion polish: Lenis inertia smooth scrolling, Dennis Snellenberg magnetic trailing cursor with contextual hover pills (READ ↗), scroll-triggered reveal animations via Framer Motion, magnetic spring physics on interactive CTAs, and zero-bandwidth Web Audio API tactile sound synthesizer with navbar toggle (2026-11-03)
 
