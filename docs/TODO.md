@@ -15,6 +15,12 @@ resume**, not just a task name.
 
 ## Done
 
+- `#189` Anchor detail panel action dock to screen bottom and decouple reading scroll container: set `.detail-panel` to full-height flex column (`top: clamp(130px, 13%, 180px); bottom: 28px`), made `.detail-scroll` flex-expand with independent scrollbar, and pinned `.bottom-dock` to the bottom (`margin-top: auto; padding-top: 16px`) so the action rail never hovers over or obstructs manual reading text (2026-11-04)
+
+- `#188` Resolve Zero-Trust DLP Pre-Execution Simulator false-positive blocked status and detail drawer text overlap: updated command chaining detection regex to allow valid trailing SQL semicolons while intercepting active command injection chaining (`/ (;|&&|\||`)\s*\S+ /`), turning default state into clean verified secret redaction (`SAFE / SANITIZED`), and optimized `.detail-scroll` bottom padding and mask boundaries so drawer content never collides with `.bottom-dock` action pills (2026-11-04)
+
+- `#187` Fix 3D book showcase detail drawer action dock button overlap and non-functional clicks: converted `.bottom-dock` from absolute positioning with squished percentage width to relative full-width container (`width: 100%`), set pills to `min-width: max-content` with horizontal scroll to prevent text collision, attached smooth-scroll refs for "Field Edition" and "Read Notes", converted "View Guide" to native external `<a>` link opening GitHub, and wired tactile audio feedback across all buttons (2026-11-04)
+
 - `#186` Deploy portfolio to Vercel production and push latest code to GitHub origin main: published live at https://opu-portfolio-beige.vercel.app with Lenis smooth scroll and interactive motion polish (2026-11-04)
 
 - `#185` Implement UX & motion polish: Lenis inertia smooth scrolling, Dennis Snellenberg magnetic trailing cursor with contextual hover pills (READ ↗), scroll-triggered reveal animations via Framer Motion, magnetic spring physics on interactive CTAs, and zero-bandwidth Web Audio API tactile sound synthesizer with navbar toggle (2026-11-03)
@@ -128,6 +134,8 @@ claimed, not just who/when — a session id alone answers "who," not "why."
 Locks auto-expire after 2 hours with no release needed.
 
 When the item is fully finished (moved to `## Done
+
+- `#189` Anchor detail panel action dock to screen bottom and decouple reading scroll container: set `.detail-panel` to full-height flex column (`top: clamp(130px, 13%, 180px); bottom: 28px`), made `.detail-scroll` flex-expand with independent scrollbar, and pinned `.bottom-dock` to the bottom (`margin-top: auto; padding-top: 16px`) so the action rail never hovers over or obstructs manual reading text (2026-11-04)
 
 - `#112357` Unify entire website with Book Showcase deep vintage bronze background, radial ambiance, fixed SVG film-grain texture, and strict 3-tier font system (Boska for headings, Satoshi for subheadings & paragraphs) across Navbar, AdhamHero, DennisContact, CookieConsentBanner, and global footer (2026-11-03)`): delete its CLAIM/
 RELEASE line(s) from here entirely, in the same edit that writes the Done

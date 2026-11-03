@@ -607,51 +607,46 @@
     .detail-panel {
       position: absolute;
       z-index: 12;
-      top: clamp(180px, 16%, 240px);
+      top: clamp(130px, 13%, 180px);
+      bottom: 28px;
       right: 4.5%;
       width: min(47.5%, 650px);
+      display: flex;
+      flex-direction: column;
       opacity: 0;
       transition: opacity 520ms ease 280ms;
       pointer-events: none;
     }
 
     .detail-title {
-      margin: 0 0 24px;
+      margin: 0 0 20px;
       color: var(--pink);
       font-family: var(--heading);
-      font-size: clamp(52px, 5.7vw, 82px);
+      font-size: clamp(48px, 5.2vw, 76px);
       font-style: italic;
       font-weight: 500;
       letter-spacing: -.055em;
       line-height: .96;
+      flex-shrink: 0;
     }
 
     .detail-description {
       font-family: var(--paragraph);
       max-width: 600px;
-      margin: 0;
+      margin: 0 0 16px;
       color: var(--muted);
       font-size: clamp(14px, 1.28vw, 17px);
       line-height: 1.64;
+      flex-shrink: 0;
     }
 
     .detail-scroll {
-      max-height: clamp(420px, calc(100svh - 400px), 640px);
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: none;
       overflow-y: auto;
       overscroll-behavior: contain;
-      padding: 0 22px 76px 0;
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        #000 0,
-        #000 calc(100% - 76px),
-        transparent 100%
-      );
-      mask-image: linear-gradient(
-        to bottom,
-        #000 0,
-        #000 calc(100% - 76px),
-        transparent 100%
-      );
+      padding: 0 20px 24px 0;
       scrollbar-color: rgba(198, 139, 140, .76) rgba(73, 66, 49, .35);
       scrollbar-width: thin;
     }
@@ -808,11 +803,12 @@
     }
 
     .bottom-dock {
-      position: absolute;
+      flex-shrink: 0;
+      position: relative;
       z-index: 24;
-      right: 4.5%;
-      bottom: 32px;
-      width: min(47.5%, 650px);
+      width: 100%;
+      margin-top: auto;
+      padding-top: 16px;
     }
 
     .bottom-dock .meta-row {
@@ -835,24 +831,31 @@
       background: rgba(64, 58, 43, .88);
       box-shadow: 0 16px 32px rgba(26, 20, 12, .2);
       backdrop-filter: blur(12px);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .action-rail::-webkit-scrollbar {
+      display: none;
     }
 
     .pill {
       display: inline-flex;
-      flex: 1 1 0;
+      flex: 1 1 auto;
       align-items: center;
       justify-content: center;
-      min-width: 0;
-      min-height: 58px;
+      min-width: max-content;
+      min-height: 52px;
       padding: 0 18px;
       border-radius: 24px;
       background: var(--periwinkle);
       color: #2e261d;
       cursor: pointer;
-      font-size: 15px;
+      font-size: 14px;
       font-style: italic;
       font-weight: 700;
       white-space: nowrap;
+      text-decoration: none;
       transition: transform 220ms var(--ease), filter 220ms ease, background 220ms ease;
     }
 
@@ -869,12 +872,13 @@
     .pill.language svg {
       width: 19px;
       height: 19px;
+      flex-shrink: 0;
     }
 
     .pill.icon-only {
-      flex: 0 0 58px;
-      width: 58px;
-      min-width: 58px;
+      flex: 0 0 52px;
+      width: 52px;
+      min-width: 52px;
       padding: 0;
       background: #565d45;
       color: #f1e6cf;
@@ -1240,12 +1244,13 @@
         top: 720px;
         right: 7%;
         left: 7%;
+        bottom: auto;
         width: auto;
-        padding-bottom: 140px;
+        padding-bottom: 60px;
       }
 
       .detail-scroll {
-        max-height: min(500px, calc(100svh - 310px));
+        max-height: min(480px, calc(100svh - 310px));
       }
 
       .detail-title {
@@ -1253,11 +1258,12 @@
       }
 
       .bottom-dock {
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-        left: 20px;
-        width: auto;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        margin-top: 16px;
       }
 
       .action-rail {
@@ -1329,6 +1335,7 @@
         top: 620px;
         right: 20px;
         left: 20px;
+        bottom: auto;
       }
 
       .detail-scroll {
@@ -1336,9 +1343,9 @@
       }
 
       .pill {
-        min-width: 0;
-        min-height: 54px;
-        padding: 0 10px;
+        min-width: max-content;
+        min-height: 48px;
+        padding: 0 12px;
         font-size: 12px;
       }
 
@@ -1347,9 +1354,9 @@
       }
 
       .pill.icon-only {
-        flex-basis: 54px;
-        width: 54px;
-        min-width: 54px;
+        flex: 0 0 48px;
+        width: 48px;
+        min-width: 48px;
       }
 
       .meta-row {

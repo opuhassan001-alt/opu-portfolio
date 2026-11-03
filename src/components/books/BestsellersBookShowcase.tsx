@@ -49,8 +49,8 @@ const BOOKS: Record<string, BookData> = {
     steps: [],
     prompt: "",
     review: "",
-    liveUrl: "https://github.com/opuhassan001-alt",
-    repoUrl: "https://github.com/opuhassan001-alt"
+    liveUrl: "https://github.com/opuhassan001-alt/agent-sentinel-mcp",
+    repoUrl: "https://github.com/opuhassan001-alt/agent-sentinel-mcp"
   },
   claude: {
     id: "claude",
@@ -118,14 +118,24 @@ export default function BestsellersBookShowcase() {
   };
 
   const simulateSanitization = (input: string) => {
-    const hasSecret = /sk-[a-zA-Z0-9]{20,}/.test(input) || /Bearer\s+[a-zA-Z0-9_.-]+/.test(input);
-    const hasChaining = /[;&|`]/.test(input);
+    const hasSecret =
+      /sk-(?:proj-)?[a-zA-Z0-9_-]{15,}/.test(input) ||
+      /Bearer\s+[a-zA-Z0-9_.-]+/.test(input);
+    // Command chaining detects ';', '&&', '|', '`' when followed by another command.
+    // Trailing semicolon at the end of an SQL statement is valid termination, not chaining.
+    const hasChaining = /(;|&&|\||`)\s*\S+/.test(input) || /(&&|\||`)/.test(input);
     const hasTraversal = /\.\.\//.test(input);
 
     let sanitized = input;
     if (hasSecret) {
-      sanitized = sanitized.replace(/sk-[a-zA-Z0-9]{20,}/g, "[REDACTED_API_SECRET]");
-      sanitized = sanitized.replace(/Bearer\s+[a-zA-Z0-9_.-]+/g, "Bearer [REDACTED_BEARER_TOKEN]");
+      sanitized = sanitized.replace(
+        /sk-(?:proj-)?[a-zA-Z0-9_-]{15,}/g,
+        "[REDACTED_API_SECRET]"
+      );
+      sanitized = sanitized.replace(
+        /Bearer\s+[a-zA-Z0-9_.-]+/g,
+        "Bearer [REDACTED_BEARER_TOKEN]"
+      );
     }
 
     const blocked = hasChaining || hasTraversal;
@@ -149,6 +159,7 @@ export default function BestsellersBookShowcase() {
   const stageRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const detailScrollRef = useRef<HTMLDivElement>(null);
   const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
@@ -550,6 +561,7 @@ export default function BestsellersBookShowcase() {
             <>
               <h2 className="detail-title">{selectedData.title}</h2>
               <div
+                ref={detailScrollRef}
                 className="detail-scroll"
                 tabIndex={0}
                 aria-label="Field manual details"
@@ -876,7 +888,12 @@ export default function BestsellersBookShowcase() {
                   <button
                     className="pill language"
                     type="button"
-                    onClick={() => showToast(`Field edition · ${selectedData.year}`)}
+                    onClick={() => {
+                      sound.playClick();
+                      detailScrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+                      showToast(`Field manual · ${selectedData.year} Edition`);
+                    }}
+                    title="Jump to Top / Overview"
                   >
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <circle
@@ -901,27 +918,31 @@ export default function BestsellersBookShowcase() {
                     className="pill"
                     type="button"
                     onClick={() => {
-                      if (selectedData.liveUrl) {
-                        window.open(selectedData.liveUrl, "_blank", "noopener,noreferrer");
+                      sound.playClick();
+                      if (detailScrollRef.current) {
+                        detailScrollRef.current.scrollTo({
+                          top: 240,
+                          behavior: "smooth"
+                        });
                       }
-                      showToast("Opening Case Study...");
+                      showToast(`Viewing ${selectedData.title} Notes & Specs...`);
                     }}
                   >
                     Read Notes
                   </button>
 
-                  <button
+                  <a
                     className="pill"
-                    type="button"
+                    href={selectedData.repoUrl || "https://github.com/opuhassan001-alt"}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => {
-                      if (selectedData.repoUrl) {
-                        window.open(selectedData.repoUrl, "_blank", "noopener,noreferrer");
-                      }
-                      showToast("Opening Source Repository...");
+                      sound.playClick();
+                      showToast(`Opening ${selectedData.title} Source on GitHub...`);
                     }}
                   >
                     View Guide
-                  </button>
+                  </a>
 
                   <button
                     className="pill icon-only"
@@ -929,6 +950,7 @@ export default function BestsellersBookShowcase() {
                     aria-label="Save book"
                     aria-pressed={isSaved}
                     onClick={() => {
+                      sound.playClick();
                       setIsSaved((prev) => {
                         const next = !prev;
                         showToast(
