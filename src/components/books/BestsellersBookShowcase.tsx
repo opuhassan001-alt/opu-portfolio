@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Copy, Check, Shield, AlertTriangle, Terminal, Lock } from "lucide-react";
 import "./BestsellersBookShowcase.css";
 import { portfolioData } from "@/data/portfolio";
+import { sound } from "@/lib/sound";
 
 interface Step {
   title: string;
@@ -175,6 +176,7 @@ export default function BestsellersBookShowcase() {
     const card = cardRefs.current[key];
     if (!card) return;
 
+    sound.playPageFlip();
     setSelectedBookKey(key);
     setMode("detail");
     card.style.setProperty("--detail-yaw", "-5deg");
@@ -185,6 +187,7 @@ export default function BestsellersBookShowcase() {
   // Close detail view
   const closeDetail = () => {
     if (mode !== "detail") return;
+    sound.playClick();
     setMode("gallery");
     const lastKey = selectedBookKey;
     const lastCard = lastKey ? cardRefs.current[lastKey] : null;
@@ -364,6 +367,8 @@ export default function BestsellersBookShowcase() {
             className={`book-card ${selectedBookKey === "agent-zero" ? "selected" : ""}`}
             type="button"
             data-book="agent-zero"
+            data-cursor="read"
+            data-cursor-text="READ ↗"
             aria-label="Open Agent Zero details"
             style={
               {
@@ -421,6 +426,8 @@ export default function BestsellersBookShowcase() {
             className={`book-card ${selectedBookKey === "claude" ? "selected" : ""}`}
             type="button"
             data-book="claude"
+            data-cursor="read"
+            data-cursor-text="READ ↗"
             aria-label="Open Skills details"
             style={
               {
@@ -478,6 +485,8 @@ export default function BestsellersBookShowcase() {
             className={`book-card ${selectedBookKey === "cursor" ? "selected" : ""}`}
             type="button"
             data-book="cursor"
+            data-cursor="read"
+            data-cursor-text="READ ↗"
             aria-label="Open Projects details"
             style={
               {

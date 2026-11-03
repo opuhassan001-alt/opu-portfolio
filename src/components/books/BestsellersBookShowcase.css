@@ -76,22 +76,11 @@
       padding-top: 40px;
       padding-bottom: 140px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 49% 84%, rgba(117, 102, 71, .2), transparent 34%),
-        radial-gradient(circle at 14% 4%, rgba(100, 112, 77, .12), transparent 28%),
-        linear-gradient(180deg, #343025 0%, var(--ink) 48%, #211e18 100%);
+      background: transparent;
     }
 
     .stage::after {
-      content: "";
-      position: absolute;
-      z-index: 30;
-      inset: 0;
-      pointer-events: none;
-      opacity: .14;
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
+      display: none;
     }
 
     .topbar {

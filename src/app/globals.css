@@ -1,26 +1,70 @@
 @import url('https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700,400i,500i,600i,700i&f[]=satoshi@300,400,500,700,400i,500i,700i&display=swap');
+@import "lenis/dist/lenis.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ink: #29251d;
+  --ink-deep: #1d1a15;
+  --ink-soft: #3a382b;
+  --pink: #c3a47b;
+  --pink-bright: #dbc39c;
+  --text: #eee2ca;
+  --muted: #c5b79e;
+  --periwinkle: #b7976c;
+  --sage: #89946f;
+  --clay: #a96346;
+  --moss: #5f684f;
+  --paper: #eadfc7;
+  --heading: "Boska", "Iowan Old Style", Palatino, Georgia, serif;
+  --subheading: "Satoshi", var(--font-plus-jakarta), system-ui, sans-serif;
+  --paragraph: "Satoshi", var(--font-inter), system-ui, sans-serif;
+  --serif: var(--heading);
+  --sans: var(--paragraph);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: #211e18;
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 antialiased selection:bg-blue-700 selection:text-white;
+    background-color: #211e18;
+    background-image:
+      radial-gradient(circle at 50% 12%, rgba(117, 102, 71, .2), transparent 38%),
+      radial-gradient(circle at 14% 4%, rgba(100, 112, 77, .12), transparent 28%),
+      linear-gradient(180deg, #343025 0%, #29251d 40%, #211e18 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--text);
+    font-family: var(--paragraph);
     overflow-x: hidden;
     border: none !important;
     outline: none !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    pointer-events: none;
+    opacity: .14;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
   }
 }
 
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(15, 35, 71, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 35, 71, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(195, 164, 123, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(195, 164, 123, 0.05) 1px, transparent 1px);
 }

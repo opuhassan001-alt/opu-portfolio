@@ -74,7 +74,7 @@ export default function AdhamHero() {
       id="hero"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative bg-white text-slate-900 overflow-hidden border-b border-slate-200/80 pt-6 pb-12 sm:pb-20 select-none"
+      className="relative bg-transparent text-[#eee2ca] overflow-hidden border-b border-[#c3a47b]/20 pt-6 pb-12 sm:pb-20 select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Adham Dannaway Exact Split Stage */}
@@ -95,13 +95,13 @@ export default function AdhamHero() {
               }}
               className="inline-block group focus:outline-none cursor-pointer"
             >
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-[58px] font-bold tracking-tight text-slate-900 group-hover:text-[#C2410C] transition-colors lowercase leading-none">
+              <h1 className="font-heading text-4xl sm:text-5xl lg:text-[58px] font-bold tracking-tight text-[#eee2ca] group-hover:text-[#dbc39c] transition-colors lowercase leading-none">
                 marketer
               </h1>
-              <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm">
+              <p className="font-body mt-4 text-sm sm:text-base text-[#c5b79e] leading-relaxed font-normal max-w-sm">
                 Growth &amp; product marketer specialising in consumer psychology, brand strategy and business analytics.
               </p>
-              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#C2410C] group-hover:translate-x-1.5 transition-transform">
+              <div className="font-subheading mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#c3a47b] group-hover:translate-x-1.5 transition-transform uppercase tracking-wider">
                 <span>View marketing work</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
@@ -119,10 +119,10 @@ export default function AdhamHero() {
                 }}
                 className={`absolute inset-0 rounded-full blur-3xl pointer-events-none transition-colors duration-500 ${
                   hoveredSide === "left"
-                    ? "bg-amber-200/50"
+                    ? "bg-[#c3a47b]/25"
                     : hoveredSide === "right"
-                    ? "bg-emerald-200/40"
-                    : "bg-slate-100/60"
+                    ? "bg-[#89946f]/25"
+                    : "bg-[#756647]/15"
                 }`}
               />
 
@@ -151,8 +151,8 @@ export default function AdhamHero() {
                   aria-label="View Marketing Work"
                   className="absolute inset-y-0 left-0 w-1/2 z-30 cursor-pointer group/left-zone focus:outline-none"
                 >
-                  <div className="absolute bottom-4 left-6 hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-sm border border-amber-200/80 text-[11px] font-semibold text-amber-900 opacity-0 group-hover/left-zone:opacity-100 transition-all duration-200 -translate-y-1 group-hover/left-zone:translate-y-0">
-                    <ArrowRight className="w-3.5 h-3.5 rotate-180 text-amber-700" />
+                  <div className="absolute bottom-4 left-6 hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1d1a15]/90 backdrop-blur-md shadow-md border border-[#c3a47b]/40 text-[11px] font-semibold text-[#dbc39c] opacity-0 group-hover/left-zone:opacity-100 transition-all duration-200 -translate-y-1 group-hover/left-zone:translate-y-0 font-subheading">
+                    <ArrowRight className="w-3.5 h-3.5 rotate-180 text-[#c3a47b]" />
                     <span>View Marketing</span>
                   </div>
                 </a>
@@ -168,9 +168,9 @@ export default function AdhamHero() {
                   aria-label="Explore Agent Zero Systems"
                   className="absolute inset-y-0 right-0 w-1/2 z-30 cursor-pointer group/right-zone focus:outline-none"
                 >
-                  <div className="absolute bottom-4 right-6 hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-sm border border-emerald-200/80 text-[11px] font-semibold text-emerald-900 opacity-0 group-hover/right-zone:opacity-100 transition-all duration-200 -translate-y-1 group-hover/right-zone:translate-y-0">
+                  <div className="absolute bottom-4 right-6 hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1d1a15]/90 backdrop-blur-md shadow-md border border-[#c3a47b]/40 text-[11px] font-semibold text-[#dbc39c] opacity-0 group-hover/right-zone:opacity-100 transition-all duration-200 -translate-y-1 group-hover/right-zone:translate-y-0 font-subheading">
                     <span>Explore Agent Zero</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-emerald-700" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#c3a47b]" />
                   </div>
                 </a>
               </div>
@@ -193,15 +193,15 @@ export default function AdhamHero() {
               }}
               className="inline-block group focus:outline-none cursor-pointer"
             >
-              <h1 className="font-mono text-3xl sm:text-4xl lg:text-[46px] font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors leading-none">
-                <span className="text-slate-400 font-light">&lt;</span>
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[52px] font-bold tracking-tight text-[#eee2ca] group-hover:text-[#dbc39c] transition-colors leading-none">
+                <span className="text-[#c3a47b] font-light">&lt;</span>
                 agent zero
-                <span className="text-slate-400 font-light">&gt;</span>
+                <span className="text-[#c3a47b] font-light">&gt;</span>
               </h1>
-              <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-sm ml-auto">
+              <p className="font-body mt-4 text-sm sm:text-base text-[#c5b79e] leading-relaxed font-normal max-w-sm ml-auto">
                 Autonomous AI systems architect &amp; context engineer who designs zero-trust MCP systems, token-budgeted memory and reliable agentic workflows.
               </p>
-              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 group-hover:-translate-x-1.5 transition-transform">
+              <div className="font-subheading mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#c3a47b] group-hover:-translate-x-1.5 transition-transform uppercase tracking-wider">
                 <ArrowRight className="w-3.5 h-3.5 rotate-180" />
                 <span>Explore Agent Zero</span>
               </div>
@@ -210,12 +210,12 @@ export default function AdhamHero() {
         </div>
 
         {/* Bottom Quick Bar */}
-        <div className="mt-14 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+        <div className="mt-14 pt-6 border-t border-[#c3a47b]/20 flex flex-wrap items-center justify-between gap-4 text-xs text-[#c5b79e] font-subheading font-medium">
           <div className="flex items-center gap-4">
             <span>BBA Marketing Graduate</span>
-            <span>•</span>
+            <span className="text-[#c3a47b]/40">•</span>
             <span>Abdur Rajjak College</span>
-            <span>•</span>
+            <span className="text-[#c3a47b]/40">•</span>
             <span>Dhaka, Bangladesh</span>
           </div>
 
@@ -223,7 +223,7 @@ export default function AdhamHero() {
             <a
               href={portfolioData.personal.cvUrl}
               download="Estakball_Hossain_CV.pdf"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors text-xs font-semibold"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#c3a47b]/20 hover:bg-[#c3a47b]/30 text-[#dbc39c] border border-[#c3a47b]/40 transition-colors text-xs font-semibold font-subheading"
             >
               <Download className="w-3.5 h-3.5" />
               Download CV (PDF)

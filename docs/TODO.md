@@ -12,8 +12,12 @@ resume**, not just a task name.
 
 ## In Progress
 
+- CLAIM #186 session 1e9a5cf2-a9fb-41de-80b5-b4a60e271982 2026-11-04T00:03:00+06:00 "Deploy portfolio to Vercel production and push latest code to GitHub origin main"
+
 
 ## Done
+
+- `#185` Implement UX & motion polish: Lenis inertia smooth scrolling, Dennis Snellenberg magnetic trailing cursor with contextual hover pills (READ ↗), scroll-triggered reveal animations via Framer Motion, magnetic spring physics on interactive CTAs, and zero-bandwidth Web Audio API tactile sound synthesizer with navbar toggle (2026-11-03)
 
 - `#184` Embed interactive Zero-Trust DLP Pre-Execution Simulator and Architecture specs into Book 1 (Agent Zero), integrate authentic projects & DennisEducation credentials into Book 3 (Projects & Academics), and streamline page flow into unified 3D physical book experience (2026-11-03)
 
@@ -123,7 +127,9 @@ The quoted label is optional but recommended: a future reader sees WHAT was
 claimed, not just who/when — a session id alone answers "who," not "why."
 Locks auto-expire after 2 hours with no release needed.
 
-When the item is fully finished (moved to `## Done`): delete its CLAIM/
+When the item is fully finished (moved to `## Done
+
+- `#112357` Unify entire website with Book Showcase deep vintage bronze background, radial ambiance, fixed SVG film-grain texture, and strict 3-tier font system (Boska for headings, Satoshi for subheadings & paragraphs) across Navbar, AdhamHero, DennisContact, CookieConsentBanner, and global footer (2026-11-03)`): delete its CLAIM/
 RELEASE line(s) from here entirely, in the same edit that writes the Done
 entry — the Done entry is now the permanent record, the lock lines are pure
 clutter once resolved. Safe specifically because it's one coordinated edit

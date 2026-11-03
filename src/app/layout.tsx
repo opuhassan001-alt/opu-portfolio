@@ -103,6 +103,8 @@ export const metadata: Metadata = {
 };
 
 import { CookieConsentBanner } from "@/components/ui/CookieConsentBanner";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export default function RootLayout({
   children,
@@ -122,15 +124,18 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-blue-700 selection:text-white">
+      <body className="font-sans min-h-screen flex flex-col bg-[#211e18] text-[#eee2ca] antialiased overflow-x-hidden selection:bg-[#c3a47b] selection:text-[#1d1a15]">
+        <CustomCursor />
         {/* Skip to Main Content Link for Keyboard and Screen Reader Accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-emerald-600 text-white font-bold rounded-lg shadow-xl focus:outline-none focus:ring-2 focus:ring-white transition"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#c3a47b] text-[#1d1a15] font-bold rounded-lg shadow-xl focus:outline-none focus:ring-2 focus:ring-white transition"
         >
           Skip to main content
         </a>
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
         <CookieConsentBanner />
       </body>
     </html>
