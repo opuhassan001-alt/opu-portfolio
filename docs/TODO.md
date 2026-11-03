@@ -15,6 +15,10 @@ resume**, not just a task name.
 
 ## Done
 
+- `#191` Fix book detail drawer mouse wheel scrolling: configure Lenis prevent filter in SmoothScrollProvider, add `data-lenis-prevent` and `data-lenis-prevent-wheel` attributes to detail panel and detail scroll container, stop wheel event propagation to window, and forward panel wheel events directly to `detailScrollRef.scrollTop` so mouse wheel turns scroll the content smoothly without needing scrollbar drag (2026-11-04)
+
+- `#190` Reposition book detail action dock ~30% downwards and elevate reading panel: shifted `.detail-panel` top anchor to `clamp(90px, 9%, 130px)` to expand readable vertical real-estate, capped `.detail-scroll` to `clamp(380px, 48vh, 500px)` with independent scroll and bottom margin, and moved `.bottom-dock` down by 56px (`margin-top: 56px`) with 100% full-width alignment, keeping all reading cards completely clear of the button rail (2026-11-04)
+
 - `#189` Anchor detail panel action dock to screen bottom and decouple reading scroll container: set `.detail-panel` to full-height flex column (`top: clamp(130px, 13%, 180px); bottom: 28px`), made `.detail-scroll` flex-expand with independent scrollbar, and pinned `.bottom-dock` to the bottom (`margin-top: auto; padding-top: 16px`) so the action rail never hovers over or obstructs manual reading text (2026-11-04)
 
 - `#188` Resolve Zero-Trust DLP Pre-Execution Simulator false-positive blocked status and detail drawer text overlap: updated command chaining detection regex to allow valid trailing SQL semicolons while intercepting active command injection chaining (`/ (;|&&|\||`)\s*\S+ /`), turning default state into clean verified secret redaction (`SAFE / SANITIZED`), and optimized `.detail-scroll` bottom padding and mask boundaries so drawer content never collides with `.bottom-dock` action pills (2026-11-04)
@@ -134,8 +138,6 @@ claimed, not just who/when — a session id alone answers "who," not "why."
 Locks auto-expire after 2 hours with no release needed.
 
 When the item is fully finished (moved to `## Done
-
-- `#189` Anchor detail panel action dock to screen bottom and decouple reading scroll container: set `.detail-panel` to full-height flex column (`top: clamp(130px, 13%, 180px); bottom: 28px`), made `.detail-scroll` flex-expand with independent scrollbar, and pinned `.bottom-dock` to the bottom (`margin-top: auto; padding-top: 16px`) so the action rail never hovers over or obstructs manual reading text (2026-11-04)
 
 - `#112357` Unify entire website with Book Showcase deep vintage bronze background, radial ambiance, fixed SVG film-grain texture, and strict 3-tier font system (Boska for headings, Satoshi for subheadings & paragraphs) across Navbar, AdhamHero, DennisContact, CookieConsentBanner, and global footer (2026-11-03)`): delete its CLAIM/
 RELEASE line(s) from here entirely, in the same edit that writes the Done

@@ -157,6 +157,7 @@ export default function BestsellersBookShowcase() {
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const detailScrollRef = useRef<HTMLDivElement>(null);
@@ -212,6 +213,38 @@ export default function BestsellersBookShowcase() {
       setSelectedBookKey(null);
     }, 700);
   };
+
+  // Enable seamless mouse wheel scrolling in detail drawer:
+  // Intercept wheel events on the entire detail panel with { passive: false },
+  // call preventDefault() and stopPropagation() to block page-level Lenis capture,
+  // and directly scroll the detail-scroll container by e.deltaY.
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel || mode !== "detail") return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const scrollContainer = detailScrollRef.current;
+      if (!scrollContainer) return;
+
+      // Allow natural horizontal scroll inside code blocks or action rail if applicable
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        const target = e.target as HTMLElement | null;
+        const horizContainer = target?.closest(".spec-pre, .action-rail") as HTMLElement | null;
+        if (horizContainer && horizContainer.scrollWidth > horizContainer.clientWidth) {
+          return;
+        }
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+      scrollContainer.scrollTop += e.deltaY;
+    };
+
+    panel.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      panel.removeEventListener("wheel", handleWheel);
+    };
+  }, [mode, selectedBookKey]);
 
   // Parallax update
   const updateParallax = useCallback(() => {
@@ -552,10 +585,13 @@ export default function BestsellersBookShowcase() {
 
         {/* Detail Panel / Slide-out Reader Drawer */}
         <section
+          ref={panelRef}
           className="detail-panel"
           id="detailPanel"
           aria-live="polite"
           aria-hidden={mode !== "detail"}
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
         >
           {selectedData && (
             <>
@@ -565,6 +601,8 @@ export default function BestsellersBookShowcase() {
                 className="detail-scroll"
                 tabIndex={0}
                 aria-label="Field manual details"
+                data-lenis-prevent="true"
+                data-lenis-prevent-wheel="true"
               >
                 <p className="detail-description">{selectedData.description}</p>
 

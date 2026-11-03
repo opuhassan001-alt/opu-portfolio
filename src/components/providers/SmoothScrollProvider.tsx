@@ -27,6 +27,14 @@ export default function SmoothScrollProvider({
       wheelMultiplier: 1.0,
       touchMultiplier: 1.2,
       autoRaf: false,
+      prevent: (node) => {
+        return (
+          node.hasAttribute("data-lenis-prevent") ||
+          Boolean(node.closest?.("[data-lenis-prevent]")) ||
+          Boolean(node.closest?.(".detail-scroll")) ||
+          Boolean(node.closest?.(".detail-panel"))
+        );
+      },
     });
 
     lenisRef.current = lenis;
