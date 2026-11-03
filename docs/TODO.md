@@ -8,26 +8,26 @@ resume**, not just a task name.
 
 ## Backlog
 
+
+
 ## In Progress
+
 
 ## Done
 
-- `#186` Audit and purge all unnecessary data, duplicate sections, fake grades, and AI slop: eliminated redundant DennisWork, DennisLab, DennisAboutSkills, and DennisEducation sections duplicated beneath ReelPortfolioWall so the 3D showcase truly consolidates all portfolio work post-hero; replaced filler and fake cards (CGPA 3.65/3.42, fake Science Honors, Executive Synthesis) with 100% authentic projects (Islamic Prayer PWA, MCP Protocols, Loop Circuit Breakers) and verified academic records (BBA Marketing CGPA 2.77, HSC Commerce GPA 3.71, SSC Commerce GPA 4.23); added quick category rotation tabs (All, AI Systems, Marketing, Credentials) and full case study modal with challenge, solution, metric, and repo links (2026-10-23)
+- `#184` Embed interactive Zero-Trust DLP Pre-Execution Simulator and Architecture specs into Book 1 (Agent Zero), integrate authentic projects & DennisEducation credentials into Book 3 (Projects & Academics), and streamline page flow into unified 3D physical book experience (2026-11-03)
 
-- `#185` Fix blank white screen and scroll-lock bug: eradicated document.body.style.overflow scroll-hijacking, eliminated blocking opaque white overlay, and ensured 3D showcase cards and headings are rendered directly and immediately without waiting or freezing browser scrolling (2026-10-23)
+- `#183` Harmonize dual-discipline identity, restore authentic projects and lab modules, integrate DennisLab and DennisEducation with 3D Book Showcase, and resolve all navigation anchors and layout metadata (2026-11-03)
 
-- `#184` Overhaul portfolio aesthetic to eliminate all AI slop: replaced generic Lucide icon-in-a-box placeholders with authentic bespoke case study mockups (AST terminal firewall, Manifest V3 timer popup, Dhaka FMCG survey metrics, Pareto revenue SQL, ABC inventory grid), removed fake two-axis background grid overlays, purged noisy mono section numbering and eyebrows, added interactive full case study modal on card click, and elevated typography to confident human craft (2026-10-23)
+- `#182` Remove AI-generated dummy projects, case study claims, arbitrary skill percentages/ratings, prompt lab mock code, and speculative roadmap items while preserving authentic academic credentials, genuine skill names, and all hero section copy (2026-11-03)
 
-- `#183` Implement user-scroll-driven 3D cylinder rotation and 360-degree entrance sweep: engineered initial 360-degree expansion revolution settling level in front of camera, disabled unwanted continuous auto-spin so cylinder rotates only when user scrolls or moves mouse, mapped mouse wheel/move UP to rotate left and DOWN to rotate right with ultra-smooth critically-damped spring physics, preserving 100% of portfolio hero and Dennis Snellenberg sections without harm (2026-10-23)
+- `#181` Unify website typography with Fontshare 3-tier font system (Boska for headings, Satoshi for subheadings and paragraphs) across hero, 3D book showcase, contact, and global layouts (2026-11-03)
 
-- `#182` Globally install and configure Google Research Harness² (google-research/harness2) across the system with Windows compatibility patch, CLI executables (harness2, harness2-setup, harness2-check, harness2-demo, harness2-judge, harness2-report, harness2-bridge), global plugin rules (AGENTS.md), agents (harness-proposer, harness-composer, harness-evaluator), and global skills for peak recursive agent harnessing across all projects (2026-10-23)
+- `#180` Replace Claude Code and Cursor with Skills and Projects in 3D book showcase; integrate Shipped Projects, Future Roadmap, Academic Results (BBA, HSC, SSC), and Dual-Discipline Skills matrix into interactive detail reader drawer (2026-11-03)
 
-- `#181` Diagnose and eliminate 3D showcase transition glitch: resolved 150ms animation loop restart caused by loadedCount effect dependency, stripped conflicting 300ms CSS transition fighting per-frame JS transforms, eliminated 60 FPS DOM unmounting thrash by keeping all 16 cards mounted with visibility culling, corrected shortest-arc circular deal interpolation, added peripheral fade-out to prevent camera clipping, and attached IntersectionObserver to trigger entrance only when in view (2026-10-23)
+- `#179` Replace marked cylinder portfolio section with 100% exact ThreeUI Bestsellers Book Showcase featuring Agent Zero and interactive slide-out portfolio drawer (2026-11-03)
 
-- `#180` Build post-hero 3D CSS cylinder portfolio showcase with synchronized formation loader, expansion reveal, reelPose math, and real asset counter: implemented 16-card vertical cylinder (270x480px, 9:16), pure mathematical pose engine reelPose with passing unit test suite, staggered formation deal-out (0->1 in 2.6s), expansion reveal (0->1 in 1.9s) transitioning from tilt -22 roll -20 radius 460 to inside radius 1800 scale 2.3, real asset tabular rolling counter, card recycling, spring physics, and keyboard/drag/wheel controls (2026-10-23)
-
-
-- `#179` Revert 3D book experiment per user request and restore Dennis Snellenberg dual-track portfolio: restored the exact battle-tested Adham Dannaway split-hero and Dennis Snellenberg editorial layout across Work, Lab, Disciplines, Education, and Contact sections with zero WebGL dependencies (2026-10-22)
+- `#112356` #112305 Organize codebase structure into clean domain-driven directories (hero/, sections/, ui/, reels/), isolate external project stray files, and setup zero-breakage component barrel exports and root test runner (2026-11-03)
 
 - `#178` Reduce floating hover pop-up window size by 86% to an ultra-compact mini-window: streamlined hover cards across Work, Lab, Disciplines, and Education sections to a compact 192px × 56px mini-card featuring only the short headline and a high-contrast white "VIEW ↗" button, removing long paragraphs and tag clutter while preserving full deep-dive click-to-open modals (2026-10-19)
 
@@ -137,7 +137,3 @@ SessionStart message shows which session id holds a locked item — write a
 RELEASE line quoting THAT session's id (not your own) and it frees
 immediately. The 2h expiry is only the backstop for when
 nobody notices.
-
-## Done
-
-_(completed work, newest first, with the date it landed)_

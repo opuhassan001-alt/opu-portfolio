@@ -9,10 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        editorial: ["var(--font-playfair)", "Georgia", "serif"],
+        heading: ["'Boska'", "Georgia", "serif"],
+        subheading: ["'Satoshi'", "system-ui", "sans-serif"],
+        body: ["'Satoshi'", "system-ui", "sans-serif"],
+        sans: ["'Satoshi'", "var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["'Boska'", "var(--font-plus-jakarta)", "Georgia", "serif"],
+        serif: ["'Boska'", "var(--font-playfair)", "Georgia", "serif"],
+        editorial: ["'Boska'", "Georgia", "serif"],
         mono: ["var(--font-jetbrains-mono)", "Menlo", "monospace"],
         tech: ["var(--font-jetbrains-mono)", "Menlo", "monospace"],
       },
@@ -60,4 +63,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-

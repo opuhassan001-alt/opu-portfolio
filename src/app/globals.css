@@ -1,3 +1,5 @@
+@import url('https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700,400i,500i,600i,700i&f[]=satoshi@300,400,500,700,400i,500i,700i&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

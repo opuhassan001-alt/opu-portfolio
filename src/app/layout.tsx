@@ -35,20 +35,23 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Estakball Hossain (Opu) | BBA in Marketing — Executive Portfolio",
+    default: "Estakball Hossain (Opu) | Growth Marketer & AI Systems Engineer",
     template: "%s | Estakball Hossain",
   },
   description:
-    "Executive portfolio of Estakball Hossain (Opu), a fresh BBA graduate in Marketing skilled in business analysis, MS Excel, foundational SQL, and cross-functional operations across Marketing, Supply Chain, Finance, and HR in Dhaka, Bangladesh.",
+    "Executive portfolio of Estakball Hossain (Opu) — BBA in Marketing graduate and Autonomous AI Systems Engineer in Dhaka, Bangladesh. Specializing in consumer psychology, brand strategy, zero-trust MCP gateways, and context engineering.",
   keywords: [
     "Estakball Hossain",
     "Estakball Hossain Opu",
-    "BBA Graduate Marketing",
-    "Marketing Portfolio Bangladesh",
-    "Business Administration Graduate Dhaka",
-    "Supply Chain Entry Level",
-    "SQL Excel Business Analyst",
-    "Management Trainee Bangladesh",
+    "Growth Marketer",
+    "BBA Marketing Graduate",
+    "AI Systems Engineer",
+    "Agent Zero",
+    "Prompt & Context Engineer",
+    "Model Context Protocol",
+    "Zero-Trust MCP",
+    "Business Analytics",
+    "MS Excel SQL Modeling",
   ],
   authors: [{ name: "Estakball Hossain", url: "https://estakball-hossain.vercel.app" }],
   creator: "Estakball Hossain",
@@ -63,9 +66,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Estakball Hossain (Opu) | BBA in Marketing — Executive Portfolio",
+    title: "Estakball Hossain (Opu) | Growth Marketer & AI Systems Engineer",
     description:
-      "Explore academic case studies, data models in MS Excel & SQL, and operational frameworks by Estakball Hossain.",
+      "Explore empirical marketing research, retail analytics, and zero-trust autonomous AI systems by Estakball Hossain.",
     url: "https://estakball-hossain.vercel.app",
     siteName: "Estakball Hossain Portfolio",
     locale: "en_US",
@@ -81,9 +84,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Estakball Hossain (Opu) | BBA Graduate — Marketing & Business Portfolio",
+    title: "Estakball Hossain (Opu) | Growth Marketer & AI Systems Engineer",
     description:
-      "Explore case studies, Excel analysis, and cross-functional business projects by Estakball Hossain.",
+      "Explore empirical marketing research, retail analytics, and zero-trust autonomous AI systems by Estakball Hossain.",
     images: ["/profile.jpg"],
   },
   icons: {
@@ -99,7 +102,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import { CookieConsentBanner } from "@/components/ui/CookieConsentBanner";
 
 export default function RootLayout({
   children,
@@ -111,6 +114,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${plusJakarta.variable} ${playfair.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700,400i,500i,600i,700i&f[]=satoshi@300,400,500,700,400i,500i,700i&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-sans min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-blue-700 selection:text-white">
         {/* Skip to Main Content Link for Keyboard and Screen Reader Accessibility */}
         <a

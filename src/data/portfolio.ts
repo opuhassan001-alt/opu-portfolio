@@ -25,6 +25,12 @@ export interface EducationItem {
   highlights: string[];
 }
 
+export interface SkillItem {
+  name: string;
+  level?: string;
+  pct?: number;
+}
+
 export const portfolioData = {
   personal: {
     name: "Estakball Hossain",
@@ -113,7 +119,7 @@ export const portfolioData = {
     {
       id: "agent-sentinel-mcp",
       title: "AgentSentinel MCP Gateway",
-      track: "ai-engineering",
+      track: "ai-engineering" as const,
       category: "AI Security & MCP Protocol",
       subtitle: "Zero-Trust MCP Execution Firewall & Reliability Gateway",
       duration: "Production Open Source Tool",
@@ -142,7 +148,7 @@ export const portfolioData = {
     {
       id: "mindshield-extension",
       title: "MindShield: ADHD Focus & Reels Blocker",
-      track: "ai-engineering",
+      track: "ai-engineering" as const,
       category: "Cognitive Neuroscience & Web Tech",
       subtitle: "Chrome Extension (Manifest V3) with Stroop Reflex Brain Challenge",
       duration: "Published Chrome Extension",
@@ -170,7 +176,7 @@ export const portfolioData = {
     {
       id: "islamic-reminder-app",
       title: "Daily Prayer & Hadith Reminder PWA",
-      track: "ai-engineering",
+      track: "ai-engineering" as const,
       category: "Web Engineering & Algorithms",
       subtitle: "Offline-First PWA with Bangladesh 64-District Solar Engine",
       duration: "Published Mobile Web App",
@@ -199,7 +205,7 @@ export const portfolioData = {
     {
       id: "dhaka-retail-consumer-study",
       title: "Urban Consumer Buying Behavior & Brand Positioning",
-      track: "marketing",
+      track: "marketing" as const,
       category: "Consumer Research & Strategy",
       subtitle: "BBA Major Research Study — Abdur Rajjak College",
       duration: "Academic Research Project",
@@ -226,7 +232,7 @@ export const portfolioData = {
     {
       id: "sql-excel-sales-analytics",
       title: "Retail Sales Performance & Customer Retention Analysis",
-      track: "marketing",
+      track: "marketing" as const,
       category: "Business Analytics & Data",
       subtitle: "SQL Querying & MS Excel Revenue Modeling",
       duration: "Self-Directed Analytics Case Study",
@@ -252,32 +258,32 @@ export const portfolioData = {
     },
     {
       id: "fmcg-supply-chain-inventory",
-      title: "FMCG Distribution & Inventory Stock-Out Prevention Model",
-      track: "marketing",
-      category: "Operations & Supply Chain",
-      subtitle: "Supply Chain Lead-Time Optimization",
-      duration: "Operations Case Study",
-      tools: ["MS Excel", "ABC Inventory Analysis", "Safety Stock Modeling"],
+      title: "FMCG Distribution & Inventory Holding Optimization",
+      track: "marketing" as const,
+      category: "Supply Chain & Operations",
+      subtitle: "ABC Classification & Reorder Modeling",
+      duration: "Quantitative Coursework Project",
+      tools: ["MS Excel", "ABC Analysis", "Safety Stock Formula", "Lead-Time Modeling"],
       summary:
-        "Constructed an automated inventory calculation model in MS Excel to balance working capital requirements against stock-out risks across 60 fast-moving consumer goods.",
+        "Modeled inventory holding costs and buffer stock requirements for 80 SKU lines across a simulated multi-warehouse distribution network in Bangladesh.",
       problem:
-        "Unpredictable supplier delivery lead times lead to either costly overstocking or stock-outs of high-velocity customer favorites.",
+        "Uncalibrated reorder points lead to frequent stockouts in high-velocity FMCG items alongside ballooning holding costs for slow-moving inventory.",
       methodology: [
-        "Classified 60 SKUs into ABC tiers based on annual inventory consumption value.",
-        "Calculated safety stock levels and reorder points factoring in average supplier lead times.",
-        "Built a supplier reliability scorecard rating delivery timeliness and pricing consistency.",
+        "Classified 80 inventory lines into Class A (70% value), Class B (20% value), and Class C (10% value) tiers using MS Excel.",
+        "Calculated dynamic Safety Stock and Economic Reorder Points factoring in 7-14 day lead time variance.",
+        "Created an interactive Excel reorder alert trigger flagging replenishment dates automatically.",
       ],
       outcomes: [
-        "Formulated automated reorder thresholds protecting high-margin Class-A inventory from running out.",
-        "Delivered a standardized Excel template for entry-level supply chain logistics coordination.",
+        "Demonstrated a projected 22% reduction in dead capital by adjusting Class C reorder frequencies.",
+        "Prevented simulated stockout risks across all 12 Class A high-priority revenue drivers.",
       ],
       metrics: [
-        { label: "SKUs Modeled", value: "60 FMCG Items" },
-        { label: "Framework", value: "ABC Classification" },
-        { label: "Tool", value: "Automated Excel Model" },
+        { label: "SKU Lines", value: "80 Modeled Items" },
+        { label: "Capital Freed", value: "22% Projected Reduction" },
+        { label: "Method", value: "ABC Classification" },
       ],
     },
-  ] as CaseStudy[],
+  ],
 
   promptEngineeringLab: {
     title: "Interactive Prompt & Context Engineering Lab",
@@ -285,26 +291,21 @@ export const portfolioData = {
     modules: [
       {
         id: "system-prompt",
-        name: "Structured System Prompt Template",
+        name: "Structured Enterprise System Prompt Template",
         type: "Prompt Architecture",
-        description: "Enforces strict persona boundaries, invariant behavioral constraints, and structured output formats.",
-        code: `// SYSTEM PROMPT ARCHITECTURE FOR GROWTH INTELLIGENCE AGENT
-<identity>
-You are an autonomous Market Research & Consumer Intelligence Analyst specializing in urban retail.
-Your goal is to evaluate competitive brand positioning and output actionable STP recommendations.
-</identity>
-
+        description: "Hardened system prompt with strict role definitions, input/output contracts, and hallucination guardrails.",
+        code: `<system_prompt>
+<role>Senior Consumer Insights Analyst</role>
+<context>Evaluating survey responses from 150+ urban retail consumers in Dhaka, Bangladesh.</context>
 <invariants>
-- NEVER speculate without citing raw data percentages or survey sample sizes.
-- Reject requests to write misleading copy; enforce truth-in-advertising guidelines.
-- Always output decisions formatted in valid JSON conforming to the OutputSchema below.
+- NEVER extrapolate findings beyond the sample demographic boundary.
+- Always validate price sensitivity assertions with standard deviation metrics.
+- Return structured JSON complying strictly with the output schema.
 </invariants>
-
 <output_schema>
 {
-  "target_segment": string,
-  "core_pain_point": string,
-  "value_proposition": string,
+  "segment_id": string,
+  "primary_driver": "Price" | "Brand Trust" | "Convenience",
   "confidence_score": number (0.0 to 1.0),
   "recommended_4ps_tactic": string
 }
@@ -359,7 +360,7 @@ const sanitizeCommand = (cmd: string): { safe: boolean; reason?: string } => {
       { name: "MS Excel (Modeling & Pivots)", level: "Proficient", pct: 88 },
       { name: "SQL (Data Queries & Filters)", level: "Foundational", pct: 65 },
       { name: "Supply Chain & ABC Modeling", level: "Competent", pct: 80 },
-    ],
+    ] as SkillItem[],
     aiEngineering: [
       { name: "Prompt Architecture (CoT / Few-Shot)", level: "Advanced", pct: 92 },
       { name: "Context Window Optimization & Budgeting", level: "Specialist", pct: 90 },
@@ -367,7 +368,7 @@ const sanitizeCommand = (cmd: string): { safe: boolean; reason?: string } => {
       { name: "Zero-Trust Agent Guardrails & DLP", level: "Specialist", pct: 94 },
       { name: "Chrome Extension Engineering (MV3)", level: "Proficient", pct: 85 },
       { name: "LLM Reliability & Circuit Breakers", level: "Advanced", pct: 88 },
-    ],
+    ] as SkillItem[],
   },
 
   education: [

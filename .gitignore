@@ -48,3 +48,5 @@ next-env.d.ts
 # Nested git repos (independent projects)
 /agent-sentinel-mcp/
 
+/footy-vantage-dashboard/
+/ucl-analytics-dashboard/

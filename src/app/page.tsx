@@ -1,9 +1,9 @@
 import React from "react";
 import { ArrowUp } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import AdhamHero from "@/components/AdhamHero";
-import ReelPortfolioWall from "@/components/reels/ReelPortfolioWall";
-import DennisContact from "@/components/DennisContact";
+import Navbar from "@/components/ui/Navbar";
+import AdhamHero from "@/components/hero/AdhamHero";
+import BestsellersBookShowcase from "@/components/books/BestsellersBookShowcase";
+import DennisContact from "@/components/sections/DennisContact";
 
 export default function HomePage() {
   return (
@@ -11,19 +11,19 @@ export default function HomePage() {
       {/* Navigation Header */}
       <Navbar />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Adham Hero with Split Dual-Portrait */}
         <AdhamHero />
 
-        {/* Post-Hero 3D Cylinder Portfolio Showcase (Consolidating all portfolio works) */}
-        <ReelPortfolioWall />
+        {/* ThreeUI Bestsellers Book Showcase (Agent Zero Lab, Skills Matrix, Projects & Academics) */}
+        <BestsellersBookShowcase />
 
         {/* Dennis Snellenberg Iconic Giant Magnetic Contact Section */}
         <DennisContact />
       </main>
 
       {/* Dennis Snellenberg Minimalist Editorial Footer */}
-      <footer className="bg-[#141414] border-t border-neutral-800 py-10 text-xs text-neutral-400 font-mono">
+      <footer className="bg-[#141414] border-t border-neutral-800 py-10 text-xs text-neutral-400 font-subheading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <span>&copy; {new Date().getFullYear()} Estakball Hossain. All rights reserved.</span>

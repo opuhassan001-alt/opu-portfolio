@@ -44,6 +44,22 @@ export default function LicensesPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-4 rounded-xl bg-navy-900 border border-navy-800">
+                <h3 className="text-white font-bold text-base mb-1">Boska Font Family</h3>
+                <p className="text-xs text-emerald-400 font-semibold mb-2">ITF Free Font License (Fontshare)</p>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Created by Indian Type Foundry (ITF). Licensed under the ITF Free Font License for editorial headings, display, and book cover design.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-navy-900 border border-navy-800">
+                <h3 className="text-white font-bold text-base mb-1">Satoshi Font Family</h3>
+                <p className="text-xs text-emerald-400 font-semibold mb-2">ITF Free Font License (Fontshare)</p>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Created by Indian Type Foundry (ITF). Licensed under the ITF Free Font License for crisp subheadings, UI copy, and body paragraphs.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-navy-900 border border-navy-800">
                 <h3 className="text-white font-bold text-base mb-1">Inter Font Family</h3>
                 <p className="text-xs text-emerald-400 font-semibold mb-2">SIL Open Font License 1.1</p>
                 <p className="text-xs text-slate-300 leading-relaxed">
